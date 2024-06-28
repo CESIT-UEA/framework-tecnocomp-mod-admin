@@ -1,0 +1,19 @@
+<form class="form" [formGroup]="formulario">
+    <div>
+        <label>Digite o seu nome</label>
+        <input type="text" formControlName="nomeCliente">
+    </div>
+    <div>
+        <label>Digite a URL do seu LMS</label>
+        <input type="text" formControlName="urlLms">
+    </div>
+    <div>
+        <label>Digite o nome da plataforma</label>
+        <input type="text" formControlName="plataformaNome">
+    </div>
+    <div>
+        <label>Digite o id do cliente</label>
+        <input type="text" formControlName="idCliente">
+    </div>
+    <button (click)="enviarFormulario()">Enviar formulário</button>
+</form>
