@@ -1,19 +1,114 @@
+<h1>Cadastra-se na plataforma Licomp</h1>
 <form class="form" [formGroup]="formulario">
+  <div>
+    <label>Digite o seu nome</label>
+    <input type="text" formControlName="nomeCliente" />
+  </div>
+  <div>
+    <label>Digite a URL do seu LMS</label>
+    <input type="text" formControlName="urlLms" />
+  </div>
+  <div>
+    <label>Digite o nome da plataforma</label>
+    <input type="text" formControlName="plataformaNome" />
+  </div>
+  <div>
+    <label>Digite o id do cliente</label>
+    <input type="text" formControlName="idCliente" />
+  </div>
+  <div>
+    <label>Deseja cadastrar um módulo?</label>
+    <input type="checkbox" formControlName="desejaCadastrarModulo" />
+  </div>
+  <div *ngIf="formulario.get('desejaCadastrarModulo')!.value">
     <div>
-        <label>Digite o seu nome</label>
-        <input type="text" formControlName="nomeCliente">
+      <label>Digite o nome do módulo</label>
+      <input type="text" formControlName="nomeModulo" />
     </div>
     <div>
-        <label>Digite a URL do seu LMS</label>
-        <input type="text" formControlName="urlLms">
+      <label>URL do vídeo inicial</label>
+      <input type="text" formControlName="videoInicial" />
     </div>
-    <div>
-        <label>Digite o nome da plataforma</label>
-        <input type="text" formControlName="plataformaNome">
+    <div formArrayName="topicos">
+      <div
+        *ngFor="let topico of topicos.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <h3>Tópico {{ i + 1 }}</h3>
+        <div>
+          <label>Nome do Tópico</label>
+          <input type="text" formControlName="nome_topico" />
+        </div>
+        <div>
+          <label>URL do Ebook</label>
+          <input type="text" formControlName="ebookUrlGeral" />
+        </div>
+        <div>
+          <label>Texto de Apoio</label>
+          <input type="text" formControlName="textoApoio" />
+        </div>
+        <div>
+          <label>URLs de Vídeos</label>
+          <input type="text" formControlName="videoUrls" />
+        </div>
+        <div>
+          <label>Saiba Mais</label>
+          <input type="text" formControlName="saibaMais" />
+        </div>
+        <div>
+          <label>Referências</label>
+          <input type="text" formControlName="referencias" />
+        </div>
+        <div formArrayName="exercicios">
+          <div
+            *ngFor="let exercicio of getExercicios(i).controls; let j = index"
+            [formGroupName]="j"
+          >
+            <h4>Exercício {{ j + 1 }}</h4>
+            <div>
+              <label>Questão</label>
+              <input type="text" formControlName="questao" />
+            </div>
+            <div formArrayName="alternativas">
+              <div
+                *ngFor="
+                  let alternativa of getAlternativas(i, j).controls;
+                  let k = index
+                "
+                [formGroupName]="k"
+              >
+                <h5>Alternativa {{ k + 1 }}</h5>
+                <div>
+                  <label>Descrição</label>
+                  <input type="text" formControlName="descricao" />
+                </div>
+                <div>
+                  <label>Explicação</label>
+                  <input type="text" formControlName="explicacao" />
+                </div>
+                <div>
+                  <label>Correta</label>
+                  <input type="checkbox" formControlName="correta" />
+                </div>
+                <button type="button" (click)="removerAlternativa(i, j, k)">
+                  Remover Alternativa
+                </button>
+              </div>
+              <button type="button" (click)="adicionarAlternativa(i, j)">
+                Adicionar Alternativa
+              </button>
+            </div>
+            <button type="button" (click)="removerExercicio(i, j)">
+              Remover Exercício
+            </button>
+          </div>
+        </div>
+        <button type="button" (click)="adicionarExercicio(i)">
+          Adicionar Exercício
+        </button>
+      </div>
     </div>
-    <div>
-        <label>Digite o id do cliente</label>
-        <input type="text" formControlName="idCliente">
-    </div>
-    <button (click)="enviarFormulario()">Enviar formulário</button>
+    <button type="button" (click)="adicionarTopico()">Adicionar Tópico</button>
+  </div>
+  <button type="button" (click)="enviarFormulario()">Enviar formulário</button>
 </form>
