@@ -1,0 +1,80 @@
+<button (click)="home()">Home</button>
+<form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nome_modulo">Nome do Módulo</label>
+    <input id="nome_modulo" type="text" formControlName="nome_modulo">
+  </div>
+  <div>
+    <label for="video_inicial">Vídeo Inicial</label>
+    <input id="video_inicial" type="text" formControlName="video_inicial">
+  </div>
+  <div>
+    <label for="plataforma_id">ID da Plataforma</label>
+    <input id="plataforma_id" type="text" formControlName="plataforma_id">
+  </div>
+  <div formArrayName="topicos">
+    <div *ngFor="let topico of topicos.controls; let i = index" [formGroupName]="i">
+      <h3>Tópico {{ i + 1 }}</h3>
+      <label for="nome_topico">Nome do Tópico</label>
+      <input id="nome_topico" type="text" formControlName="nome_topico">
+      <label for="ebookUrlGeral">URL do Ebook</label>
+      <input id="ebookUrlGeral" type="text" formControlName="ebookUrlGeral">
+      <label for="textoApoio">Texto de Apoio</label>
+      <input id="textoApoio" type="text" formControlName="textoApoio">
+
+      <div formArrayName="videoUrls">
+        <h4>Vídeos</h4>
+        <div *ngFor="let urlCtrl of getFormArrayControls(topico, 'videoUrls'); let j = index">
+          <input [formControlName]="j" type="text">
+          <button type="button" (click)="removeVideoUrl(i, j)">Remover Vídeo</button>
+        </div>
+        <button type="button" (click)="addVideoUrl(i)">Adicionar Vídeo</button>
+      </div>
+
+      <div formArrayName="saibaMais">
+        <h4>Saiba Mais</h4>
+        <div *ngFor="let saibaCtrl of getFormArrayControls(topico, 'saibaMais'); let j = index" [formGroupName]="j">
+          <input formControlName="descricao" type="text">
+          <input formControlName="url" type="text">
+          <button type="button" (click)="removeSaibaMais(i, j)">Remover Saiba Mais</button>
+        </div>
+        <button type="button" (click)="addSaibaMais(i)">Adicionar Saiba Mais</button>
+      </div>
+
+      <div formArrayName="referencias">
+        <h4>Referências</h4>
+        <div *ngFor="let refCtrl of getFormArrayControls(topico, 'referencias'); let j = index" [formGroupName]="j">
+          <input formControlName="caminhoDaImagem" type="text">
+          <input formControlName="referencia" type="text">
+          <button type="button" (click)="removeReferencia(i, j)">Remover Referência</button>
+        </div>
+        <button type="button" (click)="addReferencia(i)">Adicionar Referência</button>
+      </div>
+
+      <div formArrayName="exercicios">
+        <h4>Exercícios</h4>
+        <div *ngFor="let exCtrl of getFormArrayControls(topico, 'exercicios'); let j = index" [formGroupName]="j">
+          <input formControlName="questao" type="text">
+
+          <div formArrayName="alternativas">
+            <h5>Alternativas</h5>
+            <div *ngFor="let altCtrl of getFormArrayControls(exCtrl, 'alternativas'); let k = index" [formGroupName]="k">
+              <input formControlName="descricao" type="text">
+              <input formControlName="explicacao" type="text">
+              <input formControlName="correta" type="checkbox">
+              <button type="button" (click)="removeAlternativa(i, j, k)">Remover Alternativa</button>
+            </div>
+            <button type="button" (click)="addAlternativa(i, j)">Adicionar Alternativa</button>
+          </div>
+
+          <button type="button" (click)="removeExercicio(i, j)">Remover Exercício</button>
+        </div>
+        <button type="button" (click)="addExercicio(i)">Adicionar Exercício</button>
+      </div>
+
+      <button type="button" (click)="removeTopico(i)">Remover Tópico</button>
+    </div>
+    <button type="button" (click)="addTopico()">Adicionar Tópico</button>
+  </div>
+  <button type="submit">Cadastrar Módulo</button>
+</form>

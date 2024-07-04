@@ -1,0 +1,17 @@
+<button (click)="home()">Home</button>
+<form [formGroup]="plataformaForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="plataformaUrl">URL da Plataforma</label>
+    <input id="plataformaUrl" type="text" formControlName="plataformaUrl">
+  </div>
+  <div>
+    <label for="plataformaNome">Nome da Plataforma</label>
+    <input id="plataformaNome" type="text" formControlName="plataformaNome">
+  </div>
+  <div>
+    <label for="idCliente">ID do Cliente</label>
+    <input id="idCliente" type="text" formControlName="idCliente">
+  </div>
+  <button type="submit">Cadastrar</button>
+</form>
+

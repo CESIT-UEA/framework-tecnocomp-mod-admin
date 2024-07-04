@@ -1,0 +1,24 @@
+<button (click)="home()">Home</button>
+<form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nome">Nome</label>
+    <input id="nome" type="text" formControlName="nome">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email">
+  </div>
+  <div>
+    <label for="senha">Senha</label>
+    <input id="senha" type="password" formControlName="senha">
+  </div>
+  <div>
+    <label for="tipo">Tipo</label>
+    <select id="tipo" formControlName="tipo">
+      <option value="adm">Administrador</option>
+      <option value="professor">Professor</option>
+    </select>
+  </div>
+  <button type="submit">Cadastrar</button>
+</form>
+
