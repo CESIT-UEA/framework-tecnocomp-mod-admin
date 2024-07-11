@@ -1,0 +1,125 @@
+<header class="cabecalho">
+  <h1 class="cabecalho-titulo">Faça seu cadastro</h1>
+</header>
+<form class="form" [formGroup]="formulario">
+  <section class="form-container">
+  <h1 class="form-titulo form-campo">Formulário de cadastro de plataforma</h1>
+  <hr class="linha" width="85%">
+  <span class="form-campo pergunta-obrigatoria">* Indica uma pergunta obrigatória</span>
+  <div class="form-campo">
+    <label>Nome completo <span>*</span></label>
+    <input class="form-campo-input" type="text" formControlName="nomeCliente" placeholder="Insira seu nome completo"/>
+  </div>
+  <div class="form-campo">
+    <label>URL <span>*</span></label>
+    <input class="form-campo-input" type="text" formControlName="urlLms" placeholder="Insira a url do seu LMS"/>
+  </div>
+  <div class="form-campo">
+    <label>Nome da plataforma <span>*</span></label>
+    <input class="form-campo-input"  type="text" formControlName="plataformaNome" placeholder="Insira o nome da sua plataforma" />
+  </div>
+  <div class="form-campo">
+    <label>ID <span>*</span></label>
+    <input class="form-campo-input" type="text" formControlName="idCliente" placeholder="Insira o ID do cliente" />
+  </div>
+  <div class="form-campo pergunta">
+    <label>Deseja criar um módulo?</label>
+    <input type="checkbox" formControlName="desejaCadastrarModulo" />
+  </div>
+  <div *ngIf="formulario.get('desejaCadastrarModulo')!.value">
+    <div>
+      <label>Digite o nome do módulo</label>
+      <input type="text" formControlName="nomeModulo" />
+    </div>
+    <div>
+      <label>URL do vídeo inicial</label>
+      <input type="text" formControlName="videoInicial" />
+    </div>
+    <div formArrayName="topicos">
+      <div
+        *ngFor="let topico of topicos.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <h3>Tópico {{ i + 1 }}</h3>
+        <div>
+          <label>Nome do Tópico</label>
+          <input type="text" formControlName="nome_topico" />
+        </div>
+        <div>
+          <label>URL do Ebook</label>
+          <input type="text" formControlName="ebookUrlGeral" />
+        </div>
+        <div>
+          <label>Texto de Apoio</label>
+          <input type="text" formControlName="textoApoio" />
+        </div>
+        <div>
+          <label>URLs de Vídeos</label>
+          <input type="text" formControlName="videoUrls" />
+        </div>
+        <div>
+          <label>Saiba Mais</label>
+          <input type="text" formControlName="saibaMais" />
+        </div>
+        <div>
+          <label>Referências</label>
+          <input type="text" formControlName="referencias" />
+        </div>
+        <div formArrayName="exercicios">
+          <div
+            *ngFor="let exercicio of getExercicios(i).controls; let j = index"
+            [formGroupName]="j"
+          >
+            <h4>Exercício {{ j + 1 }}</h4>
+            <div>
+              <label>Questão</label>
+              <input type="text" formControlName="questao" />
+            </div>
+            <div formArrayName="alternativas">
+              <div
+                *ngFor="
+                  let alternativa of getAlternativas(i, j).controls;
+                  let k = index
+                "
+                [formGroupName]="k"
+              >
+                <h5>Alternativa {{ k + 1 }}</h5>
+                <div>
+                  <label>Descrição</label>
+                  <input type="text" formControlName="descricao" />
+                </div>
+                <div>
+                  <label>Explicação</label>
+                  <input type="text" formControlName="explicacao" />
+                </div>
+                <div>
+                  <label>Correta</label>
+                  <input type="checkbox" formControlName="correta" />
+                </div>
+                <button type="button" (click)="removerAlternativa(i, j, k)">
+                  Remover Alternativa
+                </button>
+              </div>
+              <button type="button" (click)="adicionarAlternativa(i, j)">
+                Adicionar Alternativa
+              </button>
+            </div>
+            <button type="button" (click)="removerExercicio(i, j)">
+              Remover Exercício
+            </button>
+          </div>
+        </div>
+        <button type="button" (click)="adicionarExercicio(i)">
+          Adicionar Exercício
+        </button>
+      </div>
+    </div>
+    <button type="button" (click)="adicionarTopico()">Adicionar Tópico</button>
+  </div>
+  <div class="enviarFormulario">
+    <button type="button" (click)="enviarFormulario()">Enviar</button>
+  </div>
+  
+  </section>
+</form>
+
