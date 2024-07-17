@@ -1,0 +1,69 @@
+.titulo{
+    text-align: center;
+    height: 30%;
+    padding: 50px 0 0 0;
+    background: #2A2835;
+    color: #FFFFFF;
+    border-bottom: 8px solid #9665DF;
+}
+
+
+.box{
+    height: 100vh;
+}
+
+.container{
+    background-color: #FFFFFF;
+    width: 27%;
+    margin: 0 auto;
+    padding: 45px 60px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #9A9A9A;
+    height: 60%;
+    position: relative;
+    top: -120px;
+}
+
+img{
+    padding: 5px 0;
+}
+
+.logo{
+    text-align: center;
+    line-height: 30px;
+}
+
+.text{
+    padding: 20px 0;
+    color: #7D718F;
+}
+
+.campo-formulario{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    row-gap: 6px;
+}
+
+.input, .button{
+    padding: 8px;
+    border-radius: 6px;
+    
+}
+
+input:focus{
+    outline: 0;
+}
+
+.input{
+    border-color: #9A9A9A;
+    border: 1px solid #9A9A9A;
+}
+.button{
+    background-color: #864FD9;
+    color: #FFFFFF;
+    border: none;
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px;
+}

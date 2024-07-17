@@ -1,0 +1,22 @@
+<div class="box">
+  <h1 class="titulo">Bem vindo de volta!</h1>
+  <section class="container">
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="logo">
+      <h3>Login</h3>
+    </div>
+    <p class="text">Insira seus dados abaixo para criar conta e começar</p>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container-formulario">
+      <div class="campo-formulario">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="input" placeholder="Example@gmail.com">
+      </div>
+      <div class="campo-formulario">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" formControlName="senha" class="input" placeholder="Digite...">
+      </div>
+      <button type="submit" class="button">Entrar</button>
+    </form>
+  </section>
+</div>
+

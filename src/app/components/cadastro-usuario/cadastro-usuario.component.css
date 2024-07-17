@@ -1,0 +1,112 @@
+*{
+    color:#2F2D33;
+}
+
+
+.box{
+    height: 100vh;
+}
+
+.titulo{
+    text-align: center;
+    padding: 50px 0 0 0;
+    background: #2A2835;
+    color: #FFFFFF;
+    height: 30%;
+    border-bottom: 8px solid #9665DF;
+}
+
+span{
+    color: #B48EFF;
+}
+
+.container{
+    height: 60%;
+    background-color: #FFFFFF;
+    width: 40%;
+    margin: 0 auto;
+    padding: 45px 60px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #9A9A9A;
+    position: relative;
+    top: -120px;
+}
+
+.logo{
+    text-align: center;
+    line-height: 30px;
+}
+
+.text{
+    padding: 10px 0;
+    color: #7D718F;
+    text-align: center;
+}
+
+
+.campos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 10px;
+}
+
+.campo-formulario{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    row-gap: 4px;
+}
+
+.input, .button{
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #9A9A9A;
+}
+
+.input:focus, select:focus{
+    outline: 0;
+}
+
+.container-options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.select{
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    width: 45%;
+}
+
+.select select{
+    padding: 8px 0;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #9A9A9A;
+}
+
+.buttons{
+    display: flex;
+    column-gap: 18px;
+    padding-top: 10px;
+}
+
+.button-one, .button-two{
+    width: 115px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.button-one{
+    background-color: transparent;
+    border: 1px solid #9A9A9A;
+}
+
+.button-two{
+    border: none;
+    background-color: #864FD9;
+    color: #FFFFFF;
+}
