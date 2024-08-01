@@ -1,0 +1,171 @@
+.cabecalho{
+    background-color: #2A2835;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 25px 0;
+    border-bottom: 8px solid #9665DF;
+}
+
+span{
+    color: #BF9EFF;
+}
+
+.forms{
+    width: 55%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+
+.forms-container{
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #9A9A9A;
+}
+
+.section-titulo {
+    padding: 20px 40px 0px 40px;
+    line-height: 60px;
+}
+
+.section-titulo > h1{
+    color: #555278;
+    border-bottom: 2.5px solid #D8C1FA;
+    padding-bottom: 10px;
+}
+
+.section-titulo > p, .obrigatorio{
+    color: #BF0A0A;
+}
+
+.forms-container{
+    display: grid;
+    grid-template-columns: 90%;
+    justify-content: center;
+}
+
+.forms-campo{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 15px 20px;
+    row-gap: 10px;
+}
+
+.forms-campo > label {
+    color: #353535;
+}
+
+.forms-campo > input{
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #9A9A9A;
+}
+
+input:focus, select:focus{
+    outline: 0;
+}
+
+.campos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 0px;
+}
+
+.campos-input{
+    padding: 0 15px;
+}
+
+.add-topicos{
+    padding-left: 18px;
+    padding-top: 10px ;
+}
+
+/* .topicos{
+    padding: 25px 20px 30px 48px;
+} */
+
+.button-add, .topico-titulo {
+    padding: 25px 20px 30px 30px;
+}
+
+.button-add-topico{
+    padding: 8px 20px;
+    border: none;
+    background-color: #864FD9;
+    color: #FFFFFF;
+    border-radius: 6px;
+}
+
+.buttons{
+    text-align: center;
+    padding: 25px 0;
+}
+
+.button-one, .button-two, .button-video{
+    width: 130px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.button-one{
+    background-color: transparent;
+    border: 1px solid #9A9A9A;
+    margin-right: 20px;
+}
+
+.button-two, .button-video{
+    border: none;
+    background-color: #864FD9;
+    color: #FFFFFF;
+}
+
+
+.titulo-topico{
+    color: #555278;
+    border-bottom: 2.5px solid #D8C1FA;
+    padding: 15px 0;
+}
+
+
+.url-container, .saiba-mais-container{
+    background-color: #FFFFFF;
+    padding: 15px 0 10px 60px;
+    box-shadow: 1px 1px 10px #9A9A9A;
+    border-radius: 5px ;
+    margin: 15px 32px;
+}
+
+.urlVideo {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 0;   
+}
+
+.urlVideo > p {
+    padding-right: 10px;
+}
+
+h4{
+    padding-bottom: 10px;
+}
+
+.input-url{
+    padding: 8px;
+    border-radius: 2px;
+    border: 1px solid #9A9A9A;
+    width: 75%;
+}
+
+.remove-referencia{
+    height: 27px;
+}
+
+
+
+.inputs{
+    display: flex;
+    width: 95%;
+    gap: 5px;
+    padding: 7px 0;
+    align-items: center;
+}

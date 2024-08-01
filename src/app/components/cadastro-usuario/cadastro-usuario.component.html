@@ -1,24 +1,38 @@
 <div class="box">
-  <h1 class="titulo">Cadastre-se na plataforma <span>Licomp</span></h1>
+  <h1 class="titulo">Cadastre-se na plataforma <span class="title">Licomp</span></h1>
   <section class="container">
     <div class="logo">
       <img src="../../../assets/logo.png" alt="logo">
       <h3>Cadastro</h3>
     </div>
     <p class="text">Insira seus dados abaixo para criar conta e começar</p>
-    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
       <section class="campos">
         <div class="campo-formulario">
-          <label for="nome">Nome</label>
+          <label for="nome">Nome <span class="obrigatorio">*</span></label>
           <input id="nome" type="text" formControlName="nome" class="input" placeholder="Digite seu nome...">
+          <div *ngIf="nome.invalid && formDir.submitted">
+              <p class="validators" *ngIf="nome.errors?.['required']">Nome obrigatório *</p>
+              <p class="validators" *ngIf="nome.errors?.['minLength'] || !nome.errors?.['required']">Seu nome precisa ter no mínimo 4 caracteres</p>
+          </div>
         </div>
         <div class="campo-formulario">
-          <label for="email">Email</label>
+          <label for="email">Email <span class="obrigatorio">*</span></label>
           <input id="email" type="email" formControlName="email" class="input" placeholder="Digite seu E-mail...">
+          <div *ngIf="email.invalid && formDir.submitted">
+            <p class="validators" *ngIf="email.errors?.['required']">Email obrigatório *</p>
+            <p class="validators" *ngIf="email.errors?.['email'] || ['minLength'] && !email.errors?.['required']">Email inválido *</p>
+          </div>
         </div>
         <div class="campo-formulario">
-          <label for="senha">Senha</label>
+          <label for="senha">Senha <span class="obrigatorio">*</span></label>
           <input id="senha" type="password" formControlName="senha" class="input" placeholder="Digite sua senha...">
+          <div *ngIf="senha.invalid && formDir.submitted">
+            <p class="validators" *ngIf="senha.errors?.['required']">Senha obrigatória *</p>
+            <p class="validators" *ngIf="senha.errors?.['minLength'] && ['senhaForte'] || !senha.errors?.['required']">
+              Sua senha deve ter no mínimo 8 caracteres<br>
+              incluindo letras e números e símbolos.</p>
+          </div>
         </div>
       </section>
       <section class="container-options">
@@ -35,5 +49,6 @@
         </div>
       </section>
     </form>
+    <p *ngIf="errorCadastro" class="validators cadastroError">Já existe um usuário cadastrado com este email!</p>
   </section>
 </div>

@@ -1,17 +1,33 @@
-<button (click)="home()">Home</button>
-  <form [formGroup]="plataformaForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="plataformaUrl">URL da Plataforma</label>
-      <input id="plataformaUrl" type="text" formControlName="plataformaUrl">
+<header class="cabecalho">
+    <h1>Cadastre sua plataforma na <span>Licomp!</span></h1>
+</header>
+<main class="section">
+  <div class="section-titulo">
+      <h1>Cadastro de Plataforma</h1>
+      <p>* Indica uma pergunta obrigatória</p>
+  </div>
+  <form [formGroup]="plataformaForm" (ngSubmit)="onSubmit()" class="forms" #formDir="ngForm">
+    <div class="forms-campo">
+      <label for="plataformaNome">Nome da Plataforma <span class="obrigatorio">*</span></label>
+      <input id="plataformaNome" type="text" formControlName="plataformaNome" placeholder="Digitar...">
     </div>
-    <div>
-      <label for="plataformaNome">Nome da Plataforma</label>
-      <input id="plataformaNome" type="text" formControlName="plataformaNome">
+    <section class="campos">
+      <div class="forms-campo">
+        <label for="plataformaUrl">URL da Plataforma <span class="obrigatorio">*</span></label>
+        <input id="plataformaUrl" type="text" formControlName="plataformaUrl" placeholder="Digitar...">
+      </div>
+      <div class="forms-campo">
+        <label for="idCliente">ID do Cliente <span class="obrigatorio">*</span></label>
+        <input id="idCliente" type="text" formControlName="idCliente" placeholder="Digitar...">
+      </div>
+    </section>
+    <div class="buttons">
+      <button (click)="home()" class="button-one">Home</button>
+      <button type="submit" class="button-two">Cadastrar</button>
     </div>
-    <div>
-      <label for="idCliente">ID do Cliente</label>
-      <input id="idCliente" type="text" formControlName="idCliente">
+    <div *ngIf="(plataformaForm.invalid || plataformaNome.invalid || idCliente.invalid) && formDir.submitted">
+        <p class="validators">Preencha todos os campos!</p>
     </div>
-    <button type="submit">Cadastrar</button>
   </form>  
-
+</main>
+  

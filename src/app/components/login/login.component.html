@@ -6,7 +6,7 @@
       <h3>Login</h3>
     </div>
     <p class="text">Insira seus dados abaixo para criar conta e começar</p>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container-formulario">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container-formulario" #formDir="ngForm">
       <div class="campo-formulario">
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" class="input" placeholder="Example@gmail.com">
@@ -16,6 +16,11 @@
         <input id="senha" type="password" formControlName="senha" class="input" placeholder="Digite...">
       </div>
       <button type="submit" class="button">Entrar</button>
+      <div class="campo-formulario" *ngIf="(email.invalid || senha.invalid) && formDir.submitted">
+        <p class="campo-formulario invalid" *ngIf="email.errors?.['email'] && !senha.errors?.['required'] && !email.errors?.['required']">Email inválido!</p>
+        <p class="campo-formulario invalid" *ngIf="email.errors?.['required'] || senha.errors?.['required']">Preencha todos os campos!</p>
+      </div>
+      <p class="campo-formulario invalid" *ngIf="errorLogin">Email ou senha incorretos!</p>
     </form>
   </section>
 </div>
