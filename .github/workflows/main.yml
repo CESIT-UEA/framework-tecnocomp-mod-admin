@@ -38,4 +38,4 @@ jobs:
         DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
       run: |
         ssh $DEPLOY_USER@$DEPLOY_SERVER "rm -rf $DEPLOY_PATH/*"
-        scp -r dist/your-angular-app/* $DEPLOY_USER@$DEPLOY_SERVER:$DEPLOY_PATH
+        scp -r dist/cadastro_lms/* $DEPLOY_USER@$DEPLOY_SERVER:$DEPLOY_PATH
