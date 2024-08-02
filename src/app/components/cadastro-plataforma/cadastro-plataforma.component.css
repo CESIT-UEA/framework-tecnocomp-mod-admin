@@ -1,0 +1,100 @@
+.cabecalho{
+    background-color: #2A2835;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 25px 0;
+    border-bottom: 8px solid #9665DF;
+}
+
+span{
+    color: #BF9EFF;
+}
+
+.section{
+    background-color: #FFFFFF;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #9A9A9A;
+}
+
+.section-titulo {
+    padding: 20px 40px 0px 40px;
+    line-height: 60px;
+}
+
+.section-titulo > h1{
+    color: #555278;
+    border-bottom: 2.5px solid #D8C1FA;
+    padding-bottom: 10px;
+}
+
+.section-titulo > p, .obrigatorio{
+    color: #BF0A0A;
+}
+
+.forms{
+    display: grid;
+    grid-template-columns: 90%;
+    justify-content: center;
+}
+
+.forms-campo{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 15px 10px;
+    row-gap: 10px;
+}
+
+.forms-campo > label {
+    color: #353535;
+}
+
+.forms-campo > input{
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #9A9A9A;
+}
+
+input:focus, select:focus{
+    outline: 0;
+}
+
+.campos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 0px;
+}
+
+
+.buttons{
+    text-align: center;
+    padding: 40px 0;
+}
+
+.button-one, .button-two{
+    width: 130px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.button-one{
+    background-color: transparent;
+    border: 1px solid #9A9A9A;
+    margin-right: 20px;
+}
+
+.button-two{
+    border: none;
+    background-color: #864FD9;
+    color: #FFFFFF;
+}
+
+
+.validators{
+    color: #BF0A0A;
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 10px;
+}

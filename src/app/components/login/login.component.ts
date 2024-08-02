@@ -9,15 +9,31 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  errorLogin: boolean = false;
+
   loginForm = new FormGroup({  
     email: new FormControl('', [Validators.required, Validators.email]),
     senha: new FormControl('', Validators.required)
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+      this.loginForm.valueChanges.subscribe(() => {
+      this.errorLogin = false;
+    });
+  }
+
+
+  get email(){
+      return this.loginForm.get('email')!;
+  }
+
+  get senha(){
+      return this.loginForm.get('senha')!;
+  }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
+      this.errorLogin = false
       this.authService.login(this.loginForm.value.email!, this.loginForm.value.senha!).subscribe(
         (response: any) => {
           console.log(response)
@@ -26,6 +42,7 @@ export class LoginComponent {
           this.router.navigate(['/dashboard']);
         },
         error => {
+          this.errorLogin = true
           console.error('Erro ao fazer login:', error);
         }
       );

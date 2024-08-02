@@ -67,3 +67,8 @@ input:focus{
     margin-top: 14px;
     padding: 10px;
 }
+
+.invalid{
+    color: #BF0A0A;
+    font-size: 12px;
+}

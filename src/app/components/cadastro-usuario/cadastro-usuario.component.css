@@ -16,16 +16,16 @@
     border-bottom: 8px solid #9665DF;
 }
 
-span{
+.title{
     color: #B48EFF;
 }
 
 .container{
-    height: 60%;
+    height: 64%;
     background-color: #FFFFFF;
     width: 40%;
     margin: 0 auto;
-    padding: 45px 60px;
+    padding: 26px 60px 60px 60px;
     border-radius: 20px;
     box-shadow: 1px 1px 10px #9A9A9A;
     position: relative;
@@ -71,7 +71,7 @@ span{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    padding: 20px 0;
 }
 
 .select{
@@ -91,7 +91,7 @@ span{
 .buttons{
     display: flex;
     column-gap: 18px;
-    padding-top: 10px;
+    padding-top: 14px;
 }
 
 .button-one, .button-two{
@@ -109,4 +109,13 @@ span{
     border: none;
     background-color: #864FD9;
     color: #FFFFFF;
+}
+
+.validators, .obrigatorio{
+    color: #BF0A0A;
+    font-size: 12px;
+}
+
+.cadastroError{
+    text-align: center;
 }

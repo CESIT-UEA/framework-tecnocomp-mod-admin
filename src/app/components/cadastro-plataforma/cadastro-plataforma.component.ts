@@ -28,6 +28,18 @@ export class CadastroPlataformaComponent {
     this.plataformaForm.patchValue({ usuario_id: `${usuarioId}` });
   }
 
+  get plataformaUrl(){
+      return this.plataformaForm.get('plataformaUrl')!
+  }
+
+  get plataformaNome(){
+    return this.plataformaForm.get('plataformaNome')!
+  }
+
+  get idCliente(){
+  return this.plataformaForm.get('idCliente')!
+  }
+
   onSubmit(): void {
     console.log("Clicado")
     if (this.plataformaForm.valid) {
