@@ -44,6 +44,7 @@ span{
     justify-content: center;
 }
 
+
 .forms-campo{
     display: flex;
     flex-direction: column;
@@ -88,7 +89,11 @@ input:focus, select:focus{
     padding: 25px 20px 30px 30px;
 }
 
-.button-add-topico{
+.button-remover{
+    padding: 25px 20px 0 30px;
+}
+
+.button-add-topico, .button-remover-topico{
     padding: 8px 20px;
     border: none;
     background-color: #864FD9;
@@ -101,10 +106,14 @@ input:focus, select:focus{
     padding: 25px 0;
 }
 
-.button-one, .button-two, .button-video{
-    width: 130px;
+.button-one, .button-two, .button-video, .buttons-exercicio{
+    width: 170px;
     padding: 8px;
     border-radius: 6px;
+}
+
+.buttons-exercicio{
+    margin: 10px 0;
 }
 
 .button-one{
@@ -113,7 +122,7 @@ input:focus, select:focus{
     margin-right: 20px;
 }
 
-.button-two, .button-video{
+.button-two, .button-video, .buttons-exercicio{
     border: none;
     background-color: #864FD9;
     color: #FFFFFF;
@@ -127,7 +136,7 @@ input:focus, select:focus{
 }
 
 
-.url-container, .saiba-mais-container{
+.url-container, .saiba-mais-container, .exercicio-container{
     background-color: #FFFFFF;
     padding: 15px 0 10px 60px;
     box-shadow: 1px 1px 10px #9A9A9A;
@@ -149,17 +158,24 @@ h4{
     padding-bottom: 10px;
 }
 
-.input-url{
+.input-url, .input-exercicio, .input-exercicio-pergunta{
     padding: 8px;
-    border-radius: 2px;
+    border-radius: 4px;
     border: 1px solid #9A9A9A;
     width: 75%;
 }
 
+
+.input-exercicio-pergunta{
+    border-radius: 4px;
+    width: 88%;
+    margin: 15px 0;
+}
+
+
 .remove-referencia{
     height: 27px;
 }
-
 
 
 .inputs{
