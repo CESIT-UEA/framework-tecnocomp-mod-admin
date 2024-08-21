@@ -93,27 +93,31 @@
           </div>
   
           <div formArrayName="exercicios">
-            <h4>Exercícios</h4>
-            <div *ngFor="let exCtrl of getFormArrayControls(topico, 'exercicios'); let j = index" [formGroupName]="j">
-              <input formControlName="questao" type="text">
-  
-              <div formArrayName="alternativas">
-                <h5>Alternativas</h5>
-                <div *ngFor="let altCtrl of getFormArrayControls(exCtrl, 'alternativas'); let k = index" [formGroupName]="k">
-                  <input formControlName="descricao" type="text">
-                  <input formControlName="explicacao" type="text">
-                  <input formControlName="correta" type="checkbox">
-                  <button type="button" (click)="removeAlternativa(i, j, k)">Remover Alternativa</button>
+            <div class="exercicio-container">
+              <h4>Exercícios</h4>
+              <div *ngFor="let exCtrl of getFormArrayControls(topico, 'exercicios'); let j = index" [formGroupName]="j">
+                <input formControlName="questao" type="text" class="input-exercicio-pergunta" placeholder="Enunciado do exercício...">
+                <div formArrayName="alternativas">
+                  <h5>Alternativas</h5>
+                  <div *ngFor="let altCtrl of getFormArrayControls(exCtrl, 'alternativas'); let k = index" [formGroupName]="k">
+                    <div class="inputs">
+                      <input formControlName="descricao" type="text" class="input-exercicio" placeholder="descrição do exercício...">
+                      <input formControlName="explicacao" type="text" class="input-exercicio" placeholder="explicação do exercício...">
+                      <input formControlName="correta" type="checkbox" class="input-checkbox">
+                    </div>
+                      <button type="button" (click)="removeAlternativa(i, j, k)" class="buttons-exercicio">Remover Alternativa</button>
+                  </div>
+                  <button type="button" (click)="addAlternativa(i, j)" class="buttons-exercicio">Adicionar Alternativa</button>
                 </div>
-                <button type="button" (click)="addAlternativa(i, j)">Adicionar Alternativa</button>
+    
+                <button type="button" (click)="removeExercicio(i, j)" class="buttons-exercicio">Remover Exercício</button>
               </div>
-  
-              <button type="button" (click)="removeExercicio(i, j)">Remover Exercício</button>
+              <button type="button" (click)="addExercicio(i)" class="buttons-exercicio">Adicionar Exercício</button>
             </div>
-            <button type="button" (click)="addExercicio(i)">Adicionar Exercício</button>
+            <div class="button-remover">
+              <button type="button" (click)="removeTopico(i)" class="button-remover-topico">Remover Tópico</button>
+            </div>
           </div>
-          <button type="button" (click)="removeTopico(i)">Remover Tópico</button>
-        
         </div>
         <div class="button-add">
               <button type="button" (click)="addTopico()" class="button-add-topico">Adicionar Tópico</button>
