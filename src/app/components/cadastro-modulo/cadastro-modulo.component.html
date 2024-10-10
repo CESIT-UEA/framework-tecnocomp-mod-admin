@@ -27,7 +27,7 @@
            <p>Adicione tópicos para este módulo <span class="obrigatorio">*</span></p>
         </section>
     </div>
-      
+
       <div formArrayName="topicos"class="topicos">
         <div *ngFor="let topico of topicos.controls; let i = index" [formGroupName]="i">
           <div class="campos-input">
@@ -60,7 +60,7 @@
                 <button type="button" (click)="addVideoUrl(i)" class="button-video">Adicionar Vídeo</button>
             </div>
           </div>
-  
+
           <div formArrayName="saibaMais">
               <div class="saiba-mais-container">
                 <h4>Saiba Mais</h4>
@@ -68,8 +68,8 @@
                   <div class="inputs">
                     <p>{{ j + 1 }}</p>
                     <p>-</p>
-                    <input formControlName="descricao" type="text" class="input-url" placeholder="Digitar...">
-                    <input formControlName="url" type="text" class="input-url" placeholder="Digitar...">
+                    <input formControlName="descricao" type="text" class="input-url" placeholder="descrição">
+                    <input formControlName="url" type="text" class="input-url" placeholder="url">
                     <button type="button" (click)="removeSaibaMais(i, j)" ><img src="../../../assets/Botão apagar referencia.svg" alt="" class="remove-referencia"></button>
                   </div>
                 </div>
@@ -83,15 +83,15 @@
                 <div class="inputs">
                   <p>{{ j + 1 }}</p>
                   <p>-</p>
-                  <input formControlName="caminhoDaImagem" type="text" class="input-url" placeholder="Digitar...">
-                  <input formControlName="referencia" type="text" class="input-url" placeholder="Digitar...">
+                  <input formControlName="caminhoDaImagem" type="text" class="input-url" placeholder="url da imagem">
+                  <input formControlName="referencia" type="text" class="input-url" placeholder="referÊncia em ABNT">
                   <button type="button" (click)="removeReferencia(i, j)" ><img src="../../../assets/Botão apagar referencia.svg" alt="" class="remove-referencia"></button>
               </div>
                 </div>
             <button type="button" (click)="addReferencia(i)" class="button-video">Adicionar</button>
           </div>
           </div>
-  
+
           <div formArrayName="exercicios">
             <div class="exercicio-container">
               <h4>Exercícios</h4>
@@ -109,7 +109,7 @@
                   </div>
                   <button type="button" (click)="addAlternativa(i, j)" class="buttons-exercicio">Adicionar Alternativa</button>
                 </div>
-    
+
                 <button type="button" (click)="removeExercicio(i, j)" class="buttons-exercicio">Remover Exercício</button>
               </div>
               <button type="button" (click)="addExercicio(i)" class="buttons-exercicio">Adicionar Exercício</button>
@@ -124,7 +124,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="buttons">
       <button (click)="home()" class="button-one">Home</button>
       <button type="submit" class="button-two">Cadastrar</button>
