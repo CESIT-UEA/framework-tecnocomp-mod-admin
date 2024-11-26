@@ -11,12 +11,20 @@
       <div class="campos-input">
         <div class="forms-campo">
           <label for="nome_modulo">Nome do Módulo <span class="obrigatorio">*</span></label>
-          <input id="nome_modulo" type="text" formControlName="nome_modulo" class="input" placeholder="Digitar...">
+          <input id="nome_modulo" type="text" formControlName="nome_modulo" class="input" placeholder="Digite o nome do modulo">
+        </div>
+        <div class="forms-campo">
+          <label for="nome_url">Url do Modulo<span class="obrigatorio">*</span></label>
+          <input id="nome_url" type="text" formControlName="nome_url" class="input" placeholder="Digite a url do modulo">
+        </div>
+        <div class="forms-campo">
+          <label for="ebookUrlGeral">Url do Ebook Geral do Modulo<span class="obrigatorio">*</span></label>
+          <input id="ebookUrlGeral" type="text" formControlName="ebookUrlGeral" class="input" placeholder="Digite a url do ebook geral">
         </div>
         <section class="campos">
           <div class="forms-campo">
-            <label for="video_inicial">Vídeo Inicial <span class="obrigatorio">*</span></label>
-            <input id="video_inicial" type="text" formControlName="video_inicial" class="input" placeholder="Digitar...">
+            <label for="video_inicial">Url do Vídeo Inicial <span class="obrigatorio">*</span></label>
+            <input id="video_inicial" type="text" formControlName="video_inicial" class="input" placeholder="Digite a url do video inicial">
           </div>
           <div class="forms-campo">
             <label for="plataforma_id">ID da Plataforma <span class="obrigatorio">*</span></label>
@@ -41,11 +49,11 @@
             <section class="campos">
                 <div class="forms-campo">
                   <label for="ebookUrlGeral">URL do Ebook</label>
-                  <input id="ebookUrlGeral" type="text" formControlName="ebookUrlGeral" class="input" placeholder="Digitar...">
+                  <input id="ebookUrlGeral" type="text" formControlName="ebookUrlGeral" class="input" placeholder="Digite a url do ebook">
                 </div>
                 <div class="forms-campo">
                   <label for="textoApoio">Texto de Apoio</label>
-                  <input id="textoApoio" type="text" formControlName="textoApoio" class="input" placeholder="Digitar...">
+                  <input id="textoApoio" type="text" formControlName="textoApoio" class="input" placeholder="Digite a url do texto de apoio">
                 </div>
             </section>
           </div>
@@ -54,7 +62,7 @@
                 <h4>Urls de vídeos <span class="obrigatorio">*</span></h4>
                 <div *ngFor="let urlCtrl of getFormArrayControls(topico, 'videoUrls'); let j = index" class="urlVideo">
                   <p>{{ j + 1 }} - </p>
-                  <input [formControlName]="j" type="text" class="input-url" placeholder="Digitar...">
+                  <input [formControlName]="j" type="text" class="input-url" placeholder="Digite a url do video">
                   <button type="button" (click)="removeVideoUrl(i, j)"><img src="../../../assets/Botão apagar referencia.svg" alt="botão de remover url" class="remove-referencia"></button>
                 </div>
                 <button type="button" (click)="addVideoUrl(i)" class="button-video">Adicionar Vídeo</button>

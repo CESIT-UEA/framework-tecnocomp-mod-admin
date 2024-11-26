@@ -13,6 +13,8 @@ export class CadastroModuloComponent implements OnInit {
 
   moduloForm = new FormGroup({
     nome_modulo: new FormControl('', Validators.required),
+    nome_url: new FormControl('', Validators.required),
+    ebookUrlGeral: new FormControl(''),
     video_inicial: new FormControl(''),
     plataforma_id: new FormControl('', Validators.required),
     topicos: new FormArray([]),
