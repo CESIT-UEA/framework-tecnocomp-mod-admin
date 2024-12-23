@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
@@ -11,6 +11,15 @@ import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro
 import { CadastroPlataformaComponent } from './components/cadastro-plataforma/cadastro-plataforma.component';
 import { CadastroModuloComponent } from './components/cadastro-modulo/cadastro-modulo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import { CardsCadastroComponent } from './components/cards/cards-cadastro/cards-cadastro.component';
+import { CadastrosPageComponent } from './pages/cadastros-page/cadastros-page.component';
+import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
 
 
 @NgModule({
@@ -21,7 +30,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CadastroUsuarioComponent,
     CadastroPlataformaComponent,
     CadastroModuloComponent,
-    DashboardComponent
+    DashboardComponent,
+    CardsCadastroComponent,
+    CadastrosPageComponent,
+    LayoutMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +41,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

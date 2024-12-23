@@ -1,6 +1,7 @@
 import { ApiAdmService } from './../services/api-adm.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  setUsuario(usuario: any): void {
-    console.log("Informações usuario: ", usuario)
+  setUsuario(usuario: User): void {
     localStorage.setItem('usuario', JSON.stringify(usuario));
   }
 
@@ -30,6 +30,11 @@ export class AuthService {
     console.log(usuario)
     console.log(usuario.id)
     return usuario.id;
+  }
+
+  getUsuarioDados(): User{
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    return usuario;
   }
 
   isLoggedIn() {

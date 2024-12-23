@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class LoginComponent {
   errorLogin: boolean = false;
 
-  loginForm = new FormGroup({  
+  loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     senha: new FormControl('', Validators.required)
   });
@@ -40,6 +40,7 @@ export class LoginComponent {
           this.authService.setToken(response.token);
           this.authService.setUsuario(response.dados);
           this.router.navigate(['/dashboard']);
+          console.log(this.authService.getUsuarioDados())
         },
         error => {
           this.errorLogin = true

@@ -10,28 +10,24 @@
 
 .box{
     height: 100vh;
+    background-color: #131313;
 }
 
 .container{
-    background-color: #FFFFFF;
     width: 27%;
     margin: 0 auto;
     padding: 45px 60px;
     border-radius: 20px;
-    box-shadow: 1px 1px 10px #9A9A9A;
     height: 60%;
     position: relative;
     top: -120px;
+    border-radius: 15px;
+border: 1px solid #404040;
+background: #2B2A2E;
+box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+color: white;
 }
 
-img{
-    padding: 5px 0;
-}
-
-.logo{
-    text-align: center;
-    line-height: 30px;
-}
 
 .text{
     padding: 20px 0;
@@ -48,7 +44,7 @@ img{
 .input, .button{
     padding: 8px;
     border-radius: 6px;
-    
+
 }
 
 input:focus{
@@ -69,6 +65,6 @@ input:focus{
 }
 
 .invalid{
-    color: #BF0A0A;
+    color: #FA7878;;
     font-size: 12px;
 }

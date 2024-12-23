@@ -1,0 +1,72 @@
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer mode="side" opened="true" class="sidenav">
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="logo" />
+    </div>
+    <div class="titulo">
+      <p>Links</p>
+      <mat-divider></mat-divider>
+    </div>
+    <mat-nav-list class="nav-list">
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        Dashboard
+      </a>
+      <a routerLink="/cadastros" routerLinkActive="active">
+        <mat-icon>add</mat-icon>
+        Cadastrar
+      </a>
+      <a routerLink="/cadastro-usuario" routerLinkActive="active">
+        <mat-icon>person</mat-icon>
+        Cadastro Usuário
+      </a>
+      <a routerLink="/cadastro-plataforma" routerLinkActive="active">
+        <mat-icon>devices</mat-icon>
+        Cadastro Plataforma
+      </a>
+      <a routerLink="/cadastro-modulo" routerLinkActive="active">
+        <mat-icon>view_module</mat-icon>
+        Cadastro Módulo
+      </a>
+    </mat-nav-list>
+
+    <div class="caixa-perfil">
+      <div class="imagem"></div>
+      <div class="texto">
+        <p>{{ getUsuarioDados().username }}</p>
+        <p style="color: #a3a3a3">{{ getUsuarioDados().email }}</p>
+      </div>
+      <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>close</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content class="main-content">
+    <header class="header">
+      <mat-icon
+      style="cursor: pointer;"
+      (click)="toggleDrawer()"
+    >
+      {{ isDrawerOpen ? 'arrow_back' : 'arrow_forward' }}
+    </mat-icon>
+      <h1>Dashboard</h1>
+      <mat-form-field>
+        <mat-label>Pesquisar</mat-label>
+        <input matInput placeholder="Ex: Usuários, Plataformas..." />
+      </mat-form-field>
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </header>
+
+    <div class="container-conteudo">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
