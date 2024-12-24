@@ -8,6 +8,7 @@ import { CadastroPlataformaComponent } from './components/cadastro-plataforma/ca
 import { CadastroModuloComponent } from './components/cadastro-modulo/cadastro-modulo.component';
 import { CadastrosPageComponent } from './pages/cadastros-page/cadastros-page.component';
 import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
+import { UsuariosPageComponent } from './pages/usuarios-page/usuarios-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
       { path: 'cadastros', component: CadastrosPageComponent, data: { title: 'Cadastrar' }  },
       { path: 'meu-perfil', component: CadastrosPageComponent, data: { title: 'Meu Perfil' }  },
-      { path: 'usuarios', component: CadastrosPageComponent, data: { title: 'Usuarios' }  },
+      { path: 'usuarios', component: UsuariosPageComponent, data: { title: 'Usuarios' }  },
       { path: 'modulos', component: CadastrosPageComponent, data: { title: 'Modulos' }  },
       { path: 'plataformas', component: CadastrosPageComponent, data: { title: 'Plataformas' }  },
     ],

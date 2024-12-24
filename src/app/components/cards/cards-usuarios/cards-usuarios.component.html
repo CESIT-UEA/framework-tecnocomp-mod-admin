@@ -1,0 +1,17 @@
+<mat-card class="container-card">
+  <div class="img"></div>
+  <mat-card-header>
+    <mat-card-title>{{ this.user.username }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <div class="box-icon">
+      <mat-icon class="card-icon" [routerLink]="">border_color</mat-icon>
+    </div>
+    <div class="box-icon">
+      <mat-icon class="card-icon" [routerLink]="">delete </mat-icon>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="btn" [routerLink]="">Ver Perfil</button>
+  </mat-card-actions>
+</mat-card>

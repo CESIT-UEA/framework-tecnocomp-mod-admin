@@ -1,0 +1,14 @@
+<div class="container-usuarios">
+  <app-titulo-secao
+    titulo="Cadastrar novo usuário"
+    caminhoUrl="../cadastro-usuario"
+    [quantidade]="usuarios.length"
+  ></app-titulo-secao>
+
+  <div class="container-cards-users">
+    <div class="card" *ngFor="let usuario of usuarios">
+      <app-cards-usuarios [user]="usuario"></app-cards-usuarios>
+    </div>
+  </div>
+
+</div>

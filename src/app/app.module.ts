@@ -21,6 +21,9 @@ import { CardsCadastroComponent } from './components/cards/cards-cadastro/cards-
 import { CadastrosPageComponent } from './pages/cadastros-page/cadastros-page.component';
 import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
 import {MatCardModule} from '@angular/material/card';
+import { UsuariosPageComponent } from './pages/usuarios-page/usuarios-page.component';
+import { TituloSecaoComponent } from './components/titulo-secao/titulo-secao.component';
+import { CardsUsuariosComponent } from './components/cards/cards-usuarios/cards-usuarios.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import {MatCardModule} from '@angular/material/card';
     DashboardComponent,
     CardsCadastroComponent,
     CadastrosPageComponent,
-    LayoutMenuComponent
+    LayoutMenuComponent,
+    UsuariosPageComponent,
+    TituloSecaoComponent,
+    CardsUsuariosComponent
   ],
   imports: [
     BrowserModule,
