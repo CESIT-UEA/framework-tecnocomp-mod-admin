@@ -1,0 +1,20 @@
+.container-cadastro{
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 40px;
+  color: white;
+}
+.sub-box{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+
+}
+.sub-box-cards p{
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
+.cards{
+  display: flex;
+  gap: 40px;
+}

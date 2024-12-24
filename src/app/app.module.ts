@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { CardsCadastroComponent } from './components/cards/cards-cadastro/cards-cadastro.component';
 import { CadastrosPageComponent } from './pages/cadastros-page/cadastros-page.component';
 import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
     MatIconModule,
     MatListModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,17 +16,21 @@
         <mat-icon>add</mat-icon>
         Cadastrar
       </a>
-      <a routerLink="/cadastro-usuario" routerLinkActive="active">
+      <a routerLink="/meu-perfil" routerLinkActive="active">
+        <mat-icon>add</mat-icon>
+        Meu perfil
+      </a>
+      <a routerLink="/usuarios" routerLinkActive="active">
         <mat-icon>person</mat-icon>
-        Cadastro Usuário
+        Usuarios
       </a>
-      <a routerLink="/cadastro-plataforma" routerLinkActive="active">
+      <a routerLink="/modulos" routerLinkActive="active">
         <mat-icon>devices</mat-icon>
-        Cadastro Plataforma
+        Modulos
       </a>
-      <a routerLink="/cadastro-modulo" routerLinkActive="active">
+      <a routerLink="/plataformas" routerLinkActive="active">
         <mat-icon>view_module</mat-icon>
-        Cadastro Módulo
+        Plataformas
       </a>
     </mat-nav-list>
 
@@ -54,7 +58,7 @@
     >
       {{ isDrawerOpen ? 'arrow_back' : 'arrow_forward' }}
     </mat-icon>
-      <h1>Dashboard</h1>
+    <h1>{{ currentPageTitle }}</h1>
       <mat-form-field>
         <mat-label>Pesquisar</mat-label>
         <input matInput placeholder="Ex: Usuários, Plataformas..." />

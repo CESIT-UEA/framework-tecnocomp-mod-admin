@@ -21,7 +21,7 @@
           <input id="email" type="email" formControlName="email" class="input" placeholder="Digite seu E-mail...">
           <div *ngIf="email.invalid && formDir.submitted">
             <p class="validators" *ngIf="email.errors?.['required']">Email obrigatório *</p>
-            <p class="validators" *ngIf="email.errors?.['email'] || ['minLength'] && !email.errors?.['required']">Email inválido *</p>
+            <p class="validators" *ngIf="email.errors?.['email']">Email inválido *</p>
           </div>
         </div>
         <div class="campo-formulario">

@@ -1,1 +1,11 @@
-<p>cards-cadastro works!</p>
+<mat-card class="container-card">
+  <mat-card-header>
+    <mat-card-title>{{this.nomeCard}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-icon class="card-icon">{{caminhoImagem}}</mat-icon>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="btn" [routerLink]="this.caminhoUrl">Cadastrar</button>
+  </mat-card-actions>
+</mat-card>

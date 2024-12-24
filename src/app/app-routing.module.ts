@@ -16,19 +16,23 @@ const routes: Routes = [
     component: LayoutMenuComponent, // Layout principal com menu lateral
     canActivate: [authGuard], // Proteção para todas as rotas filhas
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'cadastros', component: CadastrosPageComponent },
-      { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
-      { path: 'cadastro-plataforma', component: CadastroPlataformaComponent },
-      { path: 'cadastro-modulo', component: CadastroModuloComponent },
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+      { path: 'cadastros', component: CadastrosPageComponent, data: { title: 'Cadastrar' }  },
+      { path: 'meu-perfil', component: CadastrosPageComponent, data: { title: 'Meu Perfil' }  },
+      { path: 'usuarios', component: CadastrosPageComponent, data: { title: 'Usuarios' }  },
+      { path: 'modulos', component: CadastrosPageComponent, data: { title: 'Modulos' }  },
+      { path: 'plataformas', component: CadastrosPageComponent, data: { title: 'Plataformas' }  },
     ],
   },
+  { path: 'cadastro-usuario', component: CadastroUsuarioComponent},
+  { path: 'cadastro-plataforma', component: CadastroPlataformaComponent },
+  { path: 'cadastro-modulo', component: CadastroModuloComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: '/login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

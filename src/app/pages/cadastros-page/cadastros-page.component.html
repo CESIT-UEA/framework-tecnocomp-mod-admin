@@ -1,1 +1,40 @@
-<p>Conteudo dos cadastros</p>
+<div class="container-cadastro">
+  <p>
+    Selecione uma opção abaixo para cadastrar um novo usuário, plataforma ou
+    módulo.
+  </p>
+  <div class="box-container">
+    <div class="sub-box">
+      <div class="sub-box-cards">
+        <p>Selecione uma opção</p>
+        <div class="cards">
+          <app-cards-cadastro
+            nomeCard="Usuário"
+            caminhoImagem="person_add"
+            caminhoUrl="../cadastro-usuario"
+          ></app-cards-cadastro>
+          <app-cards-cadastro
+            nomeCard="Plataforma"
+            caminhoImagem="desktop_windows"
+            caminhoUrl="../cadastro-plataforma"
+          ></app-cards-cadastro>
+        </div>
+      </div>
+      <div class="sub-box-cards">
+        <p>Selecione uma opção</p>
+        <div class="cards">
+          <app-cards-cadastro
+            nomeCard="Módulo"
+            caminhoImagem="person_add"
+            caminhoUrl="../cadastro-usuario"
+          ></app-cards-cadastro>
+          <app-cards-cadastro
+            nomeCard="Tópico"
+            caminhoImagem="person_add"
+            caminhoUrl="../cadastro-usuario"
+          ></app-cards-cadastro>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
