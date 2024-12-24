@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Confirmação de Exclusão</h2>
+<mat-dialog-content>
+  <p>Tem certeza de que deseja excluir este usuário?</p>
+  <mat-form-field appearance="fill" class="senha-adm">
+    <mat-label>Senha de Administrador</mat-label>
+    <input matInput [(ngModel)]="senhaAdm" type="password" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="onCancelar()">Cancelar</button>
+  <button mat-raised-button color="warn" (click)="onConfirmar()">Excluir</button>
+</mat-dialog-actions>

@@ -8,9 +8,9 @@ import { User } from 'src/interfaces/user';
 @Component({
   selector: 'app-layout-menu',
   templateUrl: './layout-menu.component.html',
-  styleUrls: ['./layout-menu.component.css']
+  styleUrls: ['./layout-menu.component.css'],
 })
-export class LayoutMenuComponent  implements OnInit{
+export class LayoutMenuComponent implements OnInit {
   @ViewChild('drawer') drawer!: MatDrawer;
   isDrawerOpen: boolean = true;
   currentPageTitle: string = '';
@@ -19,7 +19,11 @@ export class LayoutMenuComponent  implements OnInit{
     this.drawer.toggle();
     this.isDrawerOpen = this.drawer.opened;
   }
-  constructor(private authService: AuthService,private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.setPageTitle();
@@ -38,19 +42,19 @@ export class LayoutMenuComponent  implements OnInit{
     this.router.navigate(['/login']);
   }
 
-  getUsuarioDados(): User{
+  getUsuarioDados(): User {
     return this.authService.getUsuarioDados();
   }
 
-    private getCurrentRouteTitle(): string {
-      let route = this.activatedRoute;
-      while (route.firstChild) {
-        route = route.firstChild;
-      }
-      return route.snapshot.data['title'];
+  private getCurrentRouteTitle(): string {
+    let route = this.activatedRoute;
+    while (route.firstChild) {
+      route = route.firstChild;
     }
+    return route.snapshot.data['title'];
+  }
 
-    private setPageTitle(): void {
-      this.currentPageTitle = this.getCurrentRouteTitle() || 'Sem título';
-    }
+  private setPageTitle(): void {
+    this.currentPageTitle = this.getCurrentRouteTitle() || 'Sem título';
+  }
 }

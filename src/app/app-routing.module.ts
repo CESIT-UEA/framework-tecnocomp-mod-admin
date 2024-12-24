@@ -9,6 +9,7 @@ import { CadastroModuloComponent } from './components/cadastro-modulo/cadastro-m
 import { CadastrosPageComponent } from './pages/cadastros-page/cadastros-page.component';
 import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
 import { UsuariosPageComponent } from './pages/usuarios-page/usuarios-page.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'cadastro-usuario', component: CadastroUsuarioComponent},
   { path: 'cadastro-plataforma', component: CadastroPlataformaComponent },
   { path: 'cadastro-modulo', component: CadastroModuloComponent },
+  { path: 'editar-usuario/:id', component: EditarUsuarioComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

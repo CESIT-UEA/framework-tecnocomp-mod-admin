@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { User } from 'src/interfaces/user';
+import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,33 @@ export class ApiAdmService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<{ users: User[] }>(`${this.baseUrl}/api/listar-usuarios`, { headers }).pipe(
       map((response) => response.users) // Extraia apenas o array de usuários
-    );;
+    );
   }
+
+  getUserById(id: number): Observable<User> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<User>(`${this.baseUrl}/api/users/${id}`, { headers });
+  }
+
+  updateUser(idEditar: number, idAdm: number, senhaAdm: string, user: Partial<User>): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<void>(`${this.baseUrl}/api/users/${idEditar}`, {
+      idAdm,
+      senhaAdm,
+      ...user,
+    }, { headers });
+  }
+
+  excluirUsuario(idAdm: number, senhaAdm: string, idExcluir: number): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${this.baseUrl}/api/users`, {
+      headers,
+      body: { idAdm, senhaAdm, idExcluir },
+    });
+  }
+
+
 }

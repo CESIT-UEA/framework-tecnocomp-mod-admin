@@ -1,0 +1,28 @@
+<h2>Editar Usuário</h2>
+<form (ngSubmit)="atualizarUsuario()">
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="user.username" name="username" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="user.email" name="email" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select [(ngModel)]="user.tipo" name="tipo" required>
+      <mat-option value="adm">Administrador</mat-option>
+      <mat-option value="professor">Professor</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Senha Atual</mat-label>
+    <input matInput [(ngModel)]="senhaAtual" name="senhaAtual" type="password" required />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
+  <button mat-raised-button color="warn" [routerLink]="'/'">Cancelar</button>
+</form>

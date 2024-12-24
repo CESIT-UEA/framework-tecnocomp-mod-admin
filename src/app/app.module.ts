@@ -24,6 +24,10 @@ import {MatCardModule} from '@angular/material/card';
 import { UsuariosPageComponent } from './pages/usuarios-page/usuarios-page.component';
 import { TituloSecaoComponent } from './components/titulo-secao/titulo-secao.component';
 import { CardsUsuariosComponent } from './components/cards/cards-usuarios/cards-usuarios.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmacaoExclusaoComponent } from './components/confirmacao-exclusao/confirmacao-exclusao.component';
 
 
 @NgModule({
@@ -40,7 +44,9 @@ import { CardsUsuariosComponent } from './components/cards/cards-usuarios/cards-
     LayoutMenuComponent,
     UsuariosPageComponent,
     TituloSecaoComponent,
-    CardsUsuariosComponent
+    CardsUsuariosComponent,
+    EditarUsuarioComponent,
+    ConfirmacaoExclusaoComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,9 @@ import { CardsUsuariosComponent } from './components/cards/cards-usuarios/cards-
     MatListModule,
     MatInputModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
