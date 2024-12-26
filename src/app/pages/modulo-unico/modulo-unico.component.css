@@ -1,0 +1,38 @@
+.detalhes-modulo-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.status-publicado {
+  color: green;
+  font-weight: bold;
+}
+
+.status-nao-publicado {
+  color: red;
+  font-weight: bold;
+}
+
+.btn-adicionar {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.btn-adicionar:hover {
+  background-color: #45a049;
+}
+.topicos-container {
+  margin-top: 20px;
+}
+
+.topicos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

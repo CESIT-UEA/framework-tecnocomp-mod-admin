@@ -1,0 +1,17 @@
+<mat-card class="card-topico">
+  <mat-card-header>
+    <mat-card-title>{{ topico.nome_topico }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Id: {{topico.id}}</p>
+    <p>Vídeos ({{ topico.videoUrls }})</p>
+    <p>Slides ({{ topico.textoApoio}})</p>
+    <p>Saiba Mais ({{ topico.saibaMais}})</p>
+    <p>Referências ({{ topico.referencias}})</p>
+    <p>E-book do Tópico ({{ topico.ebookUrlGeral}})</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,22 @@
+<div class="detalhes-modulo-container">
+  <h2>{{ modulo?.nome_modulo }}</h2>
+  <p><strong>Status:</strong>
+    <span [ngClass]="modulo?.publicado ? 'status-publicado' : 'status-nao-publicado'">
+      {{ modulo?.publicado ? 'Publicado' : 'Não Publicado' }}
+    </span>
+  </p>
+  <p>id: {{modulo?.id}}</p>
+  <p><strong>URL:</strong> {{ modulo?.nome_url }}</p>
+  <p><strong>Ebook URL:</strong> {{ modulo?.ebookUrlGeral }}</p>
+  <p><strong>Vídeo Inicial:</strong> {{ modulo?.video_inicial }}</p>
+  <p><strong>Plataforma ID:</strong> {{ modulo?.plataforma_id }}</p>
+
+  <button class="btn btn-adicionar" (click)="cadastrarTopico()">Cadastrar Tópico</button>
+
+  <div *ngIf="topicos.length > 0" class="topicos-container">
+    <h3>Lista de Tópicos</h3>
+    <div class="topicos-grid">
+      <app-card-topicos *ngFor="let topico of topicos" [topico]="topico"></app-card-topicos>
+    </div>
+  </div>
+</div>

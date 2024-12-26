@@ -28,6 +28,11 @@ import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuar
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmacaoExclusaoComponent } from './components/confirmacao-exclusao/confirmacao-exclusao.component';
+import { RegistroModuloComponent } from './components/registro-modulo/registro-modulo.component';
+import { ModulosPageComponent } from './pages/modulos-page/modulos-page.component';
+import { CardsModulosComponent } from './components/cards/cards-modulos/cards-modulos.component';
+import { ModuloUnicoComponent } from './pages/modulo-unico/modulo-unico.component';
+import { CardTopicosComponent } from './components/cards/card-topicos/card-topicos.component';
 
 
 @NgModule({
@@ -46,7 +51,12 @@ import { ConfirmacaoExclusaoComponent } from './components/confirmacao-exclusao/
     TituloSecaoComponent,
     CardsUsuariosComponent,
     EditarUsuarioComponent,
-    ConfirmacaoExclusaoComponent
+    ConfirmacaoExclusaoComponent,
+    RegistroModuloComponent,
+    ModulosPageComponent,
+    CardsModulosComponent,
+    ModuloUnicoComponent,
+    CardTopicosComponent
   ],
   imports: [
     BrowserModule,

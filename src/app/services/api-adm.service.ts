@@ -1,8 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { Modulo } from 'src/interfaces/topico/Modulo';
+import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
 
@@ -34,6 +36,12 @@ export class ApiAdmService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.baseUrl}/api/modulo`, data, { headers });
+  }
+
+  registerModuloTeste(modulo: Modulo) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post('/api/modulo', modulo,{ headers });
   }
 
   listarUsers(): Observable<User[]> {
@@ -69,5 +77,31 @@ export class ApiAdmService {
     });
   }
 
+  listarModulos() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Modulo[]>(`${this.baseUrl}/api/modulos`, { headers });
+  }
+  excluirModulo(id: number, idAdm: number, senhaAdm: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
+    const params = new HttpParams()
+      .set('idAdm', idAdm.toString())
+      .set('senhaAdm', senhaAdm);
+
+    return this.http.delete(`${this.baseUrl}/api/modulos/${id}`, { headers, params });
+  }
+
+  obterModuloPorId(id: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Modulo>(`${this.baseUrl}/api/modulos/${id}`,{ headers});
+  }
+
+  obterTopicoCompleto(idTopico: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Topico[]>(`${this.baseUrl}/api/topicos/${idTopico}`,{ headers});
+  }
 }
