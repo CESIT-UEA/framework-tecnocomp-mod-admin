@@ -7,8 +7,8 @@ export interface Topico {
   nome_topico: string;
   ebookUrlGeral?: string;
   textoApoio?: string;
-  videoUrls: string[];
-  saibaMais: SaibaMais[];
-  referencias: Referencia[];
-  exercicios: Exercicio[];
+  VideoUrls: string[];
+  SaibaMais: SaibaMais[];
+  Referencias: Referencia[];
+  Exercicios: Exercicio[];
 }

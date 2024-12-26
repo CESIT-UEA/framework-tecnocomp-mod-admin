@@ -70,4 +70,24 @@ export class ModuloUnicoComponent implements OnInit {
   cadastrarTopico(): void {
     this.router.navigate(['/modulos', this.modulo?.id, 'cadastrar-topico']);
   }
+
+  alterarPublicacao(): void {
+    if (this.modulo) {
+      const novoStatus = !this.modulo.publicado;
+      if (this.modulo.id != null) {
+        this.apiService.alterarStatusPublicacao(this.modulo.id, novoStatus).subscribe(
+          (moduloAtualizado) => {
+            this.modulo = moduloAtualizado; // Atualiza o estado do módulo
+            alert(
+              `O módulo foi ${novoStatus ? 'publicado' : 'despublicado'} com sucesso!`
+            );
+          },
+          (error) => {
+            console.error('Erro ao alterar status de publicação:', error);
+            alert('Erro ao alterar status de publicação!');
+          }
+        );
+      }
+    }
+  }
 }

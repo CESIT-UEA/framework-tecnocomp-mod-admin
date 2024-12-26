@@ -11,8 +11,12 @@
   <p><strong>Vídeo Inicial:</strong> {{ modulo?.video_inicial }}</p>
   <p><strong>Plataforma ID:</strong> {{ modulo?.plataforma_id }}</p>
 
-  <button class="btn btn-adicionar" (click)="cadastrarTopico()">Cadastrar Tópico</button>
-
+  <button class="btn btn-adicionar" [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: modulo?.id }">
+    Cadastrar Tópico
+  </button>
+  <button class="btn btn-publicar" (click)="alterarPublicacao()">
+    {{ modulo?.publicado ? 'Despublicar' : 'Publicar' }}
+  </button>
   <div *ngIf="topicos.length > 0" class="topicos-container">
     <h3>Lista de Tópicos</h3>
     <div class="topicos-grid">

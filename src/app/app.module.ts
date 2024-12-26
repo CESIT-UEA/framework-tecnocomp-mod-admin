@@ -33,7 +33,12 @@ import { ModulosPageComponent } from './pages/modulos-page/modulos-page.componen
 import { CardsModulosComponent } from './components/cards/cards-modulos/cards-modulos.component';
 import { ModuloUnicoComponent } from './pages/modulo-unico/modulo-unico.component';
 import { CardTopicosComponent } from './components/cards/card-topicos/card-topicos.component';
-
+import { EditarModuloComponent } from './components/editar-modulo/editar-modulo.component';
+import { CadastroTopicoComponent } from './components/cadastro-topico/cadastro-topico.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,9 @@ import { CardTopicosComponent } from './components/cards/card-topicos/card-topic
     ModulosPageComponent,
     CardsModulosComponent,
     ModuloUnicoComponent,
-    CardTopicosComponent
+    CardTopicosComponent,
+    EditarModuloComponent,
+    CadastroTopicoComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +81,11 @@ import { CardTopicosComponent } from './components/cards/card-topicos/card-topic
     MatMenuModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,8 @@ import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuar
 import { RegistroModuloComponent } from './components/registro-modulo/registro-modulo.component';
 import { ModulosPageComponent } from './pages/modulos-page/modulos-page.component';
 import { ModuloUnicoComponent } from './pages/modulo-unico/modulo-unico.component';
+import { EditarModuloComponent } from './components/editar-modulo/editar-modulo.component';
+import { CadastroTopicoComponent } from './components/cadastro-topico/cadastro-topico.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,7 +36,8 @@ const routes: Routes = [
   { path: 'cadastro-modulo', component: CadastroModuloComponent },
   { path: 'registrar-modulo', component: RegistroModuloComponent },
   { path: 'modulos/:id', component: ModuloUnicoComponent },
-
+  { path: 'editar-modulo/:id', component: EditarModuloComponent },
+  { path: 'cadastrar-topico', component: CadastroTopicoComponent },
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },

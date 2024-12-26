@@ -96,12 +96,32 @@ export class ApiAdmService {
   obterModuloPorId(id: number) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Modulo>(`${this.baseUrl}/api/modulos/${id}`,{ headers});
+    return this.http.get<Modulo>(`${this.baseUrl}/api/modulo/${id}`, { headers });
   }
+
 
   obterTopicoCompleto(idTopico: number) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Topico[]>(`${this.baseUrl}/api/topicos/${idTopico}`,{ headers});
   }
+
+  atualizarModulo(id: number, dadosAtualizados: Modulo) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.baseUrl}/api/modulos/${id}`, dadosAtualizados,{ headers});
+  }
+
+  alterarStatusPublicacao(id: number, publicar: boolean): Observable<Modulo> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.patch<Modulo>(`${this.baseUrl}/api/modulos/${id}/publicar`, { publicar },{ headers});
+  }
+
+  cadastrarTopico(dadosTopico: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.baseUrl}/api/topicos`, dadosTopico,{ headers});
+  }
+
 }

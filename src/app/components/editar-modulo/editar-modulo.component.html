@@ -1,0 +1,26 @@
+<div class="editar-modulo-container">
+  <h2>Editar Módulo</h2>
+  <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nome_modulo">Nome do Módulo:</label>
+      <input id="nome_modulo" formControlName="nome_modulo" />
+    </div>
+    <div>
+      <label for="nome_url">URL do Módulo:</label>
+      <input id="nome_url" formControlName="nome_url" />
+    </div>
+    <div>
+      <label for="ebookUrlGeral">Ebook URL Geral:</label>
+      <input id="ebookUrlGeral" formControlName="ebookUrlGeral" />
+    </div>
+    <div>
+      <label for="video_inicial">Vídeo Inicial:</label>
+      <input id="video_inicial" formControlName="video_inicial" />
+    </div>
+    <div>
+      <label for="plataforma_id">ID da Plataforma:</label>
+      <input id="plataforma_id" formControlName="plataforma_id" />
+    </div>
+    <button type="submit" [disabled]="moduloForm.invalid">Salvar Alterações</button>
+  </form>
+</div>
