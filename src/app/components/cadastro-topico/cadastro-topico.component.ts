@@ -16,7 +16,7 @@ export class CadastroTopicoComponent {
   exerciciosFormGroup: FormGroup;
 
   idModulo!: number;
-
+  letras: string[] = ['A','B','C','D']
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,

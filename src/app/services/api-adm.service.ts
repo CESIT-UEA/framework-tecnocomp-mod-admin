@@ -124,4 +124,28 @@ export class ApiAdmService {
     return this.http.post(`${this.baseUrl}/api/topicos`, dadosTopico,{ headers});
   }
 
+  editarTopico(id: number, dadosAtualizados: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.baseUrl}/api/topico/${id}`, dadosAtualizados, { headers });
+  }
+
+  excluirTopico(idExcluir: number, idAdm: number, senhaAdm: string) {
+    console.log("ok")
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    const params = new HttpParams()
+      .set('idAdm', idAdm.toString())
+      .set('senhaAdm', senhaAdm);
+
+    return this.http.delete(`${this.baseUrl}/api/topico/${idExcluir}`, { headers, params });
+  }
+
+  obterTopicoPorId(id: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Topico>(`${this.baseUrl}/api/topico/${id}`, { headers });
+  }
+
 }

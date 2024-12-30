@@ -90,7 +90,9 @@ button[mat-button] {
 .adicionar{
    background-color: blue;
 }
-
+.salvar{
+  background-color: green;
+}
 .box-input {
   display: flex;
   gap: 20px;

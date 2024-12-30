@@ -1,17 +1,30 @@
 <mat-card class="card-topico">
   <mat-card-header>
-    <mat-card-title>{{ topico.nome_topico }}</mat-card-title>
+    <h4>Tópico {{indice + 1}}</h4>
+    <h2>{{ topico.nome_topico }}</h2>
   </mat-card-header>
   <mat-card-content>
-    <p>Id: {{topico.id}}</p>
-    <p>Vídeos: {{ topico.VideoUrls.length }}</p>
-    <p>Slides: {{ topico.textoApoio}}</p>
-    <p>Saiba Mais: {{ topico.SaibaMais.length}}</p>
-    <p>Referências: {{ topico.Referencias.length}}</p>
-    <p>E-book do Tópico: {{ topico.ebookUrlGeral}}</p>
+    <div class="box-card-content">
+      <p>Id: {{topico.id}}</p>
+      <p>Vídeos({{ topico.VideoUrls.length }})</p>
+      <p><a target="_blank" [href]="topico.textoApoio">Slide</a></p>
+      <p>Saiba Mais({{ topico.SaibaMais.length}})</p>
+      <p>Referências({{ topico.Referencias.length}})</p>
+      <p>Atividade({{ topico.Exercicios.length}})</p>
+      <p> <a target="_blank" [href]="topico.ebookUrlGeral">E-book do Tópico</a></p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="icons">
+      <div class="box-icon" [routerLink]="['/editar-topico', topico.id]">
+        <mat-icon class="card-icon">border_color</mat-icon>
+      </div>
+      <div class="box-icon" (click)="abrirConfirmacaoExcluir()">
+        <mat-icon class="card-icon">delete</mat-icon>
+      </div>
+    </div>
+
   </mat-card-content>
   <mat-card-actions>
-    <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
-    <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+    <button class="btn">Ver mais</button>
   </mat-card-actions>
 </mat-card>

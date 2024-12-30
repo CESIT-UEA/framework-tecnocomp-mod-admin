@@ -13,6 +13,7 @@ import { Topico } from 'src/interfaces/topico/Topico';
 export class ModuloUnicoComponent implements OnInit {
   modulo!: Modulo | null;
   topicos: Topico[] = [];
+  idModulo!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,10 @@ export class ModuloUnicoComponent implements OnInit {
       this.carregarModulo(+id);
       this.carregarTopicos(+id);
     }
+    if(this.modulo?.id != null){
+      this.idModulo = this.modulo.id
+    }
+
   }
 
   carregarModulo(id: number): void {
@@ -90,4 +95,27 @@ export class ModuloUnicoComponent implements OnInit {
       }
     }
   }
+
+  excluirTopico({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
+    console.log("ok2")
+    this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(
+      () => {
+        alert('Tópico excluído com sucesso!');
+        this.topicos = this.topicos.filter((topico) => topico.id !== idExcluir);
+      },
+      (error) => {
+        console.log(error);
+        if (error.status === 401) {
+          alert('Senha de administrador incorreta.');
+        } else if (error.status === 403) {
+          alert('Você não tem permissão para realizar essa ação.');
+        } else if (error.status === 404) {
+          alert('Tópico não encontrado.');
+        } else {
+          alert('Erro ao excluir tópico.');
+        }
+      }
+    );
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-confirmacao-exclusao',

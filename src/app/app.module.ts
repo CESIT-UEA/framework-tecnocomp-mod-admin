@@ -39,6 +39,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { HeaderVoltarComponent } from './components/header-voltar/header-voltar.component';
+import { EditarTopicoComponent } from './components/editar-topico/editar-topico.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import {MatRadioModule} from '@angular/material/radio';
     ModuloUnicoComponent,
     CardTopicosComponent,
     EditarModuloComponent,
-    CadastroTopicoComponent
+    CadastroTopicoComponent,
+    HeaderVoltarComponent,
+    EditarTopicoComponent
   ],
   imports: [
     BrowserModule,

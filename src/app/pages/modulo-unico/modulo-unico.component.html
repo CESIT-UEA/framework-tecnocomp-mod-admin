@@ -1,26 +1,56 @@
+<app-header-voltar texto="Módulo"></app-header-voltar>
 <div class="detalhes-modulo-container">
-  <h2>{{ modulo?.nome_modulo }}</h2>
-  <p><strong>Status:</strong>
-    <span [ngClass]="modulo?.publicado ? 'status-publicado' : 'status-nao-publicado'">
-      {{ modulo?.publicado ? 'Publicado' : 'Não Publicado' }}
-    </span>
-  </p>
-  <p>id: {{modulo?.id}}</p>
-  <p><strong>URL:</strong> {{ modulo?.nome_url }}</p>
-  <p><strong>Ebook URL:</strong> {{ modulo?.ebookUrlGeral }}</p>
-  <p><strong>Vídeo Inicial:</strong> {{ modulo?.video_inicial }}</p>
-  <p><strong>Plataforma ID:</strong> {{ modulo?.plataforma_id }}</p>
+  <div class="box-container">
+    <div class="modulo">
+      <h2>{{ modulo?.nome_modulo }}</h2>
+      <div class="box-modulo">
+        <div class="img"></div>
+        <div class="informacoes">
+            <p><strong>Nome:</strong> {{ modulo?.nome_modulo }}</p>
+            <p><strong>URL:</strong> {{ modulo?.nome_url }}</p>
+            <p>
+              <strong>Status:</strong>
+              <span
+                [ngClass]="
+                  modulo?.publicado
+                    ? 'status-publicado'
+                    : 'status-nao-publicado'
+                "
+              >
+                {{ modulo?.publicado ? "Publicado" : "Não Publicado" }}
+              </span>
+            </p>
+            <button                 [ngClass]="
+            modulo?.publicado
+              ? 'publicado'
+              : 'nao-publicado'
+          " class="btn btn-publicar" (click)="alterarPublicacao()">
+              {{ modulo?.publicado ? "Despublicar" : "Publicar" }}
+            </button>
+            <p><strong>Id: </strong> {{ modulo?.id }}</p>
+            <p><a target="_blank" [href]="modulo?.ebookUrlGeral">Ebook Completo</a></p>
+            <p><a target="_blank" [href]="modulo?.video_inicial">Vídeo Inicial</a></p>
+            <p><strong>Plataforma ID:</strong> {{ modulo?.plataforma_id }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="titulo">
+      <h1>Tópicos</h1>
+      <button [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: modulo?.id }">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
 
-  <button class="btn btn-adicionar" [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: modulo?.id }">
-    Cadastrar Tópico
-  </button>
-  <button class="btn btn-publicar" (click)="alterarPublicacao()">
-    {{ modulo?.publicado ? 'Despublicar' : 'Publicar' }}
-  </button>
-  <div *ngIf="topicos.length > 0" class="topicos-container">
-    <h3>Lista de Tópicos</h3>
-    <div class="topicos-grid">
-      <app-card-topicos *ngFor="let topico of topicos" [topico]="topico"></app-card-topicos>
+    <div *ngIf="topicos.length > 0" class="topicos-container">
+      <div class="topicos-grid">
+        <app-card-topicos
+          [idModulo]="idModulo"
+          (excluirTopico)="excluirTopico($event)"
+          *ngFor="let topico of topicos;let i = index"
+          [topico]="topico"
+          [indice]="i"
+        ></app-card-topicos>
+      </div>
     </div>
   </div>
 </div>

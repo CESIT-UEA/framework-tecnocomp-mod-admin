@@ -1,33 +1,31 @@
-<app-header-voltar texto="Cadastrar Tópico"></app-header-voltar>
+<app-header-voltar texto="Editar Tópico"></app-header-voltar>
 <div class="container-pagina">
   <div class="formulario">
     <mat-horizontal-stepper linear #stepper>
+      <!-- Etapa 1: Dados Básicos -->
       <mat-step [stepControl]="dadosBasicosFormGroup">
         <div class="passo1">
           <form [formGroup]="dadosBasicosFormGroup">
             <h3>Dados Básicos</h3>
             <mat-divider></mat-divider>
-            <mat-form-field>
+            <mat-form-field appearance="fill">
               <mat-label>Nome do Tópico</mat-label>
               <input matInput formControlName="nome_topico" required />
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Texto de Apoio</mat-label>
-              <textarea
-                matInput
-                formControlName="textoApoio"
-                required
-              ></textarea>
+              <textarea matInput formControlName="textoApoio"></textarea>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Ebook Geral</mat-label>
-              <input matInput formControlName="ebookUrlGeral" required />
+              <input matInput formControlName="ebookUrlGeral" />
             </mat-form-field>
 
-            <div>
+            <div class="botoes">
               <button class="proximo" mat-button matStepperNext>Próximo</button>
+              <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
             </div>
           </form>
         </div>
@@ -40,33 +38,19 @@
             <h3>URLs de Vídeos</h3>
             <mat-divider></mat-divider>
             <div formArrayName="videoUrls">
-              <div
-                *ngFor="let videoUrl of videoUrls.controls; let i = index"
-                class="videoUrls"
-              >
+              <div *ngFor="let videoUrl of videoUrls.controls; let i = index" class="videoUrls">
                 <mat-form-field appearance="fill">
                   <mat-label>URL do Vídeo {{ i + 1 }}</mat-label>
                   <input matInput [formControlName]="i" required />
                 </mat-form-field>
-                <br />
-                <button
-                  mat-button
-                  class="remover"
-                  *ngIf="i > 0"
-                  (click)="removerVideoUrl(i)"
-                >
-                  Remover
-                </button>
+                <button mat-button class="remover" *ngIf="i > 0" (click)="removerVideoUrl(i)">Remover</button>
                 <mat-divider></mat-divider>
               </div>
             </div>
-            <button class="adicionar" mat-button (click)="adicionarVideoUrl()">
-              Adicionar URL
-            </button>
+            <button class="adicionar" mat-button (click)="adicionarVideoUrl()">Adicionar URL</button>
             <div class="botoes">
-              <button class="remover" mat-button matStepperPrevious>
-                Anterior
-              </button>
+              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+              <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
               <button class="proximo" mat-button matStepperNext>Próximo</button>
             </div>
           </form>
@@ -80,37 +64,23 @@
             <h3>Saiba Mais</h3>
             <mat-divider></mat-divider>
             <div formArrayName="saibaMais">
-              <div
-                *ngFor="let sm of saibaMais.controls; let i = index"
-                [formGroupName]="i"
-              >
+              <div *ngFor="let sm of saibaMais.controls; let i = index" [formGroupName]="i">
                 <mat-form-field appearance="fill">
-                  <mat-label>Descrição Saiba Mais {{ i + 1 }}</mat-label>
+                  <mat-label>Descrição</mat-label>
                   <input matInput formControlName="descricao" required />
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                  <mat-label>URL Saiba Mais {{ i + 1 }}</mat-label>
+                  <mat-label>URL</mat-label>
                   <input matInput formControlName="url" required />
                 </mat-form-field>
-                <br />
-                <button
-                  mat-button
-                  class="remover"
-                  *ngIf="i > 0"
-                  (click)="removerSaibaMais(i)"
-                >
-                  Remover
-                </button>
+                <button mat-button class="remover" *ngIf="i > 0" (click)="removerSaibaMais(i)">Remover</button>
                 <mat-divider></mat-divider>
               </div>
             </div>
-            <button class="adicionar" mat-button (click)="adicionarSaibaMais()">
-              Adicionar Saiba Mais
-            </button>
+            <button class="adicionar" mat-button (click)="adicionarSaibaMais()">Adicionar Saiba Mais</button>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>
-                Anterior
-              </button>
+              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+              <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
               <button class="proximo" mat-button matStepperNext>Próximo</button>
             </div>
           </form>
@@ -124,41 +94,23 @@
             <h3>Referências</h3>
             <mat-divider></mat-divider>
             <div formArrayName="referencias">
-              <div
-                *ngFor="let ref of referencias.controls; let i = index"
-                [formGroupName]="i"
-              >
+              <div *ngFor="let ref of referencias.controls; let i = index" [formGroupName]="i">
                 <mat-form-field appearance="fill">
-                  <mat-label>Caminho da Imagem {{ i + 1 }}</mat-label>
+                  <mat-label>Caminho da Imagem</mat-label>
                   <input matInput formControlName="caminhoDaImagem" required />
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                  <mat-label>Texto da Referência {{ i + 1 }}</mat-label>
+                  <mat-label>Texto da Referência</mat-label>
                   <input matInput formControlName="referencia" required />
                 </mat-form-field>
-                <br />
-                <button
-                  mat-button
-                  class="remover"
-                  *ngIf="i > 0"
-                  (click)="removerReferencia(i)"
-                >
-                  Remover
-                </button>
+                <button mat-button class="remover" *ngIf="i > 0" (click)="removerReferencia(i)">Remover</button>
                 <mat-divider></mat-divider>
               </div>
             </div>
-            <button
-              class="adicionar"
-              mat-button
-              (click)="adicionarReferencia()"
-            >
-              Adicionar Referência
-            </button>
+            <button class="adicionar" mat-button (click)="adicionarReferencia()">Adicionar Referência</button>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>
-                Anterior
-              </button>
+              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+              <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
               <button class="proximo" mat-button matStepperNext>Próximo</button>
             </div>
           </form>
@@ -172,23 +124,16 @@
             <h3>Exercícios</h3>
             <mat-divider></mat-divider>
             <div formArrayName="exercicios">
-              <div
-                *ngFor="let exercicio of exercicios.controls; let i = index"
-                [formGroupName]="i"
-              >
+              <div *ngFor="let exercicio of exercicios.controls; let i = index" [formGroupName]="i">
                 <mat-form-field appearance="fill">
                   <mat-label>Questão do Exercício</mat-label>
                   <input matInput formControlName="questao" required />
                 </mat-form-field>
 
-                <h3>Alternativas</h3>
+                <h4>Alternativas</h4>
                 <mat-divider></mat-divider>
                 <div formArrayName="alternativas">
-                  <div
-                    *ngFor="let alt of alternativas(i).controls; let j = index"
-                    [formGroupName]="j"
-                  >
-                    <h3 style="padding: 20px 0">Alternativa {{ letras[j] }}</h3>
+                  <div *ngFor="let alt of alternativas(i).controls; let j = index" [formGroupName]="j">
                     <mat-form-field appearance="fill">
                       <mat-label>Descrição</mat-label>
                       <input matInput formControlName="descricao" required />
@@ -197,47 +142,24 @@
                       <mat-label>Explicação</mat-label>
                       <input matInput formControlName="explicacao" required />
                     </mat-form-field>
-                    <mat-radio-group
-                      formControlName="correta"
-                      [value]="true"
-                      (change)="setAlternativaCorreta(i, j)"
-                      required
-                    >
-                      <mat-radio-button style="color: white" [value]="true"
-                        >Correta</mat-radio-button
-                      >
+                    <mat-radio-group formControlName="correta" [value]="true" (change)="setAlternativaCorreta(i, j)" required>
+                      <mat-radio-button [value]="true">Correta</mat-radio-button>
                     </mat-radio-group>
-                    <br />
-                    <button
-                      mat-button
-                      class="remover"
-                      (click)="limparAlternativa(i, j)"
-                    >
-                      Limpar Dados
-                    </button>
+                    <button mat-button class="remover" (click)="limparAlternativa(i, j)">Limpar Dados</button>
                     <mat-divider></mat-divider>
                   </div>
                 </div>
               </div>
             </div>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>
-                Anterior
-              </button>
-              <button
-                class="revisar"
-                mat-button
-                matStepperNext
-                [disabled]="!isAlternativaCorretaValida()"
-              >
-                Revisar
-              </button>
+              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+              <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
+              <button class="proximo" mat-button matStepperNext [disabled]="!isAlternativaCorretaValida()">Revisar</button>
             </div>
           </form>
         </div>
       </mat-step>
 
-      <!-- Etapa 6: Revisão -->
       <mat-step>
         <div class="passo6">
           <h3 class="revisao-titulo">Revisar Informações</h3>
@@ -335,12 +257,11 @@
             <button class="voltar" mat-button matStepperPrevious>
               Anterior
             </button>
-            <button mat-button class="finalizar" (click)="onSubmit()">
-              Finalizar
-            </button>
+            <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
           </div>
         </div>
       </mat-step>
     </mat-horizontal-stepper>
   </div>
 </div>
+
