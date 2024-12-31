@@ -1,33 +1,67 @@
-<header class="cabecalho">
-    <h1>Cadastre sua plataforma na <span>Licomp!</span></h1>
-</header>
-<main class="section">
-  <div class="section-titulo">
+<app-header-voltar texto="Cadastrar Plataforma"></app-header-voltar>
+<div class="container-pagina">
+  <main class="section">
+    <div class="section-titulo">
       <h1>Cadastro de Plataforma</h1>
-      <p>* Indica uma pergunta obrigatória</p>
-  </div>
-  <form [formGroup]="plataformaForm" (ngSubmit)="onSubmit()" class="forms" #formDir="ngForm">
-    <div class="forms-campo">
-      <label for="plataformaNome">Nome da Plataforma <span class="obrigatorio">*</span></label>
-      <input id="plataformaNome" type="text" formControlName="plataformaNome" placeholder="Digitar...">
+      <mat-divider></mat-divider>
+      <p>*Indica uma pergunta obrigatória</p>
     </div>
-    <section class="campos">
+
+    <form
+      [formGroup]="plataformaForm"
+      (ngSubmit)="onSubmit()"
+      class="forms"
+      #formDir="ngForm"
+    >
       <div class="forms-campo">
-        <label for="plataformaUrl">URL da Plataforma <span class="obrigatorio">*</span></label>
-        <input id="plataformaUrl" type="text" formControlName="plataformaUrl" placeholder="Digitar...">
+        <label for="plataformaNome"
+          >Nome da Ferramenta <span class="obrigatorio">*</span></label
+        >
+        <input
+          id="plataformaNome"
+          type="text"
+          formControlName="plataformaNome"
+          placeholder="Digitar..."
+        />
       </div>
-      <div class="forms-campo">
-        <label for="idCliente">ID do Cliente <span class="obrigatorio">*</span></label>
-        <input id="idCliente" type="text" formControlName="idCliente" placeholder="Digitar...">
+      <section class="campos">
+        <div class="forms-campo">
+          <label for="plataformaUrl"
+            >URL da Plataforma <span class="obrigatorio">*</span></label
+          >
+          <input
+            id="plataformaUrl"
+            type="text"
+            formControlName="plataformaUrl"
+            placeholder="Digitar..."
+          />
+        </div>
+        <div class="forms-campo">
+          <label for="idCliente"
+            >ID do Cliente <span class="obrigatorio">*</span></label
+          >
+          <input
+            id="idCliente"
+            type="text"
+            formControlName="idCliente"
+            placeholder="Digitar..."
+          />
+        </div>
+      </section>
+      <div class="buttons">
+        <button (click)="home()" class="button-one">Cancelar</button>
+        <button type="submit" class="button-two">Cadastrar</button>
       </div>
-    </section>
-    <div class="buttons">
-      <button (click)="home()" class="button-one">Home</button>
-      <button type="submit" class="button-two">Cadastrar</button>
-    </div>
-    <div *ngIf="(plataformaForm.invalid || plataformaNome.invalid || idCliente.invalid) && formDir.submitted">
+      <div
+        *ngIf="
+          (plataformaForm.invalid ||
+            plataformaNome.invalid ||
+            idCliente.invalid) &&
+          formDir.submitted
+        "
+      >
         <p class="validators">Preencha todos os campos!</p>
-    </div>
-  </form>  
-</main>
-  
+      </div>
+    </form>
+  </main>
+</div>

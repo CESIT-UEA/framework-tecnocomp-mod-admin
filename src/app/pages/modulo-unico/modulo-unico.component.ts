@@ -2,7 +2,7 @@ import { map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
-import { Modulo } from 'src/interfaces/topico/Modulo';
+import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Topico } from 'src/interfaces/topico/Topico';
 
 @Component({

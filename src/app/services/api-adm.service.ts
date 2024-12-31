@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Modulo } from 'src/interfaces/topico/Modulo';
+import { Modulo } from 'src/interfaces/modulo/Modulo';
+import { Plataforma } from 'src/interfaces/Plataforma';
 import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
@@ -148,4 +149,33 @@ export class ApiAdmService {
     return this.http.get<Topico>(`${this.baseUrl}/api/topico/${id}`, { headers });
   }
 
+
+  listarPlataformas(): Observable<Plataforma[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataforma`, { headers });
+  }
+
+  excluirPlataforma(idAdm: number, senhaAdm: string, idExcluir: number): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    const params = new HttpParams()
+      .set('idAdm', idAdm.toString())
+      .set('senhaAdm', senhaAdm);
+
+    return this.http.delete<void>(`${this.baseUrl}/api/plataforma/${idExcluir}`, { headers, params });
+  }
+
+  editarPlataforma(id: number, plataforma: Partial<Plataforma>): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<void>(`${this.baseUrl}/api/plataforma/${id}`, plataforma, { headers });
+  }
+
+  obterPlataformaPorId(id: number): Observable<Plataforma> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Plataforma>(`${this.baseUrl}/api/plataforma/${id}`, { headers });
+  }
 }

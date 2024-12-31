@@ -41,6 +41,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { HeaderVoltarComponent } from './components/header-voltar/header-voltar.component';
 import { EditarTopicoComponent } from './components/editar-topico/editar-topico.component';
+import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page.component';
+import { CardsPlataformasComponent } from './components/cards/cards-plataformas/cards-plataformas.component';
+import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { EditarTopicoComponent } from './components/editar-topico/editar-topico.
     EditarModuloComponent,
     CadastroTopicoComponent,
     HeaderVoltarComponent,
-    EditarTopicoComponent
+    EditarTopicoComponent,
+    PlataformaPageComponent,
+    CardsPlataformasComponent,
+    EditarPlataformaComponent
   ],
   imports: [
     BrowserModule,

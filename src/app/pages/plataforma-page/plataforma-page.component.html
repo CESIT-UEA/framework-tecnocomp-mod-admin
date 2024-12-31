@@ -1,0 +1,17 @@
+<div class="container-plataformas">
+  <app-titulo-secao
+    titulo="Plataformas"
+    caminhoUrl="../cadastro-plataforma"
+    [quantidade]="plataformas.length"
+  ></app-titulo-secao>
+
+  <div class="container-cards-plataformas">
+    <div class="card" *ngFor="let plataforma of plataformas">
+      <app-cards-plataformas
+        [plataforma]="plataforma"
+        (excluirPlataforma)="excluirPlataforma($event)"
+      ></app-cards-plataformas>
+    </div>
+  </div>
+</div>
+

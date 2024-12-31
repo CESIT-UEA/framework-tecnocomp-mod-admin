@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Modulo } from 'src/interfaces/topico/Modulo';
+import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { ConfirmacaoExclusaoComponent } from '../../confirmacao-exclusao/confirmacao-exclusao.component';
 import { AuthService } from 'src/app/auth/auth.service';
 

@@ -46,4 +46,8 @@ export class AuthService {
     localStorage.removeItem('usuario');
     this.router.navigate(['/login']);
   }
+
+  validaToken(token:string){
+    //Fazer função de validação do token
+  }
 }

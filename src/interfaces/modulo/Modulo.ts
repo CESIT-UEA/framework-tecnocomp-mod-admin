@@ -1,4 +1,4 @@
-import { Topico } from "./Topico";
+import { Topico } from "../topico/Topico";
 
 export interface Modulo {
   id?: number

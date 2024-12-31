@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
-import { Modulo } from 'src/interfaces/topico/Modulo';
+import { Modulo } from 'src/interfaces/modulo/Modulo';
 
 @Component({
   selector: 'app-modulos-page',

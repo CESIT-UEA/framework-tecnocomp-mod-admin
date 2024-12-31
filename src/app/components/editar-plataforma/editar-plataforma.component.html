@@ -1,0 +1,46 @@
+<app-header-voltar texto="Editar Plataforma"></app-header-voltar>
+<div class="container-editar-plataforma">
+  <h2>Editar Plataforma</h2>
+  <form [formGroup]="plataformaForm" (ngSubmit)="salvarAlteracoes()">
+    <div class="form-group">
+      <label for="plataformaNome">Nome da Plataforma:</label>
+      <input
+        id="plataformaNome"
+        type="text"
+        formControlName="plataformaNome"
+        placeholder="Digite o nome da plataforma"
+      />
+      <div *ngIf="plataformaForm.get('plataformaNome')?.invalid && plataformaForm.get('plataformaNome')?.touched">
+        <small class="error">Nome é obrigatório e deve ter pelo menos 3 caracteres.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="plataformaUrl">URL da Plataforma:</label>
+      <input
+        id="plataformaUrl"
+        type="url"
+        formControlName="plataformaUrl"
+        placeholder="https://"
+      />
+      <div *ngIf="plataformaForm.get('plataformaUrl')?.invalid && plataformaForm.get('plataformaUrl')?.touched">
+        <small class="error">URL é obrigatória e deve ser válida.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="idCliente">ID do Cliente:</label>
+      <input
+        id="idCliente"
+        type="text"
+        formControlName="idCliente"
+        placeholder="Digite o ID do cliente"
+      />
+      <div *ngIf="plataformaForm.get('idCliente')?.invalid && plataformaForm.get('idCliente')?.touched">
+        <small class="error">ID do cliente é obrigatório.</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="plataformaForm.invalid">Salvar Alterações</button>
+  </form>
+</div>
