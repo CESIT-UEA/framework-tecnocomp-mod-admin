@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { CadastroPlataformaComponent } from './components/cadastro-plataforma/cadastro-plataforma.component';
@@ -44,6 +44,7 @@ import { EditarTopicoComponent } from './components/editar-topico/editar-topico.
 import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page.component';
 import { CardsPlataformasComponent } from './components/cards/cards-plataformas/cards-plataformas.component';
 import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,11 @@ import { EditarPlataformaComponent } from './components/editar-plataforma/editar
     MatCheckboxModule,
     MatRadioModule
   ],
-  providers: [],
+  providers: [    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

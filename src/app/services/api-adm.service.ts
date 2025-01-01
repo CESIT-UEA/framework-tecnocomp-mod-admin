@@ -17,165 +17,115 @@ export class ApiAdmService {
 
   constructor(private http: HttpClient,private router:Router) {}
 
-  login(email: string, senha: string) {
-    return this.http.post(`${this.baseUrl}/auth/login`, { email, senha });
-  }
-
   registerUsuario(data: any) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.baseUrl}/auth/register`, data, { headers });
+    return this.http.post(`${this.baseUrl}/auth/register`, data);
   }
 
   registerPlataforma(data: any) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.baseUrl}/api/plataforma`, data, { headers });
+    return this.http.post(`${this.baseUrl}/api/plataforma`, data);
   }
 
   registerModulo(data: any) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.baseUrl}/api/modulo`, data, { headers });
+    return this.http.post(`${this.baseUrl}/api/modulo`, data);
   }
 
   registerModuloTeste(modulo: Modulo) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post('/api/modulo', modulo,{ headers });
+    return this.http.post('/api/modulo', modulo);
   }
 
   listarUsers(): Observable<User[]> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<{ users: User[] }>(`${this.baseUrl}/api/listar-usuarios`, { headers }).pipe(
-      map((response) => response.users) // Extraia apenas o array de usuários
+    return this.http.get<{ users: User[] }>(`${this.baseUrl}/api/listar-usuarios`).pipe(
+      map((response) => response.users)
     );
   }
 
   getUserById(id: number): Observable<User> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<User>(`${this.baseUrl}/api/users/${id}`, { headers });
+    return this.http.get<User>(`${this.baseUrl}/api/users/${id}`);
   }
 
   updateUser(idEditar: number, idAdm: number, senhaAdm: string, user: Partial<User>): Observable<void> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put<void>(`${this.baseUrl}/api/users/${idEditar}`, {
       idAdm,
       senhaAdm,
       ...user,
-    }, { headers });
+    });
   }
 
   excluirUsuario(idAdm: number, senhaAdm: string, idExcluir: number): Observable<void> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete<void>(`${this.baseUrl}/api/users`, {
-      headers,
       body: { idAdm, senhaAdm, idExcluir },
     });
   }
 
   listarModulos() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Modulo[]>(`${this.baseUrl}/api/modulos`, { headers });
+    return this.http.get<Modulo[]>(`${this.baseUrl}/api/modulos`);
   }
   excluirModulo(id: number, idAdm: number, senhaAdm: string) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const params = new HttpParams()
       .set('idAdm', idAdm.toString())
       .set('senhaAdm', senhaAdm);
 
-    return this.http.delete(`${this.baseUrl}/api/modulos/${id}`, { headers, params });
+    return this.http.delete(`${this.baseUrl}/api/modulos/${id}`, {params });
   }
 
   obterModuloPorId(id: number) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Modulo>(`${this.baseUrl}/api/modulo/${id}`, { headers });
+    return this.http.get<Modulo>(`${this.baseUrl}/api/modulo/${id}`);
   }
 
 
   obterTopicoCompleto(idTopico: number) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Topico[]>(`${this.baseUrl}/api/topicos/${idTopico}`,{ headers});
+    return this.http.get<Topico[]>(`${this.baseUrl}/api/topicos/${idTopico}`);
   }
 
   atualizarModulo(id: number, dadosAtualizados: Modulo) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put(`${this.baseUrl}/api/modulos/${id}`, dadosAtualizados,{ headers});
+    return this.http.put(`${this.baseUrl}/api/modulos/${id}`, dadosAtualizados);
   }
 
   alterarStatusPublicacao(id: number, publicar: boolean): Observable<Modulo> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.patch<Modulo>(`${this.baseUrl}/api/modulos/${id}/publicar`, { publicar },{ headers});
+    return this.http.patch<Modulo>(`${this.baseUrl}/api/modulos/${id}/publicar`, { publicar });
   }
 
   cadastrarTopico(dadosTopico: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.baseUrl}/api/topicos`, dadosTopico,{ headers});
+    return this.http.post(`${this.baseUrl}/api/topicos`, dadosTopico);
   }
 
   editarTopico(id: number, dadosAtualizados: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put(`${this.baseUrl}/api/topico/${id}`, dadosAtualizados, { headers });
+    return this.http.put(`${this.baseUrl}/api/topico/${id}`, dadosAtualizados);
   }
 
   excluirTopico(idExcluir: number, idAdm: number, senhaAdm: string) {
-    console.log("ok")
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const params = new HttpParams()
       .set('idAdm', idAdm.toString())
       .set('senhaAdm', senhaAdm);
 
-    return this.http.delete(`${this.baseUrl}/api/topico/${idExcluir}`, { headers, params });
+    return this.http.delete(`${this.baseUrl}/api/topico/${idExcluir}`, {params });
   }
 
   obterTopicoPorId(id: number) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Topico>(`${this.baseUrl}/api/topico/${id}`, { headers });
+    return this.http.get<Topico>(`${this.baseUrl}/api/topico/${id}`);
   }
 
 
   listarPlataformas(): Observable<Plataforma[]> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataforma`, { headers });
+    return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataforma`);
   }
 
   excluirPlataforma(idAdm: number, senhaAdm: string, idExcluir: number): Observable<void> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const params = new HttpParams()
       .set('idAdm', idAdm.toString())
       .set('senhaAdm', senhaAdm);
 
-    return this.http.delete<void>(`${this.baseUrl}/api/plataforma/${idExcluir}`, { headers, params });
+    return this.http.delete<void>(`${this.baseUrl}/api/plataforma/${idExcluir}`, { params });
   }
 
   editarPlataforma(id: number, plataforma: Partial<Plataforma>): Observable<void> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put<void>(`${this.baseUrl}/api/plataforma/${id}`, plataforma, { headers });
+    return this.http.put<void>(`${this.baseUrl}/api/plataforma/${id}`, plataforma);
   }
 
   obterPlataformaPorId(id: number): Observable<Plataforma> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Plataforma>(`${this.baseUrl}/api/plataforma/${id}`, { headers });
+    return this.http.get<Plataforma>(`${this.baseUrl}/api/plataforma/${id}`);
   }
 }
