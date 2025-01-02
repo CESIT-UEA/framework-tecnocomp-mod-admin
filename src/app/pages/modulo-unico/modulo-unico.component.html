@@ -27,6 +27,13 @@
           " class="btn btn-publicar" (click)="alterarPublicacao()">
               {{ modulo?.publicado ? "Despublicar" : "Publicar" }}
             </button>
+            <button                 [ngClass]="
+            modulo?.template
+              ? 'publicado'
+              : 'nao-publicado'
+          " class="btn btn-publicar" (click)="templateModulo()">
+              {{ modulo?.template ? "Transformar em Template" : "Destransformar Template" }}
+            </button>
             <p><strong>Id: </strong> {{ modulo?.id }}</p>
             <p><a target="_blank" [href]="modulo?.ebookUrlGeral">Ebook Completo</a></p>
             <p><a target="_blank" [href]="modulo?.video_inicial">Vídeo Inicial</a></p>

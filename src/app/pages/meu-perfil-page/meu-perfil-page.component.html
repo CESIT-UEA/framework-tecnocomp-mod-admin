@@ -1,0 +1,55 @@
+<div class="container-perfil">
+  <section class="informacoes">
+    <div class="titulo">
+      <h1>Informações</h1>
+      <button [routerLink]="['/editar-perfil']">
+        <mat-icon>border_color</mat-icon>
+      </button>
+    </div>
+    <div class="perfil-dados">
+      <p><strong>Nome:</strong> {{ dadosUsuario().username }}</p>
+      <p><strong>Email:</strong> {{ dadosUsuario().email }}</p>
+      <p><strong>Cargo:</strong> {{ dadosUsuario().tipo }}</p>
+    </div>
+  </section>
+  <section class="minhas-plataformas">
+    <div class="titulo">
+      <h1>Minhas Plataformas</h1>
+      <button routerLink="/cadastro-plataforma">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <p>
+      Quantidade: <strong>{{ plataformas.length }}</strong>
+    </p>
+    <mat-divider></mat-divider>
+    <div class="container-cards-modulos">
+      <div class="card" *ngFor="let plataforma of plataformas">
+        <app-cards-plataformas
+        [plataforma]="plataforma"
+        (excluirPlataforma)="excluirPlataforma($event)"
+      ></app-cards-plataformas>
+      </div>
+    </div>
+  </section>
+  <section class="meus-modulos">
+    <div class="titulo">
+      <h1>Meus Módulos</h1>
+      <button routerLink="/registrar-modulo">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <p>
+      Quantidade: <strong>{{ modulos.length }}</strong>
+    </p>
+    <mat-divider></mat-divider>
+    <div class="container-cards-modulos">
+      <div class="card" *ngFor="let modulo of modulos">
+        <app-cards-modulos
+          [modulo]="modulo"
+          (excluirModulo)="excluirModulo($event)"
+        ></app-cards-modulos>
+      </div>
+    </div>
+  </section>
+</div>

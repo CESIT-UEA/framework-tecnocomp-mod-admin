@@ -18,6 +18,8 @@ import { CadastroTopicoComponent } from './components/cadastro-topico/cadastro-t
 import { EditarTopicoComponent } from './components/editar-topico/editar-topico.component';
 import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page.component';
 import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
+import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
       { path: 'cadastros', component: CadastrosPageComponent, data: { title: 'Cadastrar' }  },
-      { path: 'meu-perfil', component: CadastrosPageComponent, data: { title: 'Meu Perfil' }  },
+      { path: 'meu-perfil', component: MeuPerfilPageComponent, data: { title: 'Meu Perfil' }  },
       { path: 'usuarios', component: UsuariosPageComponent, data: { title: 'Usuarios' }  },
       { path: 'modulos', component: ModulosPageComponent, data: { title: 'Modulos' }  },
       { path: 'plataformas', component: PlataformaPageComponent, data: { title: 'Plataformas' }  },
@@ -38,6 +40,8 @@ const routes: Routes = [
   { path: 'cadastro-plataforma', component: CadastroPlataformaComponent },
   { path: 'registrar-modulo', component: RegistroModuloComponent },
   { path: 'editar-plataforma/:id', component: EditarPlataformaComponent },
+  { path: 'editar-perfil', component: EditarPerfilComponent },
+
   { path: 'modulos/:id', component: ModuloUnicoComponent },
   { path: 'editar-topico/:id', component: EditarTopicoComponent },
   { path: 'editar-modulo/:id', component: EditarModuloComponent },

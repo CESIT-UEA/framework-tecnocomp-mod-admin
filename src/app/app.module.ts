@@ -45,6 +45,8 @@ import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page
 import { CardsPlataformasComponent } from './components/cards/cards-plataformas/cards-plataformas.component';
 import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     EditarTopicoComponent,
     PlataformaPageComponent,
     CardsPlataformasComponent,
-    EditarPlataformaComponent
+    EditarPlataformaComponent,
+    MeuPerfilPageComponent,
+    EditarPerfilComponent
   ],
   imports: [
     BrowserModule,

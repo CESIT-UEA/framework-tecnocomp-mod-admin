@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Plataforma } from 'src/interfaces/Plataforma';
@@ -86,6 +86,10 @@ export class ApiAdmService {
     return this.http.patch<Modulo>(`${this.baseUrl}/api/modulos/${id}/publicar`, { publicar });
   }
 
+  alterarTemplateModulo(id: number, template: boolean): Observable<Modulo> {
+    return this.http.patch<Modulo>(`${this.baseUrl}/api/template/modulo/${id}`, { template })
+  }
+
   cadastrarTopico(dadosTopico: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/topicos`, dadosTopico);
   }
@@ -128,4 +132,17 @@ export class ApiAdmService {
   obterPlataformaPorId(id: number): Observable<Plataforma> {
     return this.http.get<Plataforma>(`${this.baseUrl}/api/plataforma/${id}`);
   }
+
+  updateSelf(userId: number, senhaAtual: string, dadosAtualizados: any): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/api/users/${userId}/self`, { senhaAtual, ...dadosAtualizados })
+  }
+
+  listarModulosPeloIdUsuario(id:number): Observable<Modulo[]>{
+    return this.http.get<Modulo[]>(`${this.baseUrl}/api/modulos/usuario/${id}`);
+  }
+
+  listarPlataformasPeloIdUsuario(id:number): Observable<Plataforma[]>{
+    return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataformas/usuario/${id}`);
+  }
+
 }

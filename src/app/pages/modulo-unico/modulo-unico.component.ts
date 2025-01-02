@@ -96,6 +96,26 @@ export class ModuloUnicoComponent implements OnInit {
     }
   }
 
+  templateModulo(): void {
+    if (this.modulo) {
+      const novoStatus = !this.modulo.template;
+      if (this.modulo.id != null) {
+        this.apiService.alterarTemplateModulo(this.modulo.id, novoStatus).subscribe(
+          (moduloAtualizado) => {
+            this.modulo = moduloAtualizado;
+            alert(
+              `O módulo foi ${novoStatus ? 'template' : 'não template'} com sucesso!`
+            );
+          },
+          (error) => {
+            console.error('Erro ao alterar o estado de template do modulo:', error);
+            alert('Erro ao alterar o estado de template do modulo!');
+          }
+        );
+      }
+    }
+  }
+
   excluirTopico({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
     console.log("ok2")
     this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(

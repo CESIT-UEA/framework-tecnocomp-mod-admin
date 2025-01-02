@@ -1,0 +1,31 @@
+<app-header-voltar texto="Editar Perfil"></app-header-voltar>
+<form (ngSubmit)="atualizarPerfil()">
+  <!-- Nome -->
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="usuario.username" name="username" required />
+  </mat-form-field>
+
+  <!-- Email -->
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="usuario.email" name="email" required />
+  </mat-form-field>
+
+  <!-- Senha Atual -->
+  <mat-form-field appearance="fill">
+    <mat-label>Senha Atual</mat-label>
+    <input matInput [(ngModel)]="senhaAtual" name="senhaAtual" type="password" required />
+  </mat-form-field>
+
+  <!-- Nova Senha (opcional) -->
+  <mat-form-field appearance="fill">
+    <mat-label>Nova Senha</mat-label>
+    <input matInput [(ngModel)]="novaSenha" name="novaSenha" type="password" />
+  </mat-form-field>
+
+  <!-- Botões -->
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
+  <button mat-raised-button color="warn" [routerLink]="'/meu-perfil'">Cancelar</button>
+</form>
+

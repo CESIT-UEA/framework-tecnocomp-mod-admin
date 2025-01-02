@@ -8,6 +8,7 @@ export interface Modulo {
   video_inicial: string;
   plataforma_id: string;
   publicado?: boolean;
+  template?: boolean;
   topicos?: Topico[];
   usuario_id?: string;
 }
