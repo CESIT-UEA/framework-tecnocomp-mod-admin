@@ -145,4 +145,6 @@ export class ApiAdmService {
     return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataformas/usuario/${id}`);
   }
 
+  
+
 }
