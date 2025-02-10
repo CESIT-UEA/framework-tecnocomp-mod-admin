@@ -6,7 +6,7 @@ export interface Modulo {
   nome_url: string;
   ebookUrlGeral: string;
   video_inicial: string;
-  plataforma_id: string;
+  uuid?:string;
   publicado?: boolean;
   template?: boolean;
   topicos?: Topico[];

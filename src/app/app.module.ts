@@ -47,6 +47,7 @@ import { EditarPlataformaComponent } from './components/editar-plataforma/editar
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
     MatStepperModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,

@@ -1,14 +1,14 @@
-<app-header-voltar  texto="Cadastrar Módulo"></app-header-voltar>
+<app-header-voltar texto="Cadastrar Módulo"></app-header-voltar>
 <div class="cadastro-modulo-container">
   <h2>Cadastrar Módulo</h2>
   <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="nome_modulo">Nome do Módulo:</label>
-      <input id="nome_modulo" formControlName="nome_modulo" />
+      <input id="nome_modulo" formControlName="nome_modulo" (input)="gerarUrlAmigavel()" />
     </div>
     <div>
       <label for="nome_url">URL do Módulo:</label>
-      <input id="nome_url" formControlName="nome_url" />
+      <input id="nome_url" formControlName="nome_url" readonly />
     </div>
     <div>
       <label for="ebookUrlGeral">Ebook URL Geral:</label>
@@ -17,10 +17,6 @@
     <div>
       <label for="video_inicial">Vídeo Inicial:</label>
       <input id="video_inicial" formControlName="video_inicial" />
-    </div>
-    <div>
-      <label for="plataforma_id">ID da Plataforma:</label>
-      <input id="plataforma_id" formControlName="plataforma_id" />
     </div>
     <button type="submit" [disabled]="moduloForm.invalid">Salvar</button>
   </form>

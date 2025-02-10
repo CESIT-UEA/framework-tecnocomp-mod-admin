@@ -1,9 +1,9 @@
-import { map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Topico } from 'src/interfaces/topico/Topico';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modulo-unico',
@@ -18,7 +18,8 @@ export class ModuloUnicoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiAdmService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -137,5 +138,15 @@ export class ModuloUnicoComponent implements OnInit {
       }
     );
   }
+  copiarUUID() {
+    if (!this.modulo?.uuid) {
+      this.apiService.message("Falha ao copiar, UUID é nulo");
+      return
+    }
 
+    const textoParaCopiar = `uuid=${this.modulo.uuid}`;
+    navigator.clipboard.writeText(textoParaCopiar).then(() => {
+      this.apiService.message("UUID copiado com sucesso!");
+    }).catch(err => console.error('Erro ao copiar UUID:', err));
+  }
 }
