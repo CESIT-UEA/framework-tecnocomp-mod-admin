@@ -13,7 +13,7 @@
           <input id="nome" type="text" formControlName="nome" class="input" placeholder="Digite seu nome...">
           <div *ngIf="nome.invalid && formDir.submitted">
               <p class="validators" *ngIf="nome.errors?.['required']">Nome obrigatório *</p>
-              <p class="validators" *ngIf="nome.errors?.['minLength'] || !nome.errors?.['required']">Seu nome precisa ter no mínimo 4 caracteres</p>
+              <p class="validators" *ngIf="nome.errors?.['minLength'] || !nome.errors?.['required']">Seu nome precisa ter no mínimo 10 caracteres</p>
           </div>
         </div>
         <div class="campo-formulario">
@@ -45,7 +45,14 @@
         </div>
         <div class="buttons">
           <button (click)="home()" class="button-one">Cancelar</button>
-          <button type="submit" class="button-two">Confirmar</button>
+          <button 
+              type="submit" 
+              class="button-two" 
+              [disabled]="this.buttonDisabled" 
+              [ngClass]="{'button-disabled': this.buttonDisabled}"
+            >
+              Confirmar
+          </button>
         </div>
       </section>
     </form>

@@ -111,6 +111,10 @@
     color: #FFFFFF;
 }
 
+.button-disabled {
+    background-color: #715c91c5;
+}
+
 .validators, .obrigatorio{
     color: #BF0A0A;
     font-size: 12px;
