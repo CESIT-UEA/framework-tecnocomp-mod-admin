@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -15,7 +16,7 @@ import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
 export class ApiAdmService {
   private baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient,private router:Router,private snackBar: MatSnackBar) {}
 
   registerUsuario(data: any) {
     return this.http.post(`${this.baseUrl}/auth/register`, data);
@@ -145,4 +146,9 @@ export class ApiAdmService {
     return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataformas/usuario/${id}`);
   }
 
+  message(msg:string){
+    return this.snackBar.open(msg, 'Fechar', {
+      duration: 3000,
+    });
+  }
 }

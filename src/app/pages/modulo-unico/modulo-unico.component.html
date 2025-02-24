@@ -37,7 +37,13 @@
             <p><strong>Id: </strong> {{ modulo?.id }}</p>
             <p><a target="_blank" [href]="modulo?.ebookUrlGeral">Ebook Completo</a></p>
             <p><a target="_blank" [href]="modulo?.video_inicial">Vídeo Inicial</a></p>
-            <p><strong>Plataforma ID:</strong> {{ modulo?.plataforma_id }}</p>
+            <p>
+              <strong>UUID:</strong> {{ modulo?.uuid }}
+              <button mat-icon-button (click)="copiarUUID()">
+                <mat-icon>content_copy</mat-icon>
+              </button>
+            </p>
+
         </div>
       </div>
     </div>

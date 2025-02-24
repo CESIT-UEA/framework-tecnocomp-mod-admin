@@ -40,7 +40,6 @@ export class EditarModuloComponent {
           nome_url: modulo.nome_url,
           ebookUrlGeral: modulo.ebookUrlGeral,
           video_inicial: modulo.video_inicial,
-          plataforma_id: modulo.plataforma_id,
         });
       },
       (error) => console.error('Erro ao carregar módulo:', error)
