@@ -10,7 +10,9 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class LoginComponent {
   errorLogin: boolean = false;
+  focus = false;
 
+  hide = true;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     senha: new FormControl('', Validators.required)
@@ -65,5 +67,12 @@ export class LoginComponent {
     }
   }
 
+  focusClick(state:boolean = false):void{
+    if (state) {
+      this.focus = true
+    }else{
+      this.focus = false
+    }
+  }
 
 }
