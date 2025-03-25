@@ -28,9 +28,12 @@
             <div class="campo-senha">
               <div class="form-conteudo">
                   <label for="senha">Senha<span>*</span></label>
-                  <input type="password"
-                  id="senha"
-                  placeholder="Crie uma senha">
+                  <div class="campo-formulario-envolve">
+                    <input [type]="hide ? 'password' : 'text'" id="senha" type="password" formControlName="senha" class="input-senha" placeholder="Digite a sua senha">
+                    <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </div>
               </div>
 
               <div class="form-conteudo">
