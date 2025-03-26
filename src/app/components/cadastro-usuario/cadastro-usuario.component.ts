@@ -12,7 +12,8 @@ import { noOnlyWhitespace, senhaForte } from '../validators/validators';
 export class CadastroUsuarioComponent {
   validators: boolean = false;
   errorCadastro: boolean = false;
-  buttonDisabled: boolean = true;
+  buttonDisabled = true;
+  hide = false;
 
   cadastroForm = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(10), noOnlyWhitespace()]),
@@ -24,7 +25,7 @@ export class CadastroUsuarioComponent {
   constructor(private apiService: ApiAdmService, private router: Router) {
       this.cadastroForm.valueChanges.subscribe(()=>{
           this.errorCadastro = false
-        
+
           const form = this.cadastroForm.value
           if (form.nome?.trim().length != 0 && form.email?.trim().length != 0 && form.senha?.trim().length != 0){
             this.buttonDisabled = false
