@@ -53,41 +53,9 @@
               <p>ou</p>
               <mat-radio-button class="check-administrador" value="administrador">Administrador</mat-radio-button>
             </mat-radio-group>
-    <p class="text">Insira seus dados abaixo para criar conta e começar</p>
-    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
-      <section class="campos">
-        <div class="campo-formulario">
-          <label for="nome">Nome <span class="obrigatorio">*</span></label>
-          <input id="nome" type="text" formControlName="nome" class="input" placeholder="Digite seu nome...">
-          <div *ngIf="nome.invalid && formDir.submitted">
-              <p class="validators" *ngIf="nome.errors?.['required']">Nome obrigatório *</p>
-              <p class="validators" *ngIf="nome.errors?.['minLength'] || !nome.errors?.['required']">Seu nome precisa ter no mínimo 10 caracteres</p>
           </div>
         </div>
-
-        <div class="botoes">
-            <button class="botao-cancelar">Limpar</button>
-            <button class="botao-confirmar">Confirmar</button>
-        </div>
-        <div class="campo-formulario">
-          <label for="senha">Senha <span class="obrigatorio">*</span></label>
-          <input id="senha" type="password" formControlName="senha" class="input" placeholder="Digite sua senha...">
-          <div *ngIf="senha.invalid && formDir.submitted">
-            <p class="validators" *ngIf="senha.errors?.['required']">Senha obrigatória *</p>
-            <p class="validators" *ngIf="senha.errors?.['minLength'] && ['senhaForte'] || !senha.errors?.['required']">
-              Sua senha deve ter no mínimo 8 caracteres<br>
-              incluindo letras e números e símbolos.</p>
-          </div>
-        </div>
-      </section>
       <section class="container-options">
-        <div class="select">
-          <label for="tipo">Tipo</label>
-          <select id="tipo" formControlName="tipo">
-            <option value="adm">Administrador</option>
-            <option value="professor">Professor</option>
-          </select>
-        </div>
         <div class="buttons">
           <button (click)="home()" class="button-one">Cancelar</button>
           <button
