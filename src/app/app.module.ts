@@ -49,6 +49,7 @@ import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,

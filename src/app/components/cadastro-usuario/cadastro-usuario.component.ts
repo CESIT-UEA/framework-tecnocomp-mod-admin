@@ -12,6 +12,7 @@ import { senhaForte } from '../validators/validators';
 export class CadastroUsuarioComponent {
   validators: boolean = false;
   errorCadastro: boolean = false;
+  hide = true;
 
   cadastroForm = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(4)]),

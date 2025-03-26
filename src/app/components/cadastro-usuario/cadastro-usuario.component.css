@@ -1,121 +1,167 @@
-*{
-    color:#2F2D33;
-}
-
 
 .box{
     height: 100vh;
+    color: #FFFFFF;
+    background-color: #131313;
+}
+
+.header {
+  display: flex;
+  background-color:#0E0E0E;
+  align-items: center;
+}
+
+h1{
+  font-size: 24px;
+}
+
+span {
+  color:#fa7878
 }
 
 .titulo{
-    text-align: center;
-    padding: 50px 0 0 0;
-    background: #2A2835;
-    color: #FFFFFF;
-    height: 30%;
-    border-bottom: 8px solid #9665DF;
+  height: 10%;
 }
 
-.title{
-    color: #B48EFF;
+.container {
+  border-radius: 15px;
+  border: 1px solid #404040;
+  background: #2b2a2e;
+  border-top: 5px solid #864FD9;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding: 40px 50px;
+  margin-top: 50px;
+  width: 62%;
 }
 
-.container{
-    height: 64%;
-    background-color: #FFFFFF;
-    width: 40%;
-    margin: 0 auto;
-    padding: 26px 60px 60px 60px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 10px #9A9A9A;
-    position: relative;
-    top: -120px;
+.titulo-formulario {
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.logo{
-    text-align: center;
-    line-height: 30px;
+.titulo-formulario h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
-.text{
-    padding: 10px 0;
-    color: #7D718F;
-    text-align: center;
+.texto {
+  color:#fa7878;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.form-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form-conteudo label {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+
+}
+
+.form-conteudo input {
+  background-color: #38383A;
+  border: 1px solid #38383A;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  padding: 0 8px;
+  height: 40px;
+  width: 100%;
+}
+
+.form-conteudo-tipo mat-radio-group, .form-conteudo-tipo-filho{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+}
+
+.form-conteudo-tipo label {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  background-color: #2B2A2E;
+}
+
+.campo-senha {
+  display: flex;
+  justify-content: space-between;
 }
 
 
-.campos{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    column-gap: 10px;
+.campo-senha input {
+  width: 21.563rem;
+
 }
 
-.campo-formulario{
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0;
-    row-gap: 4px;
+.campo-formulario-envolve{
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-.input, .button{
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #9A9A9A;
+.icon{
+  position: absolute;
+  right: 3%;
+  background-color: #38383A;
+  border: none;
+  color: #B68EF3;
 }
 
-.input:focus, select:focus{
-    outline: 0;
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  gap: 20px;
+  width: 100%;
+  height: 40px;
 }
 
-.container-options{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
+.botao-cancelar {
+  background-color: transparent;
+  border: 1px solid #9A9A9A;
+  color: #FFFFFF;
+  width: 162px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 6px 17px 6px 17px;
+  cursor: pointer;
 }
 
-.select{
-    display: flex;
-    flex-direction: column;
-    row-gap: 6px;
-    width: 45%;
+.botao-confirmar {
+  border: none;
+  background-color: #864FD9;
+  color: #FFFFFF;
+  width: 162px;
+  height: 40px;
+  padding: 6px 17px 6px 17px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.select select{
-    padding: 8px 0;
-    border-radius: 8px;
-    margin-bottom: 5px;
-    border: 1px solid #9A9A9A;
+ mat-divider {
+  background-color: #48464D;
+  height: 2px;
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
-.buttons{
-    display: flex;
-    column-gap: 18px;
-    padding-top: 14px;
-}
 
-.button-one, .button-two{
-    width: 115px;
-    padding: 8px;
-    border-radius: 6px;
-}
-
-.button-one{
-    background-color: transparent;
-    border: 1px solid #9A9A9A;
-}
-
-.button-two{
-    border: none;
-    background-color: #864FD9;
-    color: #FFFFFF;
-}
-
-.validators, .obrigatorio{
-    color: #BF0A0A;
-    font-size: 12px;
-}
-
-.cadastroError{
-    text-align: center;
-}
