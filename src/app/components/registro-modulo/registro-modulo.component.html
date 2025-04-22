@@ -1,23 +1,88 @@
-<app-header-voltar texto="Cadastrar Módulo"></app-header-voltar>
-<div class="cadastro-modulo-container">
-  <h2>Cadastrar Módulo</h2>
-  <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
+<div class="box">
+
+  <app-header-voltar texto="Cadastrar Módulo"></app-header-voltar>
+  <div class="container">
+    <div class="cadastro-modulo-container">
+      <h2>Formulário de Cadastro de Módulo</h2>
+      <mat-divider></mat-divider>
+    </div>
+    <p class="texto">* Indica uma pergunta obrigatória</p>
+      <form id="form" class="form">
+          <div class="campos">
+              <div class="form-conteudo">
+                  <label for="nome-modulo">Nome módulo<span>*</span></label>
+                  <input type="text"
+                  id="nome"
+                  placeholder="Digite nome do tópico">
+              </div>
+
+              <div class="form-conteudo">
+                  <label for="nome-url">URL do Vídeo inicial<span>*</span></label>
+                  <input type="url"
+                  id="nome-url"
+                  placeholder="Digite URL do slide">
+                  <mat-icon class="icon-ajuda">help_outline</mat-icon>
+              </div>
+              <div class="form-conteudo">
+                  <label for="idplataforma">ID da plataforma<span>*</span></label>
+                  <input type="text"
+                  id="idplataforma"
+                  placeholder="Digite">
+                  <mat-icon class="icon-ajuda">help_outline</mat-icon>
+              </div>
+
+              <div class="form-conteudo-ebook">
+                <div class="form-conteudo-ebook-filho">
+                  <label for="nome-ebook">E-book Completo<span>*</span></label>
+                  <mat-radio-group>
+                    <mat-radio-button class="check-pdf" value="professor">Arquivo PDF</mat-radio-button>
+                    <p>ou</p>
+                    <mat-radio-button class="check-url" value="administrador">URL</mat-radio-button>
+                  </mat-radio-group>
+                  <mat-icon>help_outline</mat-icon>
+                </div>
+            </div>
+          </div>
+
+        <section class="container-options">
+          <div class="buttons">
+            <button  class="button-one">Cancelar</button>
+            <button class="button-two">
+                Confirmar
+            </button>
+          </div>
+        </section>
+      </form>
+</div>
+
+
+  <!-- <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
     <div>
-      <label for="nome_modulo">Nome do Módulo:</label>
+      <label for="nome_modulo">Nome do Módulo <span>*</span></label>
       <input id="nome_modulo" formControlName="nome_modulo" (input)="gerarUrlAmigavel()" />
     </div>
     <div>
-      <label for="nome_url">URL do Módulo:</label>
+      <label for="nome_url">URL do Vídeo inicial <span>*</span></label>
       <input id="nome_url" formControlName="nome_url" readonly />
     </div>
     <div>
-      <label for="ebookUrlGeral">Ebook URL Geral:</label>
+      <label for="ebookUrlGeral">ID da Plataforma <span>*</span></label>
       <input id="ebookUrlGeral" formControlName="ebookUrlGeral" />
     </div>
     <div>
-      <label for="video_inicial">Vídeo Inicial:</label>
-      <input id="video_inicial" formControlName="video_inicial" />
+      <label for="video_inicial">E-book Completo <span>*</span></label>
+      <mat-radio-group>
+        <mat-radio-button class="check-professor" value="professor">Arquivo PDF</mat-radio-button>
+        <p>ou</p>
+        <mat-radio-button class="check-administrador" value="administrador">URL</mat-radio-button>
+      </mat-radio-group>
     </div>
+    <section class="buttons-options">
+      <div class="buttons">
+        <button>Cancelar</button>
+        <button>Confimar</button>
+      </div>
+    </section>
     <button type="submit" [disabled]="moduloForm.invalid">Salvar</button>
   </form>
-</div>
+</div> -->
