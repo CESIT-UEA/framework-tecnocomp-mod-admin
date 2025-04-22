@@ -1,5 +1,51 @@
-<app-header-voltar texto="Cadastrar Plataforma"></app-header-voltar>
-<div class="container-pagina">
+
+<div class="box">
+  <app-header-voltar texto="Cadastrar Plataforma"></app-header-voltar>
+  <div class="container">
+    <div class="cadastro-plataforma-container">
+      <h2>Formulário de Cadastro de Plataforma</h2>
+      <mat-divider></mat-divider>
+    </div>
+    <p class="texto">* Indica uma pergunta obrigatória</p>
+      <form id="form" class="form">
+          <div class="campos">
+              <div class="form-conteudo">
+                  <label for="nome-plataforma">Nome módulo<span>*</span></label>
+                  <input type="text"
+                  id="nome"
+                  placeholder="Digite nome do tópico">
+              </div>
+
+              <div class="form-conteudo">
+                  <label for="urlPlataforma">URL da Plataforma<span>*</span></label>
+                  <input type="url"
+                  id="urlPlataforma"
+                  placeholder="Digite URL do slide">
+                  <mat-icon class="icon-ajuda">help_outline</mat-icon>
+              </div>
+              <div class="form-conteudo">
+                  <label for="idCliente">ID do Cliente <span>*</span></label>
+                  <input type="text"
+                  id="idCliente"
+                  placeholder="Digite">
+                  <mat-icon class="icon-ajuda">help_outline</mat-icon>
+              </div>
+          </div>
+
+        <section class="container-options">
+          <div class="buttons">
+            <button  class="button-one">Cancelar</button>
+            <button class="button-two">
+                Confirmar
+            </button>
+          </div>
+        </section>
+      </form>
+</div>
+
+
+
+<!-- <div class="container-pagina">
   <main class="section">
     <div class="section-titulo">
       <h1>Cadastro de Plataforma</h1>
@@ -64,4 +110,4 @@
       </div>
     </form>
   </main>
-</div>
+</div> -->

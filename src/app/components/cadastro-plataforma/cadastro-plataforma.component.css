@@ -1,4 +1,185 @@
-.container-pagina {
+
+
+.box{
+  height: 100vh;
+  color: #FFFFFF;
+  background-color: #131313;
+}
+
+span {
+  color:#fa7878
+}
+
+.titulo{
+  height: 10%;
+}
+
+.container {
+  border-radius: 15px;
+  border: 1px solid #404040;
+  background: #2b2a2e;
+  border-top: 5px solid #864FD9;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding: 40px 50px;
+  margin-top: 50px;
+  width: 62%;
+}
+
+.cadastro-plataforma-container {
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.titulo-formulario h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.texto {
+  color:#fa7878;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.form-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+}
+
+.form-conteudo label {
+  width: 20%;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+
+}
+
+.form-conteudo input {
+  background-color: #38383A;
+  border: 1px solid #38383A;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  padding: 0 8px;
+  height: 40px;
+  width: 100%;
+}
+
+.icon-ajuda {
+  position: absolute;
+  right: 1%;
+  padding: 10px;
+}
+
+.div-icon-ajuda {
+  position: absolute;
+  right: 40%;
+}
+
+.form-conteudo-ebook mat-radio-group, .form-conteudo-ebook-filho{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+}
+
+.form-conteudo-ebook label {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  background-color: #2B2A2E;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 45px;
+  margin-bottom: 10px;
+  gap: 20px;
+  width: 100%;
+  height: 40px;
+}
+
+.button-one {
+  background-color: transparent;
+  border: 1px solid #9A9A9A;
+  color: #FFFFFF;
+  width: 162px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 6px 17px 6px 17px;
+  cursor: pointer;
+}
+
+.button-two {
+  border: none;
+  background-color: #864FD9;
+  color: #FFFFFF;
+  width: 162px;
+  height: 40px;
+  padding: 6px 17px 6px 17px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+ mat-divider {
+  background-color: #48464D;
+  height: 2px;
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+
+.button-one, .button-two{
+    width: 162px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.button-one{
+    background-color: transparent;
+    border: 1px solid #9A9A9A;
+}
+
+.button-two{
+    border: none;
+    background-color: #864FD9;
+    color: #FFFFFF;
+}
+
+.button-disabled {
+    background-color: #715c91c5;
+}
+
+.validators, .obrigatorio{
+    color: #BF0A0A;
+    font-size: 12px;
+}
+
+.cadastroError{
+    text-align: center;
+}
+
+
+
+
+
+
+/* .container-pagina {
   background-color: #131313;
   min-height: 80%;
   padding: 30px 0;
@@ -90,4 +271,4 @@ mat-divider {
   height: 2px;
   margin-bottom: 5px;
   margin-top: 5px;
-}
+} */
