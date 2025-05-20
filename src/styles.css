@@ -22,7 +22,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex-direction: column;
   align-items: center;
 }
-
+.mdc-label{
+  color: white;
+}
+.mat-mdc-radio-button.mat-accent{
+  --mdc-radio-selected-icon-color: #864FD9;
+  --mdc-radio-selected-focus-icon-color: #864FD9;
+  --mdc-radio-selected-hover-icon-color: #864FD9;
+  --mdc-radio-selected-pressed-icon-color: #864FD9;
+  --mat-radio-checked-ripple-color: #864FD9;
+}
 .logo img{
   width: 159.091px;
   height: 50px;
@@ -31,3 +40,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .logo h3{
   width: fit-content;
 }
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle{
+  border-color: white !important;
+}
+

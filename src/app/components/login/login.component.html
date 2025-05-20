@@ -4,7 +4,7 @@
       <img src="../../../assets/logo.png" alt="logo">
       <h3>Login</h3>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container-formulario" #formDir="ngForm">
+    <form [formGroup]="loginForm" class="container-formulario" #formDir="ngForm">
       <div class="campo-formulario" (click)="focusClick()">
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" class="input" placeholder="example@gmail.com">
@@ -18,7 +18,7 @@
           </button>
         </div>
       </div>
-      <button style="cursor: pointer;" type="submit" class="button">Entrar</button>
+      <button style="cursor: pointer;" type="submit" class="button" (click)="onSubmit()">Entrar</button>
       <div class="campo-formulario" *ngIf="(email.invalid || senha.invalid) && formDir.submitted">
         <p class="campo-formulario invalid" *ngIf="email.errors?.['email'] && !senha.errors?.['required'] && !email.errors?.['required']">Email inválido!</p>
         <p class="campo-formulario invalid" *ngIf="email.errors?.['required'] || senha.errors?.['required']">Preencha todos os campos!</p>
