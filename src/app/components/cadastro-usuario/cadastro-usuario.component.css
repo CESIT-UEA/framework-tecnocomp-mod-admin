@@ -165,3 +165,32 @@ span {
 }
 
 
+.button-one, .button-two{
+    width: 115px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.button-one{
+    background-color: transparent;
+    border: 1px solid #9A9A9A;
+}
+
+.button-two{
+    border: none;
+    background-color: #864FD9;
+    color: #FFFFFF;
+}
+
+.button-disabled {
+    background-color: #715c91c5;
+}
+
+.validators, .obrigatorio{
+    color: #BF0A0A;
+    font-size: 12px;
+}
+
+.cadastroError{
+    text-align: center;
+}

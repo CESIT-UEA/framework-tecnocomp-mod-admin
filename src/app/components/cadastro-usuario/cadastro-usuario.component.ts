@@ -2,7 +2,7 @@ import { ApiAdmService } from './../../services/api-adm.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { senhaForte } from '../validators/validators';
+import { noOnlyWhitespace, senhaForte } from '../validators/validators';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -12,18 +12,26 @@ import { senhaForte } from '../validators/validators';
 export class CadastroUsuarioComponent {
   validators: boolean = false;
   errorCadastro: boolean = false;
-  hide = true;
+  buttonDisabled = true;
+  hide = false;
 
   cadastroForm = new FormGroup({
-    nome: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(13)]),
-    senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte()]),
+    nome: new FormControl('', [Validators.required, Validators.minLength(10), noOnlyWhitespace()]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(13), noOnlyWhitespace()]),
+    senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
     tipo: new FormControl('adm', Validators.required)
   });
 
   constructor(private apiService: ApiAdmService, private router: Router) {
       this.cadastroForm.valueChanges.subscribe(()=>{
           this.errorCadastro = false
+
+          const form = this.cadastroForm.value
+          if (form.nome?.trim().length != 0 && form.email?.trim().length != 0 && form.senha?.trim().length != 0){
+            this.buttonDisabled = false
+          }else{
+            this.buttonDisabled = true
+          }
       })
   }
 

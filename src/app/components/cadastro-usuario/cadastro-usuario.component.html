@@ -55,11 +55,19 @@
             </mat-radio-group>
           </div>
         </div>
-
-        <div class="botoes">
-            <button class="botao-cancelar">Limpar</button>
-            <button class="botao-confirmar">Confirmar</button>
+      <section class="container-options">
+        <div class="buttons">
+          <button (click)="home()" class="button-one">Cancelar</button>
+          <button
+              type="submit"
+              class="button-two"
+              [disabled]="this.buttonDisabled"
+              [ngClass]="{'button-disabled': this.buttonDisabled}"
+            >
+              Confirmar
+          </button>
         </div>
+      </section>
     </form>
   </div>
 </div>

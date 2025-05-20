@@ -15,3 +15,12 @@ export function senhaForte(): ValidatorFn{
         return !senhaValida ? { senhaForte: true } : null;
     }
 }
+
+export function noOnlyWhitespace(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+        if (control.value && control.value.trim().length === 0) {
+            return { noOnlyWhitespace: true }; // Retorna erro se for só espaços em branco
+          }
+          return null; // Válido se contiver caracteres visíveis
+    }
+}

@@ -1,21 +1,24 @@
 <div class="box">
-  <h1 class="titulo">Bem vindo de volta!</h1>
   <section class="container">
     <div class="logo">
       <img src="../../../assets/logo.png" alt="logo">
       <h3>Login</h3>
     </div>
-    <p class="text">Insira seus dados abaixo para criar conta e começar</p>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container-formulario" #formDir="ngForm">
-      <div class="campo-formulario">
+    <form [formGroup]="loginForm" class="container-formulario" #formDir="ngForm">
+      <div class="campo-formulario" (click)="focusClick()">
         <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" class="input" placeholder="Example@gmail.com">
+        <input id="email" type="email" formControlName="email" class="input" placeholder="example@gmail.com">
       </div>
-      <div class="campo-formulario">
+      <div class="campo-formulario"  (click)="focusClick(true)">
         <label for="senha">Senha</label>
-        <input id="senha" type="password" formControlName="senha" class="input" placeholder="Digite...">
+        <div class="campo-formulario-envolve" [ngClass]="{'ativado':focus}">
+          <input [type]="hide ? 'password' : 'text'" id="senha" type="password" formControlName="senha" class="input-senha" placeholder="Digite a sua senha">
+          <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </div>
       </div>
-      <button style="cursor: pointer;" type="submit" class="button">Entrar</button>
+      <button style="cursor: pointer;" type="submit" class="button" (click)="onSubmit()">Entrar</button>
       <div class="campo-formulario" *ngIf="(email.invalid || senha.invalid) && formDir.submitted">
         <p class="campo-formulario invalid" *ngIf="email.errors?.['email'] && !senha.errors?.['required'] && !email.errors?.['required']">Email inválido!</p>
         <p class="campo-formulario invalid" *ngIf="email.errors?.['required'] || senha.errors?.['required']">Preencha todos os campos!</p>
