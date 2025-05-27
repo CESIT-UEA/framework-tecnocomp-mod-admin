@@ -20,9 +20,11 @@ import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page
 import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'criar-conta', component: CriarContaComponent},
   {
     path: '',
     component: LayoutMenuComponent, // Layout principal com menu lateral

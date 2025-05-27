@@ -32,6 +32,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --mdc-radio-selected-pressed-icon-color: #864FD9;
   --mat-radio-checked-ripple-color: #864FD9;
 }
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+  background-color: transparent !important;
+  border-color: #ffff !important;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
+  border-color: #ffff !important;
+}
+
+
 .logo img{
   width: 159.091px;
   height: 50px;
@@ -44,3 +55,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-color: white !important;
 }
 
+.mat-accent {
+    --mat-option-selected-state-label-text-color: transparent !important;
+    --mdc-checkbox-selected-focus-state-layer-color: transparent !important;
+    --mdc-checkbox-selected-focus-state-layer-color: transparent !important;
+    --mdc-checkbox-selected-hover-state-layer-color: transparent !important;
+    --mdc-checkbox-selected-pressed-state-layer-color: transparent !important;
+    --mdc-checkbox-selected-focus-icon-color: transparent !important;
+    --mdc-checkbox-selected-hover-icon-color: transparent !important;
+    --mdc-checkbox-selected-icon-color: transparent !important ;
+    --mdc-checkbox-selected-pressed-icon-color: transparent !important;
+}
