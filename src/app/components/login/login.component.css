@@ -1,4 +1,140 @@
-.box {
+.cadastro-container {
+  height: 100vh;
+  color: white;
+  font-family:  Inter;
+  background: linear-gradient(167deg, rgba(61, 34, 102, 0.70) 3.02%, rgba(34, 25, 72, 0.42) 24.84%, rgba(16, 19, 53, 0.24) 54.42%, rgba(11, 20, 69, 0.37) 77.21%, rgba(34, 45, 102, 0.70) 100%), #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.cadastro-esquerda {
+  margin: 0 auto;
+}
+
+.cadastro-direita {
+  height: 100%;
+}
+
+.img-cadastro {
+  height: 100%;
+}
+
+h2{
+  font-family: Arial;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+p {
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.texto-cadastro{
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+  color: #C3A1F5;
+  margin: 20px 0;
+}
+
+.card-cadastro {
+  display: flex;
+  width: 540px;
+  height: 468px;
+  padding: 40px;
+  flex-direction: column;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.10);
+  margin:0 auto;
+}
+
+.cadastro-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 0;
+}
+
+.cadastro-conteudo label {
+  color: white;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 6px 0;
+}
+
+.cadastro-conteudo input {
+  background-color: #38383A;
+  border: 1px solid #38383A;
+  border-radius: 6px;
+  color: white;
+  padding: 0 15px;
+  height: 40px;
+  width: 90%;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.botao-cadastrar {
+  background-color: #793CD4;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  width: 96%;
+  height: 40px;
+  margin: 5px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: 700;
+}
+
+.senha-grupo{
+  display: flex;
+}
+
+.senha-grupo input{
+  width: 216px;
+  padding: 0 15px;
+  margin-right: 20px;
+}
+
+
+.campo-senha-envolve{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon {
+  border: none;
+  background-color: transparent;
+  color: #B68EF3;
+  cursor: pointer;
+  position: absolute;
+  right: 4%;
+  padding: 18px;
+}
+
+.criar-conta {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 700;
+  color: #C3A1F5;
+}
+/* .box {
   height: 100vh;
   background-color: #131313;
   display: flex;
@@ -99,4 +235,4 @@ input:focus {
 }
 .ativado{
   border: 2px solid #B68EF3;
-}
+} */

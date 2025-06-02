@@ -1,4 +1,68 @@
-<div class="box">
+<div class="cadastro-container">
+  <div class="cadastro-esquerda">
+    <div class="card-cadastro">
+      <h2>Cadastre-se</h2>
+      <p class="texto-cadastro">Insira seus dados abaixo para cirar sua conta.</p>
+
+      <form id="form" class="forms">
+        <div class="cadastro-conteudo">
+          <label for="idnome">Nome</label>
+          <input type="text" id="idnome" placeholder="Digite seu nome completo">
+        </div>
+
+        <div class="cadastro-conteudo">
+          <label for="idemail">Email</label>
+          <input type="text" id="idemail" placeholder="Digite seu email">
+        </div>
+
+
+       <div class="senha-grupo">
+          <div class="cadastro-conteudo">
+            <label for="idsenha">Senha</label>
+            <div class="campo-senha-envolve">
+              <input  [type]="hide ? 'password' : 'text'" id="senha" type="password" formControlName="senha" class="input-senha" placeholder="Digite a sua senha">
+              <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon class="icon-eye">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </div>
+          </div>
+
+        <div class="cadastro-conteudo">
+          <label for="iconfirmar">Confirmar Senha</label>
+          <input type="password" id="iconfirmar" placeholder="Confirme sua senha">
+        </div>
+       </div>
+
+        <div class="cadastro-conteudo">
+          <button class="botao-cadastrar">Cadastrar</button>
+        </div>
+
+
+          <div class="criar-conta">
+            <p class="texto-conta">Já tem uma conta?</p>
+            <a href="">Entrar</a>
+          </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="cadastro-direita">
+    <img src="../../../assets/imgs/Capa de login (1).svg" alt="Capa de login" class="img-cadastro">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="box">
   <section class="container">
     <div class="logo">
       <img src="../../../assets/logo.png" alt="logo">
@@ -26,5 +90,5 @@
       <p class="campo-formulario invalid" *ngIf="errorLogin">Email ou senha incorretos!</p>
     </form>
   </section>
-</div>
+</div> -->
 
