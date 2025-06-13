@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>
+  {{ data?.descricao ? 'Editar Vantagem' : 'Adicionar Vantagem' }}
+</h2>
+
+<mat-dialog-content>
+  <mat-form-field >
+    <mat-label>Descrição</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="descricao"
+      placeholder="Digite a descrição da vantagem"
+    ></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+</mat-dialog-actions>

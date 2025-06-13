@@ -48,6 +48,19 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { GerenciarFichaTecnicaComponent } from './components/gerenciar-ficha-tecnica/gerenciar-ficha-tecnica.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { DialogCriarEquipeComponent } from './components/dialog-criar-equipe/dialog-criar-equipe.component';
+import { DialogConfirmarRemocaoComponent } from './components/dialog-confirmar-remocao/dialog-confirmar-remocao.component';
+import { DialogCriarMembroComponent } from './components/dialog-criar-membro/dialog-criar-membro.component';
+import { GerenciarVantagensComponent } from './components/gerenciar-vantagens/gerenciar-vantagens.component';
+import { DialogCriarVantagemComponent } from './components/dialog-criar-vantagem/dialog-criar-vantagem.component';
+import { GerenciarReferenciasComponent } from './components/gerenciar-referencias/gerenciar-referencias.component';
+import { DialogCriarReferenciaComponent } from './components/dialog-criar-referencia/dialog-criar-referencia.component';
+import { TemplatesComponent } from './components/templates/templates.component';
+import { MeusModulosComponent } from './components/meus-modulos/meus-modulos.component';
+import { MinhasPlataformasComponent } from './components/minhas-plataformas/minhas-plataformas.component';
+import { CardsTemplateComponent } from './components/cards-template/cards-template.component';
 
 
 @NgModule({
@@ -80,7 +93,19 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CardsPlataformasComponent,
     EditarPlataformaComponent,
     MeuPerfilPageComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    GerenciarFichaTecnicaComponent,
+    DialogCriarEquipeComponent,
+    DialogConfirmarRemocaoComponent,
+    DialogCriarMembroComponent,
+    GerenciarVantagensComponent,
+    DialogCriarVantagemComponent,
+    GerenciarReferenciasComponent,
+    DialogCriarReferenciaComponent,
+    TemplatesComponent,
+    MeusModulosComponent,
+    MinhasPlataformasComponent,
+    CardsTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +129,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCheckboxModule,
     MatRadioModule,
     MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
