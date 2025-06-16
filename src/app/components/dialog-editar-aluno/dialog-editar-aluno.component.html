@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Editar Aluno</h2>
+
+<mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nota</mat-label>
+    <input matInput type="number" [(ngModel)]="nota" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Progresso (%)</mat-label>
+    <input matInput type="number" [(ngModel)]="progresso" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Avaliação</mat-label>
+    <input matInput type="number" [(ngModel)]="avaliacao" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Comentário</mat-label>
+    <textarea matInput [(ngModel)]="comentario"></textarea>
+  </mat-form-field>
+
+  <mat-slide-toggle [(ngModel)]="ativo">Ativo</mat-slide-toggle>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+</mat-dialog-actions>

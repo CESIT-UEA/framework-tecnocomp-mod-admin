@@ -7,11 +7,15 @@ import { User } from 'src/interfaces/user';
 import { catchError, map, switchMap, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-    private apiUrl = environment.baseUrl;
-  constructor(private apiService: ApiAdmService, private router: Router,private http: HttpClient) {}
+  private apiUrl = environment.baseUrl;
+  constructor(
+    private apiService: ApiAdmService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   setUsuario(usuario: User): void {
     localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -19,12 +23,12 @@ export class AuthService {
 
   getUsuarioId(): number {
     const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
-    console.log(usuario)
-    console.log(usuario.id)
+    console.log(usuario);
+    console.log(usuario.id);
     return usuario.id;
   }
 
-  getUsuarioDados(): User{
+  getUsuarioDados(): User {
     const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
     return usuario;
   }
@@ -38,7 +42,6 @@ export class AuthService {
       tipo: payload.tipo,
     } as User;
   }
-
 
   login(email: string, senha: string) {
     return this.http.post(`${this.apiUrl}/auth/login`, { email, senha }).pipe(
@@ -68,18 +71,20 @@ export class AuthService {
 
   refreshAccessToken() {
     const refreshToken = this.getRefreshToken();
-    return this.http.post(`${this.apiUrl}/auth/refresh-token`, { refreshToken }).pipe(
-      switchMap((response: any) => {
-        this.setToken(response.accessToken);
-        return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401 || error.status === 403) {
-          this.logout();
-        }
-        return throwError(() => error);
-      })
-    );
+    return this.http
+      .post(`${this.apiUrl}/auth/refresh-token`, { refreshToken })
+      .pipe(
+        switchMap((response: any) => {
+          this.setToken(response.accessToken);
+          return response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 401 || error.status === 403) {
+            this.logout();
+          }
+          return throwError(() => error);
+        })
+      );
   }
 
   logout() {
@@ -92,4 +97,16 @@ export class AuthService {
     return this.getToken() !== null;
   }
 
+  isAdmin(): boolean {
+    return this.getUsuarioDados()?.tipo === 'adm';
+  }
+
+  isProfessor(): boolean {
+    return this.getUsuarioDados()?.tipo === 'professor';
+  }
+
+  hasRole(roles: string[]): boolean {
+    const tipo = this.getUsuarioDados()?.tipo;
+    return roles.includes(tipo);
+  }
 }

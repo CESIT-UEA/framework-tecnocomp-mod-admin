@@ -10,8 +10,15 @@
         formControlName="plataformaNome"
         placeholder="Digite o nome da plataforma"
       />
-      <div *ngIf="plataformaForm.get('plataformaNome')?.invalid && plataformaForm.get('plataformaNome')?.touched">
-        <small class="error">Nome é obrigatório e deve ter pelo menos 3 caracteres.</small>
+      <div
+        *ngIf="
+          plataformaForm.get('plataformaNome')?.invalid &&
+          plataformaForm.get('plataformaNome')?.touched
+        "
+      >
+        <small class="error"
+          >Nome é obrigatório e deve ter pelo menos 3 caracteres.</small
+        >
       </div>
     </div>
 
@@ -23,7 +30,12 @@
         formControlName="plataformaUrl"
         placeholder="https://"
       />
-      <div *ngIf="plataformaForm.get('plataformaUrl')?.invalid && plataformaForm.get('plataformaUrl')?.touched">
+      <div
+        *ngIf="
+          plataformaForm.get('plataformaUrl')?.invalid &&
+          plataformaForm.get('plataformaUrl')?.touched
+        "
+      >
         <small class="error">URL é obrigatória e deve ser válida.</small>
       </div>
     </div>
@@ -36,11 +48,51 @@
         formControlName="idCliente"
         placeholder="Digite o ID do cliente"
       />
-      <div *ngIf="plataformaForm.get('idCliente')?.invalid && plataformaForm.get('idCliente')?.touched">
+      <div
+        *ngIf="
+          plataformaForm.get('idCliente')?.invalid &&
+          plataformaForm.get('idCliente')?.touched
+        "
+      >
         <small class="error">ID do cliente é obrigatório.</small>
       </div>
     </div>
+    <div class="form-group">
+      <label for="temaTipo">Tema Visual:</label>
+      <select id="temaTipo" formControlName="temaTipo">
+        <option value="padrao">Padrão</option>
+        <option value="tema1">Tema 1</option>
+        <option value="tema2">Tema 2</option>
+        <option value="customizado">Personalizado</option>
+      </select>
+    </div>
 
-    <button type="submit" [disabled]="plataformaForm.invalid">Salvar Alterações</button>
+    <div
+      *ngIf="plataformaForm.get('temaTipo')?.value === 'customizado'"
+      class="form-group"
+    >
+      <label>Cores Personalizadas:</label>
+      <input type="color" formControlName="customPrimaria" title="Primária" />
+      <input
+        type="color"
+        formControlName="customSecundaria"
+        title="Secundária"
+      />
+      <input type="color" formControlName="customTerciaria" title="Terciária" />
+      <input
+        type="color"
+        formControlName="customQuartenaria"
+        title="Quartenária"
+      />
+      <input
+        type="color"
+        formControlName="customQuintenaria"
+        title="Quintenária"
+      />
+    </div>
+
+    <button type="submit" [disabled]="plataformaForm.invalid">
+      Salvar Alterações
+    </button>
   </form>
 </div>

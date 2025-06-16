@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{ isEditando ? 'Editar Membro' : 'Novo Membro' }}</h2>
+
+<mat-dialog-content>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="nome" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <mat-label>Cargo</mat-label>
+    <input matInput [(ngModel)]="cargo" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <mat-label>URL da Foto (opcional)</mat-label>
+    <input matInput [(ngModel)]="foto_url" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="confirmar()" [disabled]="!nome.trim() || !cargo.trim()">
+    {{ isEditando ? 'Salvar' : 'Adicionar' }}
+  </button>
+</mat-dialog-actions>

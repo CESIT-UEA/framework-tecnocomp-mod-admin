@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Nova Equipe</h2>
+
+<mat-dialog-content>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Nome da Equipe</mat-label>
+    <input matInput [(ngModel)]="nome" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="confirmar()" [disabled]="!nome.trim()">
+    Criar
+  </button>
+</mat-dialog-actions>
