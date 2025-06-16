@@ -52,7 +52,7 @@ export class AlunoGerenciamentoService {
     dados: Partial<AlunoModulo>
   ): Observable<AlunoModulo> {
     return this.http.put<AlunoModulo>(
-      `http://localhost:3001/api/modulos/alunos/${id}`,
+      `${this.apiUrl}modulos/alunos/${id}`,
       dados
     );
   }
