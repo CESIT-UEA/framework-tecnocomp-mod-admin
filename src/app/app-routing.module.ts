@@ -27,6 +27,15 @@ import { GerenciarReferenciasComponent } from './components/gerenciar-referencia
 import { roleGuard } from './auth/role.guard';
 import { MinhasPlataformasComponent } from './components/minhas-plataformas/minhas-plataformas.component';
 import { TemplatesComponent } from './components/templates/templates.component';
+import { ModuloComponent } from './pages/ver-ao-vivo/modulo/modulo.component';
+import { SobreComponent } from './pages/ver-ao-vivo/sobre/sobre.component';
+import { FichaTecnicaComponent } from './pages/ver-ao-vivo/ficha-tecnica/ficha-tecnica.component';
+import { TopicoComponent } from './pages/ver-ao-vivo/topico/topico.component';
+import { ReferenciasComponent } from './pages/ver-ao-vivo/referencias/referencias.component';
+import { SaibaMaisComponent } from './pages/ver-ao-vivo/saiba-mais/saiba-mais.component';
+import { SlideComponent } from './pages/ver-ao-vivo/slide/slide.component';
+import { AtividadeComponent } from './pages/ver-ao-vivo/atividade/atividade.component';
+import { GerenciarAlunosComponent } from './components/gerenciar-alunos/gerenciar-alunos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -105,6 +114,10 @@ const routes: Routes = [
     component: GerenciarVantagensComponent,
   },
   {
+    path: 'modulos/:id/gerenciar-alunos',
+    component: GerenciarAlunosComponent,
+  },
+  {
     path: 'modulos/:id/gerenciar-referencias',
     component: GerenciarReferenciasComponent,
   },
@@ -112,6 +125,21 @@ const routes: Routes = [
   { path: 'editar-modulo/:id', component: EditarModuloComponent },
   { path: 'cadastrar-topico', component: CadastroTopicoComponent },
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent },
+    {
+    path: 'ver-ao-vivo',
+    children: [
+
+      { path: ':id_modulo', component: ModuloComponent },
+      { path: ':id_modulo/sobre', component: SobreComponent },
+      { path: ':id_modulo/ficha-tecnica', component: FichaTecnicaComponent },
+      { path: ':id_modulo/topicos', component: TopicoComponent },
+      { path: ':id_modulo/topicos/referencias', component: ReferenciasComponent },
+      { path: ':id_modulo/topicos/saiba-mais', component: SaibaMaisComponent },
+      { path: ':id_modulo/topicos/slide', component: SlideComponent },
+      { path: ':id_modulo/topicos/exercicios', component: AtividadeComponent },
+      { path: '**', redirectTo: ':id_modulo' },
+    ],
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

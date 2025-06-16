@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-modulo-unico',
   templateUrl: './modulo-unico.component.html',
-  styleUrls: ['./modulo-unico.component.css']
+  styleUrls: ['./modulo-unico.component.css'],
 })
 export class ModuloUnicoComponent implements OnInit {
   modulo!: Modulo | null;
@@ -25,18 +25,21 @@ export class ModuloUnicoComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      console.log('Teste');
       this.carregarModulo(+id);
       this.carregarTopicos(+id);
     }
-    if(this.modulo?.id != null){
-      this.idModulo = this.modulo.id
+    if (this.modulo?.id != null) {
+      this.idModulo = this.modulo.id;
     }
-
   }
 
   carregarModulo(id: number): void {
     this.apiService.obterModuloPorId(id).subscribe(
-      (response) => (this.modulo = response),
+      (response) => {
+        this.modulo = response;
+        console.log(response)
+      },
       (error) => {
         console.error('Erro ao carregar módulo:', error);
         this.router.navigate(['/modulos']);
@@ -47,7 +50,7 @@ export class ModuloUnicoComponent implements OnInit {
   carregarTopicos(moduloId: number): void {
     this.apiService.obterTopicoCompleto(moduloId).subscribe(
       (response) => {
-        console.log(response)
+        console.log(response);
         this.topicos = response.map((topico) => ({
           ...topico,
           videoUrls: [],
@@ -61,9 +64,16 @@ export class ModuloUnicoComponent implements OnInit {
           if (topico.id != null) {
             this.apiService.obterTopicoCompleto(topico.id).subscribe(
               (topicoCompleto) => {
-                this.topicos[index] = { ...this.topicos[index], ...topicoCompleto };
+                this.topicos[index] = {
+                  ...this.topicos[index],
+                  ...topicoCompleto,
+                };
               },
-              (error) => console.error('Erro ao carregar dados completos do tópico:', error)
+              (error) =>
+                console.error(
+                  'Erro ao carregar dados completos do tópico:',
+                  error
+                )
             );
           }
         });
@@ -71,7 +81,6 @@ export class ModuloUnicoComponent implements OnInit {
       (error) => console.error('Erro ao carregar tópicos:', error)
     );
   }
-
 
   cadastrarTopico(): void {
     this.router.navigate(['/modulos', this.modulo?.id, 'cadastrar-topico']);
@@ -81,18 +90,22 @@ export class ModuloUnicoComponent implements OnInit {
     if (this.modulo) {
       const novoStatus = !this.modulo.publicado;
       if (this.modulo.id != null) {
-        this.apiService.alterarStatusPublicacao(this.modulo.id, novoStatus).subscribe(
-          (moduloAtualizado) => {
-            this.modulo = moduloAtualizado; // Atualiza o estado do módulo
-            alert(
-              `O módulo foi ${novoStatus ? 'publicado' : 'despublicado'} com sucesso!`
-            );
-          },
-          (error) => {
-            console.error('Erro ao alterar status de publicação:', error);
-            alert('Erro ao alterar status de publicação!');
-          }
-        );
+        this.apiService
+          .alterarStatusPublicacao(this.modulo.id, novoStatus)
+          .subscribe(
+            (moduloAtualizado) => {
+              this.modulo = moduloAtualizado; // Atualiza o estado do módulo
+              alert(
+                `O módulo foi ${
+                  novoStatus ? 'publicado' : 'despublicado'
+                } com sucesso!`
+              );
+            },
+            (error) => {
+              console.error('Erro ao alterar status de publicação:', error);
+              alert('Erro ao alterar status de publicação!');
+            }
+          );
       }
     }
   }
@@ -101,24 +114,39 @@ export class ModuloUnicoComponent implements OnInit {
     if (this.modulo) {
       const novoStatus = !this.modulo.template;
       if (this.modulo.id != null) {
-        this.apiService.alterarTemplateModulo(this.modulo.id, novoStatus).subscribe(
-          (moduloAtualizado) => {
-            this.modulo = moduloAtualizado;
-            alert(
-              `O módulo foi ${novoStatus ? 'template' : 'não template'} com sucesso!`
-            );
-          },
-          (error) => {
-            console.error('Erro ao alterar o estado de template do modulo:', error);
-            alert('Erro ao alterar o estado de template do modulo!');
-          }
-        );
+        this.apiService
+          .alterarTemplateModulo(this.modulo.id, novoStatus)
+          .subscribe(
+            (moduloAtualizado) => {
+              this.modulo = moduloAtualizado;
+              alert(
+                `O módulo foi ${
+                  novoStatus ? 'template' : 'não template'
+                } com sucesso!`
+              );
+            },
+            (error) => {
+              console.error(
+                'Erro ao alterar o estado de template do modulo:',
+                error
+              );
+              alert('Erro ao alterar o estado de template do modulo!');
+            }
+          );
       }
     }
   }
 
-  excluirTopico({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
-    console.log("ok2")
+  excluirTopico({
+    idAdm,
+    senhaAdm,
+    idExcluir,
+  }: {
+    idAdm: number;
+    senhaAdm: string;
+    idExcluir: number;
+  }) {
+    console.log('ok2');
     this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(
       () => {
         alert('Tópico excluído com sucesso!');
@@ -140,13 +168,16 @@ export class ModuloUnicoComponent implements OnInit {
   }
   copiarUUID() {
     if (!this.modulo?.uuid) {
-      this.apiService.message("Falha ao copiar, UUID é nulo");
-      return
+      this.apiService.message('Falha ao copiar, UUID é nulo');
+      return;
     }
 
     const textoParaCopiar = `uuid=${this.modulo.uuid}`;
-    navigator.clipboard.writeText(textoParaCopiar).then(() => {
-      this.apiService.message("UUID copiado com sucesso!");
-    }).catch(err => console.error('Erro ao copiar UUID:', err));
+    navigator.clipboard
+      .writeText(textoParaCopiar)
+      .then(() => {
+        this.apiService.message('UUID copiado com sucesso!');
+      })
+      .catch((err) => console.error('Erro ao copiar UUID:', err));
   }
 }

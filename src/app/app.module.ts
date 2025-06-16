@@ -11,22 +11,22 @@ import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro
 import { CadastroPlataformaComponent } from './components/cadastro-plataforma/cadastro-plataforma.component';
 import { CadastroModuloComponent } from './components/cadastro-modulo/cadastro-modulo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatInputModule} from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { CardsCadastroComponent } from './components/cards/cards-cadastro/cards-cadastro.component';
 import { CadastrosPageComponent } from './pages/cadastros-page/cadastros-page.component';
 import { LayoutMenuComponent } from './pages/layout-menu/layout-menu.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { UsuariosPageComponent } from './pages/usuarios-page/usuarios-page.component';
 import { TituloSecaoComponent } from './components/titulo-secao/titulo-secao.component';
 import { CardsUsuariosComponent } from './components/cards/cards-usuarios/cards-usuarios.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmacaoExclusaoComponent } from './components/confirmacao-exclusao/confirmacao-exclusao.component';
 import { RegistroModuloComponent } from './components/registro-modulo/registro-modulo.component';
 import { ModulosPageComponent } from './pages/modulos-page/modulos-page.component';
@@ -35,10 +35,10 @@ import { ModuloUnicoComponent } from './pages/modulo-unico/modulo-unico.componen
 import { CardTopicosComponent } from './components/cards/card-topicos/card-topicos.component';
 import { EditarModuloComponent } from './components/editar-modulo/editar-modulo.component';
 import { CadastroTopicoComponent } from './components/cadastro-topico/cadastro-topico.component';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { HeaderVoltarComponent } from './components/header-voltar/header-voltar.component';
 import { EditarTopicoComponent } from './components/editar-topico/editar-topico.component';
 import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page.component';
@@ -47,9 +47,9 @@ import { EditarPlataformaComponent } from './components/editar-plataforma/editar
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GerenciarFichaTecnicaComponent } from './components/gerenciar-ficha-tecnica/gerenciar-ficha-tecnica.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { DialogCriarEquipeComponent } from './components/dialog-criar-equipe/dialog-criar-equipe.component';
 import { DialogConfirmarRemocaoComponent } from './components/dialog-confirmar-remocao/dialog-confirmar-remocao.component';
 import { DialogCriarMembroComponent } from './components/dialog-criar-membro/dialog-criar-membro.component';
@@ -61,7 +61,22 @@ import { TemplatesComponent } from './components/templates/templates.component';
 import { MeusModulosComponent } from './components/meus-modulos/meus-modulos.component';
 import { MinhasPlataformasComponent } from './components/minhas-plataformas/minhas-plataformas.component';
 import { CardsTemplateComponent } from './components/cards-template/cards-template.component';
-
+import { ModuloComponent } from './pages/ver-ao-vivo/modulo/modulo.component';
+import { SobreComponent } from './pages/ver-ao-vivo/sobre/sobre.component';
+import { FichaTecnicaComponent } from './pages/ver-ao-vivo/ficha-tecnica/ficha-tecnica.component';
+import { TopicoComponent } from './pages/ver-ao-vivo/topico/topico.component';
+import { ReferenciasComponent } from './pages/ver-ao-vivo/referencias/referencias.component';
+import { SaibaMaisComponent } from './pages/ver-ao-vivo/saiba-mais/saiba-mais.component';
+import { SlideComponent } from './pages/ver-ao-vivo/slide/slide.component';
+import { AtividadeComponent } from './pages/ver-ao-vivo/atividade/atividade.component';
+import { HeaderOficialComponent } from './pages/ver-ao-vivo/components/header-oficial/header-oficial.component';
+import { VideoBotoesSectionComponent } from './pages/ver-ao-vivo/components/video-botoes-section/video-botoes-section.component';
+import { InformacoesGeraisModuloComponent } from './pages/ver-ao-vivo/components/informacoes-gerais-modulo/informacoes-gerais-modulo.component';
+import { FooterFichaComponent } from './pages/ver-ao-vivo/components/footer-ficha/footer-ficha.component';
+import { GerenciarAlunosComponent } from './components/gerenciar-alunos/gerenciar-alunos.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DialogEditarAlunoComponent } from './components/dialog-editar-aluno/dialog-editar-aluno.component';
 
 @NgModule({
   declarations: [
@@ -105,9 +120,24 @@ import { CardsTemplateComponent } from './components/cards-template/cards-templa
     TemplatesComponent,
     MeusModulosComponent,
     MinhasPlataformasComponent,
-    CardsTemplateComponent
+    CardsTemplateComponent,
+    ModuloComponent,
+    SobreComponent,
+    FichaTecnicaComponent,
+    TopicoComponent,
+    ReferenciasComponent,
+    SaibaMaisComponent,
+    SlideComponent,
+    AtividadeComponent,
+    HeaderOficialComponent,
+    VideoBotoesSectionComponent,
+    InformacoesGeraisModuloComponent,
+    FooterFichaComponent,
+    GerenciarAlunosComponent,
+    DialogEditarAlunoComponent,
   ],
   imports: [
+    MatSlideToggleModule,
     BrowserModule,
     AppRoutingModule,
     AppRoutingModule,
@@ -129,13 +159,16 @@ import { CardsTemplateComponent } from './components/cards-template/cards-templa
     MatCheckboxModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule,
   ],
-  providers: [    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true,
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
