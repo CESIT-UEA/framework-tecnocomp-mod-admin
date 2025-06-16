@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 import { Equipe } from 'src/interfaces/modulo/Equipe';
 import { FichaTecnica } from 'src/interfaces/modulo/FichaTecnica';
 import { Membro } from 'src/interfaces/modulo/Membro';
@@ -10,7 +11,7 @@ import { Membro } from 'src/interfaces/modulo/Membro';
 })
 export class FichaTecnicaService {
 
-private baseUrl = 'http://localhost:3001/api'; // Ajuste conforme seu ambiente
+private baseUrl = environment.baseUrl + '/api/'; // Ajuste conforme seu ambiente
 
   constructor(private http: HttpClient) {}
 

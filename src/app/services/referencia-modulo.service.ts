@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 import { ReferenciaModulo } from 'src/interfaces/modulo/referencia-modulo.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReferenciaModuloService {
-  private apiUrl = 'http://localhost:3001/api/referencias-modulo';
+  private apiUrl = environment.baseUrl + '/api/referencias-modulo';
 
   constructor(private http: HttpClient) {}
 
