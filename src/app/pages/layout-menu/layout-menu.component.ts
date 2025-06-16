@@ -11,14 +11,13 @@ import { User } from 'src/interfaces/user';
   styleUrls: ['./layout-menu.component.css'],
 })
 export class LayoutMenuComponent implements OnInit {
-  @ViewChild('drawer') drawer!: MatDrawer;
+    @ViewChild('drawer') drawer!: MatDrawer;
   isDrawerOpen: boolean = true;
   currentPageTitle: string = '';
 
-  toggleDrawer() {
-    this.drawer.toggle();
-    this.isDrawerOpen = this.drawer.opened;
-  }
+  isAdmin: boolean = false;
+  isProfessor: boolean = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -26,6 +25,12 @@ export class LayoutMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const usuario = this.getUsuarioDados();
+    console.log(usuario);
+
+    this.isAdmin = usuario?.tipo === 'adm';
+    this.isProfessor = usuario?.tipo === 'professor';
+
     this.setPageTitle();
     this.router.events
       .pipe(
@@ -44,6 +49,11 @@ export class LayoutMenuComponent implements OnInit {
 
   getUsuarioDados(): User {
     return this.authService.getUsuarioDados();
+  }
+
+  toggleDrawer() {
+    this.drawer.toggle();
+    this.isDrawerOpen = this.drawer.opened;
   }
 
   private getCurrentRouteTitle(): string {

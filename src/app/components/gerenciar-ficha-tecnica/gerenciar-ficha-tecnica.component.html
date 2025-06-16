@@ -1,0 +1,77 @@
+<app-header-voltar texto="Gerenciar Ficha Técnica"></app-header-voltar>
+<div class="container" style="padding: 16px">
+
+  <div *ngIf="!fichaTecnica">
+    <p>Este módulo ainda não possui uma ficha técnica.</p>
+    <button mat-raised-button color="primary" (click)="criarFicha()">
+      Criar Ficha Técnica
+    </button>
+  </div>
+
+  <div *ngIf="fichaTecnica">
+    <div style="margin: 16px 0">
+      <button mat-stroked-button color="primary" (click)="adicionarEquipe()">
+        Adicionar Equipe
+      </button>
+    </div>
+
+    <mat-accordion multi>
+      <mat-expansion-panel
+        *ngFor="let equipe of equipes"
+        (opened)="carregarMembros(equipe.id)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ equipe.nome }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="margin-bottom: 8px">
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="adicionarMembro(equipe.id)"
+          >
+            Adicionar Membro
+          </button>
+        </div>
+
+        <div *ngIf="membrosPorEquipe[equipe.id]?.length; else semMembros">
+          <ul>
+            <li *ngFor="let membro of membrosPorEquipe[equipe.id]">
+              <img
+                *ngIf="membro.foto_url"
+                matListAvatar
+                [src]="membro.foto_url"
+                alt="Foto do membro"
+              />
+              <p class="text-muted">{{ membro.nome }} - {{ membro.cargo }}</p>
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="editarMembro(membro)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="removerMembro(membro)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #semMembros>
+          <p style="color: #999">Nenhum membro cadastrado.</p>
+        </ng-template>
+
+        <div style="text-align: right; margin-top: 8px">
+          <button mat-button color="warn" (click)="deletarEquipe(equipe.id)">
+            Remover Equipe
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

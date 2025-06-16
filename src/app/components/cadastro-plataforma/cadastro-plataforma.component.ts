@@ -7,14 +7,20 @@ import { ApiAdmService } from 'src/app/services/api-adm.service';
 @Component({
   selector: 'app-cadastro-plataforma',
   templateUrl: './cadastro-plataforma.component.html',
-  styleUrls: ['./cadastro-plataforma.component.css']
+  styleUrls: ['./cadastro-plataforma.component.css'],
 })
 export class CadastroPlataformaComponent {
   plataformaForm = new FormGroup({
     plataformaUrl: new FormControl('', Validators.required),
     plataformaNome: new FormControl('', Validators.required),
     idCliente: new FormControl('', Validators.required),
-    usuario_id: new FormControl('')
+    usuario_id: new FormControl(''),
+    temaTipo: new FormControl('padrao', Validators.required),
+    customPrimaria: new FormControl(''),
+    customSecundaria: new FormControl(''),
+    customTerciaria: new FormControl(''),
+    customQuartenaria: new FormControl(''),
+    customQuintenaria: new FormControl(''),
   });
 
   constructor(
@@ -28,34 +34,34 @@ export class CadastroPlataformaComponent {
     this.plataformaForm.patchValue({ usuario_id: `${usuarioId}` });
   }
 
-  get plataformaUrl(){
-      return this.plataformaForm.get('plataformaUrl')!
+  get plataformaUrl() {
+    return this.plataformaForm.get('plataformaUrl')!;
   }
 
-  get plataformaNome(){
-    return this.plataformaForm.get('plataformaNome')!
+  get plataformaNome() {
+    return this.plataformaForm.get('plataformaNome')!;
   }
 
-  get idCliente(){
-  return this.plataformaForm.get('idCliente')!
+  get idCliente() {
+    return this.plataformaForm.get('idCliente')!;
   }
 
   onSubmit(): void {
-    console.log("Clicado")
+    console.log('Clicado');
     if (this.plataformaForm.valid) {
       this.apiService.registerPlataforma(this.plataformaForm.value).subscribe(
-        response => {
+        (response) => {
           console.log('Plataforma registrada com sucesso:', response);
-          this.home()
+          this.home();
         },
-        error => {
+        (error) => {
           console.error('Erro ao registrar plataforma:', error);
         }
       );
     }
   }
 
-  home(){
+  home() {
     this.router.navigate(['/dashboard']);
   }
 }

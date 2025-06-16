@@ -1,3 +1,4 @@
+import { MeusModulosComponent } from './components/meus-modulos/meus-modulos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -20,33 +21,125 @@ import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page
 import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { GerenciarFichaTecnicaComponent } from './components/gerenciar-ficha-tecnica/gerenciar-ficha-tecnica.component';
+import { GerenciarVantagensComponent } from './components/gerenciar-vantagens/gerenciar-vantagens.component';
+import { GerenciarReferenciasComponent } from './components/gerenciar-referencias/gerenciar-referencias.component';
+import { roleGuard } from './auth/role.guard';
+import { MinhasPlataformasComponent } from './components/minhas-plataformas/minhas-plataformas.component';
+import { TemplatesComponent } from './components/templates/templates.component';
+import { ModuloComponent } from './pages/ver-ao-vivo/modulo/modulo.component';
+import { SobreComponent } from './pages/ver-ao-vivo/sobre/sobre.component';
+import { FichaTecnicaComponent } from './pages/ver-ao-vivo/ficha-tecnica/ficha-tecnica.component';
+import { TopicoComponent } from './pages/ver-ao-vivo/topico/topico.component';
+import { ReferenciasComponent } from './pages/ver-ao-vivo/referencias/referencias.component';
+import { SaibaMaisComponent } from './pages/ver-ao-vivo/saiba-mais/saiba-mais.component';
+import { SlideComponent } from './pages/ver-ao-vivo/slide/slide.component';
+import { AtividadeComponent } from './pages/ver-ao-vivo/atividade/atividade.component';
+import { GerenciarAlunosComponent } from './components/gerenciar-alunos/gerenciar-alunos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '',
-    component: LayoutMenuComponent, // Layout principal com menu lateral
-    canActivate: [authGuard], // Proteção para todas as rotas filhas
+    component: LayoutMenuComponent,
+    canActivate: [authGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
-      { path: 'cadastros', component: CadastrosPageComponent, data: { title: 'Cadastrar' }  },
-      { path: 'meu-perfil', component: MeuPerfilPageComponent, data: { title: 'Meu Perfil' }  },
-      { path: 'usuarios', component: UsuariosPageComponent, data: { title: 'Usuarios' }  },
-      { path: 'modulos', component: ModulosPageComponent, data: { title: 'Modulos' }  },
-      { path: 'plataformas', component: PlataformaPageComponent, data: { title: 'Plataformas' }  },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'Dashboard' },
+      },
+      {
+        path: 'cadastros',
+        component: CadastrosPageComponent,
+        data: { title: 'Cadastrar' },
+      },
+      {
+        path: 'meu-perfil',
+        canActivate: [roleGuard],
+        component: MeuPerfilPageComponent,
+        data: { title: 'Meu Perfil', roles: ['professor'] },
+      },
+      {
+        path: 'meus-modulos',
+        canActivate: [roleGuard],
+        component: MeusModulosComponent,
+        data: { title: 'Meus Módulos', roles: ['professor'] },
+      },
+      {
+        path: 'minhas-plataformas',
+        canActivate: [roleGuard],
+        component: MinhasPlataformasComponent,
+        data: { title: 'Minhas Plataformas', roles: ['professor'] },
+      },
+            {
+        path: 'templates',
+        canActivate: [roleGuard],
+        component: TemplatesComponent,
+        data: { title: 'Biblioteca de Templates', roles: ['professor'] },
+      },
+      {
+        path: 'usuarios',
+        component: UsuariosPageComponent,
+        canActivate: [roleGuard],
+        data: { title: 'Usuarios', roles: ['adm'] },
+      },
+      {
+        path: 'modulos',
+        component: ModulosPageComponent,
+        canActivate: [roleGuard],
+        data: { title: 'Modulos', roles: ['adm'] },
+      },
+      {
+        path: 'plataformas',
+        component: PlataformaPageComponent,
+        canActivate: [roleGuard],
+        data: { title: 'Plataformas', roles: ['adm'] },
+      },
     ],
   },
-  { path: 'cadastro-usuario', component: CadastroUsuarioComponent},
+  { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
   { path: 'cadastro-plataforma', component: CadastroPlataformaComponent },
   { path: 'registrar-modulo', component: RegistroModuloComponent },
   { path: 'editar-plataforma/:id', component: EditarPlataformaComponent },
   { path: 'editar-perfil', component: EditarPerfilComponent },
 
   { path: 'modulos/:id', component: ModuloUnicoComponent },
+  {
+    path: 'modulos/:id/gerenciar-ficha-tecnica',
+    component: GerenciarFichaTecnicaComponent,
+  },
+  {
+    path: 'modulos/:id/gerenciar-vantagens',
+    component: GerenciarVantagensComponent,
+  },
+  {
+    path: 'modulos/:id/gerenciar-alunos',
+    component: GerenciarAlunosComponent,
+  },
+  {
+    path: 'modulos/:id/gerenciar-referencias',
+    component: GerenciarReferenciasComponent,
+  },
   { path: 'editar-topico/:id', component: EditarTopicoComponent },
   { path: 'editar-modulo/:id', component: EditarModuloComponent },
   { path: 'cadastrar-topico', component: CadastroTopicoComponent },
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent },
+    {
+    path: 'ver-ao-vivo',
+    children: [
+
+      { path: ':id_modulo', component: ModuloComponent },
+      { path: ':id_modulo/sobre', component: SobreComponent },
+      { path: ':id_modulo/ficha-tecnica', component: FichaTecnicaComponent },
+      { path: ':id_modulo/topicos', component: TopicoComponent },
+      { path: ':id_modulo/topicos/referencias', component: ReferenciasComponent },
+      { path: ':id_modulo/topicos/saiba-mais', component: SaibaMaisComponent },
+      { path: ':id_modulo/topicos/slide', component: SlideComponent },
+      { path: ':id_modulo/topicos/exercicios', component: AtividadeComponent },
+      { path: '**', redirectTo: ':id_modulo' },
+    ],
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

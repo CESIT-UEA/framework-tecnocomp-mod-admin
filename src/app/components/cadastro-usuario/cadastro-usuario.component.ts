@@ -19,6 +19,7 @@ export class CadastroUsuarioComponent {
     nome: new FormControl('', [Validators.required, Validators.minLength(10), noOnlyWhitespace()]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(13), noOnlyWhitespace()]),
     senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
+    confirmarSenha: new FormControl('',[Validators.required,Validators.minLength(8), senhaForte(),noOnlyWhitespace()]),
     tipo: new FormControl('adm', Validators.required)
   });
 
