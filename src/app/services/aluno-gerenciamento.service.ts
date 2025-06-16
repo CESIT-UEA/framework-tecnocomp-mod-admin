@@ -1,13 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 import { AlunoModulo } from 'src/interfaces/modulo/aluno-modulo.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlunoGerenciamentoService {
-  private apiUrl = 'http://localhost:3001/api/';
+  private apiUrl = environment.baseUrl + '/api/';
 
   constructor(private http: HttpClient) {}
 
