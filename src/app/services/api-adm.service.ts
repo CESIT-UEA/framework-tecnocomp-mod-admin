@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -24,7 +25,8 @@ export class ApiAdmService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private location: Location
   ) {}
 
   registerUsuario(data: any) {
@@ -202,5 +204,9 @@ export class ApiAdmService {
     const params = new HttpParams().set('id', id.toString());
 
     return this.http.post(`${this.baseUrl}/api/templates/clonar/${id}`, params);
+  }
+
+  voltar(): void {
+    this.location.back();
   }
 }

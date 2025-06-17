@@ -21,16 +21,16 @@
     </div>
   </div>
   <div class="direito">
-    <div class="box">
+    <div class="box" *ngFor="let instrutor of this.getInstrutores()">
       <h1>Instrutor(a)</h1>
       <div class="box-imagem">
         <img
-          src="../../../assets/img/prof-joao.png"
+          [src]="instrutor.foto_url"
           alt=""
           width="100px"
           height="100px"
         />
-        <p>Jõao da Mata</p>
+        <p>{{instrutor.nome}}</p>
       </div>
     </div>
     <div class="box av">
@@ -43,7 +43,7 @@
               *ngFor="let estrela of estrelas; let i = index"
               class="estrela"
               [ngClass]="{
-                'colorido': i + 1 <= 4
+                'colorido': i + 1 <= this.verAoVivo.dados_completos.mediaAvaliacoes
               }"
             >
               star
@@ -51,7 +51,7 @@
           </div>
         </div>
         <hr />
-        <p>Baseado em 10 avaliações</p>
+        <p>Baseado em {{this.verAoVivo.dados_completos.quantidadeAvaliacoes}} avaliações</p>
       </div>
     </div>
   </div>
