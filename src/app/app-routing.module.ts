@@ -58,7 +58,7 @@ const routes: Routes = [
         path: 'meu-perfil',
         canActivate: [roleGuard],
         component: MeuPerfilPageComponent,
-        data: { title: 'Meu Perfil', roles: ['professor'] },
+        data: { title: 'Meu Perfil', roles: ['professor','adm'] },
       },
       {
         path: 'meus-modulos',
@@ -128,7 +128,6 @@ const routes: Routes = [
     {
     path: 'ver-ao-vivo',
     children: [
-
       { path: ':id_modulo', component: ModuloComponent },
       { path: ':id_modulo/sobre', component: SobreComponent },
       { path: ':id_modulo/ficha-tecnica', component: FichaTecnicaComponent },
