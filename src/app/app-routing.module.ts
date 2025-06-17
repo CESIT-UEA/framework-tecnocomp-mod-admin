@@ -58,7 +58,7 @@ const routes: Routes = [
         path: 'meu-perfil',
         canActivate: [roleGuard],
         component: MeuPerfilPageComponent,
-        data: { title: 'Meu Perfil', roles: ['professor','adm'] },
+        data: { title: 'Meu Perfil', roles: ['professor', 'adm'] },
       },
       {
         path: 'meus-modulos',
@@ -72,7 +72,7 @@ const routes: Routes = [
         component: MinhasPlataformasComponent,
         data: { title: 'Minhas Plataformas', roles: ['professor'] },
       },
-            {
+      {
         path: 'templates',
         canActivate: [roleGuard],
         component: TemplatesComponent,
@@ -98,41 +98,89 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
-  { path: 'cadastro-plataforma', component: CadastroPlataformaComponent },
-  { path: 'registrar-modulo', component: RegistroModuloComponent },
-  { path: 'editar-plataforma/:id', component: EditarPlataformaComponent },
-  { path: 'editar-perfil', component: EditarPerfilComponent },
+  {
+    path: 'cadastro-usuario',
+    canActivate: [authGuard],
+    component: CadastroUsuarioComponent,
+  },
+  {
+    path: 'cadastro-plataforma',
+    canActivate: [authGuard],
+    component: CadastroPlataformaComponent,
+  },
+  {
+    path: 'registrar-modulo',
+    canActivate: [authGuard],
+    component: RegistroModuloComponent,
+  },
+  {
+    path: 'editar-plataforma/:id',
+    canActivate: [authGuard],
+    component: EditarPlataformaComponent,
+  },
+  {
+    path: 'editar-perfil',
+    canActivate: [authGuard],
+    component: EditarPerfilComponent,
+  },
 
-  { path: 'modulos/:id', component: ModuloUnicoComponent },
+  {
+    path: 'modulos/:id',
+    canActivate: [authGuard],
+    component: ModuloUnicoComponent,
+  },
   {
     path: 'modulos/:id/gerenciar-ficha-tecnica',
+    canActivate: [authGuard],
     component: GerenciarFichaTecnicaComponent,
   },
   {
     path: 'modulos/:id/gerenciar-vantagens',
+    canActivate: [authGuard],
     component: GerenciarVantagensComponent,
   },
   {
     path: 'modulos/:id/gerenciar-alunos',
+    canActivate: [authGuard],
     component: GerenciarAlunosComponent,
   },
   {
     path: 'modulos/:id/gerenciar-referencias',
+    canActivate: [authGuard],
     component: GerenciarReferenciasComponent,
   },
-  { path: 'editar-topico/:id', component: EditarTopicoComponent },
-  { path: 'editar-modulo/:id', component: EditarModuloComponent },
-  { path: 'cadastrar-topico', component: CadastroTopicoComponent },
-  { path: 'editar-usuario/:id', component: EditarUsuarioComponent },
-    {
+  {
+    path: 'editar-topico/:id',
+    canActivate: [authGuard],
+    component: EditarTopicoComponent,
+  },
+  {
+    path: 'editar-modulo/:id',
+    canActivate: [authGuard],
+    component: EditarModuloComponent,
+  },
+  {
+    path: 'cadastrar-topico',
+    canActivate: [authGuard],
+    component: CadastroTopicoComponent,
+  },
+  {
+    path: 'editar-usuario/:id',
+    canActivate: [authGuard],
+    component: EditarUsuarioComponent,
+  },
+  {
     path: 'ver-ao-vivo',
+    canActivate: [authGuard],
     children: [
       { path: ':id_modulo', component: ModuloComponent },
       { path: ':id_modulo/sobre', component: SobreComponent },
       { path: ':id_modulo/ficha-tecnica', component: FichaTecnicaComponent },
       { path: ':id_modulo/topicos', component: TopicoComponent },
-      { path: ':id_modulo/topicos/referencias', component: ReferenciasComponent },
+      {
+        path: ':id_modulo/topicos/referencias',
+        component: ReferenciasComponent,
+      },
       { path: ':id_modulo/topicos/saiba-mais', component: SaibaMaisComponent },
       { path: ':id_modulo/topicos/slide', component: SlideComponent },
       { path: ':id_modulo/topicos/exercicios', component: AtividadeComponent },
