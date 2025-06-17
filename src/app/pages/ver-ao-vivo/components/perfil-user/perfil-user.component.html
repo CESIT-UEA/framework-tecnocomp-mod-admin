@@ -1,0 +1,33 @@
+<section class="container-foto-header-active">
+  <div class="cima">
+    <p class="cima-p">Conta</p>
+    <mat-icon
+      style="color: white; cursor: pointer"
+      (click)="this.verAoVivoService.fechaMenuUser()"
+    >
+      close
+    </mat-icon>
+  </div>
+  <div class="nome">
+    <div class="foto-header">
+      {{ this.getUsuarioDados().username[0] }}
+    </div>
+    <div class="nome-info">
+      <p>{{ this.getUsuarioDados().username }}</p>
+      <p class="email">{{ this.getUsuarioDados().email }}</p>
+    </div>
+  </div>
+  <div class="meio">
+    <p>Progresso:</p>
+    <mat-progress-bar
+      color="warn"
+      mode="determinate"
+      value="0"
+    ></mat-progress-bar>
+    <span class="progress-spinner"
+      >0%</span
+    >
+  </div>
+  <app-botao-voltar-ava></app-botao-voltar-ava>
+</section>
+
