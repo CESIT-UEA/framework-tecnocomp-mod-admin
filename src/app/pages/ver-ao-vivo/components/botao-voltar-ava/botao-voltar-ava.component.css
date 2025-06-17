@@ -1,0 +1,26 @@
+.moodle {
+  display: flex;
+  height: 35px;
+  width: 100%;
+  padding: 20px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--Primaria, #9665df);
+  cursor: pointer;
+}
+.moodle a {
+  margin-left: 5px;
+  outline: none;
+  text-decoration: none;
+  color: white;
+  color: var(--Terciaria, #fff);
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

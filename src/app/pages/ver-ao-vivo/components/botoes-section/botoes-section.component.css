@@ -1,0 +1,147 @@
+@font-face {
+
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.button-section {
+  display: grid;
+  align-items: center;
+  height: 100%;
+}
+
+.imagem-acima {
+  align-self: center;
+}
+
+.button-section .button-group {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button-section .button-group button {
+  width: 60%;
+  height: 47.783px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 28px;
+  padding: 10px;
+}
+
+.button-section .button-group .download-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  border-radius: 6.95px;
+  background: none;
+  margin: 0 auto;
+  color: #fff;
+  font-family: minhaFonte;
+  border: 1.738px solid #fff;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  background: linear-gradient(to right, #5e2fa5 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+}
+
+.button-section .button-group .download-button p {
+  color: #fff;
+}
+
+.button-section .button-group .download-button:hover {
+  background-position: left bottom;
+  color: black;
+  font-weight: 400;
+  line-height: normal;
+  border: 1.738px solid #50288d;
+}
+
+.button-section .button-group .start-button {
+  border-radius: 0.49963rem;
+  background: #793cd4;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--Terciaria, #fff);
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  cursor: pointer;
+}
+.concluido {
+  background: #44a834;
+  border-radius: 0.49963rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--Terciaria, #fff);
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 10px;
+}
+.link {
+  text-decoration: none;
+}
+.voltar-ava {
+  display: flex;
+  height: 44px;
+  padding: 6px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+  background: linear-gradient(0deg, #2a2a2a 0%, #2a2a2a 100%), #202024;
+  box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  margin-top: 25px;
+  color: var(--Terciaria, #fff);
+  font-family: Arial;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
+
+@media (max-width: 899px) {
+  .button-section::before {
+    display: none;
+  }
+  .button-section {
+    margin-top: 20px;
+  }
+
+  .imagem-acima {
+    display: none;
+  }
+}
+@media (max-width: 530px) {
+  .button-section .button-group {
+    width: 100%;
+  }
+
+  .link {
+    display: block;
+    width: 100%;
+  }
+  .button-section .button-group .start-button,
+  .button-section .button-group .download-button {
+    width: 80%;
+  }
+}

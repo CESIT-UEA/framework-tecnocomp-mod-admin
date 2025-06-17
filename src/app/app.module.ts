@@ -77,6 +77,12 @@ import { GerenciarAlunosComponent } from './components/gerenciar-alunos/gerencia
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DialogEditarAlunoComponent } from './components/dialog-editar-aluno/dialog-editar-aluno.component';
+import { PerfilUserComponent } from './pages/ver-ao-vivo/components/perfil-user/perfil-user.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { BotaoVoltarAvaComponent } from './pages/ver-ao-vivo/components/botao-voltar-ava/botao-voltar-ava.component';
+import { VideoSectionComponent } from './pages/ver-ao-vivo/components/video-section/video-section.component';
+import { BotoesSectionComponent } from './pages/ver-ao-vivo/components/botoes-section/botoes-section.component';
+import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -135,6 +141,11 @@ import { DialogEditarAlunoComponent } from './components/dialog-editar-aluno/dia
     FooterFichaComponent,
     GerenciarAlunosComponent,
     DialogEditarAlunoComponent,
+    PerfilUserComponent,
+    BotaoVoltarAvaComponent,
+    VideoSectionComponent,
+    BotoesSectionComponent,
+    SafeUrlPipePipe,
   ],
   imports: [
     MatSlideToggleModule,
@@ -161,6 +172,7 @@ import { DialogEditarAlunoComponent } from './components/dialog-editar-aluno/dia
     MatSnackBarModule,
     MatExpansionModule,
     MatTableModule,
+    MatProgressBarModule
   ],
   providers: [
     {
