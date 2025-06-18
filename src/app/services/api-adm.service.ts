@@ -1,9 +1,10 @@
+import { ValidaLinkResponse } from './../../interfaces/validaLinkResponse';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment, environmentFrontEnd } from 'src/environments/environment.development';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Plataforma } from 'src/interfaces/Plataforma';
 import { Topico } from 'src/interfaces/topico/Topico';
@@ -151,4 +152,20 @@ export class ApiAdmService {
       duration: 3000,
     });
   }
+
+  
+  enviarEmailSenhaEsquecida(email: string){
+    return this.http.post(`${this.baseUrl}/auth/forgot_password`, {email, baseUrl: environmentFrontEnd.baseUrl})
+  }
+
+  validaLinkRedefinirSenha(email: string, token: string): Observable<ValidaLinkResponse>{
+    return this.http.post<ValidaLinkResponse>(
+      `${this.baseUrl}/auth/valida_link`,
+      {email, token, baseUrl: environmentFrontEnd.baseUrl})
+  }
+
+  resetPassword(email: string, token: string, novaSenha: string){
+    return this.http.post(`${this.baseUrl}/auth/reset_password`, {email, token, novaSenha})
+  }
+
 }
