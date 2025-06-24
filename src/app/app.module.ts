@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
@@ -48,6 +48,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
 
 
@@ -82,6 +84,9 @@ import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.
     EditarPlataformaComponent,
     MeuPerfilPageComponent,
     EditarPerfilComponent,
+    CadastroModuloComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
     AutoCadastroComponent
   ],
   imports: [

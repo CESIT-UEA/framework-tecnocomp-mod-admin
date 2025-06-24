@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { authGuard } from './auth/auth.guard';
+import { authGuard, resetPasswordGuard } from './auth/auth.guard';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { CadastroPlataformaComponent } from './components/cadastro-plataforma/cadastro-plataforma.component';
 import { CadastroModuloComponent } from './components/cadastro-modulo/cadastro-modulo.component';
@@ -20,11 +20,16 @@ import { PlataformaPageComponent } from './pages/plataforma-page/plataforma-page
 import { EditarPlataformaComponent } from './components/editar-plataforma/editar-plataforma.component';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
-import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
 
+import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+  
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastrar', component: AutoCadastroComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [resetPasswordGuard]},
   {
     path: '',
     component: LayoutMenuComponent, // Layout principal com menu lateral
