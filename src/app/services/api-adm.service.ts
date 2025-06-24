@@ -22,6 +22,10 @@ export class ApiAdmService {
     return this.http.post(`${this.baseUrl}/auth/register`, data);
   }
 
+  autoRegister(data: any) {
+    return this.http.post(`${this.baseUrl}/auth/autoRegister`, data);
+  }
+
   registerPlataforma(data: any) {
     return this.http.post(`${this.baseUrl}/api/plataforma`, data);
   }

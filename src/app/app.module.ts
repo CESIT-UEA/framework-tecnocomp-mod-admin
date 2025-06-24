@@ -48,6 +48,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CardsPlataformasComponent,
     EditarPlataformaComponent,
     MeuPerfilPageComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    AutoCadastroComponent
   ],
   imports: [
     BrowserModule,
