@@ -24,7 +24,6 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'criar-conta', component: CriarContaComponent},
   {
     path: '',
     component: LayoutMenuComponent, // Layout principal com menu lateral
