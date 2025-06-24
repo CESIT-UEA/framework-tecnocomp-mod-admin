@@ -9,12 +9,14 @@
     <div class="card-login">
        <h2 class="titulo-login">Login</h2>
        <p class="texto-login">Insira seus dados abaixo para acessar sua conta.</p>
-
-       <form id="form" class="forms">
-        <div class="form-conteudo">
+        
+       <form id="form" class="forms" [formGroup]="loginForm">
+        <div class="campos">
+            <div class="form-conteudo">
           <label for="idemail">Email</label>
           <input type="email"
                 id="idemail"
+                formControlName="email"
                 placeholder="Digite seu email">
         </div>
 
@@ -22,11 +24,16 @@
           <div class = "form-senha">
             <label for="idsenha">Senha</label>
             <div class="input-icon">
-              <input type="password"
+              <input [type]="hide ? 'password' : 'text'" id="senha" type="password"
                 id="idsenha"
+                formControlName="senha"
                 placeholder="Digite sua senha">
-              <mat-icon _ngcontent-ng-c504313431="" role="img" class="icon-eye" aria-hidden="true" data-mat-icon-type="font">visibility</mat-icon></div>
+              <!-- <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon class="icon-eye">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button> -->
+            </div>
           </div>
+        </div>
         </div>
 
         <div class="check-senha">
@@ -34,15 +41,15 @@
             <mat-checkbox>Mantenha-me conectado</mat-checkbox>
           </div>
 
-          <a href="" class="senha-esquecida">Esqueceu a senha?</a>
+          <a class="senha-esquecida">Esqueceu a senha?</a>
         </div>
 
         <div class="botao-entrar">
-          <button class="button-one">Entrar</button>
+          <button class="button-one" (click)="onSubmit()">Entrar</button>
         </div>
         <div class="criar-conta">
           <p>Não tem uma conta?</p>
-          <a href="" class="cadastrar">Cadastre-se</a>
+          <a href="" class="cadastrar" routerLink="/cadastrar">Cadastre-se</a>
         </div>
 
         <div class="linha">
