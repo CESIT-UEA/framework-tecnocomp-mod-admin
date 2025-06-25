@@ -1,4 +1,4 @@
-import { ValidaLinkResponse } from './../../interfaces/validaLinkResponse';
+import { ValidaLinkResponse } from 'src/interfaces/validaLinkResponse';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,6 +10,7 @@ import { Plataforma } from 'src/interfaces/Plataforma';
 import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
+import { AutoCadastroResponse } from 'src/interfaces/AutoCadastroResponse'
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class ApiAdmService {
     return this.http.post(`${this.baseUrl}/auth/register`, data);
   }
 
-  autoRegister(data: any) {
-    return this.http.post(`${this.baseUrl}/auth/autoRegister`, data);
+  autoRegister(data: any): Observable<AutoCadastroResponse> {
+    return this.http.post<AutoCadastroResponse>(`${this.baseUrl}/auth/autoRegister`, data);
   }
 
   registerPlataforma(data: any) {

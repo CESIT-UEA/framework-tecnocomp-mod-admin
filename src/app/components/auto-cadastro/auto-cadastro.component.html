@@ -39,24 +39,14 @@
           <button class="botao-cadastrar" (click)="onSubmit()">Cadastrar</button>
         </div>
         
-        <div class="campo-formulario" 
-        *ngIf="(nome.invalid || email.invalid || senha.invalid || confirmarSenha.invalid) && submitted"
-        >
-            <p class="campo-formulario invalid"
-             *ngIf="email.errors?.['email'] && !senha.errors?.['required'] && !confirmarSenha.errors?.['required'] &&  
-             !nome.errors?.['required']">Email inválido!</p>
-            
-            <p class="campo-formulario invalid"
-             *ngIf="nome.errors?.['required'] || email.errors?.['required'] || senha.errors?.['required'] ||
-                    confirmarSenha.errors?.['required']
-                    ">Preencha todos os campos!</p>
-
-            <!-- <p class="campo-formulario invalid"
-              *ngIf="!nome.errors?.['required'] && !email.errors?.['required'] && senha.invalid && senha.errors?.['required']"
-            >
-              Sua senha deve possuir no mínimo 8 caracteres incluindo letras, símbolos e números.
-            </p> -->
+        <div class="campo-formulario" *ngIf="this.dadosInvalido()">
+            <p class="campo-formulario invalid" *ngIf="this.emailInvalido()">Email inválido!</p>
+            <p class="campo-formulario invalid" *ngIf="this.senhaInvalida()">
+              Sua senha precisa ter: (no mínimo 8 caracteres) (letras, símbolos e números)              
+            </p>
+            <p class="campo-formulario invalid" *ngIf="this.campoNotPreenchido()">Preencha todos os campos!</p>
         </div>
+        <p class="campo-formulario invalid" *ngIf="this.camposSenhaInvalida()">Os campos de senha precisam ser iguais!</p>
 
           <div class="criar-conta">
             <p class="texto-conta">Já tem uma conta?</p>

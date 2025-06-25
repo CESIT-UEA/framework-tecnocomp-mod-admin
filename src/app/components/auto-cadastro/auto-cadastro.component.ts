@@ -11,7 +11,7 @@ import { noOnlyWhitespace, senhaForte } from '../validators/validators';
   styleUrls: ['./auto-cadastro.component.css']
 })
 export class AutoCadastroComponent {
-  errorLogin: boolean = false;
+    //errorLogin: boolean = false;
     focus = false;
     hide = true;
     submitted = false;
@@ -22,8 +22,10 @@ export class AutoCadastroComponent {
       senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
       confirmarSenha: new FormControl('', Validators.required)  
     });
+
+    controle = this.cadastroForm.controls;
   
-    constructor(private apiService: ApiAdmService) {}
+    constructor(private apiService: ApiAdmService, private router: Router) {}
   
   
     get nome(){
@@ -42,18 +44,53 @@ export class AutoCadastroComponent {
       return this.cadastroForm.get('confirmarSenha')!;
     }
 
+    dadosInvalido(){
+      const dadosInvalido = (this.cadastroForm.invalid) && this.submitted;
+      return dadosInvalido;
+    }
 
-    onSubmit(){
+    campoNotPreenchido(){
+      const campoPreenchido = this.controle.nome.errors?.['required'] || this.controle.email.errors?.['required'] || 
+          this.controle.senha.errors?.['required'] || this.controle.confirmarSenha.errors?.['required']
+      return campoPreenchido
+    }
+
+    emailInvalido(){
+      const emailInvalido = !this.campoNotPreenchido() && this.controle.email.errors?.['email']
+      return emailInvalido
+    }
+
+    senhaInvalida(){
+      const senhaInvalida = !this.campoNotPreenchido() && !this.controle.email.errors?.['email'] && this.controle.senha.invalid
+      return senhaInvalida
+    }
+
+    camposSenhaInvalida(){
+        if (this.senha.value !== this.confirmarSenha.value && !this.campoNotPreenchido() && 
+          !this.controle.email.errors?.['email'] && !this.senhaInvalida()
+        ){
+           return true
+        }
+        return false
+    }
+
+    onSubmit(){ 
         this.submitted = true;
         if (this.cadastroForm.invalid) {
           return;
         }
-        if (this.cadastroForm.valid && this.senha.value === this.confirmarSenha.value){
-          const dados = {nome: this.nome?.value, email: this.email.value, senha: this.senha.value}
+        if (!this.camposSenhaInvalida() && this.cadastroForm.valid){
+          const dados = {nome: this.nome.value, email: this.email.value, senha: this.senha.value}
+          
           this.apiService.autoRegister(dados).subscribe(dados => {
-              console.log(dados)
+              if (dados.sucess){
+                this.cadastroForm.reset()
+                this.router.navigate(['/login'])
+                this.apiService.message("Usuário criado com sucesso")
+              } else {
+                this.apiService.message("Falha ao criar usuário")
+              }
           })
         }
     }
-
 }

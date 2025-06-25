@@ -52,7 +52,6 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +109,7 @@ import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.
     MatButtonModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
