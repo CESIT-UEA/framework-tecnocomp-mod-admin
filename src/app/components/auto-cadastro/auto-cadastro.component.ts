@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { noOnlyWhitespace, senhaForte } from '../validators/validators';
 
 @Component({
   selector: 'app-auto-cadastro',
@@ -12,20 +13,21 @@ import { ApiAdmService } from 'src/app/services/api-adm.service';
 export class AutoCadastroComponent {
   errorLogin: boolean = false;
     focus = false;
-  
     hide = true;
+    submitted = false;
+
     cadastroForm = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      senha: new FormControl('', Validators.required),
-      confirmarSenha: new FormControl('', Validators.required)
+      senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
+      confirmarSenha: new FormControl('', Validators.required)  
     });
   
     constructor(private apiService: ApiAdmService) {}
   
   
     get nome(){
-      return this.cadastroForm.get('nome')
+      return this.cadastroForm.get('nome')!;
     }
 
     get email(){
@@ -42,6 +44,10 @@ export class AutoCadastroComponent {
 
 
     onSubmit(){
+        this.submitted = true;
+        if (this.cadastroForm.invalid) {
+          return;
+        }
         if (this.cadastroForm.valid && this.senha.value === this.confirmarSenha.value){
           const dados = {nome: this.nome?.value, email: this.email.value, senha: this.senha.value}
           this.apiService.autoRegister(dados).subscribe(dados => {

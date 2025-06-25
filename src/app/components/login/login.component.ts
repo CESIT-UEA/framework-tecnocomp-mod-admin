@@ -12,6 +12,8 @@ export class LoginComponent {
   errorLogin: boolean = false;
   focus = false;
 
+  submitted = false;
+
   hide = true;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -34,6 +36,11 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+    return;
+    }
+
     if (this.loginForm.valid) {
       this.errorLogin = false;
 

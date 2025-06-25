@@ -191,13 +191,7 @@ mat-divider {
 }
 
 
-.icon-eye{
-  position:absolute;
-  padding: 8px 15px;
-  right: 0;
-  bottom: 1%;
-  color: #B68EF3;
-}
+
 .mat-mdc-checkbox{
       right: 4%!important;
 }
@@ -206,3 +200,23 @@ mat-divider {
   background-color: #ffff !important;
 }
 
+.invalid {
+  color: #FA7878;
+  position: relative;
+  bottom: 15px;
+}
+
+.input-icon{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon{
+  width: 30px;
+  position: absolute;
+  right: 3%;
+  background-color: #38383A;
+  border: none;
+  color: #B68EF3;
+} 

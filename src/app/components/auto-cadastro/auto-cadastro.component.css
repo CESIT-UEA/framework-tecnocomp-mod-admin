@@ -110,14 +110,14 @@ p {
   position: relative;
 }
 
-.icon {
+/* .icon {
   border: none;
   background-color: transparent;
   color: #B68EF3;
   cursor: pointer;
   position: absolute;
   padding: 18px;
-}
+} */
 
 .criar-conta {
   display: flex;
@@ -131,4 +131,27 @@ a {
   font-size: 16px;
   font-weight: 700;
   color: #C3A1F5;
+}
+
+.campo-senha-envolve{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon{
+  width: 30px;
+  height: 22px;
+  position: absolute;
+  right: 20%;
+  background-color: #38383A;
+  border: none;
+  color: #B68EF3;
+} 
+
+.invalid {
+  color: #FA7878;
+  position: relative;
+  bottom: 15px;
+  font-size: 14px;
 }
