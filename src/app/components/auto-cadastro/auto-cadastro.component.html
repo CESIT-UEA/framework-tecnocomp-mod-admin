@@ -5,7 +5,8 @@
       <p class="texto-cadastro">Insira seus dados abaixo para criar sua conta.</p>
 
       <form id="form" class="forms" [formGroup]="cadastroForm">
-        <div class="cadastro-conteudo">
+        <div class="campos">
+          <div class="cadastro-conteudo">
           <label for="idnome">Nome</label>
           <input type="text" id="idnome" placeholder="Digite seu nome completo" formControlName="nome">
         </div>
@@ -33,6 +34,7 @@
         </div>
        </div>
 
+        </div>
         <div class="cadastro-conteudo">
           <button class="botao-cadastrar" (click)="onSubmit()">Cadastrar</button>
         </div>
