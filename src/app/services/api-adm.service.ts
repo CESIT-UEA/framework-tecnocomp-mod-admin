@@ -10,7 +10,7 @@ import { Plataforma } from 'src/interfaces/Plataforma';
 import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
-import { AutoCadastroResponse } from 'src/interfaces/AutoCadastroResponse'
+import { DadosResponse } from 'src/interfaces/DadosResponse'
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,8 @@ export class ApiAdmService {
     return this.http.post(`${this.baseUrl}/auth/register`, data);
   }
 
-  autoRegister(data: any): Observable<AutoCadastroResponse> {
-    return this.http.post<AutoCadastroResponse>(`${this.baseUrl}/auth/autoRegister`, data);
+  autoRegister(data: any): Observable<DadosResponse> {
+    return this.http.post<DadosResponse>(`${this.baseUrl}/auth/autoRegister`, data);
   }
 
   registerPlataforma(data: any) {
@@ -159,8 +159,8 @@ export class ApiAdmService {
   }
 
   
-  enviarEmailSenhaEsquecida(email: string){
-    return this.http.post(`${this.baseUrl}/auth/forgot_password`, {email, baseUrl: environmentFrontEnd.baseUrl})
+  enviarEmailSenhaEsquecida(email: string): Observable<DadosResponse>{
+    return this.http.post<DadosResponse>(`${this.baseUrl}/auth/forgot_password`, {email, baseUrl: environmentFrontEnd.baseUrl})
   }
 
   validaLinkRedefinirSenha(email: string, token: string): Observable<ValidaLinkResponse>{

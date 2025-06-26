@@ -46,9 +46,8 @@
         <div class="botao-entrar">
           <button class="button-one" (click)="onSubmit()">Entrar</button>
         </div>
-        <div class="campo-formulario" *ngIf="(email.invalid || senha.invalid) && submitted">
-            <p class="campo-formulario invalid" *ngIf="email.errors?.['email'] && !senha.errors?.['required'] && !email.errors?.['required']">Email inválido!</p>
-            <p class="campo-formulario invalid" *ngIf="email.errors?.['required'] || senha.errors?.['required']">Preencha todos os campos!</p>
+        <div class="campo-formulario" *ngIf="submitted">
+            <p class="campo-formulario invalid" *ngIf="this.campoNotPreenchido()">Preencha todos os campos!</p>
         </div>
         <p class="campo-formulario invalid" *ngIf="errorLogin">Email ou senha incorretos!</p>
         

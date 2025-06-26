@@ -1,4 +1,4 @@
-export interface AutoCadastroResponse {
+export interface DadosResponse {
     message: string;
     sucess: boolean;
 }

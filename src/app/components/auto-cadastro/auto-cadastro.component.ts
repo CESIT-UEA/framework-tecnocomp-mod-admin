@@ -87,9 +87,9 @@ export class AutoCadastroComponent {
                 this.cadastroForm.reset()
                 this.router.navigate(['/login'])
                 this.apiService.message("Usuário criado com sucesso")
-              } else {
-                this.apiService.message("Falha ao criar usuário")
-              }
+              } 
+          }, (error)=>{
+              this.apiService.message("Falha ao criar usuário")
           })
         }
     }
