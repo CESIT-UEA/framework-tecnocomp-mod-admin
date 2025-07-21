@@ -25,7 +25,7 @@ export class ApiAdmService {
   }
 
   autoRegister(data: any): Observable<DadosResponse> {
-    return this.http.post<DadosResponse>(`${this.baseUrl}/auth/autoRegister`, data);
+    return this.http.post<DadosResponse>(`${this.baseUrl}/api/autoRegister`, data);
   }
 
   registerPlataforma(data: any) {
@@ -160,17 +160,17 @@ export class ApiAdmService {
 
   
   enviarEmailSenhaEsquecida(email: string): Observable<DadosResponse>{
-    return this.http.post<DadosResponse>(`${this.baseUrl}/auth/forgot_password`, {email, baseUrl: environmentFrontEnd.baseUrl})
+    return this.http.post<DadosResponse>(`${this.baseUrl}/api/forgot_password`, {email, baseUrl: environmentFrontEnd.baseUrl})
   }
 
   validaLinkRedefinirSenha(email: string, token: string): Observable<ValidaLinkResponse>{
     return this.http.post<ValidaLinkResponse>(
-      `${this.baseUrl}/auth/valida_link`,
+      `${this.baseUrl}/api/valida_link`,
       {email, token, baseUrl: environmentFrontEnd.baseUrl})
   }
 
   resetPassword(email: string, token: string, novaSenha: string){
-    return this.http.post(`${this.baseUrl}/auth/reset_password`, {email, token, novaSenha})
+    return this.http.post(`${this.baseUrl}/api/reset_password`, {email, token, novaSenha})
   }
 
 }
