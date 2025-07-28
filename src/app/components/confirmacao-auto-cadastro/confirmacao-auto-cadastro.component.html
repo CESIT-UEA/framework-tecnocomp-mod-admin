@@ -1,0 +1,17 @@
+
+<form id ="form" class="forms" [formGroup]="formConfirmarCadastro">
+    <div class="senha-conteudo">
+        <label for="nova-senha">Email</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" formControlName="email">
+    </div>
+    <div class="senha-conteudo">
+        <label for="confirmar-senha">Código</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" formControlName="codigo">
+    </div>
+    <div class="senha-conteudo">
+        <div class="buttons">
+        <button class="botao-redefinir" (click)="submit()">Confirmar</button>
+        <button class="botao-cancelar" routerLink="/login">Cancelar</button>
+    </div> 
+    </div>
+</form>

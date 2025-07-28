@@ -18,7 +18,6 @@ export class LoginComponent {
     senha: new FormControl('', Validators.required)
   });
 
-  controle = this.loginForm.controls;
 
   constructor(private authService: AuthService, private router: Router) {
       this.loginForm.valueChanges.subscribe(() => {
@@ -36,15 +35,10 @@ export class LoginComponent {
   }
 
 
-  campoNotPreenchido(){
-      const campoPreenchido = this.controle.email.errors?.['required'] || this.controle.senha.errors?.['required']
-      return campoPreenchido
-    }
 
   onSubmit(): void {
     this.submitted = true;
-
-    if (!this.campoNotPreenchido()) {
+    if (this.loginForm.valid) {
       this.errorLogin = false;
 
       this.authService.login(this.loginForm.value.email!, this.loginForm.value.senha!).subscribe(

@@ -24,10 +24,12 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
 import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
   
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastrar', component: AutoCadastroComponent},
+  { path: 'cadastrar/teste', component: ConfirmacaoAutoCadastroComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'reset-password', component: ResetPasswordComponent, canActivate: [resetPasswordGuard]},
   {

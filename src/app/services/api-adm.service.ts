@@ -173,4 +173,8 @@ export class ApiAdmService {
     return this.http.post(`${this.baseUrl}/api/reset_password`, {email, token, novaSenha})
   }
 
+  confirmarAutoRegister(dados: { email: string, codigo: string }): Observable<any>{
+    return this.http.post(`${this.baseUrl}/api/valida_autoRegister`, dados)
+  }
+
 }

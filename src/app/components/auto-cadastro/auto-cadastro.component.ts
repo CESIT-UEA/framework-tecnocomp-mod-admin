@@ -82,14 +82,18 @@ export class AutoCadastroComponent {
         if (!this.camposSenhaInvalida() && this.cadastroForm.valid){
           const dados = {nome: this.nome.value, email: this.email.value, senha: this.senha.value}
           
-          this.apiService.autoRegister(dados).subscribe(dados => {
-              if (dados.sucess){
-                this.cadastroForm.reset()
-                this.router.navigate(['/login'])
-                this.apiService.message("Usuário criado com sucesso")
-              } 
-          }, (error)=>{
-              this.apiService.message("Falha ao criar usuário")
+          this.apiService.autoRegister(dados).subscribe({
+            next: (dados) => {
+                if (dados.sucess){
+                  this.cadastroForm.reset()
+                  this.router.navigate(['/cadastrar/teste'])
+                  this.apiService.message("Código de verificação enviado para o email!")
+                }
+            },
+            error: (e) => {
+              this.apiService.message(e.error.message)
+              console.error(e)
+            }
           })
         }
     }

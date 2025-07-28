@@ -51,6 +51,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
+import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.
     CadastroModuloComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    AutoCadastroComponent
+    AutoCadastroComponent,
+    ConfirmacaoAutoCadastroComponent
   ],
   imports: [
     BrowserModule,
