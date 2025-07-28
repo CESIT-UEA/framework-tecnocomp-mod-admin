@@ -1,8 +1,96 @@
-.cadastro-modulo-container {
-  max-width: 500px;
-  margin: 0 auto;
+.cadastro-modulo-pagina {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1E1E1E;
+  height: 88vh;
 }
 
+.cadastro-modulo-container {
+  background-color: #2E2E2F;
+  width: 50%;
+  border-radius: 40px;
+  padding: 0 2.5rem;
+  border-top: 8px solid #7C4CC6;
+}
+
+.cadastro-modulo-titulo, .cadastro-modulo-label {
+    color: #FFFFFF;
+    padding: 10px 0;
+}
+
+.cadastro-modulo-titulo {
+  text-align: center;
+  padding: 20px 0 20px 0;
+  border-bottom: 2px solid #7C4CC6;
+}
+
+.cadastro-modulo-aviso {
+  padding-top: 20px;
+}
+
+.cadastro-modulo-label span, .cadastro-modulo-aviso {
+  color: #C64C4C;
+}
+
+.cadastro-modulo-campos-inline, .cadastro-modulo-campo {
+  display: flex;
+  width: 100%;
+  padding: 5px 0px;
+}
+
+.cadastro-modulo-campos-inline {
+  justify-content: space-between;
+}
+
+.cadastro-modulo-campos-inline .cadastro-modulo-campo {
+  width: 48%;
+}
+
+
+.cadastro-modulo-campo {
+  flex-direction: column;
+}
+
+.cadastro-modulo-input {
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3F3F40;
+  color: #FFFFFF;
+  padding-left: 10px;
+}
+
+.cadastro-modulo-input:focus{
+   box-shadow: 0 0 0 0;
+   outline: 0;
+}
+
+.cadastro-modulo-buttons {
+  display: flex;
+  justify-content: end;
+  column-gap: 20px;
+  padding: 30px 0;
+}
+
+.cadastro-modulo-buttons button {
+  padding: 7px;
+  width: 145px;
+  border: none;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+
+#botao-um {
+  background-color: transparent;
+  border: 3px solid #7C4CC6;
+}
+
+#botao-dois {
+  background-color: #7C4CC6;
+}
+
+/*
 .cadastro-modulo-container form div {
   margin-bottom: 15px;
 }
@@ -30,4 +118,4 @@ button {
 button[disabled] {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */

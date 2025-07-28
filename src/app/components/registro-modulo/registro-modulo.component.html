@@ -1,23 +1,31 @@
 <app-header-voltar texto="Cadastrar Módulo"></app-header-voltar>
-<div class="cadastro-modulo-container">
-  <h2>Cadastrar Módulo</h2>
-  <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="nome_modulo">Nome do Módulo:</label>
-      <input id="nome_modulo" formControlName="nome_modulo" (input)="gerarUrlAmigavel()" />
-    </div>
-    <div>
-      <label for="nome_url">URL do Módulo:</label>
-      <input id="nome_url" formControlName="nome_url" readonly />
-    </div>
-    <div>
-      <label for="ebookUrlGeral">Ebook URL Geral:</label>
-      <input id="ebookUrlGeral" formControlName="ebookUrlGeral" />
-    </div>
-    <div>
-      <label for="video_inicial">Vídeo Inicial:</label>
-      <input id="video_inicial" formControlName="video_inicial" />
-    </div>
-    <button type="submit" [disabled]="moduloForm.invalid">Salvar</button>
-  </form>
+<div class="cadastro-modulo-pagina">
+  <div class="cadastro-modulo-container">
+    <h2 class="cadastro-modulo-titulo">Cadastrar Módulo</h2>
+    <p class="cadastro-modulo-aviso">* Indica campos obrigatórios</p>
+    <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
+      <div class="cadastro-modulo-campos-inline">
+        <div class="cadastro-modulo-campo">
+          <label for="nome_modulo" class="cadastro-modulo-label">Nome do Módulo<span> *</span></label>
+          <input id="nome_modulo" class="cadastro-modulo-input" formControlName="nome_modulo" (input)="gerarUrlAmigavel()" />
+        </div>
+        <div class="cadastro-modulo-campo">
+          <label for="nome_url" class="cadastro-modulo-label">URL do Módulo<span> *</span></label>
+          <input id="nome_url" class="cadastro-modulo-input" formControlName="nome_url" readonly />
+        </div>
+      </div>
+      <div class="cadastro-modulo-campo">
+        <label for="ebookUrlGeral" class="cadastro-modulo-label">Ebook URL Geral<span> *</span></label>
+        <input id="ebookUrlGeral" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
+      </div>
+      <div class="cadastro-modulo-campo">
+        <label for="video_inicial" class="cadastro-modulo-label">Vídeo Inicial<span> *</span></label>
+        <input id="video_inicial" class="cadastro-modulo-input" formControlName="video_inicial" />
+      </div>
+      <div class="cadastro-modulo-buttons">
+        <button type="button" routerLink="/dashboard" id="botao-um">Cancelar</button>
+        <button type="submit" [disabled]="moduloForm.invalid" id="botao-dois">Cadastrar Módulo</button>
+      </div>
+    </form>
+  </div>
 </div>
