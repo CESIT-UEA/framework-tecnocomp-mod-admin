@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
@@ -47,7 +47,13 @@ import { EditarPlataformaComponent } from './components/editar-plataforma/editar
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MeuPerfilPageComponent } from './pages/meu-perfil-page/meu-perfil-page.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
+import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
+
 import { GerenciarFichaTecnicaComponent } from './components/gerenciar-ficha-tecnica/gerenciar-ficha-tecnica.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DialogCriarEquipeComponent } from './components/dialog-criar-equipe/dialog-criar-equipe.component';
@@ -84,6 +90,7 @@ import { VideoSectionComponent } from './pages/ver-ao-vivo/components/video-sect
 import { BotoesSectionComponent } from './pages/ver-ao-vivo/components/botoes-section/botoes-section.component';
 import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,6 +122,13 @@ import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
     EditarPlataformaComponent,
     MeuPerfilPageComponent,
     EditarPerfilComponent,
+
+    CadastroModuloComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    AutoCadastroComponent,
+    ConfirmacaoAutoCadastroComponent,
+
     GerenciarFichaTecnicaComponent,
     DialogCriarEquipeComponent,
     DialogConfirmarRemocaoComponent,
@@ -146,6 +160,7 @@ import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
     VideoSectionComponent,
     BotoesSectionComponent,
     SafeUrlPipePipe,
+
   ],
   imports: [
     MatSlideToggleModule,
@@ -169,10 +184,12 @@ import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
     MatButtonModule,
     MatCheckboxModule,
     MatRadioModule,
+  
     MatSnackBarModule,
     MatExpansionModule,
     MatTableModule,
     MatProgressBarModule
+
   ],
   providers: [
     {

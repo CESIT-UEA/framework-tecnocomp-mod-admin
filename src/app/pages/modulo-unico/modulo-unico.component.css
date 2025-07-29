@@ -5,37 +5,38 @@
 .box-container {
   width: 90%;
   margin: 0 auto;
+  padding-top: 3rem;
 }
 .modulo h2 {
   color: #fff;
-  font-family: "Open Sans";
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  padding-top: 40px;
-  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #7C4CC6;
+  width: 100%;
+  text-align: center;
 }
 .box-modulo {
   display: flex;
-  padding: 40px;
+  flex-direction: column;
+  padding: 20px 40px 40px 40px;
   align-items: center;
   justify-content: center;
-  gap: 80px;
-  align-self: stretch;
-  border-radius: 8px;
-  background: #2b2a2e;
+  border-top: 8px solid #7C4CC6;
+  border-radius: 40px;
+  background: #2C2C2E;
   color: white;
 }
 .box-modulo p {
-  margin: 20px 0;
-  width: 90%;
+  width: 96%;
+  height: 35px;
   font-family: Arial;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  background-color: #3F3F40;
+  border-radius: 10px;
 }
+
 .img {
   width: 160px;
   height: 160px;
@@ -43,11 +44,23 @@
   background-color: #9256ed;
 }
 .informacoes {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  gap: 20px;
+  gap: 30px;
+  column-gap: 3rem;
+  padding-top: 30px;
 }
+
+.publicacoes-e-templates {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  column-gap: 1rem;
+}
+
+
 .btn-publicar {
   padding: 5px 10px;
   cursor: pointer;
@@ -55,23 +68,55 @@
   outline: none;
   border: none;
   color: white;
+  width: 50%;
+  border-radius: 10px;
+  height: 35px;
 }
 .status-publicado {
-  color: green;
+  color: #4CBC31;
   font-weight: bold;
 }
 
 .status-nao-publicado {
-  color: red;
+  color: #C64C4C;
   font-weight: bold;
 }
 .publicado {
-  background-color: green;
-  background-color: red;
+  background-color: #4CBC31;
+  background-color: #C64C4C;
 }
 
 .nao-publicado {
-  background-color: green;
+  background-color: #4CBC31;
+}
+
+.btn-publicar, .status-publicado, .status-nao-publicado, .publicado, .nao-publicado {
+   display: flex;
+  align-items: center;
+}
+
+.paragrafo {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.coluna-gerenciar {
+  width: 100%;
+  display: flex;
+  column-gap: 1rem;
+  justify-content: space-between;
+}
+
+.coluna-gerenciar button {
+  background-color: #7C4CC6;
+  width: 50%;
+  padding: 5px 10px;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 
 .titulo {

@@ -1,30 +1,79 @@
 <div class="box">
-  <section class="container">
-    <div class="logo">
-      <img src="../../../assets/logo.png" alt="logo">
-      <h3>Login</h3>
-    </div>
-    <form [formGroup]="loginForm" class="container-formulario" #formDir="ngForm">
-      <div class="campo-formulario" (click)="focusClick()">
-        <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" class="input" placeholder="example@gmail.com">
-      </div>
-      <div class="campo-formulario"  (click)="focusClick(true)">
-        <label for="senha">Senha</label>
-        <div class="campo-formulario-envolve" [ngClass]="{'ativado':focus}">
-          <input [type]="hide ? 'password' : 'text'" id="senha" type="password" formControlName="senha" class="input-senha" placeholder="Digite a sua senha">
-          <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+
+<div class="login-container">
+  <div class="login-esquerda">
+    <img src="../../../assets/imgs/Capa de login.svg" alt="Capa de login" class="imagem-login">
+
+  </div>
+  <div class="login-direita">
+    <div class="card-login">
+       <h2 class="titulo-login">Login</h2>
+       <p class="texto-login">Insira seus dados abaixo para acessar sua conta.</p>
+        
+       <form id="form" class="forms" [formGroup]="loginForm">
+        <div class="campos">
+            <div class="form-conteudo">
+          <label for="idemail">Email</label>
+          <input type="email"
+                id="idemail"
+                formControlName="email"
+                placeholder="Digite seu email">
         </div>
-      </div>
-      <button style="cursor: pointer;" type="submit" class="button" (click)="onSubmit()">Entrar</button>
-      <div class="campo-formulario" *ngIf="(email.invalid || senha.invalid) && formDir.submitted">
-        <p class="campo-formulario invalid" *ngIf="email.errors?.['email'] && !senha.errors?.['required'] && !email.errors?.['required']">Email inválido!</p>
-        <p class="campo-formulario invalid" *ngIf="email.errors?.['required'] || senha.errors?.['required']">Preencha todos os campos!</p>
-      </div>
-      <p class="campo-formulario invalid" *ngIf="errorLogin">Email ou senha incorretos!</p>
-    </form>
-  </section>
+
+        <div class="form-conteudo">
+          <div class = "form-senha">
+            <label for="idsenha">Senha</label>
+            <div class="input-icon">
+              <input [type]="hide ? 'password' : 'text'" id="senha" type="password"
+                id="idsenha"
+                formControlName="senha"
+                placeholder="Digite sua senha">
+                  <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="check-senha">
+          <div class="checkbox-container">
+            <mat-checkbox>Mantenha-me conectado</mat-checkbox>
+          </div>
+          <a class="senha-esquecida" routerLink="/forgot-password">Esqueceu a senha?</a>
+        </div>
+
+        <div class="botao-entrar">
+          <button class="button-one" (click)="onSubmit()">Entrar</button>
+        </div>
+        <div class="campo-formulario" *ngIf="submitted">
+            <p 
+              class="campo-formulario invalid" 
+              *ngIf="loginForm.get('email')?.errors?.['required'] || loginForm.get('senha')?.errors?.['required']"
+            >
+              Preencha todos os campos!
+            </p>
+        </div>
+        <p class="campo-formulario invalid" *ngIf="errorLogin">Email ou senha incorretos!</p>
+        
+        <div class="criar-conta">
+          <p>Não tem uma conta?</p>
+          <a class="cadastrar" routerLink="/cadastrar">Cadastre-se</a>
+        </div>
+
+        <div class="linha">
+          <mat-divider></mat-divider>
+          <p>Ou</p>
+          <mat-divider></mat-divider>
+        </div>
+        <div class="botao-entra-com-google">
+          <img src="../../../assets/imgs/flat-color-icons_google.svg" alt="icone do google" class="google-icon">
+          <button class="button-two">Entrar com o Google</button>
+        </div>
+       </form>
+    </div>
+  </div>
 </div>
+
+
 

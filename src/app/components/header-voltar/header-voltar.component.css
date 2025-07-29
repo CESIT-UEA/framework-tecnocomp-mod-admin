@@ -1,11 +1,13 @@
 .container-voltar{
   background-color: #0E0E0E;
+  box-sizing: border-box;
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 20px;
   color: white;
   padding: 20px;
+  height: 12vh;
 }
 
 .container-voltar mat-icon{

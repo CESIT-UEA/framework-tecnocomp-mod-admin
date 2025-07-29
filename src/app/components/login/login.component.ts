@@ -11,12 +11,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class LoginComponent {
   errorLogin: boolean = false;
   focus = false;
-
+  submitted = false;
   hide = true;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     senha: new FormControl('', Validators.required)
   });
+
 
   constructor(private authService: AuthService, private router: Router) {
       this.loginForm.valueChanges.subscribe(() => {
@@ -33,7 +34,10 @@ export class LoginComponent {
       return this.loginForm.get('senha')!;
   }
 
+
+
   onSubmit(): void {
+    this.submitted = true;
     if (this.loginForm.valid) {
       this.errorLogin = false;
 

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { authGuard } from './auth/auth.guard';
+import { authGuard, resetPasswordGuard } from './auth/auth.guard';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { CadastroPlataformaComponent } from './components/cadastro-plataforma/cadastro-plataforma.component';
 import { CadastroModuloComponent } from './components/cadastro-modulo/cadastro-modulo.component';
@@ -37,8 +37,17 @@ import { SlideComponent } from './pages/ver-ao-vivo/slide/slide.component';
 import { AtividadeComponent } from './pages/ver-ao-vivo/atividade/atividade.component';
 import { GerenciarAlunosComponent } from './components/gerenciar-alunos/gerenciar-alunos.component';
 
+import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
+  
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'cadastrar', component: AutoCadastroComponent},
+  { path: 'cadastrar/teste', component: ConfirmacaoAutoCadastroComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [resetPasswordGuard]},
   {
     path: '',
     component: LayoutMenuComponent,

@@ -1,12 +1,8 @@
 <app-header-voltar texto="Cadastrar Plataforma"></app-header-voltar>
-<div class="container-pagina">
-  <main class="section">
-    <div class="section-titulo">
-      <h1>Cadastro de Plataforma</h1>
-      <mat-divider></mat-divider>
-      <p>*Indica uma pergunta obrigatória</p>
-    </div>
-
+<div class="cadastro-plataforma-pagina">
+  <section class="cadastro-plataforma-container">
+    <h2 class="cadastro-plataforma-titulo">Cadastro de Plataforma</h2>
+    <p class="cadastro-plaforma-aviso">*Indica uma pergunta obrigatória</p>
     <form
       [formGroup]="plataformaForm"
       (ngSubmit)="onSubmit()"
@@ -14,38 +10,17 @@
       #formDir="ngForm"
     >
       <div class="forms-campo">
-        <label for="plataformaNome"
-          >Nome da Ferramenta <span class="obrigatorio">*</span></label
-        >
-        <input
-          id="plataformaNome"
-          type="text"
-          formControlName="plataformaNome"
-          placeholder="Digitar..."
-        />
+        <label for="plataformaNome" class="cadastro-plataforma-label">Nome da Ferramenta <span class="obrigatorio">*</span></label>
+        <input class="cadastro-plataforma-input" type="text" formControlName="plataformaNome" placeholder="Nome da ferramenta"/>
       </div>
-      <section class="campos">
+      <section class="campos-inline">
         <div class="forms-campo">
-          <label for="plataformaUrl"
-            >URL da Plataforma <span class="obrigatorio">*</span></label
-          >
-          <input
-            id="plataformaUrl"
-            type="text"
-            formControlName="plataformaUrl"
-            placeholder="Digitar..."
-          />
+          <label for="plataformaUrl" class="cadastro-plataforma-label">URL da Plataforma <span class="obrigatorio">*</span></label>
+          <input class="cadastro-plataforma-input" type="text" formControlName="plataformaUrl" placeholder="URL da plataforma"/>
         </div>
         <div class="forms-campo">
-          <label for="idCliente"
-            >ID do Cliente <span class="obrigatorio">*</span></label
-          >
-          <input
-            id="idCliente"
-            type="text"
-            formControlName="idCliente"
-            placeholder="Digitar..."
-          />
+          <label for="idCliente" class="cadastro-plataforma-label">ID do Cliente <span class="obrigatorio">*</span></label>
+          <input class="cadastro-plataforma-input" type="text" formControlName="idCliente" placeholder="Id do cliente"/>
         </div>
       </section>
       <div class="forms-campo">
@@ -91,8 +66,8 @@
       </div>
 
       <div class="buttons">
-        <button (click)="home()" class="button-one">Cancelar</button>
-        <button type="submit" class="button-two">Cadastrar</button>
+        <button (click)="home()" id="botao-um">Cancelar</button>
+        <button type="submit" id="botao-dois">Cadastrar</button>
       </div>
       <div
         *ngIf="
@@ -105,5 +80,5 @@
         <p class="validators">Preencha todos os campos!</p>
       </div>
     </form>
-  </main>
+  </section>
 </div>

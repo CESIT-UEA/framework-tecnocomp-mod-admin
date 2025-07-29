@@ -1,73 +1,50 @@
-<div class="box">
-   <header class="header">
-    <app-header-voltar></app-header-voltar>
-    <h1 class="titulo">Cadastrar usuário</h1>
-   </header>
-  <div class="container">
-    <div class="titulo-formulario">
-        <h2>Formulário de cadastro de usuário</h2>
-        <mat-divider></mat-divider>
+<app-header-voltar texto="Cadastrar Usuário"></app-header-voltar>
+<div class="cadastro-usuario-pagina">
+  <div class="cadastro-usuario-container">
+    <h2 class="cadastro-usuario-titulo">Cadastrar Usuário</h2>
+    <p class="cadastro-usuario-aviso">* Indica campos obrigatórios</p>
+  <form id="form" class="form" [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+    <div class="campos">
+      <div class="form-conteudo">
+        <label for="Nome-usuario" class="cadastro-usuario-label">Nome<span> *</span></label>
+        <input type="text" formControlName="nome" class="cadastro-usuario-input" id="nome" placeholder="Digite seu nome completo">
+      </div>
+      <div class="form-conteudo">
+        <label for="email" class="cadastro-usuario-label">Email<span> *</span></label>
+        <input type="email" formControlName="email" class="cadastro-usuario-input" id="nome" placeholder="exemplo@gmail.com">
+      </div>
+      <div class="form-conteudo">
+          <label for="senha" class="cadastro-usuario-label">Senha<span> *</span></label>
+          <input [type]="hide ? 'password' : 'text'"  formControlName="senha" class="cadastro-usuario-input" type="password" formControlName="senha" placeholder="Digite a sua senha">
+          <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+      </div>
+      <div class="form-conteudo">
+          <label for="confirmar-senha" class="cadastro-usuario-label">Confirmar<span> *</span></label>
+          <input type="password" formControlName="confirmarSenha" class="cadastro-usuario-input" id="confirmar-senha" placeholder="Confirmar a senha">
+      </div>
     </div>
-    <p class="texto">* Indica uma pergunta obrigatória</p>
-    <form id="form" class="form" [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
-        <div class="campos">
-            <div class="form-conteudo">
-                <label for="Nome-usuario">Nome<span>*</span></label>
-                <input type="text"
-                id="nome"
-                placeholder="Digite seu nome completo" formControlName="nome">
-            </div>
 
-            <div class="form-conteudo">
-                <label for="email">Email<span>*</span></label>
-                <input type="email"
-                id="nome"
-                placeholder="exemplo@gmail.com" formControlName="email">
-            </div>
-
-            <div class="campo-senha">
-              <div class="form-conteudo">
-                  <label for="senha">Senha<span>*</span></label>
-                  <div class="campo-formulario-envolve">
-                    <input [type]="hide ? 'password' : 'text'" id="senha" type="password" formControlName="senha" class="input-senha" placeholder="Digite a sua senha">
-                    <button  class="icon" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                  </div>
-              </div>
-
-              <div class="form-conteudo">
-                  <label for="confirmar-senha">Confirmar<span>*</span></label>
-                  <input type="password"
-                  id="confirmar-senha"
-                  placeholder="Confirmar a senha" formControlName="confirmarSenha">
-              </div>
-            </div>
-        </div>
-
-        <div class="form-conteudo-tipo">
-          <div class="form-conteudo-tipo-filho">
-            <label for="tipo">Tipo de usuário<span>*</span></label>
-            <mat-radio-group formControlName="tipo">
-              <mat-radio-button class="check-professor" value="professor">Professor</mat-radio-button>
-              <p>ou</p>
-              <mat-radio-button class="check-administrador" value="adm">Administrador</mat-radio-button>
-            </mat-radio-group>
-          </div>
-        </div>
-      <section class="container-options">
-        <div class="buttons">
-          <button (click)="home()" class="button-one">Cancelar</button>
+    <div class="form-conteudo-tipo">
+      <label for="tipo" class="cadastro-usuario-label">Tipo de usuário<span> *</span></label>
+      <mat-radio-group class="radio-group" formControlName="tipo">
+        <mat-radio-button class="check-professor" value="professor">Professor</mat-radio-button>
+        <mat-radio-button class="check-administrador" value="adm">Administrador</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="buttons">
+        <button (click)="home()" id="botao-um">Cancelar</button>
           <button
               type="submit"
-              class="button-two"
-              [disabled]="cadastroForm.invalid"
-              [ngClass]="{'button-disabled': cadastroForm.invalid}"
+              id="botao-dois"
+              [disabled]="this.buttonDisabled"
+              [ngClass]="{'button-disabled': this.buttonDisabled}"
             >
               Confirmar
           </button>
         </div>
-      </section>
     </form>
   </div>
-</div>
+  
+  </div>

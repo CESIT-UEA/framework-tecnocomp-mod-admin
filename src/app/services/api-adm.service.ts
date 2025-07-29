@@ -1,3 +1,5 @@
+import { ValidaLinkResponse } from 'src/interfaces/validaLinkResponse';
+
 import { Location } from '@angular/common';
 import {
   HttpClient,
@@ -5,16 +7,18 @@ import {
   HttpHeaders,
   HttpParams,
 } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment, environmentFrontEnd } from 'src/environments/environment.development';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Plataforma } from 'src/interfaces/Plataforma';
 import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
+import { DadosResponse } from 'src/interfaces/DadosResponse'
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +35,10 @@ export class ApiAdmService {
 
   registerUsuario(data: any) {
     return this.http.post(`${this.baseUrl}/auth/register`, data);
+  }
+
+  autoRegister(data: any): Observable<DadosResponse> {
+    return this.http.post<DadosResponse>(`${this.baseUrl}/api/autoRegister`, data);
   }
 
   registerPlataforma(data: any) {
@@ -200,6 +208,26 @@ export class ApiAdmService {
     });
   }
 
+  
+  enviarEmailSenhaEsquecida(email: string): Observable<DadosResponse>{
+    return this.http.post<DadosResponse>(`${this.baseUrl}/api/forgot_password`, {email, baseUrl: environmentFrontEnd.baseUrl})
+  }
+
+  validaLinkRedefinirSenha(email: string, token: string): Observable<ValidaLinkResponse>{
+    return this.http.post<ValidaLinkResponse>(
+      `${this.baseUrl}/api/valida_link`,
+      {email, token, baseUrl: environmentFrontEnd.baseUrl})
+  }
+
+  resetPassword(email: string, token: string, novaSenha: string){
+    return this.http.post(`${this.baseUrl}/api/reset_password`, {email, token, novaSenha})
+  }
+
+  confirmarAutoRegister(dados: { email: string, codigo: string }): Observable<any>{
+    return this.http.post(`${this.baseUrl}/api/valida_autoRegister`, dados)
+  }
+
+
   clonarTemplate(id: number) {
     const params = new HttpParams().set('id', id.toString());
 
@@ -209,4 +237,5 @@ export class ApiAdmService {
   voltar(): void {
     this.location.back();
   }
+
 }

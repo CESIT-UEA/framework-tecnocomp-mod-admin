@@ -2,14 +2,11 @@
 <div class="detalhes-modulo-container">
   <div class="box-container">
     <div class="modulo">
-      <h2>{{ modulo?.nome_modulo }}</h2>
       <div class="box-modulo">
-        <div class="img"></div>
+        <h2>{{ modulo?.nome_modulo }}</h2>
         <div class="informacoes">
-            <p><strong>Nome:</strong> {{ modulo?.nome_modulo }}</p>
-            <p><strong>URL:</strong> {{ modulo?.nome_url }}</p>
-            <p>
-              <strong>Status:</strong>
+          <p class="paragrafo">
+              <strong>Status: </strong>
               <span
                 [ngClass]="
                   modulo?.publicado
@@ -20,36 +17,39 @@
                 {{ modulo?.publicado ? "Publicado" : "Não Publicado" }}
               </span>
             </p>
-            <button                 [ngClass]="
-            modulo?.publicado
-              ? 'publicado'
-              : 'nao-publicado'
-          " class="btn btn-publicar" (click)="alterarPublicacao()">
-              {{ modulo?.publicado ? "Despublicar" : "Publicar" }}
-            </button>
-            <button                 [ngClass]="
-            modulo?.template
-              ? 'publicado'
-              : 'nao-publicado'
-          " class="btn btn-publicar" (click)="templateModulo()">
-              {{ modulo?.template ? "Transformar em Template" : "Destransformar Template" }}
-            </button>
-            <p><strong>Id: </strong> {{ modulo?.id }}</p>
-            <p><a target="_blank" [href]="modulo?.ebookUrlGeral">Ebook Completo</a></p>
-            <p><a target="_blank" [href]="modulo?.video_inicial">Vídeo Inicial</a></p>
-            <p>
+            <div class="publicacoes-e-templates">
+              <button [ngClass]="modulo?.publicado ? 'publicado' : 'nao-publicado'" class="btn btn-publicar" (click)="alterarPublicacao()">
+                {{ modulo?.publicado ? "Despublicar" : "Publicar" }}
+              </button>
+              <button [ngClass]="modulo?.template ? 'publicado' : 'nao-publicado'" class="btn btn-publicar" (click)="templateModulo()">
+                {{ modulo?.template ? "Transformar em Template" : "Destransformar Template" }}
+              </button>
+            </div>
+            <p class="paragrafo"><strong>Nome: </strong> {{ modulo?.nome_modulo }}</p>
+            <p class="paragrafo"><strong>URL: </strong> {{ modulo?.nome_url }}</p>
+            
+            
+            <p class="paragrafo"><strong>Id: </strong> {{ modulo?.id }}</p>
+            <p class="paragrafo"><a target="_blank" [href]="modulo?.ebookUrlGeral">Ebook Completo</a></p>
+            <p class="paragrafo"><a target="_blank" [href]="modulo?.video_inicial">Vídeo Inicial</a></p>
+            <p class="paragrafo">
               <strong>UUID:</strong> {{ modulo?.uuid }}
               <button mat-icon-button (click)="copiarUUID()">
                 <mat-icon>content_copy</mat-icon>
               </button>
             </p>
-            <button routerLink="gerenciar-ficha-tecnica">Gerenciar Ficha Técnica</button>
-            <button routerLink="gerenciar-vantagens">Gerenciar Vantagens do Módulo</button>
+            <div class="coluna-gerenciar">
+              <button routerLink="gerenciar-ficha-tecnica">Gerenciar Ficha Técnica</button>
+              <button routerLink="gerenciar-vantagens">Gerenciar Vantagens do Módulo</button>
+            </div>
+          <div class="coluna-gerenciar">
             <button routerLink="gerenciar-referencias">Gerenciar Referências</button>
             <button routerLink="gerenciar-alunos">Gerenciar Alunos</button>
-        </div>
+          </div>
+          </div>
       </div>
     </div>
+
     <div class="titulo">
       <h1>Tópicos</h1>
       <button [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: modulo?.id }">

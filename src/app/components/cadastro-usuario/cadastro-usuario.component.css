@@ -1,196 +1,120 @@
-
-.box{
-    height: 100vh;
-    color: #FFFFFF;
-    background-color: #131313;
+* {
+  color: #FFFFFF;
 }
 
-.header {
+.cadastro-usuario-pagina {
   display: flex;
-  background-color:#0E0E0E;
+  justify-content: center;
   align-items: center;
+  background-color: #1E1E1E;
+  height: 88vh;
 }
 
-h1{
-  font-size: 24px;
+.cadastro-usuario-container {
+  background-color: #2E2E2F;
+  width: 50%;
+  border-radius: 40px;
+  padding: 0 2.5rem;
+  border-top: 8px solid #7C4CC6;
 }
 
-span {
-  color:#fa7878
+
+.cadastro-usuario-aviso {
+  padding-top: 20px;
 }
 
-.titulo{
-  height: 10%;
+.cadastro-usuario-titulo, .cadastro-usuario-label {
+    color: #FFFFFF;
+    padding: 10px 0;
 }
 
-.container {
-  border-radius: 15px;
-  border: 1px solid #404040;
-  background: #2b2a2e;
-  border-top: 5px solid #864FD9;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  padding: 40px 50px;
-  margin-top: 50px;
-  width: 62%;
-}
-
-.titulo-formulario {
-  padding: 0;
-  margin-bottom: 20px;
+.cadastro-usuario-titulo {
   text-align: center;
+  padding: 20px 0 20px 0;
+  border-bottom: 2px solid #7C4CC6;
 }
 
-.titulo-formulario h2 {
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 10px;
+
+.cadastro-usuario-label span, .cadastro-usuario-aviso {
+  color: #C64C4C;
 }
 
-.texto {
-  color:#fa7878;
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 10px;
+.campos {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
+
 
 .form-conteudo {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 15px 0;
-  font-size: 16px;
-  font-weight: 400;
+  flex-direction: column;
+  width: 92%;
+  padding: 5px 0;
 }
 
-.form-conteudo label {
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 6px;
-
+.cadastro-usuario-input, .icon {
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3F3F40;
+  color: #FFFFFF;
+  padding-left: 10px;
 }
 
-.form-conteudo input {
-  background-color: #38383A;
-  border: 1px solid #38383A;
-  border-radius: 6px;
-  color: white;
-  font-size: 14px;
-  padding: 0 8px;
-  height: 40px;
-  width: 100%;
+.cadastro-usuario-input:focus{
+   box-shadow: 0 0 0 0;
+   outline: 0;
 }
 
-.form-conteudo-tipo mat-radio-group, .form-conteudo-tipo-filho{
-  display: flex;
-  align-items: center;
-  gap: 40px;
-
-}
-
-.form-conteudo-tipo label {
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  margin-top: 10px;
-  background-color: #2B2A2E;
-}
-
-.campo-senha {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-.campo-senha input {
-  width: 21.563rem;
-
-}
-
-.campo-formulario-envolve{
-  display: flex;
-  align-items: center;
+.icon {
   position: relative;
+  top: -35px;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
-.icon{
-  position: absolute;
-  right: 3%;
-  background-color: #38383A;
-  border: none;
-  color: #B68EF3;
+mat-icon {
+  color: #7C4CC6;
 }
 
-.botoes {
+.form-conteudo-tipo {
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  gap: 20px;
-  width: 100%;
-  height: 40px;
+  flex-direction: column;
+  position: relative;
+  top: -20px;
 }
 
-.botao-cancelar {
-  background-color: transparent;
-  border: 1px solid #9A9A9A;
-  color: #FFFFFF;
-  width: 162px;
-  height: 40px;
-  border-radius: 5px;
-  padding: 6px 17px 6px 17px;
-  cursor: pointer;
+
+.radio-group {
+  display: flex;
+  column-gap: 20px;
+  position: relative;
+  left: -10px;
 }
 
-.botao-confirmar {
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+  padding: 10px 0;
+  position: relative;
+  top: -20px;
+}
+
+.buttons button {
+  padding: 7px;
+  width: 145px;
   border: none;
-  background-color: #864FD9;
   color: #FFFFFF;
-  width: 162px;
-  height: 40px;
-  padding: 6px 17px 6px 17px;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 10px;
 }
 
- mat-divider {
-  background-color: #48464D;
-  height: 2px;
-  width: 100%;
-  margin-bottom: 5px;
-  margin-top: 20px;
+#botao-um {
+  background-color: transparent;
+  border: 3px solid #7C4CC6;
 }
 
-
-.button-one, .button-two{
-    width: 115px;
-    padding: 8px;
-    border-radius: 6px;
-}
-
-.button-one{
-    background-color: transparent;
-    border: 1px solid #9A9A9A;
-}
-
-.button-two{
-    border: none;
-    background-color: #864FD9;
-    color: #FFFFFF;
-}
-
-.button-disabled {
-    background-color: #715c91c5;
-}
-
-.validators, .obrigatorio{
-    color: #BF0A0A;
-    font-size: 12px;
-}
-
-.cadastroError{
-    text-align: center;
+#botao-dois {
+  background-color: #7C4CC6;
 }
