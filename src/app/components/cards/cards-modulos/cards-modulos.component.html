@@ -1,5 +1,4 @@
 <mat-card class="container-card">
-  <div class="img"></div>
   <mat-card-header>
     <mat-card-title>{{ modulo.nome_modulo }}</mat-card-title>
   </mat-card-header>
@@ -24,8 +23,9 @@
         <mat-icon class="card-icon">visibility</mat-icon>
       </div>
     </div>
-  </mat-card-content>
-  <mat-card-actions>
+    <mat-card-actions>
     <button class="btn" [routerLink]="['/modulos', modulo.id]">Ver Mais</button>
-  </mat-card-actions>
+    </mat-card-actions>
+  </mat-card-content>
+  
 </mat-card>
