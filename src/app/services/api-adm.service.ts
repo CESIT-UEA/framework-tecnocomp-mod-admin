@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { environment, environmentFrontEnd } from 'src/environments/environment.development';
+import { environment, environmentFrontEnd } from 'src/environments/environment';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Plataforma } from 'src/interfaces/Plataforma';
 import { Topico } from 'src/interfaces/topico/Topico';
