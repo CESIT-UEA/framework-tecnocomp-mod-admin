@@ -7,7 +7,7 @@
       <div class="cadastro-modulo-campos-inline">
         <div class="cadastro-modulo-campo">
           <label for="nome_modulo" class="cadastro-modulo-label">Nome do Módulo<span> *</span></label>
-          <input id="nome_modulo" class="cadastro-modulo-input" formControlName="nome_modulo" (input)="gerarUrlAmigavel()" />
+          <input id="nome_modulo"  placeholder="Nome do Módulo" class="cadastro-modulo-input" formControlName="nome_modulo" (input)="gerarUrlAmigavel()" />
         </div>
         <div class="cadastro-modulo-campo">
           <label for="nome_url" class="cadastro-modulo-label">URL do Módulo<span> *</span></label>
@@ -16,11 +16,11 @@
       </div>
       <div class="cadastro-modulo-campo">
         <label for="ebookUrlGeral" class="cadastro-modulo-label">Ebook URL Geral<span> *</span></label>
-        <input id="ebookUrlGeral" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
+        <input id="ebookUrlGeral" placeholder="URL do Ebook geral" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
       </div>
       <div class="cadastro-modulo-campo">
         <label for="video_inicial" class="cadastro-modulo-label">Vídeo Inicial<span> *</span></label>
-        <input id="video_inicial" class="cadastro-modulo-input" formControlName="video_inicial" />
+        <input id="video_inicial" placeholder="URL do video inicial" class="cadastro-modulo-input" formControlName="video_inicial" />
       </div>
       <div class="cadastro-modulo-buttons">
         <button type="button" routerLink="/dashboard" id="botao-um">Cancelar</button>

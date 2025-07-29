@@ -52,7 +52,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: fit-content;
 }
 .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle{
-  border-color: white !important;
+  border-color: #767676 !important;
 }
 
 .mat-accent {
