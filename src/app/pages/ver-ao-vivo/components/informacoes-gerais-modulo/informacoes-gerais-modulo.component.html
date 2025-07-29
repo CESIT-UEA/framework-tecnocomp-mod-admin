@@ -1,0 +1,58 @@
+<section class="container">
+  <div class="esquerdo">
+    <div class="box">
+      <h1>
+        Faça este módulo de
+        {{ this.verAoVivo.dados_completos.nome_modulo }} e:
+      </h1>
+      <ul>
+        <li *ngFor="let vantagem of this.verAoVivo.dados_completos.Vantagems">
+          {{ vantagem.descricao }}
+        </li>
+      </ul>
+    </div>
+    <div class="box">
+      <h1>Tópicos abordados:</h1>
+      <ol>
+        <li *ngFor="let topico of this.verAoVivo.dados_completos.Topicos">
+          {{ topico.nome_topico }}
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="direito">
+    <div class="box" *ngFor="let instrutor of this.getInstrutores()">
+      <h1>Instrutor(a)</h1>
+      <div class="box-imagem">
+        <img
+          [src]="instrutor.foto_url"
+          alt=""
+          width="100px"
+          height="100px"
+        />
+        <p>{{instrutor.nome}}</p>
+      </div>
+    </div>
+    <div class="box av">
+      <h1>Avaliação do Módulo:</h1>
+      <div class="box-avaliacao">
+        <div class="box-estrelas-conteudo">
+          <p>Média:</p>
+          <div class="box-estrelas">
+            <mat-icon
+              *ngFor="let estrela of estrelas; let i = index"
+              class="estrela"
+              [ngClass]="{
+                'colorido': i + 1 <= this.verAoVivo.dados_completos.mediaAvaliacoes
+              }"
+            >
+              star
+            </mat-icon>
+          </div>
+        </div>
+        <hr />
+        <p>Baseado em {{this.verAoVivo.dados_completos.quantidadeAvaliacoes}} avaliações</p>
+      </div>
+    </div>
+  </div>
+</section>

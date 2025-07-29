@@ -1,0 +1,22 @@
+<div class="container-perfil">
+  <section class="meus-modulos">
+    <div class="titulo">
+      <h1>Meus Módulos</h1>
+      <button routerLink="/registrar-modulo">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <p>
+      Quantidade: <strong>{{ modulos.length }}</strong>
+    </p>
+    <mat-divider></mat-divider>
+    <div class="container-cards-modulos">
+      <div class="card" *ngFor="let modulo of modulos">
+        <app-cards-modulos
+          [modulo]="modulo"
+          (excluirModulo)="excluirModulo($event)"
+        ></app-cards-modulos>
+      </div>
+    </div>
+  </section>
+</div>

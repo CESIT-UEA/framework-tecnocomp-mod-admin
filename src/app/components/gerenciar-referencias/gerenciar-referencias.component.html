@@ -1,0 +1,45 @@
+<app-header-voltar texto="Gerenciar Referencias"></app-header-voltar>
+<div class="container" style="padding: 16px">
+
+  <div style="margin-bottom: 16px">
+    <button mat-stroked-button color="primary" (click)="adicionarReferencia()">
+      Adicionar Referência
+    </button>
+  </div>
+
+  <ul *ngIf="referencias.length > 0; else semReferencias">
+    <li *ngFor="let referencia of referencias">
+        <div class="referencia-texto">
+          <p>
+            <strong>{{ referencia.descricao }}</strong>
+          </p>
+          <p *ngIf="referencia.link">
+            🔗
+            <a href="{{ referencia.link }}" target="_blank">{{
+              referencia.link
+            }}</a>
+          </p>
+        </div>
+        <div class="acoes">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="editarReferencia(referencia)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deletarReferencia(referencia.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </li>
+  </ul>
+
+  <ng-template #semReferencias>
+    <p>Nenhuma referência cadastrada ainda.</p>
+  </ng-template>
+</div>

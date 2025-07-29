@@ -7,7 +7,7 @@ import { Plataforma } from 'src/interfaces/Plataforma';
 @Component({
   selector: 'app-editar-plataforma',
   templateUrl: './editar-plataforma.component.html',
-  styleUrls: ['./editar-plataforma.component.css']
+  styleUrls: ['./editar-plataforma.component.css'],
 })
 export class EditarPlataformaComponent implements OnInit {
   plataformaForm!: FormGroup;
@@ -27,14 +27,23 @@ export class EditarPlataformaComponent implements OnInit {
     // Inicializar o formulário
     this.plataformaForm = this.fb.group({
       plataformaNome: ['', [Validators.required, Validators.minLength(3)]],
-      plataformaUrl: ['', [Validators.required, Validators.pattern(/https?:\/\/.+/)]],
+      plataformaUrl: [
+        '',
+        [Validators.required, Validators.pattern(/https?:\/\/.+/)],
+      ],
       idCliente: ['', [Validators.required]],
+      temaTipo: ['padrao', Validators.required],
+      customPrimaria: [''],
+      customSecundaria: [''],
+      customTerciaria: [''],
+      customQuartenaria: [''],
+      customQuintenaria: [''],
     });
 
     // Carregar os dados da plataforma
     this.apiService.obterPlataformaPorId(this.plataformaId).subscribe(
       (plataforma: Plataforma) => {
-        console.log(plataforma)
+        console.log(plataforma);
         this.plataformaForm.patchValue(plataforma);
       },
       (error) => {
@@ -53,15 +62,17 @@ export class EditarPlataformaComponent implements OnInit {
 
     const plataformaAtualizada = this.plataformaForm.value;
 
-    this.apiService.editarPlataforma(this.plataformaId, plataformaAtualizada).subscribe(
-      () => {
-        alert('Plataforma atualizada com sucesso!');
-        this.router.navigate(['/plataformas']);
-      },
-      (error) => {
-        console.error('Erro ao atualizar a plataforma:', error);
-        alert('Erro ao atualizar a plataforma.');
-      }
-    );
+    this.apiService
+      .editarPlataforma(this.plataformaId, plataformaAtualizada)
+      .subscribe(
+        () => {
+          alert('Plataforma atualizada com sucesso!');
+          this.router.navigate(['/plataformas']);
+        },
+        (error) => {
+          console.error('Erro ao atualizar a plataforma:', error);
+          alert('Erro ao atualizar a plataforma.');
+        }
+      );
   }
 }

@@ -23,6 +23,48 @@
           <input class="cadastro-plataforma-input" type="text" formControlName="idCliente" placeholder="Id do cliente"/>
         </div>
       </section>
+      <div class="forms-campo">
+        <label for="temaTipo"
+          >Tema Visual <span class="obrigatorio">*</span></label
+        >
+        <select id="temaTipo" formControlName="temaTipo">
+          <option value="padrao">Padrão</option>
+          <option value="tema1">Tema 1</option>
+          <option value="tema2">Tema 2</option>
+          <option value="customizado">Personalizado</option>
+        </select>
+      </div>
+
+      <!-- Campos de cor visíveis apenas se temaTipo === 'customizado' -->
+      <div
+        *ngIf="plataformaForm.get('temaTipo')?.value === 'customizado'"
+        class="forms-campo"
+      >
+        <label>Cores personalizadas:</label>
+
+        <input type="color" formControlName="customPrimaria" title="Primária" />
+        <input
+          type="color"
+          formControlName="customSecundaria"
+          title="Secundária"
+        />
+        <input
+          type="color"
+          formControlName="customTerciaria"
+          title="Terciária"
+        />
+        <input
+          type="color"
+          formControlName="customQuartenaria"
+          title="Quartenária"
+        />
+        <input
+          type="color"
+          formControlName="customQuintenaria"
+          title="Quintenária"
+        />
+      </div>
+
       <div class="buttons">
         <button (click)="home()" id="botao-um">Cancelar</button>
         <button type="submit" id="botao-dois">Cadastrar</button>

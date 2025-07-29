@@ -28,8 +28,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          // Token expirado, tenta renovar o token
+        if (error.status === 401 || error.status === 403) {
+          console.log("ola mundo")
           return this.authService.refreshAccessToken().pipe(
             switchMap(() => {
               const newToken = this.authService.getToken();

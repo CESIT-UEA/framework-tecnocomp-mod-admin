@@ -11,7 +11,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class CardTopicosComponent implements OnInit {
   ngOnInit(): void {
-    console.log(this.topico)
   }
   @Input() topico!: Topico;
   @Input() idModulo!: number;

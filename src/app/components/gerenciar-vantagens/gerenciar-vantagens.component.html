@@ -1,0 +1,38 @@
+<app-header-voltar texto="Gerenciar Vantagens do Módulo"></app-header-voltar>
+<div class="container" style="padding: 16px">
+  <div style="margin: 16px 0">
+    <button mat-raised-button color="primary" (click)="adicionarVantagem()">
+      Adicionar Vantagem
+    </button>
+  </div>
+
+  <mat-list *ngIf="vantagens.length > 0">
+    <ul *ngFor="let vantagem of vantagens">
+      <li>
+        <div style="flex: 1">
+          {{ vantagem.descricao }}
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            color="accent"
+            (click)="editarVantagem(vantagem)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removerVantagem(vantagem)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </mat-list>
+
+  <div *ngIf="vantagens.length === 0" style="color: #888">
+    Nenhuma vantagem cadastrada ainda.
+  </div>
+</div>
