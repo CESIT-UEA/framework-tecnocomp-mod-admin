@@ -1,93 +1,85 @@
-.container-pagina {
-  background-color: #131313;
-  min-height: 80%;
-  padding: 30px 0;
-}
-.section {
-  border-radius: 15px;
-  border: 1px solid #404040;
-  background: #2b2a2e;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 50px;
-  color: white;
-}
-
-.section-titulo {
-  padding: 20px 40px 0px 40px;
-  line-height: 60px;
-}
-
-.section-titulo > p,
-.obrigatorio {
-  color: #fa7878;
-}
-
-.forms {
-  display: grid;
-  grid-template-columns: 90%;
+.cadastro-plataforma-pagina {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: #1E1E1E;
+  height: 88vh;
+}
+
+.cadastro-plataforma-container {
+  background-color: #2E2E2F;
+  width: 50%;
+  border-radius: 40px;
+  padding: 0 2.5rem;
+  border-top: 8px solid #7C4CC6;
+}
+
+.cadastro-plaforma-aviso {
+  padding: 25px 0 10px 0;
+}
+
+.cadastro-plataforma-titulo, .cadastro-plataforma-label {
+  color: #FFFFFF;
+  padding: 10px 0;
+}
+
+.cadastro-plataforma-titulo{
+  text-align: center;
+  padding: 20px 0 20px 0;
+  border-bottom: 2px solid #7C4CC6;
+}
+
+.cadastro-plataforma-label span, .cadastro-plaforma-aviso, .validators {
+  color: #C64C4C;
 }
 
 .forms-campo {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 15px 10px;
-  row-gap: 10px;
+  padding: 5px 0;
 }
 
-.forms-campo > input {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #9a9a9a;
-}
-
-input:focus,
-select:focus {
-  outline: 0;
-}
-
-.campos {
+.campos-inline {
   display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: 0px;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+}
+
+.cadastro-plataforma-input {
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3F3F40;
+  color: #FFFFFF;
+  padding-left: 10px;
+  margin: 8px 0;
 }
 
 .buttons {
-  text-align: center;
-  padding: 40px 0;
-  color: white;
-}
-.buttons button{
-  cursor: pointer;
-  width: 130px;
-  padding: 8px;
-  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+  padding: 30px;
 }
 
-.button-one {
-  background-color: transparent;
-  border: 1px solid #9a9a9a;
-  margin-right: 20px;
-  color: white;
-}
-
-.button-two {
+.buttons button {
+  padding: 7px;
+  width: 145px;
   border: none;
-  background-color: #864fd9;
-  color: #ffffff;
+  color: #FFFFFF;
+  border-radius: 10px;
 }
 
-.validators {
-  color: #fa7878;
-  font-size: 12px;
+#botao-um {
+  background-color: transparent;
+  border: 3px solid #7C4CC6;
+}
+
+#botao-dois {
+  background-color: #7C4CC6;
+}
+
+ .validators {
   text-align: center;
   padding-bottom: 10px;
-}
-mat-divider {
-  background-color: #818181;
-  height: 2px;
-  margin-bottom: 5px;
-  margin-top: 5px;
-}
+ }
