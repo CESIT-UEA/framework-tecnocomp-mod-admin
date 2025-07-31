@@ -129,6 +129,11 @@
                   <mat-label>Questão do Exercício</mat-label>
                   <input matInput formControlName="questao" required />
                 </mat-form-field>
+                
+                <div class="botaos-type-questao">
+                    <button (click)="setQuestaoAberta(false)">Questão Objetiva</button>
+                    <button (click)="setQuestaoAberta(true)">Questão Discursiva</button>
+                </div>
 
                 <h4>Alternativas</h4>
                 <mat-divider></mat-divider>
