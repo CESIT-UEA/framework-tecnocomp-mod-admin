@@ -147,7 +147,7 @@ input:focus, select:focus{
 .urlVideo {
     display: flex;
     align-items: center;
-    padding: 10px 10px 10px 0;   
+    padding: 10px 10px 10px 0;
 }
 
 .urlVideo > p {
