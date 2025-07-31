@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { ExercicioService } from 'src/app/services/exercicio.service';
 
 @Component({
   selector: 'app-editar-topico',
@@ -22,7 +23,8 @@ export class EditarTopicoComponent implements OnInit{
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private apiService: ApiAdmService,
-    private router: Router
+    private router: Router,
+    private exercicioService: ExercicioService
   ) {
     this.dadosBasicosFormGroup = this.fb.group({
       nome_topico: ['', Validators.required],
@@ -254,4 +256,10 @@ export class EditarTopicoComponent implements OnInit{
       }
     );
   }
+
+
+  setQuestaoAberta(valor: boolean){
+    this.exercicioService.setQuestaoAberta(this.idTopico, valor).subscribe()
+  }
+
 }

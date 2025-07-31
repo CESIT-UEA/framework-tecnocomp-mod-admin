@@ -58,6 +58,11 @@ textarea {
 }
 
 /* Botões */
+.botaos-type-questao {
+  display: flex;
+}
+
+
 button {
   margin-top: 10px;
 }
