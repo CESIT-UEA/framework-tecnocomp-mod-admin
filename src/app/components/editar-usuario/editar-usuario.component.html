@@ -1,4 +1,53 @@
-<h2>Editar Usuário</h2>
+
+<app-header-voltar texto="Editar Usuário"></app-header-voltar>
+<main class="container">
+  <form class="forms" (ngSubmit)="atualizarUsuario()">
+    <div class="form-campos">
+      <div class="titulo-formulario">
+        <h1>Editar Usuário</h1>
+        <p class="obrigatorio">* Indica campos obrigatórios</p>
+      </div>
+
+      <div class="campos">
+        <div class="form-conteudo-editar">
+          <label for="nome_usuario">Nome do Usuário <span>*</span></label>
+          <input [(ngModel)]="user.username" name="username" required id="nome_usuario" type="text" class="input">
+        </div>
+
+        <div class="form-conteudo-editar">
+          <label for="email_usuario">Email <span>*</span></label>
+          <input [(ngModel)]="user.email" id="email_usuario" name="email" required type="text" class="input">
+        </div>
+
+        <div class="form-conteudo-editar">
+          <label for="senha_usuario_atual">Senha atual <span>*</span></label>
+          <input [(ngModel)]="senhaAtual" name="senhaAtual" required id="senha_usuario_atual" type="password" class="input">
+        </div>
+
+        <div class="form-conteudo-editar">
+          <label for="tipo_usuario">Tipo <span>*</span></label>
+          <select [(ngModel)]="user.tipo" name="Tipo" required id="tipo_usuario">
+            <option value="professor">Professor</option>
+            <option value="adm">Administrador</option>
+         </select>
+        </div>
+      </div>
+
+      <div class="botoes">
+        <button class="btn-cancelar" routerLink="/dashboard">Cancelar</button>
+        <button class="btn-salvar" type="submit">Salvar Alterações</button>
+      </div>
+    </div>
+
+  </form>
+</main>
+
+
+
+
+
+
+<!-- <h2>Editar Usuário</h2>
 <form (ngSubmit)="atualizarUsuario()">
   <mat-form-field appearance="fill">
     <mat-label>Username</mat-label>
@@ -25,4 +74,4 @@
 
   <button mat-raised-button color="primary" type="submit">Salvar</button>
   <button mat-raised-button color="warn" [routerLink]="'/'">Cancelar</button>
-</form>
+</form> -->

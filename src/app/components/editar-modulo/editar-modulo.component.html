@@ -1,4 +1,45 @@
 <app-header-voltar texto="Editar Módulo"></app-header-voltar>
+<main class="container">
+  <form class="forms" [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
+    <div class="form-campos">
+      <div class="titulo-formulario">
+        <h1>Editar Módulo</h1>
+        <p class="obrigatorio">* Indica campos obrigatórios</p>
+      </div>
+
+      <div class="form-conteudo">
+        <div class="form-conteudo-editar">
+          <label for="nome_modulo">Nome do Módulo: <span>*</span></label>
+          <input formControlName="nome_modulo"  id="nome_modulo" type="text" class="input">
+        </div>
+
+        <div class="form-conteudo-editar">
+          <label for="url_modulo">URL do Módulo: <span>*</span></label>
+          <input formControlName="nome_url"  id="url_modulo" type="text" class="input">
+        </div>
+      </div>
+
+      <div class="form-conteudo-editar">
+        <label for="ebook_url_Geral">Ebook URL Geral: <span>*</span></label>
+        <input formControlName="ebookUrlGeral" id="ebook_url_Geral" type="text" class="input">
+      </div>
+
+       <div class="form-conteudo-editar">
+        <label for="video_inicial">Vídeo Inicial: <span>*</span></label>
+        <input formControlName="video_inicial" id="video_inicial" type="text" class="input">
+      </div>
+
+      <div class="botoes">
+        <button class="btn-cancelar" routerLink="/dashboard">Cancelar</button>
+        <button class="btn-salvar" type="submit" [disabled]="moduloForm.invalid">Salvar Alterações</button>
+      </div>
+    </div>
+
+  </form>
+</main>
+
+
+<!-- <app-header-voltar texto="Editar Módulo"></app-header-voltar>
 <div class="editar-modulo-container">
   <h2>Editar Módulo</h2>
   <form [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
@@ -20,4 +61,4 @@
     </div>
     <button type="submit" [disabled]="moduloForm.invalid">Salvar Alterações</button>
   </form>
-</div>
+</div> -->

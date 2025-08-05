@@ -1,0 +1,121 @@
+
+.container {
+  height: 88vh;
+  background-color: #1E1E1E;;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Inter;
+}
+
+.forms {
+  width: 50%;
+  background-color: #2C2C2E;
+  padding: 0 2.5rem;
+  border-radius: 40px;
+  border-top: 8px solid #9665DF;
+}
+
+p{
+  color: #C64C4C;
+  padding: 20px 0;
+}
+
+span{
+  color: #C64C4C;
+}
+
+.titulo-formulario h1 {
+  text-align: center;
+  padding: 20px 0 20px 0;
+  border-bottom: 2px solid #9665DF;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Inter;
+}
+
+.titulo-formulario p{
+  font-size: 16px;
+  color: #BF0A0A;
+}
+
+.form-conteudo-editar{
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:38px;
+}
+
+.form-conteudo-editar label{
+  padding: 10px 0;
+}
+
+
+.form-conteudo-editar input{
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3F3F40;
+  color: #FFFFFF;
+  padding-left: 10px;
+
+}
+
+.form-conteudo-editar select {
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3F3F40;
+  color: #FFFFFF;
+  padding-left: 10px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 60px 0 34px 0;
+}
+
+.btn-salvar, .btn-cancelar {
+  cursor: pointer;
+}
+
+.form-conteudo-editar input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.btn-cancelar{
+  padding: 7px;
+  width: 22%;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #7C4CC6;
+  color: #FFFFFF;
+}
+
+ .btn-salvar{
+  padding: 7px;
+  width: 24%;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #7C4CC6;
+  color: #FFFFFF;
+ }
+
+.btn-cancelar {
+  background-color: transparent;
+  border: 3px solid #7C4CC6;
+}
