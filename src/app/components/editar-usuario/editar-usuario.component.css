@@ -84,6 +84,15 @@ span{
   padding: 60px 0 34px 0;
 }
 
+.btn-salvar, .btn-cancelar {
+  cursor: pointer;
+}
+
+.form-conteudo-editar input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
 .btn-cancelar{
   padding: 7px;
   width: 22%;
