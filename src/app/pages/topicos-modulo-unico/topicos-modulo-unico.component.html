@@ -1,0 +1,21 @@
+<app-header-voltar texto="Tópicos"></app-header-voltar>
+<div class="container">
+    <div class="novo-topico">
+        <h1>Novo Tópico</h1>
+        <button [routerLink]="['/cadastrar-topico']">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="topicos.length > 0" class="topicos-container">
+        <div class="topicos-grid">
+            <app-card-topicos
+            [idModulo]="idModulo"
+            (excluirTopico)="excluirTopico($event)"
+            *ngFor="let topico of topicos;let i = index"
+            [topico]="topico"
+            [indice]="i"
+            ></app-card-topicos>
+        </div>
+    </div>
+</div>

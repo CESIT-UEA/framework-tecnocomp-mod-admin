@@ -1,0 +1,55 @@
+.container {
+    background-color: #131313;
+    padding: 30px 0;
+}
+
+.novo-topico {
+  display: flex;
+  height: 55px;
+  padding: 0 25px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 8px;
+  border-left: 8px solid var(--Primaria, #9665df);
+  background: #2b2a2e;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.novo-topico h1 {
+  color: var(--Terciaria, #fff);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+button {
+    border-radius: 50%;
+    padding: 2px 4px;
+    background-color: #7C4CC6;
+    border: none;
+}
+
+.novo-topico button mat-icon {
+  color: white;
+  font-size: 25px;
+  margin: 0 auto;
+}
+
+.topicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.topicos-container {
+  padding-bottom: 40px;
+  width: 94%;
+  margin: 0 auto;
+  /* padding: 0 25px; */
+}
+

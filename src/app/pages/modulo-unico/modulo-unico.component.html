@@ -48,16 +48,17 @@
           </div>
           </div>
       </div>
+      <button routerLink="/modulo/topicos" [queryParams]="{ id_modulo: modulo?.id}">Vizualizar tópicos</button>
     </div>
 
-    <div class="titulo">
+    <!-- <div class="titulo">
       <h1>Tópicos</h1>
       <button [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: modulo?.id }">
         <mat-icon>add</mat-icon>
       </button>
-    </div>
+    </div> -->
 
-    <div *ngIf="topicos.length > 0" class="topicos-container">
+    <!-- <div *ngIf="topicos.length > 0" class="topicos-container">
       <div class="topicos-grid">
         <app-card-topicos
           [idModulo]="idModulo"
@@ -67,6 +68,6 @@
           [indice]="i"
         ></app-card-topicos>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

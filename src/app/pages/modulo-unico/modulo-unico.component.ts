@@ -27,7 +27,7 @@ export class ModuloUnicoComponent implements OnInit {
     if (id) {
       console.log('Teste');
       this.carregarModulo(+id);
-      this.carregarTopicos(+id);
+      // this.carregarTopicos(+id);
     }
     if (this.modulo?.id != null) {
       this.idModulo = this.modulo.id;
@@ -47,40 +47,40 @@ export class ModuloUnicoComponent implements OnInit {
     );
   }
 
-  carregarTopicos(moduloId: number): void {
-    this.apiService.obterTopicoCompleto(moduloId).subscribe(
-      (response) => {
-        console.log(response);
-        this.topicos = response.map((topico) => ({
-          ...topico,
-          videoUrls: [],
-          saibaMais: [],
-          referencias: [],
-          exercicios: [],
-        }));
+  // carregarTopicos(moduloId: number): void {
+  //   this.apiService.obterTopicoCompleto(moduloId).subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       this.topicos = response.map((topico) => ({
+  //         ...topico,
+  //         videoUrls: [],
+  //         saibaMais: [],
+  //         referencias: [],
+  //         exercicios: [],
+  //       }));
 
-        // Para cada tópico, buscar os dados completos
-        this.topicos.forEach((topico, index) => {
-          if (topico.id != null) {
-            this.apiService.obterTopicoCompleto(topico.id).subscribe(
-              (topicoCompleto) => {
-                this.topicos[index] = {
-                  ...this.topicos[index],
-                  ...topicoCompleto,
-                };
-              },
-              (error) =>
-                console.error(
-                  'Erro ao carregar dados completos do tópico:',
-                  error
-                )
-            );
-          }
-        });
-      },
-      (error) => console.error('Erro ao carregar tópicos:', error)
-    );
-  }
+  //       // Para cada tópico, buscar os dados completos
+  //       this.topicos.forEach((topico, index) => {
+  //         if (topico.id != null) {
+  //           this.apiService.obterTopicoCompleto(topico.id).subscribe(
+  //             (topicoCompleto) => {
+  //               this.topicos[index] = {
+  //                 ...this.topicos[index],
+  //                 ...topicoCompleto,
+  //               };
+  //             },
+  //             (error) =>
+  //               console.error(
+  //                 'Erro ao carregar dados completos do tópico:',
+  //                 error
+  //               )
+  //           );
+  //         }
+  //       });
+  //     },
+  //     (error) => console.error('Erro ao carregar tópicos:', error)
+  //   );
+  // }
 
   cadastrarTopico(): void {
     this.router.navigate(['/modulos', this.modulo?.id, 'cadastrar-topico']);
@@ -137,35 +137,35 @@ export class ModuloUnicoComponent implements OnInit {
     }
   }
 
-  excluirTopico({
-    idAdm,
-    senhaAdm,
-    idExcluir,
-  }: {
-    idAdm: number;
-    senhaAdm: string;
-    idExcluir: number;
-  }) {
-    console.log('ok2');
-    this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(
-      () => {
-        alert('Tópico excluído com sucesso!');
-        this.topicos = this.topicos.filter((topico) => topico.id !== idExcluir);
-      },
-      (error) => {
-        console.log(error);
-        if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
-        } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
-        } else if (error.status === 404) {
-          alert('Tópico não encontrado.');
-        } else {
-          alert('Erro ao excluir tópico.');
-        }
-      }
-    );
-  }
+  // excluirTopico({
+  //   idAdm,
+  //   senhaAdm,
+  //   idExcluir,
+  // }: {
+  //   idAdm: number;
+  //   senhaAdm: string;
+  //   idExcluir: number;
+  // }) {
+  //   console.log('ok2');
+  //   this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(
+  //     () => {
+  //       alert('Tópico excluído com sucesso!');
+  //       this.topicos = this.topicos.filter((topico) => topico.id !== idExcluir);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //       if (error.status === 401) {
+  //         alert('Senha de administrador incorreta.');
+  //       } else if (error.status === 403) {
+  //         alert('Você não tem permissão para realizar essa ação.');
+  //       } else if (error.status === 404) {
+  //         alert('Tópico não encontrado.');
+  //       } else {
+  //         alert('Erro ao excluir tópico.');
+  //       }
+  //     }
+  //   );
+  // }
   copiarUUID() {
     if (!this.modulo?.uuid) {
       this.apiService.message('Falha ao copiar, UUID é nulo');
