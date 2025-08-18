@@ -45,6 +45,14 @@
   justify-content: space-between;
 }
 
+.forms-campo label {
+  color: #FFFFFF;
+}
+
+span.obrigatorio {
+  color: #C64C4C;
+}
+
 .cadastro-plataforma-input {
   height: 35px;
   border: none;
@@ -55,16 +63,77 @@
   margin: 8px 0;
 }
 
+.cadastro-plataforma-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0;
+}
+
+.forms-campo select {
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3F3F40;
+  color: #FFFFFF;
+  padding-left: 10px;
+  margin: 8px 0;
+}
+
+.cores-customizadas {
+  display: flex;
+  flex-direction: column;
+}
+
+.campos-cores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.875rem;
+  margin: 8px 0;
+}
+
+.cores-customizadas label {
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+  margin-bottom: 5px;
+}
+
+.cores-customizadas input[type="color"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;;
+  background: none;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+ #temaTipo:focus {
+  outline: none;
+  box-shadow: 0 0 0 0;
+}
+
+.cores-customizadas input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border: none;
+}
+
+.cores-customizadas input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+
 .buttons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   column-gap: 20px;
-  padding: 30px;
+  padding: 30px 3px;
 }
 
 .buttons button {
   padding: 7px;
-  width: 145px;
+  width: 190px;
   border: none;
   color: #FFFFFF;
   border-radius: 10px;
@@ -82,4 +151,9 @@
  .validators {
   text-align: center;
   padding-bottom: 10px;
+ }
+
+ select option:hover{
+
+    color: #7C4CC6;
  }

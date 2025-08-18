@@ -38,31 +38,34 @@
       <!-- Campos de cor visíveis apenas se temaTipo === 'customizado' -->
       <div
         *ngIf="plataformaForm.get('temaTipo')?.value === 'customizado'"
-        class="forms-campo"
+        class="cores-customizadas"
       >
-        <label>Cores personalizadas:</label>
+        <label>Cores personalizadas</label>
 
-        <input type="color" formControlName="customPrimaria" title="Primária" />
-        <input
-          type="color"
-          formControlName="customSecundaria"
-          title="Secundária"
-        />
-        <input
-          type="color"
-          formControlName="customTerciaria"
-          title="Terciária"
-        />
-        <input
-          type="color"
-          formControlName="customQuartenaria"
-          title="Quartenária"
-        />
-        <input
-          type="color"
-          formControlName="customQuintenaria"
-          title="Quintenária"
-        />
+        <div class="campos-cores">
+          <input type="color" formControlName="customPrimaria" title="Primária" class="input-cores"/>
+          <input
+            type="color"
+            formControlName="customSecundaria"
+            title="Secundária"
+          />
+          <input
+            type="color"
+            formControlName="customTerciaria"
+            title="Terciária" class="input-cores"
+          />
+          <input
+            type="color"
+            formControlName="customQuartenaria"
+            title="Quartenária" class="input-cores"
+          />
+          <input
+            type="color"
+            formControlName="customQuintenaria"
+            title="Quintenária" class="input-cores"
+          />
+
+        </div>
       </div>
 
       <div class="buttons">
