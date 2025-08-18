@@ -69,6 +69,11 @@ span{
 
 }
 
+.form-conteudo-editar input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
 .botoes {
   display: flex;
   justify-content: flex-end;
@@ -85,6 +90,7 @@ span{
   font-weight: 600;
   background-color: #7C4CC6;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 .btn-cancelar {

@@ -1,7 +1,7 @@
 
 <app-header-voltar texto="Editar Usuário"></app-header-voltar>
 <main class="container">
-  <form class="forms">
+  <form class="forms" (ngSubmit)="atualizarUsuario()">
     <div class="form-campos">
       <div class="titulo-formulario">
         <h1>Editar Usuário</h1>
@@ -11,31 +11,31 @@
       <div class="campos">
         <div class="form-conteudo-editar">
           <label for="nome_usuario">Nome do Usuário <span>*</span></label>
-          <input id="nome_usuario" type="text" class="input">
+          <input [(ngModel)]="user.username" name="username" required id="nome_usuario" type="text" class="input">
         </div>
 
         <div class="form-conteudo-editar">
           <label for="email_usuario">Email <span>*</span></label>
-          <input id="email_usuario" type="text" class="input">
+          <input [(ngModel)]="user.email" id="email_usuario" name="email" required type="text" class="input">
         </div>
 
         <div class="form-conteudo-editar">
           <label for="senha_usuario_atual">Senha atual <span>*</span></label>
-          <input id="senha_usuario_atual" type="text" class="input">
+          <input [(ngModel)]="senhaAtual" name="senhaAtual" required id="senha_usuario_atual" type="password" class="input">
         </div>
 
         <div class="form-conteudo-editar">
           <label for="tipo_usuario">Tipo <span>*</span></label>
-          <select name="Tipo" id="tipo_usuario">
-            <option>Professor</option>
-            <option>Administrador</option>
+          <select [(ngModel)]="user.tipo" name="Tipo" required id="tipo_usuario">
+            <option value="professor">Professor</option>
+            <option value="adm">Administrador</option>
          </select>
         </div>
       </div>
 
       <div class="botoes">
-        <button class="btn-cancelar">Cancelar</button>
-        <button class="btn-salvar">Salvar Alterações</button>
+        <button class="btn-cancelar" routerLink="/dashboard">Cancelar</button>
+        <button class="btn-salvar" type="submit">Salvar Alterações</button>
       </div>
     </div>
 

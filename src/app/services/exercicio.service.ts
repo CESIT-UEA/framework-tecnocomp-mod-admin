@@ -16,7 +16,7 @@ export class ExercicioService {
   ) {}
 
   setQuestaoAberta(id_topico: number, valor: boolean): Observable<any>{
-    return this.http.patch(`${this.baseUrl}/api/topico/${id_topico}/exercicio`, { valor })
+    return this.http.patch<any>(`${this.baseUrl}/api/topico/${id_topico}/exercicio`, { valor })
   }
   
 }

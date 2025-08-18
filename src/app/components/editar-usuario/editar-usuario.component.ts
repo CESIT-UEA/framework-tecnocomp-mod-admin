@@ -34,8 +34,8 @@ export class EditarUsuarioComponent {
 
   atualizarUsuario(): void {
     const idAdm = this.getUsuarioDados().id; // ID do administrador logado (recuperado do token ou estado)
-  const senhaAdm = this.senhaAtual; // Senha do administrador fornecida no formulário
-  const idEditar = this.user.id; // ID do usuário a ser atualizado
+    const senhaAdm = this.senhaAtual; // Senha do administrador fornecida no formulário
+    const idEditar = this.user.id; // ID do usuário a ser atualizado
 
     this.userService.updateUser(idEditar, idAdm, senhaAdm, {
       username: this.user.username,
