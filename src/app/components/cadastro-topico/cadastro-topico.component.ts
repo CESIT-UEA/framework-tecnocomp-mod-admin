@@ -73,6 +73,7 @@ export class CadastroTopicoComponent {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.idModulo = +params['id_modulo'];
+      console.log(this.idModulo, ' = idModulo')
       if (!this.idModulo) {
         alert('ID do módulo não encontrado! Redirecionando...');
         this.router.navigate(['/modulos']);

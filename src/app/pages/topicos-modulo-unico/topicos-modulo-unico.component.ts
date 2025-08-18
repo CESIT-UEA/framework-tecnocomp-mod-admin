@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./topicos-modulo-unico.component.css']
 })
 export class TopicosModuloUnicoComponent implements OnInit {
-  modulo!: Modulo | null;
   topicos: Topico[] = [];
   idModulo!: number;
 
@@ -21,7 +20,10 @@ export class TopicosModuloUnicoComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('id_modulo');
-    if (id) this.carregarTopicos(+id);
+    if (id) {
+      this.carregarTopicos(+id);
+      this.idModulo = +id
+    }
   }
 
   carregarTopicos(moduloId: number): void {
