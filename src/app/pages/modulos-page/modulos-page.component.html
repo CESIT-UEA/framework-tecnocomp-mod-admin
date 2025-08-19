@@ -2,13 +2,18 @@
   <app-titulo-secao
     titulo="Cadastrar novo módulo"
     caminhoUrl="../registrar-modulo"
-    [quantidade]="modulos.length"
+    [quantidade]="totalModulos"
+    nomeCard="módulos"
   ></app-titulo-secao>
-
-  <div class="container-cards-modulos">
-    <div class="card" *ngFor="let modulo of modulos">
-      <app-cards-modulos [modulo]="modulo" (excluirModulo)="excluirModulo($event)"></app-cards-modulos>
+  <div class="container-cards">
+    <button class="botao-navegar-cards-modulo" (click)="previousPage()">voltar</button>
+    <div class="container-cards-modulos">
+      <div class="card" *ngFor="let modulo of modulos">
+        <app-cards-modulos [modulo]="modulo" (excluirModulo)="excluirModulo($event)"></app-cards-modulos>
+      </div>
     </div>
+    <button class="botao-navegar-cards-modulo" (click)="nextPage()">avançar</button>
   </div>
 </div>
+
 

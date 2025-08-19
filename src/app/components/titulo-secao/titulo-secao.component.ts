@@ -9,5 +9,6 @@ export class TituloSecaoComponent {
 @Input() titulo: string = '';
 @Input() caminhoUrl: string = '';
 @Input() quantidade: number = 1;
+@Input() nomeCard: string = '';
 
 }

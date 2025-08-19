@@ -19,6 +19,7 @@ import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
 import { DadosResponse } from 'src/interfaces/DadosResponse'
+import { InfoPaginacaoModulo } from 'src/interfaces/modulo/InfoPaginacaoModulos'
 
 @Injectable({
   providedIn: 'root',
@@ -86,8 +87,8 @@ export class ApiAdmService {
     });
   }
 
-  listarModulos() {
-    return this.http.get<Modulo[]>(`${this.baseUrl}/api/modulos`);
+  listarModulos(page: number) {
+    return this.http.get<{modulos: Modulo[], infoModulos: InfoPaginacaoModulo}>(`${this.baseUrl}/api/modulos?page=${page}`);
   }
   listarTemplates() {
     return this.http.get<Modulo[]>(`${this.baseUrl}/api/templates`);
