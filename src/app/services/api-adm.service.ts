@@ -148,8 +148,11 @@ export class ApiAdmService {
     return this.http.get<Topico>(`${this.baseUrl}/api/topico/${id}`);
   }
 
-  listarPlataformas(): Observable<Plataforma[]> {
-    return this.http.get<Plataforma[]>(`${this.baseUrl}/api/plataforma`);
+  listarPlataformas(page: number): Observable<{plataformas: Plataforma[], infoPlataformas: InfoPaginacao}> {
+    return this.http.get<{
+      plataformas: Plataforma[], 
+      infoPlataformas: InfoPaginacao
+    }>(`${this.baseUrl}/api/plataforma?page=${page}`);
   }
 
   excluirPlataforma(

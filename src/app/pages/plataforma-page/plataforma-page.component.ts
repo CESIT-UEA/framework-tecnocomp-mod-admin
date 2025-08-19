@@ -9,18 +9,14 @@ import { Plataforma } from 'src/interfaces/Plataforma';
 })
 export class PlataformaPageComponent {
   plataformas: Plataforma[] = [];
+  currentPage: number = 1;
+  quantidade_pages = 1;
+  totalPlataformas: number = 0; 
 
   constructor(private apiService: ApiAdmService) {}
 
   ngOnInit(): void {
-    this.apiService.listarPlataformas().subscribe(
-      (response) => {
-        this.plataformas = response;
-      },
-      (error) => {
-        console.error('Erro ao carregar plataformas:', error);
-      }
-    );
+    this.carregarPlataformasPaginadas(this.currentPage)
   }
 
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -42,5 +38,35 @@ export class PlataformaPageComponent {
         }
       }
     );
+  }
+
+  carregarPlataformasPaginadas(page: number){
+    this.apiService.listarPlataformas(page).subscribe(
+      (response) => {
+        console.log(response)
+        this.plataformas = response.plataformas;
+        this.quantidade_pages = response.infoPlataformas.totalPaginas
+        this.totalPlataformas = response.infoPlataformas.totalRegistros
+        console.log(response)
+      },
+      (error) => {
+        console.error('Erro ao carregar plataformas:', error);
+      }
+    );
+  }
+
+   nextPage(){
+    if (this.currentPage < this.quantidade_pages){
+      this.currentPage += 1
+      this.carregarPlataformasPaginadas(this.currentPage)
+    }
+    
+  }
+
+  previousPage(){
+    if (this.currentPage > 1) {
+      this.currentPage -= 1
+      this.carregarPlataformasPaginadas(this.currentPage)
+    }
   }
 }

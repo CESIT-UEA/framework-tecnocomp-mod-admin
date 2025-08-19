@@ -43,8 +43,8 @@ export class ModulosPageComponent {
   nextPage(){
     if (this.currentPage < this.quantidade_pages){
       this.currentPage += 1
+      this.carregarModulosPaginados(this.currentPage)
     }
-    this.carregarModulosPaginados(this.currentPage)
   }
 
   previousPage(){

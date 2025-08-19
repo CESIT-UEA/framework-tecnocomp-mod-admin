@@ -43,8 +43,8 @@ export class UsuariosPageComponent implements OnInit {
    nextPage(){
     if (this.currentPage < this.quantidade_pages){
       this.currentPage += 1
+      this.carregarUsuariosPaginados(this.currentPage)
     }
-    this.carregarUsuariosPaginados(this.currentPage)
   }
 
   previousPage(){
