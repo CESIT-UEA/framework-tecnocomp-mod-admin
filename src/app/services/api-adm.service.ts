@@ -19,7 +19,7 @@ import { Topico } from 'src/interfaces/topico/Topico';
 import { User } from 'src/interfaces/user';
 import { UserUpdate } from 'src/interfaces/userDTO/userUpdate';
 import { DadosResponse } from 'src/interfaces/DadosResponse'
-import { InfoPaginacaoModulo } from 'src/interfaces/modulo/InfoPaginacaoModulos'
+import { InfoPaginacao } from 'src/interfaces/modulo/InfoPaginacao'
 
 @Injectable({
   providedIn: 'root',
@@ -54,10 +54,9 @@ export class ApiAdmService {
     return this.http.post('/api/modulo', modulo);
   }
 
-  listarUsers(): Observable<User[]> {
+  listarUsers(page: number): Observable<{users: User[], infoUsers: InfoPaginacao}> {
     return this.http
-      .get<{ users: User[] }>(`${this.baseUrl}/api/listar-usuarios`)
-      .pipe(map((response) => response.users));
+      .get<{ users: User[], infoUsers: InfoPaginacao }>(`${this.baseUrl}/api/listar-usuarios?page=${page}`)
   }
 
   getUserById(id: number): Observable<User> {
@@ -88,7 +87,7 @@ export class ApiAdmService {
   }
 
   listarModulos(page: number) {
-    return this.http.get<{modulos: Modulo[], infoModulos: InfoPaginacaoModulo}>(`${this.baseUrl}/api/modulos?page=${page}`);
+    return this.http.get<{modulos: Modulo[], infoModulos: InfoPaginacao}>(`${this.baseUrl}/api/modulos?page=${page}`);
   }
   listarTemplates() {
     return this.http.get<Modulo[]>(`${this.baseUrl}/api/templates`);

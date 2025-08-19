@@ -1,4 +1,4 @@
-export interface InfoPaginacaoModulo {
+export interface InfoPaginacao {
     totalPaginas: number
     totalRegistros: number
 }
