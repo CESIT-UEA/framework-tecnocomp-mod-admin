@@ -85,7 +85,7 @@ mat-divider {
 }
 
 
-.botoes-navegacao-meus-modulos {
+.botoes-navegacao-meus-modulos, .botoes-navegacao-minhas-plataformas {
   display: flex;
   justify-content: center;
   column-gap: 10px;

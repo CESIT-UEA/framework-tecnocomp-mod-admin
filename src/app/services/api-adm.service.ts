@@ -202,9 +202,9 @@ export class ApiAdmService {
     }>(`${this.baseUrl}/api/modulos/usuario/${id}?page=${page}`);
   }
 
-  listarPlataformasPeloIdUsuario(id: number): Observable<Plataforma[]> {
-    return this.http.get<Plataforma[]>(
-      `${this.baseUrl}/api/plataformas/usuario/${id}`
+  listarPlataformasPeloIdUsuario(id: number, page: number): Observable<{ plataformas: Plataforma[], infoPlataforma: InfoPaginacao}> {
+    return this.http.get<{plataformas: Plataforma[], infoPlataforma: InfoPaginacao}>(
+      `${this.baseUrl}/api/plataformas/usuario/${id}?page=${page}`
     );
   }
 

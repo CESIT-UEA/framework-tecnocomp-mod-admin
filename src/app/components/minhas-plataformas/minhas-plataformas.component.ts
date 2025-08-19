@@ -11,6 +11,9 @@ import { User } from 'src/interfaces/user';
 })
 export class MinhasPlataformasComponent {
   plataformas: Plataforma[] = [];
+  currentPagePlataforma: number = 1;
+  quantidadePagesPlataformas = 1;
+  totalPlataformas = 0;
 
   constructor(
     private authService: AuthService,
@@ -22,16 +25,7 @@ export class MinhasPlataformasComponent {
   }
 
   ngOnInit(): void {
-    this.apiService.listarPlataformasPeloIdUsuario(this.dadosUsuario().id).subscribe(
-      (response) => {
-        this.plataformas = response;
-        console.log(response);
-      },
-      (error) => {
-        console.error('Erro ao carregar módulos:', error);
-      }
-    );
-
+    this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
   }
 
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -54,4 +48,33 @@ export class MinhasPlataformasComponent {
       }
     );
   }
+
+  carregarMinhasPlataformasPaginadas(id: number, page: number){
+    this.apiService.listarPlataformasPeloIdUsuario(id, page).subscribe(
+      (response) => {
+        this.plataformas = response.plataformas;
+        this.quantidadePagesPlataformas = response.infoPlataforma.totalPaginas;
+        this.totalPlataformas = response.infoPlataforma.totalRegistros;
+        console.log(response);
+      },
+      (error) => {
+        console.error('Erro ao carregar plataformas:', error);
+      }
+    );
+  }
+
+  nextPagePlataforma(){
+    if (this.currentPagePlataforma < this.quantidadePagesPlataformas){
+      this.currentPagePlataforma += 1
+      this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
+    }
+  }
+
+  previousPagePlataforma(){
+    if (this.currentPagePlataforma > 1) {
+      this.currentPagePlataforma -= 1
+      this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
+    }
+  }
+
 }
