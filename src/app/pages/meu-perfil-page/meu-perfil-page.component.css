@@ -83,3 +83,10 @@ mat-divider {
 .card{
   margin-bottom: 20px;
 }
+
+
+.botoes-navegacao-meus-modulos {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}

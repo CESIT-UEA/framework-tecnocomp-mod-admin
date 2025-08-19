@@ -13,6 +13,10 @@ import { User } from 'src/interfaces/user';
 export class MeuPerfilPageComponent implements OnInit {
   modulos: Modulo[] = [];
   plataformas: Plataforma[] = [];
+  currentPage: number = 1;
+  quantidade_pages = 1;
+  totalModulos: number = 0; 
+
 
   constructor(
     private authService: AuthService,
@@ -24,15 +28,7 @@ export class MeuPerfilPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.listarModulosPeloIdUsuario(this.dadosUsuario().id).subscribe(
-      (response) => {
-        this.modulos = response;
-        console.log(response);
-      },
-      (error) => {
-        console.error('Erro ao carregar módulos:', error);
-      }
-    );
+    this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
 
     this.apiService.listarPlataformasPeloIdUsuario(this.dadosUsuario().id).subscribe(
       (response) => {
@@ -40,7 +36,7 @@ export class MeuPerfilPageComponent implements OnInit {
         console.log(response);
       },
       (error) => {
-        console.error('Erro ao carregar módulos:', error);
+        console.error('Erro ao carregar plataformas:', error);
       }
     );
 
@@ -94,5 +90,34 @@ export class MeuPerfilPageComponent implements OnInit {
         }
       }
     );
+  }
+
+  carregarMeusModulosPaginados(id: number, page: number){
+    this.apiService.listarModulosPeloIdUsuario(id, page).subscribe(
+      (response) => {
+        this.modulos = response.modulos;
+        this.quantidade_pages = response.infoModulos.totalPaginas;
+        this.totalModulos = response.infoModulos.totalRegistros;
+        console.log(response, 'oi');
+      },
+      (error) => {
+        console.error('Erro ao carregar módulos:', error);
+      }
+    );
+  }
+
+  nextPage(){
+    if (this.currentPage < this.quantidade_pages){
+      this.currentPage += 1
+      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
+    }
+    console.log(this.modulos, 'testeeee')
+  }
+
+  previousPage(){
+    if (this.currentPage > 1) {
+      this.currentPage -= 1
+      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
+    }
   }
 }

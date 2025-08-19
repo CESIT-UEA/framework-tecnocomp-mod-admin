@@ -195,8 +195,11 @@ export class ApiAdmService {
     });
   }
 
-  listarModulosPeloIdUsuario(id: number): Observable<Modulo[]> {
-    return this.http.get<Modulo[]>(`${this.baseUrl}/api/modulos/usuario/${id}`);
+  listarModulosPeloIdUsuario(id: number, page: number): Observable<{ modulos: Modulo[], infoModulos: InfoPaginacao}> {
+    return this.http.get<{
+      modulos: Modulo[], 
+      infoModulos: InfoPaginacao
+    }>(`${this.baseUrl}/api/modulos/usuario/${id}?page=${page}`);
   }
 
   listarPlataformasPeloIdUsuario(id: number): Observable<Plataforma[]> {
