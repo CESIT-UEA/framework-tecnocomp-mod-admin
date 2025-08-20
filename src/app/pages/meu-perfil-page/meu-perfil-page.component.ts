@@ -13,6 +13,14 @@ import { User } from 'src/interfaces/user';
 export class MeuPerfilPageComponent implements OnInit {
   modulos: Modulo[] = [];
   plataformas: Plataforma[] = [];
+  currentPageModulo: number = 1;
+  quantidadePagesModulos = 1;
+  totalModulos: number = 0; 
+
+  currentPagePlataforma: number = 1;
+  quantidadePagesPlataformas = 1;
+  totalPlataformas = 0;
+
 
   constructor(
     private authService: AuthService,
@@ -24,25 +32,8 @@ export class MeuPerfilPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.listarModulosPeloIdUsuario(this.dadosUsuario().id).subscribe(
-      (response) => {
-        this.modulos = response;
-        console.log(response);
-      },
-      (error) => {
-        console.error('Erro ao carregar módulos:', error);
-      }
-    );
-
-    this.apiService.listarPlataformasPeloIdUsuario(this.dadosUsuario().id).subscribe(
-      (response) => {
-        this.plataformas = response;
-        console.log(response);
-      },
-      (error) => {
-        console.error('Erro ao carregar módulos:', error);
-      }
-    );
+    this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPageModulo)
+    this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma )
 
   }
 
@@ -94,5 +85,61 @@ export class MeuPerfilPageComponent implements OnInit {
         }
       }
     );
+  }
+
+  carregarMeusModulosPaginados(id: number, page: number){
+    this.apiService.listarModulosPeloIdUsuario(id, page).subscribe(
+      (response) => {
+        
+        this.modulos = response.modulos;
+        this.quantidadePagesModulos = response.infoModulos.totalPaginas;
+        this.totalModulos = response.infoModulos.totalRegistros;
+      },
+      (error) => {
+        console.error('Erro ao carregar módulos:', error);
+      }
+    );
+  }
+
+  carregarMinhasPlataformasPaginadas(id: number, page: number){
+    this.apiService.listarPlataformasPeloIdUsuario(id, page).subscribe(
+      (response) => {
+        console.log(response)
+        this.plataformas = response.plataformas;
+        this.quantidadePagesPlataformas = response.infoPlataforma.totalPaginas;
+        this.totalPlataformas = response.infoPlataforma.totalRegistros;
+      },
+      (error) => {
+        console.error('Erro ao carregar plataformas:', error);
+      }
+    );
+  }
+
+  nextPageModulo(){
+    if (this.currentPageModulo < this.quantidadePagesModulos){
+      this.currentPageModulo += 1
+      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPageModulo)
+    }
+  }
+
+  previousPageModulo(){
+    if (this.currentPageModulo > 1) {
+      this.currentPageModulo -= 1
+      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPageModulo)
+    }
+  }
+
+  nextPagePlataforma(){
+    if (this.currentPagePlataforma < this.quantidadePagesPlataformas){
+      this.currentPagePlataforma += 1
+      this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
+    }
+  }
+
+  previousPagePlataforma(){
+    if (this.currentPagePlataforma > 1) {
+      this.currentPagePlataforma -= 1
+      this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
+    }
   }
 }

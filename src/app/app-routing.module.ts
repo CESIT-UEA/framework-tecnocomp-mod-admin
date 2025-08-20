@@ -41,6 +41,7 @@ import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
+import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
   
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -137,6 +138,11 @@ const routes: Routes = [
     path: 'modulos/:id',
     canActivate: [authGuard],
     component: ModuloUnicoComponent,
+  },
+  {
+    path: 'modulo/topicos',
+    canActivate: [authGuard],
+    component: TopicosModuloUnicoComponent
   },
   {
     path: 'modulos/:id/gerenciar-ficha-tecnica',

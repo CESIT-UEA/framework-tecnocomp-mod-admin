@@ -7,7 +7,7 @@
       </button>
     </div>
     <p>
-      Quantidade: <strong>{{ modulos.length }}</strong>
+      Quantidade: <strong>{{ totalModulos }}</strong>
     </p>
     <mat-divider></mat-divider>
     <div class="container-cards-modulos">
@@ -18,5 +18,9 @@
         ></app-cards-modulos>
       </div>
     </div>
+    <div class="botoes-navegacao-meus-modulos">
+      <button class="botao-navegar-cards-meus-modulos" (click)="previousPage()">voltar</button>
+      <button class="botao-navegar-cards-meus-modulos" (click)="nextPage()">avançar</button>
+  </div>
   </section>
 </div>

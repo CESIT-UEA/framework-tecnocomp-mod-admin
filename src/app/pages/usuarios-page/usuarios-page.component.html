@@ -2,7 +2,8 @@
   <app-titulo-secao
     titulo="Cadastrar novo usuário"
     caminhoUrl="../cadastro-usuario"
-    [quantidade]="usuarios.length"
+    [quantidade]="totalUsuarios"
+    nomeCard="usuários"
   ></app-titulo-secao>
 
   <div class="container-cards-users">
@@ -10,5 +11,8 @@
       <app-cards-usuarios [user]="usuario"  (excluirUsuario)="excluirUsuario($event)"></app-cards-usuarios>
     </div>
   </div>
-
+  <div class="botoes-navegacao-usuarios">
+      <button class="botao-navegar-cards-usuario" (click)="previousPage()">voltar</button>
+      <button class="botao-navegar-cards-usuario" (click)="nextPage()">avançar</button>
+  </div>
 </div>

@@ -9,18 +9,14 @@ import { User } from 'src/interfaces/user';
 })
 export class UsuariosPageComponent implements OnInit {
   usuarios: User[] = [];
+  currentPage: number = 1;
+  quantidade_pages = 1;
+  totalUsuarios: number = 0;
+
   constructor(private userService: ApiAdmService){}
 
   ngOnInit(): void {
-    this.userService.listarUsers().subscribe(
-      (response) => {
-        this.usuarios = response;
-        console.log(response)
-      },
-      (error) => {
-        console.error('Erro ao carregar usuários:', error);
-      }
-    );
+    this.carregarUsuariosPaginados(this.currentPage)
   }
 
   excluirUsuario({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -44,5 +40,31 @@ export class UsuariosPageComponent implements OnInit {
     );
   }
 
+   nextPage(){
+    if (this.currentPage < this.quantidade_pages){
+      this.currentPage += 1
+      this.carregarUsuariosPaginados(this.currentPage)
+    }
+  }
+
+  previousPage(){
+    if (this.currentPage > 1) {
+      this.currentPage -= 1
+      this.carregarUsuariosPaginados(this.currentPage)
+    }
+  }
+
+  carregarUsuariosPaginados(page: number){
+    this.userService.listarUsers(page).subscribe(
+      (response) => {
+        this.usuarios = response.users;
+        this.quantidade_pages = response.infoUsers.totalPaginas
+        this.totalUsuarios = response.infoUsers.totalRegistros
+      },
+      (error) => {
+        console.error('Erro ao carregar usuários:', error);
+      }
+    );
+  }
 
 }

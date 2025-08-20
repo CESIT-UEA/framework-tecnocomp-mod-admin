@@ -9,19 +9,14 @@ import { Modulo } from 'src/interfaces/modulo/Modulo';
 })
 export class ModulosPageComponent {
   modulos: Modulo[] = [];
+  currentPage: number = 1;
+  quantidade_pages = 1;
+  totalModulos: number = 0; 
 
   constructor(private apiService: ApiAdmService) {}
 
   ngOnInit(): void {
-    this.apiService.listarModulos().subscribe(
-      (response) => {
-        this.modulos = response;
-        console.log(response);
-      },
-      (error) => {
-        console.error('Erro ao carregar módulos:', error);
-      }
-    );
+    this.carregarModulosPaginados(this.currentPage)
   }
 
   excluirModulo({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -44,4 +39,32 @@ export class ModulosPageComponent {
       }
     );
   }
+
+  nextPage(){
+    if (this.currentPage < this.quantidade_pages){
+      this.currentPage += 1
+      this.carregarModulosPaginados(this.currentPage)
+    }
+  }
+
+  previousPage(){
+    if (this.currentPage > 1) {
+      this.currentPage -= 1
+      this.carregarModulosPaginados(this.currentPage)
+    }
+  }
+
+  carregarModulosPaginados(page: number){
+    this.apiService.listarModulos(page).subscribe(
+      (response) => {
+        this.modulos = response.modulos;
+        this.quantidade_pages = response.infoModulos.totalPaginas
+        this.totalModulos = response.infoModulos.totalRegistros
+      },
+      (error) => {
+        console.error('Erro ao carregar módulos:', error);
+      }
+    );
+  }
+
 }

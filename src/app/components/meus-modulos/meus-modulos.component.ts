@@ -11,6 +11,9 @@ import { User } from 'src/interfaces/user';
 })
 export class MeusModulosComponent {
   modulos: Modulo[] = [];
+  currentPage: number = 1;
+  quantidade_pages = 1;
+  totalModulos: number = 0; 
 
   constructor(
     private authService: AuthService,
@@ -22,15 +25,7 @@ export class MeusModulosComponent {
   }
 
   ngOnInit(): void {
-    this.apiService.listarModulosPeloIdUsuario(this.dadosUsuario().id).subscribe(
-      (response) => {
-        this.modulos = response;
-        console.log(response);
-      },
-      (error) => {
-        console.error('Erro ao carregar módulos:', error);
-      }
-    );
+    this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
   }
 
   excluirModulo({
@@ -60,5 +55,33 @@ export class MeusModulosComponent {
         }
       }
     );
+  }
+
+  carregarMeusModulosPaginados(id: number, page: number){
+    this.apiService.listarModulosPeloIdUsuario(id, page).subscribe(
+      (response) => {
+        this.modulos = response.modulos;
+        this.quantidade_pages = response.infoModulos.totalPaginas;
+        this.totalModulos = response.infoModulos.totalRegistros;
+        console.log(response);
+      },
+      (error) => {
+        console.error('Erro ao carregar módulos:', error);
+      }
+    );
+  }
+
+  nextPage(){
+    if (this.currentPage < this.quantidade_pages){
+      this.currentPage += 1
+      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
+    }
+  }
+
+  previousPage(){
+    if (this.currentPage > 1) {
+      this.currentPage -= 1
+      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
+    }
   }
 }

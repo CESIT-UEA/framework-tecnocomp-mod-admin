@@ -25,11 +25,11 @@
                 {{ modulo?.template ? "Transformar em Template" : "Destransformar Template" }}
               </button>
             </div>
-            <p class="paragrafo"><strong>Nome: </strong> {{ modulo?.nome_modulo }}</p>
-            <p class="paragrafo"><strong>URL: </strong> {{ modulo?.nome_url }}</p>
+            <p class="paragrafo"><strong>Nome:</strong> {{ modulo?.nome_modulo }}</p>
+            <!-- <p class="paragrafo"><strong>URL: </strong> {{ modulo?.nome_url }}</p> -->
             
             
-            <p class="paragrafo"><strong>Id: </strong> {{ modulo?.id }}</p>
+            <!-- <p class="paragrafo"><strong>Id: </strong> {{ modulo?.id }}</p> -->
             <p class="paragrafo"><a target="_blank" [href]="modulo?.ebookUrlGeral">Ebook Completo</a></p>
             <p class="paragrafo"><a target="_blank" [href]="modulo?.video_inicial">Vídeo Inicial</a></p>
             <p class="paragrafo">
@@ -47,25 +47,14 @@
             <button routerLink="gerenciar-alunos">Gerenciar Alunos</button>
           </div>
           </div>
-      </div>
-    </div>
-
-    <div class="titulo">
-      <h1>Tópicos</h1>
-      <button [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: modulo?.id }">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-
-    <div *ngIf="topicos.length > 0" class="topicos-container">
-      <div class="topicos-grid">
-        <app-card-topicos
-          [idModulo]="idModulo"
-          (excluirTopico)="excluirTopico($event)"
-          *ngFor="let topico of topicos;let i = index"
-          [topico]="topico"
-          [indice]="i"
-        ></app-card-topicos>
+          <a 
+            routerLink="/modulo/topicos" 
+            class="botao-vizualizar-topicos" 
+            [queryParams]="{ id_modulo: modulo?.id}"
+          >
+            Vizualizar tópicos
+            <img src="../../../assets/icons/proximo.svg" alt="ícone de próximo para vizualizar tópicos do módulo">
+          </a>
       </div>
     </div>
   </div>

@@ -2,7 +2,8 @@
   <app-titulo-secao
     titulo="Plataformas"
     caminhoUrl="../cadastro-plataforma"
-    [quantidade]="plataformas.length"
+    [quantidade]="totalPlataformas"
+    nomeCard="plataformas"
   ></app-titulo-secao>
 
   <div class="container-cards-plataformas">
@@ -12,6 +13,10 @@
         (excluirPlataforma)="excluirPlataforma($event)"
       ></app-cards-plataformas>
     </div>
+  </div>
+  <div class="botoes-navegacao-plataformas">
+      <button class="botao-navegar-cards-plataforma" (click)="previousPage()">voltar</button>
+      <button class="botao-navegar-cards-plataforma" (click)="nextPage()">avançar</button>
   </div>
 </div>
 

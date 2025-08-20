@@ -20,7 +20,7 @@
       </button>
     </div>
     <p>
-      Quantidade: <strong>{{ plataformas.length }}</strong>
+      Quantidade: <strong>{{ totalPlataformas }}</strong>
     </p>
     <mat-divider></mat-divider>
     <div class="container-cards-modulos">
@@ -31,6 +31,10 @@
       ></app-cards-plataformas>
       </div>
     </div>
+    <div class="botoes-navegacao-minhas-plataformas">
+      <button class="botao-navegar-cards-minhas-plataformas" (click)="previousPagePlataforma()">voltar</button>
+      <button class="botao-navegar-cards-minhas-plataformas" (click)="nextPagePlataforma()">avançar</button>
+  </div>
   </section>
   <section class="meus-modulos">
     <div class="titulo">
@@ -40,7 +44,7 @@
       </button>
     </div>
     <p>
-      Quantidade: <strong>{{ modulos.length }}</strong>
+      Quantidade: <strong>{{ totalModulos }}</strong>
     </p>
     <mat-divider></mat-divider>
     <div class="container-cards-modulos">
@@ -51,5 +55,9 @@
         ></app-cards-modulos>
       </div>
     </div>
+    <div class="botoes-navegacao-meus-modulos">
+      <button class="botao-navegar-cards-meus-modulos" (click)="previousPageModulo()">voltar</button>
+      <button class="botao-navegar-cards-meus-modulos" (click)="nextPageModulo()">avançar</button>
+  </div>
   </section>
 </div>

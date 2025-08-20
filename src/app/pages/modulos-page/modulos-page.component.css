@@ -1,12 +1,22 @@
+.container-cards {
+  display: flex;
+  align-items: center;
+}
+
 .container-modulos {
   width: 90%;
   margin: 0 auto;
-  padding-top: 40px;
+  /* padding-top: 40px; */
   color: white;
 }
 
 .container-cards-modulos{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  padding: 0 10px;
 }
 
+.botao-navegar-cards-modulo {
+  height: 35px;
+}
