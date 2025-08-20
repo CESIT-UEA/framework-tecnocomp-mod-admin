@@ -104,8 +104,11 @@ export class ApiAdmService {
     return this.http.get<Modulo>(`${this.baseUrl}/api/modulo/${id}`);
   }
 
-  obterTopicoCompleto(idTopico: number) {
-    return this.http.get<Topico[]>(`${this.baseUrl}/api/topicos/${idTopico}`);
+  obterTopicoCompleto(idModulo: number, page: number) {
+    return this.http.get<{
+      topico: Topico[], 
+      infoTopicosPorModulos: InfoPaginacao
+    }>(`${this.baseUrl}/api/topicos/${idModulo}?page=${page}`);
   }
 
   atualizarModulo(id: number, dadosAtualizados: Modulo) {

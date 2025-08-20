@@ -63,3 +63,14 @@ button {
     justify-content: center;
     align-items: center;
 }
+
+.botoes-navegacao-topicos-do-modulo {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.botao-navegar-cards-topicos-do-modulo {
+  width: 200px;
+  border-radius: 0;
+}

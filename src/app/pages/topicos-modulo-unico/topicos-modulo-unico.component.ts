@@ -12,6 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class TopicosModuloUnicoComponent implements OnInit {
   topicos: Topico[] = [];
   idModulo!: number;
+  currentPage: number = 1;
+  quantidade_pages = 1;
+  totalModulos: number = 0; 
 
   constructor(
     private apiService: ApiAdmService,
@@ -21,16 +24,16 @@ export class TopicosModuloUnicoComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('id_modulo');
     if (id) {
-      this.carregarTopicos(+id);
+      this.carregarTopicos(+id, this.currentPage);
       this.idModulo = +id
     }
   }
 
-  carregarTopicos(moduloId: number): void {
-    this.apiService.obterTopicoCompleto(moduloId).subscribe(
+  carregarTopicos(moduloId: number, page: number): void {
+    this.apiService.obterTopicoCompleto(moduloId, page).subscribe(
       (response) => {
         console.log(response);
-        this.topicos = response.map((topico) => ({
+        this.topicos = response.topico.map((topico) => ({
           ...topico,
           videoUrls: [],
           saibaMais: [],
@@ -41,7 +44,7 @@ export class TopicosModuloUnicoComponent implements OnInit {
         // Para cada tópico, buscar os dados completos
         this.topicos.forEach((topico, index) => {
           if (topico.id != null) {
-            this.apiService.obterTopicoCompleto(topico.id).subscribe(
+            this.apiService.obterTopicoCompleto(topico.id, page).subscribe(
               (topicoCompleto) => {
                 this.topicos[index] = {
                   ...this.topicos[index],
@@ -56,9 +59,25 @@ export class TopicosModuloUnicoComponent implements OnInit {
             );
           }
         });
+        this.quantidade_pages = response.infoTopicosPorModulos.totalPaginas;
+        this.totalModulos = response.infoTopicosPorModulos.totalRegistros;
       },
       (error) => console.error('Erro ao carregar tópicos:', error)
     );
+  }
+
+  nextPage(){
+    if (this.currentPage < this.quantidade_pages){
+      this.currentPage += 1
+      this.carregarTopicos(this.idModulo, this.currentPage)
+    }
+  }
+
+  previousPage(){
+    if (this.currentPage > 1) {
+      this.currentPage -= 1
+      this.carregarTopicos(this.idModulo, this.currentPage)
+    }
   }
 
   excluirTopico({
@@ -70,7 +89,7 @@ export class TopicosModuloUnicoComponent implements OnInit {
     senhaAdm: string;
     idExcluir: number;
   }) {
-    console.log('ok2');
+    
     this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(
       () => {
         alert('Tópico excluído com sucesso!');
