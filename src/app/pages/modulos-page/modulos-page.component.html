@@ -6,13 +6,43 @@
     nomeCard="módulos"
   ></app-titulo-secao>
   <div class="container-cards">
-    <button class="botao-navegar-cards-modulo" (click)="previousPage()">voltar</button>
+    
     <div class="container-cards-modulos">
       <div class="card" *ngFor="let modulo of modulos">
         <app-cards-modulos [modulo]="modulo" (excluirModulo)="excluirModulo($event)"></app-cards-modulos>
       </div>
     </div>
-    <button class="botao-navegar-cards-modulo" (click)="nextPage()">avançar</button>
+  </div>
+  <div class="container-botoes-navegacao">
+    
+    
+        <div class="indicadores-pagina">
+      <a (click)="previousPage()" class="botao-voltar" [style.opacity]="currentPage > 1 ? '1' : '0'" [style.pointer-events]="currentPage > 1 ? 'auto' : 'none'">
+        <img src="../../../assets/icons/voltar.png" alt="voltar">
+      </a>
+      
+      <!-- Indicador de mais páginas à esquerda -->
+      <div *ngIf="shouldShowLeftIndicator" class="indicador-mais-paginas">
+        <span class="pontos">•••</span>
+      </div>
+      
+      <button 
+        *ngFor="let page of paginationPages"
+        class="indicador-pagina" 
+        [class.ativo]="currentPage === page"
+        (click)="goToPage(page)">
+        {{ page }}
+      </button>
+      
+      <!-- Indicador de mais páginas à direita -->
+      <div *ngIf="shouldShowRightIndicator" class="indicador-mais-paginas">
+        <span class="pontos">•••</span>
+      </div>
+      
+      <a (click)="nextPage()" class="botao-avançar" [style.opacity]="currentPage < quantidade_pages ? '1' : '0'" [style.pointer-events]="currentPage < quantidade_pages ? 'auto' : 'none'">
+        <img src="../../../assets/icons/proximo.svg" alt="avançar">
+      </a>
+    </div>
   </div>
 </div>
 
