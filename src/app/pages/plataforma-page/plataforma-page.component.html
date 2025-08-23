@@ -14,9 +14,37 @@
       ></app-cards-plataformas>
     </div>
   </div>
-  <div class="botoes-navegacao-plataformas">
-      <button class="botao-navegar-cards-plataforma" (click)="previousPage()">voltar</button>
-      <button class="botao-navegar-cards-plataforma" (click)="nextPage()">avançar</button>
+
+  <div class="container-botoes-navegacao">
+    
+    
+    <div class="indicadores-pagina">
+  <a (click)="previousPage()" class="botao-voltar" [style.opacity]="currentPage > 1 ? '1' : '0'" [style.pointer-events]="currentPage > 1 ? 'auto' : 'none'">
+    <img src="../../../assets/icons/voltar.png" alt="voltar">
+  </a>
+  
+  <!-- Indicador de mais páginas à esquerda -->
+  <div *ngIf="shouldShowLeftIndicator" class="indicador-mais-paginas">
+    <span class="pontos">•••</span>
   </div>
+  
+  <button 
+    *ngFor="let page of paginationPages"
+    class="indicador-pagina" 
+    [class.ativo]="currentPage === page"
+    (click)="goToPage(page)">
+    {{ page }}
+  </button>
+  
+  <!-- Indicador de mais páginas à direita -->
+  <div *ngIf="shouldShowRightIndicator" class="indicador-mais-paginas">
+    <span class="pontos">•••</span>
+  </div>
+  
+  <a (click)="nextPage()" class="botao-avançar" [style.opacity]="currentPage < quantidade_pages ? '1' : '0'" [style.pointer-events]="currentPage < quantidade_pages ? 'auto' : 'none'">
+    <img src="../../../assets/icons/proximo.svg" alt="avançar">
+  </a>
+</div>
+</div>
 </div>
 
