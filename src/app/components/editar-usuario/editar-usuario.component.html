@@ -1,44 +1,43 @@
 
 <app-header-voltar texto="Editar Usuário"></app-header-voltar>
 <main class="container">
-  <form class="forms" (ngSubmit)="atualizarUsuario()">
-    <div class="form-campos">
-      <div class="titulo-formulario">
-        <h1>Editar Usuário</h1>
-        <p class="obrigatorio">* Indica campos obrigatórios</p>
+  <form (ngSubmit)="atualizarUsuario()" class="form-editar-usuario">
+    <h2 id="form-editar-usuario-titulo">Editar Usuário</h2>
+    <p class="obrigatorio">* Indica campos obrigatórios</p>
+    <section class="form-editar-usuario-campos">
+      <!-- Nome -->
+      <div class="form-editar-usuario-campo">
+        <label>Nome do Usuário <span class="obrigatorio">*</span></label>
+        <input matInput [(ngModel)]="user.username" name="username" required placeholder="Digite o nome do usuário" />
       </div>
 
-      <div class="campos">
-        <div class="form-conteudo-editar">
-          <label for="nome_usuario">Nome do Usuário <span>*</span></label>
-          <input [(ngModel)]="user.username" name="username" required id="nome_usuario" type="text" class="input">
-        </div>
-
-        <div class="form-conteudo-editar">
-          <label for="email_usuario">Email <span>*</span></label>
-          <input [(ngModel)]="user.email" id="email_usuario" name="email" required type="text" class="input">
-        </div>
-
-        <div class="form-conteudo-editar">
-          <label for="senha_usuario_atual">Senha atual <span>*</span></label>
-          <input [(ngModel)]="senhaAtual" name="senhaAtual" required id="senha_usuario_atual" type="password" class="input">
-        </div>
-
-        <div class="form-conteudo-editar">
-          <label for="tipo_usuario">Tipo <span>*</span></label>
-          <select [(ngModel)]="user.tipo" name="Tipo" required id="tipo_usuario">
-            <option value="professor">Professor</option>
-            <option value="adm">Administrador</option>
-         </select>
-        </div>
+      <!-- Email -->
+      <div class="form-editar-usuario-campo">
+        <label>Email <span class="obrigatorio">*</span></label>
+        <input matInput [(ngModel)]="user.email" name="email" required placeholder="Digite o email" />
       </div>
 
-      <div class="botoes">
-        <button class="btn-cancelar" routerLink="/dashboard">Cancelar</button>
-        <button class="btn-salvar" type="submit">Salvar Alterações</button>
+      <!-- Senha Atual -->
+      <div class="form-editar-usuario-campo">
+        <label>Senha Atual <span class="obrigatorio">*</span></label>
+        <input matInput [(ngModel)]="senhaAtual" name="senhaAtual" type="password" required placeholder="Digite a senha atual" />
       </div>
+
+      <!-- Tipo -->
+      <div class="form-editar-usuario-campo">
+        <label>Tipo <span class="obrigatorio">*</span></label>
+        <select [(ngModel)]="user.tipo" name="tipo" required>
+          <option value="professor">Professor</option>
+          <option value="adm">Administrador</option>
+        </select>
+      </div>
+    </section>
+    
+    <!-- Botões -->
+    <div class="botoes">
+      <button [routerLink]="'/dashboard'" id="botao-dois">Cancelar</button>
+      <button type="submit" id="botao-um">Salvar Alterações</button>
     </div>
-
   </form>
 </main>
 

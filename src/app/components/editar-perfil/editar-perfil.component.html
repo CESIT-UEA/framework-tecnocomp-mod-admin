@@ -1,31 +1,38 @@
 <app-header-voltar texto="Editar Perfil"></app-header-voltar>
-<form (ngSubmit)="atualizarPerfil()">
-  <!-- Nome -->
-  <mat-form-field appearance="fill">
-    <mat-label>Nome</mat-label>
-    <input matInput [(ngModel)]="usuario.username" name="username" required />
-  </mat-form-field>
+<main class="container">
+  <form (ngSubmit)="atualizarPerfil()" class="form-editar-perfil">
+    <h2 id="form-editar-perfil-titulo">Editar Perfil</h2>
+    <p class="obrigatorio">* Indica campos obrigatórios</p>
+        <section class="form-editar-perfil-campos">
+          <!-- Nome -->
+          <div class="form-editar-perfil-campo">
+            <label>Nome <span class="obrigatorio">*</span></label>
+            <input matInput [(ngModel)]="usuario.username" name="username" required placeholder="Digite seu nome" />
+          </div>
 
-  <!-- Email -->
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="usuario.email" name="email" required />
-  </mat-form-field>
+          <!-- Email -->
+          <div class="form-editar-perfil-campo">
+            <label>Email <span class="obrigatorio">*</span></label>
+            <input matInput [(ngModel)]="usuario.email" name="email" required placeholder="Digite seu email"/>
+          </div>
 
-  <!-- Senha Atual -->
-  <mat-form-field appearance="fill">
-    <mat-label>Senha Atual</mat-label>
-    <input matInput [(ngModel)]="senhaAtual" name="senhaAtual" type="password" required />
-  </mat-form-field>
+          <!-- Senha Atual -->
+          <div class="form-editar-perfil-campo">
+            <label>Senha Atual <span class="obrigatorio">*</span></label>
+            <input matInput [(ngModel)]="senhaAtual" name="senhaAtual" type="password" required placeholder="Digite a senha atual"/>
+          </div>
 
-  <!-- Nova Senha (opcional) -->
-  <mat-form-field appearance="fill">
-    <mat-label>Nova Senha</mat-label>
-    <input matInput [(ngModel)]="novaSenha" name="novaSenha" type="password" />
-  </mat-form-field>
-
-  <!-- Botões -->
-  <button mat-raised-button color="primary" type="submit">Salvar</button>
-  <button mat-raised-button color="warn" [routerLink]="'/meu-perfil'">Cancelar</button>
+          <!-- Nova Senha (opcional) -->
+          <div class="form-editar-perfil-campo">
+            <label>Nova Senha <span class="obrigatorio">*</span></label>
+            <input matInput [(ngModel)]="novaSenha" name="novaSenha" type="password" placeholder="Digite a nova senha"/>
+          </div>
+    </section>
+    
+    <!-- Botões -->
+    <div class="botoes">
+      <button [routerLink]="'/meu-perfil'" id="botao-dois">Cancelar</button>
+      <button type="submit" id="botao-um">Salvar</button>
+    </div>
 </form>
-
+</main>
