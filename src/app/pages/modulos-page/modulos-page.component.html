@@ -2,13 +2,25 @@
   <app-titulo-secao
     titulo="Cadastrar novo módulo"
     caminhoUrl="../registrar-modulo"
-    [quantidade]="modulos.length"
+    [quantidade]="pagination.totalItems"
+    nomeCard="módulos"
   ></app-titulo-secao>
-
-  <div class="container-cards-modulos">
-    <div class="card" *ngFor="let modulo of modulos">
-      <app-cards-modulos [modulo]="modulo" (excluirModulo)="excluirModulo($event)"></app-cards-modulos>
+  <div class="container-cards">
+    
+    <div class="container-cards-modulos">
+      <div class="card" *ngFor="let modulo of modulos">
+        <app-cards-modulos [modulo]="modulo" (excluirModulo)="excluirModulo($event)"></app-cards-modulos>
+      </div>
     </div>
   </div>
+  
+  <!-- Componente de paginação reutilizável -->
+  <app-pagination 
+    [pagination]="pagination"
+    noItemsMessage="Nenhum módulo encontrado"
+    itemsLabel="módulos"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
 </div>
+
 

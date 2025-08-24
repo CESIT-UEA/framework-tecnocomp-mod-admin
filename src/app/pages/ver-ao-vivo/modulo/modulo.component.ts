@@ -29,7 +29,7 @@ export class ModuloComponent implements OnInit {
     if (id) {
       console.log('Teste');
       this.carregarModulo(+id);
-      this.carregarTopicos(+id);
+      // this.carregarTopicos(+id);
     }
     if (this.modulo?.id != null) {
       this.idModulo = this.modulo.id;
@@ -51,38 +51,38 @@ export class ModuloComponent implements OnInit {
     );
   }
 
-  carregarTopicos(moduloId: number): void {
-    this.apiService.obterTopicoCompleto(moduloId).subscribe(
-      (response) => {
-        console.log(response);
-        this.topicos = response.map((topico) => ({
-          ...topico,
-          videoUrls: [],
-          saibaMais: [],
-          referencias: [],
-          exercicios: [],
-        }));
+  // carregarTopicos(moduloId: number): void {
+  //   this.apiService.obterTopicoCompleto(moduloId).subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       this.topicos = response.map((topico) => ({
+  //         ...topico,
+  //         videoUrls: [],
+  //         saibaMais: [],
+  //         referencias: [],
+  //         exercicios: [],
+  //       }));
 
-        // Para cada tópico, buscar os dados completos
-        this.topicos.forEach((topico, index) => {
-          if (topico.id != null) {
-            this.apiService.obterTopicoCompleto(topico.id).subscribe(
-              (topicoCompleto) => {
-                this.topicos[index] = {
-                  ...this.topicos[index],
-                  ...topicoCompleto,
-                };
-              },
-              (error) =>
-                console.error(
-                  'Erro ao carregar dados completos do tópico:',
-                  error
-                )
-            );
-          }
-        });
-      },
-      (error) => console.error('Erro ao carregar tópicos:', error)
-    );
-  }
+  //       // Para cada tópico, buscar os dados completos
+  //       this.topicos.forEach((topico, index) => {
+  //         if (topico.id != null) {
+  //           this.apiService.obterTopicoCompleto(topico.id,).subscribe(
+  //             (topicoCompleto) => {
+  //               this.topicos[index] = {
+  //                 ...this.topicos[index],
+  //                 ...topicoCompleto,
+  //               };
+  //             },
+  //             (error) =>
+  //               console.error(
+  //                 'Erro ao carregar dados completos do tópico:',
+  //                 error
+  //               )
+  //           );
+  //         }
+  //       });
+  //     },
+  //     (error) => console.error('Erro ao carregar tópicos:', error)
+  //   );
+  // }
 }

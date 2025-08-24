@@ -1,8 +1,7 @@
 <mat-card class="container-card">
-  <div class="img"></div>
   <mat-card-header>
     <mat-card-title>{{ plataforma.plataformaNome }}</mat-card-title>
-    <mat-card-subtitle style="color: white;">{{ plataforma.plataformaUrl }}</mat-card-subtitle>
+    <mat-card-subtitle style="color: #A2A2A2;">{{ plataforma.plataformaUrl }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="content">
     <div class="box-icon" [routerLink]="['/editar-plataforma', plataforma.id]">

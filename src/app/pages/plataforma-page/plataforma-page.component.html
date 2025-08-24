@@ -2,7 +2,8 @@
   <app-titulo-secao
     titulo="Plataformas"
     caminhoUrl="../cadastro-plataforma"
-    [quantidade]="plataformas.length"
+    [quantidade]="pagination.totalItems"
+    nomeCard="plataformas"
   ></app-titulo-secao>
 
   <div class="container-cards-plataformas">
@@ -13,5 +14,13 @@
       ></app-cards-plataformas>
     </div>
   </div>
+
+  <!-- Componente de paginação reutilizável -->
+  <app-pagination 
+    [pagination]="pagination"
+    noItemsMessage="Nenhuma plataforma encontrada"
+    itemsLabel="plataformas"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
 </div>
 

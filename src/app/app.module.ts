@@ -90,6 +90,7 @@ import { VideoSectionComponent } from './pages/ver-ao-vivo/components/video-sect
 import { BotoesSectionComponent } from './pages/ver-ao-vivo/components/botoes-section/botoes-section.component';
 import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -162,6 +163,7 @@ import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topico
     BotoesSectionComponent,
     SafeUrlPipePipe,
     TopicosModuloUnicoComponent,
+    PaginationComponent,
 
   ],
   imports: [
