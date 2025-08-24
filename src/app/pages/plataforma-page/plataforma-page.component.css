@@ -7,9 +7,22 @@
 
 .container-cards-plataformas{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 50px;
+  margin-bottom: 30px;
   /* padding-bottom: 50px; */
+}
+
+.card:nth-child(1) {
+  justify-self: start;
+}
+
+.card:nth-child(2) {
+  justify-self: center;
+}
+
+.card:nth-child(3) {
+  justify-self: end;
 }
 
 .botoes-navegacao-plataformas {

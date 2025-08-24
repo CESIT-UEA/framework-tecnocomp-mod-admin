@@ -18,6 +18,10 @@
   border-top: 8px solid #7C4CC6;
 }
 
+.container-card:hover{
+  border: 5px solid #9665df;
+}
+
 
 .btn {
   width: 180px;
