@@ -1,7 +1,6 @@
 <mat-card class="card-topico">
   <mat-card-header>
-    <h4>Tópico {{indice + 1}}</h4>
-    <h2>{{ topico.nome_topico }}</h2>
+    <h4>Tópico {{indice + 1}}: <span>{{ topico.nome_topico }}</span></h4>
   </mat-card-header>
   <mat-card-content>
     <div class="box-card-content">
@@ -13,17 +12,20 @@
       <p> <a target="_blank" [href]="topico.ebookUrlGeral">E-book do Tópico</a></p>
     </div>
     <mat-divider></mat-divider>
-    <div class="icons">
-      <div class="box-icon" [routerLink]="['/editar-topico', topico.id]">
-        <mat-icon class="card-icon">border_color</mat-icon>
-      </div>
-      <div class="box-icon" (click)="abrirConfirmacaoExcluir()">
-        <mat-icon class="card-icon">delete</mat-icon>
-      </div>
-    </div>
+
 
   </mat-card-content>
-  <mat-card-actions>
-    <button class="btn">Ver mais</button>
-  </mat-card-actions>
+  <div class="icons-btn">
+    <div class="icons">
+        <div class="box-icon" [routerLink]="['/editar-topico', topico.id]">
+          <mat-icon class="card-icon">border_color</mat-icon>
+        </div>
+        <div class="box-icon" (click)="abrirConfirmacaoExcluir()">
+          <mat-icon class="card-icon">delete</mat-icon>
+        </div>
+    </div>
+    <mat-card-actions>
+      <button class="btn">Ver mais</button>
+    </mat-card-actions>
+  </div>
 </mat-card>
