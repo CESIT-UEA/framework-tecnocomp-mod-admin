@@ -142,4 +142,5 @@ export class MeuPerfilPageComponent implements OnInit {
       this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
     }
   }
+
 }
