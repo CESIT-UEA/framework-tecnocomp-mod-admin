@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { PaginationService, PaginationState } from 'src/app/services/pagination.service';
 import { Plataforma } from 'src/interfaces/Plataforma';
 
 @Component({
@@ -7,52 +8,24 @@ import { Plataforma } from 'src/interfaces/Plataforma';
   templateUrl: './plataforma-page.component.html',
   styleUrls: ['./plataforma-page.component.css']
 })
-export class PlataformaPageComponent {
+export class PlataformaPageComponent implements OnInit {
   plataformas: Plataforma[] = [];
-  currentPage: number = 1;
-  quantidade_pages = 1;
-  totalPlataformas: number = 0; 
+  pagination: PaginationState;
 
-
-   // Array para os indicadores de página (máximo 3)
-   get paginationPages(): number[] {
-    const total = this.quantidade_pages;
-    const current = this.currentPage;
-    
-    if (total <= 3) {
-      // Se tem 3 ou menos páginas, mostra todas
-      return Array.from({ length: total }, (_, i) => i + 1);
-    }
-    
-    // Se tem mais de 3 páginas, mostra 3 botões inteligentes
-    if (current === 1) {
-      // Página 1: mostra 1, 2, 3
-      return [1, 2, 3];
-    } else if (current === total) {
-      // Última página: mostra total-2, total-1, total
-      return [total - 2, total - 1, total];
-    } else {
-      // Página intermediária: mostra current-1, current, current+1
-      return [current - 1, current, current + 1];
-    }
+  constructor(
+    private apiService: ApiAdmService,
+    private paginationService: PaginationService
+  ) {
+    this.pagination = this.paginationService.createPaginationState();
   }
-
-  // Mostra indicador de mais páginas à esquerda
-  get shouldShowLeftIndicator(): boolean {
-    return this.quantidade_pages > 3 && this.currentPage > 2;
-  }
-
-  // Mostra indicador de mais páginas à direita
-  get shouldShowRightIndicator(): boolean {
-    return this.quantidade_pages > 3 && this.currentPage < this.quantidade_pages - 1;
-  } 
-
-
-  constructor(private apiService: ApiAdmService) {}
 
   ngOnInit(): void {
-    this.carregarPlataformasPaginadas(this.currentPage)
-    console.log(this.quantidade_pages)
+    this.carregarPlataformasPaginadas(this.pagination.currentPage);
+  }
+
+  // Handler para mudanças de página
+  onPageChange(page: number): void {
+    this.carregarPlataformasPaginadas(page);
   }
 
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -76,40 +49,21 @@ export class PlataformaPageComponent {
     );
   }
 
-  carregarPlataformasPaginadas(page: number){
+  carregarPlataformasPaginadas(page: number) {
     this.apiService.listarPlataformas(page).subscribe(
       (response) => {
-        console.log(response)
+        console.log(response);
         this.plataformas = response.plataformas;
-        this.quantidade_pages = response.infoPlataformas.totalPaginas
-        this.totalPlataformas = response.infoPlataformas.totalRegistros
-        console.log(response)
+        this.paginationService.updatePaginationState(
+          this.pagination,
+          response.infoPlataformas.totalPaginas,
+          response.infoPlataformas.totalRegistros
+        );
+        console.log(response);
       },
       (error) => {
         console.error('Erro ao carregar plataformas:', error);
       }
     );
-  }
-
-   nextPage(){
-    if (this.currentPage < this.quantidade_pages){
-      this.currentPage += 1
-      this.carregarPlataformasPaginadas(this.currentPage)
-    }
-    
-  }
-
-  previousPage(){
-    if (this.currentPage > 1) {
-      this.currentPage -= 1
-      this.carregarPlataformasPaginadas(this.currentPage)
-    }
-  }
-
-  goToPage(page: number) {
-    if (page >= 1 && page <= this.quantidade_pages) {
-      this.currentPage = page;
-      this.carregarPlataformasPaginadas(this.currentPage);
-    }
   }
 }
