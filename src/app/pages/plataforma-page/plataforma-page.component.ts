@@ -52,6 +52,7 @@ export class PlataformaPageComponent {
 
   ngOnInit(): void {
     this.carregarPlataformasPaginadas(this.currentPage)
+    console.log(this.quantidade_pages)
   }
 
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
