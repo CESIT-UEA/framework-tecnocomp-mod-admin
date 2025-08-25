@@ -28,6 +28,11 @@ mat-card-header span {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  
+  /* Truncamento do título com três pontos */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .box-card-content {
   display: grid;

@@ -1,6 +1,6 @@
 <mat-card class="card-topico">
   <mat-card-header>
-    <h4>Tópico {{indice + 1}}: <span>{{ topico.nome_topico }}</span></h4>
+    <h4>Tópico {{indice + 1}}: <br><span [title]="topico.nome_topico">{{ topico.nome_topico | truncate:30 }}</span></h4>
   </mat-card-header>
   <mat-card-content>
     <div class="box-card-content">

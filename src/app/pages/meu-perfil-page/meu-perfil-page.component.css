@@ -51,6 +51,7 @@
   background-color: #2C2C2E;
 }
 
+
 .container-cards-modulos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -89,9 +90,10 @@ mat-divider {
   color: white;
 }
 
-.icon-add {
+.titulo button {
   border-radius: 50%;
 }
+
 
 
 .card{

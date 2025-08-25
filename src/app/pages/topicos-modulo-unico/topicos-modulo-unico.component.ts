@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Topico } from 'src/interfaces/topico/Topico';
 import { ActivatedRoute } from '@angular/router';
+import { PaginationService, PaginationState } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-topicos-modulo-unico',
@@ -12,21 +13,27 @@ import { ActivatedRoute } from '@angular/router';
 export class TopicosModuloUnicoComponent implements OnInit {
   topicos: Topico[] = [];
   idModulo!: number;
-  currentPage: number = 1;
-  quantidade_pages = 1;
-  totalModulos: number = 0; 
+  pagination: PaginationState;
 
   constructor(
     private apiService: ApiAdmService,
-    private route: ActivatedRoute
-  ){}
+    private route: ActivatedRoute,
+    private paginationService: PaginationService
+  ){
+    this.pagination = this.paginationService.createPaginationState();
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('id_modulo');
     if (id) {
-      this.carregarTopicos(+id, this.currentPage);
-      this.idModulo = +id
+      this.carregarTopicos(+id, this.pagination.currentPage);
+      this.idModulo = +id;
     }
+  }
+
+  // Handler para mudanças de página
+  onPageChange(page: number): void {
+    this.carregarTopicos(this.idModulo, page);
   }
 
   carregarTopicos(moduloId: number, page: number): void {
@@ -59,25 +66,16 @@ export class TopicosModuloUnicoComponent implements OnInit {
             );
           }
         });
-        this.quantidade_pages = response.infoTopicosPorModulos.totalPaginas;
-        this.totalModulos = response.infoTopicosPorModulos.totalRegistros;
+        
+        // Atualizar o estado de paginação
+        this.paginationService.updatePaginationState(
+          this.pagination,
+          response.infoTopicosPorModulos.totalPaginas,
+          response.infoTopicosPorModulos.totalRegistros
+        );
       },
       (error) => console.error('Erro ao carregar tópicos:', error)
     );
-  }
-
-  nextPage(){
-    if (this.currentPage < this.quantidade_pages){
-      this.currentPage += 1
-      this.carregarTopicos(this.idModulo, this.currentPage)
-    }
-  }
-
-  previousPage(){
-    if (this.currentPage > 1) {
-      this.currentPage -= 1
-      this.carregarTopicos(this.idModulo, this.currentPage)
-    }
   }
 
   excluirTopico({
@@ -109,6 +107,4 @@ export class TopicosModuloUnicoComponent implements OnInit {
       }
     );
   }
-
-
 }

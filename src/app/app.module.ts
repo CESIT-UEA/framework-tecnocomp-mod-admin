@@ -89,6 +89,7 @@ import { BotaoVoltarAvaComponent } from './pages/ver-ao-vivo/components/botao-vo
 import { VideoSectionComponent } from './pages/ver-ao-vivo/components/video-section/video-section.component';
 import { BotoesSectionComponent } from './pages/ver-ao-vivo/components/botoes-section/botoes-section.component';
 import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
+import { TruncatePipe } from './pipes/truncate.pipe';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 
@@ -162,6 +163,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     VideoSectionComponent,
     BotoesSectionComponent,
     SafeUrlPipePipe,
+    TruncatePipe,
     TopicosModuloUnicoComponent,
     PaginationComponent,
 

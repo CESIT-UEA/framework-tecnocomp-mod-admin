@@ -14,12 +14,17 @@
             (excluirTopico)="excluirTopico($event)"
             *ngFor="let topico of topicos;let i = index"
             [topico]="topico"
-            [indice]="(currentPage - 1) * 3 + i"
+            [indice]="(pagination.currentPage - 1) * 3 + i"
             ></app-card-topicos>
         </div>
     </div>
-    <div class="botoes-navegacao-topicos-do-modulo">
-      <button class="botao-navegar-cards-topicos-do-modulo" (click)="previousPage()">voltar</button>
-      <button class="botao-navegar-cards-topicos-do-modulo" (click)="nextPage()">avançar</button>
-  </div>
+    <div class="pagination">
+        <!-- Componente de paginação reutilizável -->
+        <app-pagination 
+            [pagination]="pagination"
+            noItemsMessage="Nenhum tópico encontrado"
+            itemsLabel="tópicos"
+            (pageChange)="onPageChange($event)">
+    </app-pagination>
+    </div>
 </div>
