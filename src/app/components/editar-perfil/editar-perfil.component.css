@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88%;
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.form-editar-perfil {
+  background-color: #2E2E2F;
+  width: 55%;
+  border-radius: 40px;
+  padding: 0 2.5rem;
+  border-top: 8px solid #7C4CC6;
+}
+#form-editar-perfil-titulo {
+    text-align: center;
+    padding: 35px 0 30px 0;
+    border-bottom: 2px solid #7C4CC6;
+}
+
+.obrigatorio {
+  font-size: 16px;
+  color: #BF0A0A;
+  padding: 20px 0;
+}
+
+.form-editar-perfil-campos {
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-between;
+    gap: 30px;
+    /* padding-top: 30px; */
+}
+
+.form-editar-perfil-campo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.form-editar-perfil-campo input {
+    display: flex;
+    flex-direction: column;
+    background-color: #3F3F40;
+    height: 35px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding-left: 10px;
+}
+
+.form-editar-perfil-campo input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.botoes {
+    display: flex;
+    padding: 40px 0;
+    column-gap: 20px;
+    justify-content: end;
+}
+
+#botao-um, #botao-dois {
+  height: 35px;
+  width: 145px;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#botao-um {
+    background-color: #7C4CC6;
+}
+
+#botao-dois {
+    background-color: transparent;
+    border: 3px solid #7C4CC6;
+}

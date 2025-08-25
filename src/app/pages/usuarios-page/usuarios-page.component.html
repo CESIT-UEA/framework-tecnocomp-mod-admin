@@ -2,7 +2,8 @@
   <app-titulo-secao
     titulo="Cadastrar novo usuário"
     caminhoUrl="../cadastro-usuario"
-    [quantidade]="usuarios.length"
+    [quantidade]="pagination.totalItems"
+    nomeCard="usuários"
   ></app-titulo-secao>
 
   <div class="container-cards-users">
@@ -10,5 +11,12 @@
       <app-cards-usuarios [user]="usuario"  (excluirUsuario)="excluirUsuario($event)"></app-cards-usuarios>
     </div>
   </div>
-
+  
+  <!-- Componente de paginação reutilizável -->
+  <app-pagination 
+    [pagination]="pagination"
+    noItemsMessage="Nenhum usuário encontrado"
+    itemsLabel="usuários"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
 </div>

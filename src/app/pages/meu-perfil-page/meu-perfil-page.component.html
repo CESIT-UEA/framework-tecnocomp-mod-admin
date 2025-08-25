@@ -1,28 +1,26 @@
 <div class="container-perfil">
   <section class="informacoes">
-    <div class="titulo">
-      <h1>Informações</h1>
+    <div class="informacoes-usuario">
+      <p class="cargo">
+        {{ dadosUsuario().tipo === 'adm' ? 'Admin': 'Professor' }}
+      </p>
       <button [routerLink]="['/editar-perfil']">
-        <mat-icon>border_color</mat-icon>
+        <img src="../../../assets/icons/Editar.svg" alt="ícone de editar-perfil">
       </button>
     </div>
     <div class="perfil-dados">
-      <p><strong>Nome:</strong> {{ dadosUsuario().username }}</p>
-      <p><strong>Email:</strong> {{ dadosUsuario().email }}</p>
-      <p><strong>Cargo:</strong> {{ dadosUsuario().tipo }}</p>
+      <p><strong>Email:</strong> <span id="email"> {{ dadosUsuario().email }}</span></p>
+      <p id="texto-cargo">{{ dadosUsuario().tipo === 'adm' ? 'Administrador' : 'Professor' }}</p>
     </div>
   </section>
+  <mat-divider></mat-divider>
   <section class="minhas-plataformas">
     <div class="titulo">
-      <h1>Minhas Plataformas</h1>
+      <h1>Minhas Plataformas: {{ paginationPlataformas.totalItems }}</h1>
       <button routerLink="/cadastro-plataforma">
         <mat-icon>add</mat-icon>
       </button>
     </div>
-    <p>
-      Quantidade: <strong>{{ plataformas.length }}</strong>
-    </p>
-    <mat-divider></mat-divider>
     <div class="container-cards-modulos">
       <div class="card" *ngFor="let plataforma of plataformas">
         <app-cards-plataformas
@@ -31,18 +29,24 @@
       ></app-cards-plataformas>
       </div>
     </div>
+
+    <!-- Componente de paginação para plataformas -->
+    <app-pagination 
+      [pagination]="paginationPlataformas"
+      noItemsMessage="Nenhuma plataforma encontrada"
+      itemsLabel="plataformas"
+      (pageChange)="onPlataformaPageChange($event)">
+    </app-pagination>
+
   </section>
+  <mat-divider></mat-divider>
   <section class="meus-modulos">
     <div class="titulo">
-      <h1>Meus Módulos</h1>
+      <h1>Meus Módulos: {{ paginationModulos.totalItems }}</h1>
       <button routerLink="/registrar-modulo">
-        <mat-icon>add</mat-icon>
+        <mat-icon class="icon-add">add</mat-icon>
       </button>
     </div>
-    <p>
-      Quantidade: <strong>{{ modulos.length }}</strong>
-    </p>
-    <mat-divider></mat-divider>
     <div class="container-cards-modulos">
       <div class="card" *ngFor="let modulo of modulos">
         <app-cards-modulos
@@ -51,5 +55,13 @@
         ></app-cards-modulos>
       </div>
     </div>
+
+    <!-- Componente de paginação para módulos -->
+    <app-pagination 
+      [pagination]="paginationModulos"
+      noItemsMessage="Nenhum módulo encontrado"
+      itemsLabel="módulos"
+      (pageChange)="onModuloPageChange($event)">
+    </app-pagination>
   </section>
 </div>

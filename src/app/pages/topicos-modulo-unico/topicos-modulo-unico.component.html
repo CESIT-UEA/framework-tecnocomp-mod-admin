@@ -1,0 +1,30 @@
+<app-header-voltar texto="Tópicos"></app-header-voltar>
+<div class="container">
+    <div class="novo-topico">
+        <h1>Novo Tópico</h1>
+        <button [routerLink]="['/cadastrar-topico']" [queryParams]="{ id_modulo: idModulo}">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="topicos.length > 0" class="topicos-container">
+        <div class="topicos-grid">
+            <app-card-topicos
+            [idModulo]="idModulo"
+            (excluirTopico)="excluirTopico($event)"
+            *ngFor="let topico of topicos;let i = index"
+            [topico]="topico"
+            [indice]="(pagination.currentPage - 1) * 3 + i"
+            ></app-card-topicos>
+        </div>
+    </div>
+    <div class="pagination">
+        <!-- Componente de paginação reutilizável -->
+        <app-pagination 
+            [pagination]="pagination"
+            noItemsMessage="Nenhum tópico encontrado"
+            itemsLabel="tópicos"
+            (pageChange)="onPageChange($event)">
+    </app-pagination>
+    </div>
+</div>

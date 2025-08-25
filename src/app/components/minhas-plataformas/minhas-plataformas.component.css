@@ -81,3 +81,10 @@ mat-divider {
 .card{
   margin-bottom: 20px;
 }
+
+
+.botoes-navegacao-minhas-plataformas {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}

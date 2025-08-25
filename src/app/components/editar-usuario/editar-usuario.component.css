@@ -1,121 +1,107 @@
 
 .container {
-  height: 88vh;
-  background-color: #1E1E1E;;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88%;
+    background-color: #1E1E1E;
+    color: white;
 }
 
-.forms {
-  width: 50%;
-  background-color: #2C2C2E;
-  padding: 0 2.5rem;
+.form-editar-usuario {
+  background-color: #2E2E2F;
+  width: 55%;
   border-radius: 40px;
-  border-top: 8px solid #9665DF;
+  padding: 0 2.5rem;
+  border-top: 8px solid #7C4CC6;
 }
 
-p{
-  color: #C64C4C;
+#form-editar-usuario-titulo {
+    text-align: center;
+    padding: 35px 0 30px 0;
+    border-bottom: 2px solid #7C4CC6;
+}
+
+.obrigatorio {
+  font-size: 16px;
+  color: #BF0A0A;
   padding: 20px 0;
 }
 
-span{
-  color: #C64C4C;
+.form-editar-usuario-campos {
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-between;
+    gap: 30px;
+    /* padding-top: 30px; */
 }
 
-.titulo-formulario h1 {
-  text-align: center;
-  padding: 20px 0 20px 0;
-  border-bottom: 2px solid #9665DF;
-  font-size: 20px;
-  font-weight: 700;
-  font-family: Inter;
+.form-editar-usuario-campo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }
 
-.titulo-formulario p{
-  font-size: 16px;
-  color: #BF0A0A;
+.form-editar-usuario-campo input,
+.form-editar-usuario-campo select {
+    display: flex;
+    flex-direction: column;
+    background-color: #3F3F40;
+    height: 35px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding-left: 10px;
+    box-sizing: border-box;
 }
 
-.form-conteudo-editar{
-  display: flex;
-  flex-direction: column;
-  padding: 5px 0;
-  width: 100%;
+.form-editar-usuario-campo select {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    width: 100% !important;
+    min-width: 100%;
+    max-width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 40px;
 }
 
-.campos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap:38px;
-}
-
-.form-conteudo-editar label{
-  padding: 10px 0;
-}
 
 
-.form-conteudo-editar input{
-  height: 35px;
-  border: none;
-  border-radius: 10px;
-  background-color: #3F3F40;
-  color: #FFFFFF;
-  padding-left: 10px;
-
-}
-
-.form-conteudo-editar select {
-  height: 35px;
-  border: none;
-  border-radius: 10px;
-  background-color: #3F3F40;
-  color: #FFFFFF;
-  padding-left: 10px;
+.form-editar-usuario-campo input:focus,
+.form-editar-usuario-campo select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0;
 }
 
 .botoes {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: 60px 0 34px 0;
+    display: flex;
+    padding: 40px 0;
+    column-gap: 20px;
+    justify-content: end;
 }
 
-.btn-salvar, .btn-cancelar {
+#botao-um, #botao-dois {
+  height: 35px;
+  width: 145px;
+  border: none;
+  color: white;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.form-conteudo-editar input:focus {
-  box-shadow: 0 0 0 0;
-  outline: 0;
+#botao-um {
+    background-color: #7C4CC6;
 }
 
-.btn-cancelar{
-  padding: 7px;
-  width: 22%;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  background-color: #7C4CC6;
-  color: #FFFFFF;
-}
-
- .btn-salvar{
-  padding: 7px;
-  width: 24%;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  background-color: #7C4CC6;
-  color: #FFFFFF;
- }
-
-.btn-cancelar {
-  background-color: transparent;
-  border: 3px solid #7C4CC6;
+#botao-dois {
+    background-color: transparent;
+    border: 3px solid #7C4CC6;
 }
