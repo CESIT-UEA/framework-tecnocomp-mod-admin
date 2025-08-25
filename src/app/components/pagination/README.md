@@ -171,3 +171,4 @@ O componente usa CSS classes que podem ser sobrescritas:
 - 🎨 **Consistência visual** - Mesmo estilo em toda aplicação
 - 📱 **Responsivo** - Funciona em todos os dispositivos
 - ♿ **Acessível** - Estados visuais claros para usuários
+
