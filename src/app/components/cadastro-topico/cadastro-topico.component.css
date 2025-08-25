@@ -97,7 +97,7 @@ button[mat-button] {
 .remover {
   background-color: #ff5722; /* Laranja destaque */
 }
-.proximo, .remover, .adicionar {
+.voltar, .proximo, .remover, .adicionar {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -107,9 +107,9 @@ button[mat-button] {
   column-gap: 10px;
   /* align-content: center; */
 }
-.voltar {
+/* .voltar {
   background-color: #ff5722;
-}
+} */
 .revisar{
   background-color: blue;
 }
@@ -130,6 +130,8 @@ button[mat-button] {
    height: 25px;
    width: 25px;
 }
+
+
 
 .icone-remover {
   background-color: #ff5722 !important;

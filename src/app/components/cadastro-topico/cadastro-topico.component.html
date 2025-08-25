@@ -95,21 +95,25 @@
                 </mat-form-field>
                 <br />
                 <button
-                  mat-button
                   class="remover"
                   *ngIf="i > 0"
                   (click)="removerSaibaMais(i)"
                 >
+                <div class="icone-remover">
+                  <mat-icon>remove</mat-icon>
+                </div>
                   Remover
                 </button>
                 <mat-divider></mat-divider>
               </div>
             </div>
-            <button class="adicionar" mat-button (click)="adicionarSaibaMais()">
+            <button class="adicionar" (click)="adicionarSaibaMais()">
+              <div class="icone-adicionar"><mat-icon>add</mat-icon></div>
               Adicionar Saiba Mais
             </button>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>
+              <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
                 Anterior
               </button>
               <button class="proximo" matStepperNext>Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
@@ -157,7 +161,8 @@
               Adicionar Referência
             </button>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>
+              <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
                 Anterior
               </button>
               <button class="proximo" matStepperNext>Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
