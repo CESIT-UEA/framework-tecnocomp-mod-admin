@@ -30,7 +30,7 @@
       <label for="tipo" class="cadastro-usuario-label">Tipo de usuário<span> *</span></label>
       <mat-radio-group class="radio-group" formControlName="tipo">
         <mat-radio-button class="check-professor" value="professor">Professor</mat-radio-button>
-        <mat-radio-button class="check-administrador" value="adm">Administrador</mat-radio-button>
+        <mat-radio-button *ngIf="isAdminUser()" class="check-administrador" value="adm">Administrador</mat-radio-button>
       </mat-radio-group>
     </div>
     <div class="buttons">
