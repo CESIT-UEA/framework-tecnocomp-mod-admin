@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { Plataforma } from 'src/interfaces/Plataforma';
 import { User } from 'src/interfaces/user';
+import { PaginationState, PaginationService } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-minhas-plataformas',
@@ -11,21 +12,23 @@ import { User } from 'src/interfaces/user';
 })
 export class MinhasPlataformasComponent {
   plataformas: Plataforma[] = [];
-  currentPagePlataforma: number = 1;
-  quantidadePagesPlataformas = 1;
+  pagination: PaginationState;
   totalPlataformas = 0;
 
   constructor(
     private authService: AuthService,
-    private apiService: ApiAdmService
-  ) {}
+    private apiService: ApiAdmService,
+    private paginationService: PaginationService
+  ) {
+    this.pagination = this.paginationService.createPaginationState();
+  }
 
   dadosUsuario(): User {
     return this.authService.getUsuarioDados();
   }
 
   ngOnInit(): void {
-    this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
+    this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.pagination.currentPage)
   }
 
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -53,8 +56,13 @@ export class MinhasPlataformasComponent {
     this.apiService.listarPlataformasPeloIdUsuario(id, page).subscribe(
       (response) => {
         this.plataformas = response.plataformas;
-        this.quantidadePagesPlataformas = response.infoPlataforma.totalPaginas;
         this.totalPlataformas = response.infoPlataforma.totalRegistros;
+        this.paginationService.updatePaginationState(
+          this.pagination, 
+          response.infoPlataforma.totalPaginas, 
+          response.infoPlataforma.totalRegistros
+        );
+        this.pagination.currentPage = page;
         console.log(response);
       },
       (error) => {
@@ -63,18 +71,7 @@ export class MinhasPlataformasComponent {
     );
   }
 
-  nextPagePlataforma(){
-    if (this.currentPagePlataforma < this.quantidadePagesPlataformas){
-      this.currentPagePlataforma += 1
-      this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
-    }
+  onPageChange(page: number): void {
+    this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, page);
   }
-
-  previousPagePlataforma(){
-    if (this.currentPagePlataforma > 1) {
-      this.currentPagePlataforma -= 1
-      this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.currentPagePlataforma)
-    }
-  }
-
 }
