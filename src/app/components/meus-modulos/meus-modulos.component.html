@@ -18,9 +18,11 @@
         ></app-cards-modulos>
       </div>
     </div>
-    <div class="botoes-navegacao-meus-modulos">
-      <button class="botao-navegar-cards-meus-modulos" (click)="previousPage()">voltar</button>
-      <button class="botao-navegar-cards-meus-modulos" (click)="nextPage()">avançar</button>
-  </div>
+    <app-pagination
+      [pagination]="pagination"
+      (pageChange)="onPageChange($event)"
+      [showTotal]="false"
+      >
+    </app-pagination>
   </section>
 </div>

@@ -7,7 +7,7 @@
       </button>
     </div>
     <p>
-      Quantidade: <strong>{{ plataformas.length }}</strong>
+      Quantidade: <strong>{{ totalPlataformas }}</strong>
     </p>
     <mat-divider></mat-divider>
     <div class="container-cards-modulos">
@@ -18,9 +18,10 @@
         ></app-cards-plataformas>
       </div>
     </div>
-    <div class="botoes-navegacao-minhas-plataformas">
-      <button class="botao-navegar-cards-minhas-plataformas" (click)="previousPagePlataforma()">voltar</button>
-      <button class="botao-navegar-cards-minhas-plataformas" (click)="nextPagePlataforma()">avançar</button>
-  </div>
+    <app-pagination
+      [pagination]="pagination"
+      (pageChange)="onPageChange($event)"
+      [showTotal]="false">
+    </app-pagination>
   </section>
 </div>

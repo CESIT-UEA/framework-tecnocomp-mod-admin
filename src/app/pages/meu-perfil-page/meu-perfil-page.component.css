@@ -75,7 +75,6 @@ mat-divider {
 
 .meus-modulos .titulo button,.minhas-plataformas .titulo button{
   cursor: pointer;
-  border-radius: 5.118px;
   background: var(--12, #9256ed);
   outline: none;
   border: none;
@@ -84,6 +83,7 @@ mat-divider {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
 }
 
 .meus-modulos .titulo button mat-icon ,.minhas-plataformas .titulo button mat-icon{
