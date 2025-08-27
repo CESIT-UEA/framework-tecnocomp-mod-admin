@@ -104,7 +104,7 @@
                 </div>
                   Remover
                 </button>
-                <mat-divider></mat-divider>
+                <!-- <mat-divider></mat-divider> -->
               </div>
             </div>
             <button class="adicionar" (click)="adicionarSaibaMais()">
@@ -152,7 +152,7 @@
                 </div>
                   Remover
                 </button>
-                <mat-divider></mat-divider>
+                <!-- <mat-divider></mat-divider> -->
               </div>
             </div>
             <button
@@ -205,7 +205,16 @@
                       <mat-label>Explicação</mat-label>
                       <input matInput formControlName="explicacao" required />
                     </div>
-                    
+                    <mat-radio-group
+                      formControlName="correta"
+                      [value]="true"
+                      (change)="setAlternativaCorreta(i, j)"
+                      required
+                    >
+                      <mat-radio-button style="color: white" [value]="true"
+                        >Correta</mat-radio-button
+                      >
+                    </mat-radio-group>
                     <br />
                     <button
                       class="remover"

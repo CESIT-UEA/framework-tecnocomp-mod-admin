@@ -16,6 +16,7 @@
   margin: 10px auto;
   gap: 20px;
   background-color: #2C2C2E;
+  border-top: 8px solid #7C4CC6;
 
 }
 .mat-stepper-horizontal {
