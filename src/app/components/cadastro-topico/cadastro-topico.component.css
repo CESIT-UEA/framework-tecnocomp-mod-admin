@@ -1,20 +1,23 @@
 .container-pagina {
   background-color: #131313;
-  min-height: 100%;
-  padding: 30px 0;
+  min-height: 88vh;
+  /* padding: 10px 0;   */
+  align-content: center;
 }
 
 .formulario {
-  background-color: #404040;
-  width: 80%;
+  width: 60%;
   max-width: 1100px;
-  padding: 20px;
-  border-radius: 15px;
+  padding: 10px 20px;
+  border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 10px auto;
   gap: 20px;
+  background-color: #2C2C2E;
+  border-top: 8px solid #7C4CC6;
+
 }
 .mat-stepper-horizontal {
   background-color: transparent;
@@ -27,13 +30,14 @@
 }
 
 mat-divider {
-  background-color: #818181;
+  background-color: #7C4CC6;
   height: 2px;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 h3 {
   color: white;
+  text-align: center;
 }
 /* Campos de formulário */
 .campo-formulario {
@@ -42,25 +46,44 @@ h3 {
   gap: 10px;
 }
 
-mat-form-field {
-  width: 100%;
+
+.mat-form-field {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  row-gap: 10px;
+  padding-bottom: 15px;
+}
+
+.mat-form-field input {
+  height: 42px;
+  background-color: #3F3F40;
+  border: none;
+  color: white;
+  padding-left: 10px;
+}
+
+.mat-form-field input:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0;
 }
 
 input,
 textarea {
   border-radius: 5px;
-  padding: 10px;
-}
-.passo1 input,
-textarea {
-  background-color: transparent;
-  border: 1px solid white;
+  /* padding: 10px; */
+  background-color: #3F3F40;
+  border: none;
 }
 
+
 /* Botões */
-button {
+.passo1-botao-proximo {
+  display: flex;
+  justify-content: end;
   margin-top: 10px;
 }
+
 
 button[mat-button] {
   color: #ffffff;
@@ -75,21 +98,45 @@ button[mat-button] {
 .remover {
   background-color: #ff5722; /* Laranja destaque */
 }
-.proximo {
-  background-color: #7fffd48f;
+.voltar, .proximo, .remover, .adicionar {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  column-gap: 10px;
+  /* align-content: center; */
 }
-.voltar {
+/* .voltar {
   background-color: #ff5722;
-}
+} */
 .revisar{
   background-color: blue;
 }
 .finalizar{
   background-color: green;
 }
-.adicionar{
-   background-color: blue;
+
+.adicionar, .remover {
+  display: flex;
+  padding: 0px 0 25px 0;
 }
+
+
+
+.icone-adicionar, .icone-remover{
+   border-radius: 50%;
+   background-color: #7C4CC6;
+   height: 25px;
+   width: 25px;
+}
+
+
+
+.icone-remover {
+  background-color: #ff5722 !important;
+} 
 
 .box-input {
   display: flex;
