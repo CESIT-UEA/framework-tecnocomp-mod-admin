@@ -1,15 +1,16 @@
 import { ApiAdmService } from './../../services/api-adm.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { noOnlyWhitespace, senhaForte } from '../validators/validators';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
   templateUrl: './cadastro-usuario.component.html',
   styleUrls: ['./cadastro-usuario.component.css']
 })
-export class CadastroUsuarioComponent {
+export class CadastroUsuarioComponent implements OnInit {
   validators: boolean = false;
   errorCadastro: boolean = false;
   buttonDisabled = true;
@@ -20,10 +21,10 @@ export class CadastroUsuarioComponent {
     email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(13), noOnlyWhitespace()]),
     senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
     confirmarSenha: new FormControl('',[Validators.required,Validators.minLength(8), senhaForte(),noOnlyWhitespace()]),
-    tipo: new FormControl('adm', Validators.required)
+    tipo: new FormControl('professor', Validators.required)
   });
 
-  constructor(private apiService: ApiAdmService, private router: Router) {
+  constructor(private apiService: ApiAdmService, private router: Router, private authService: AuthService) {
       this.cadastroForm.valueChanges.subscribe(()=>{
           this.errorCadastro = false
 
@@ -36,6 +37,9 @@ export class CadastroUsuarioComponent {
       })
   }
 
+  ngOnInit(): void {
+  
+  }
 
   get nome(){
       return this.cadastroForm.get('nome')!;
@@ -49,6 +53,11 @@ export class CadastroUsuarioComponent {
     return this.cadastroForm.get('senha')!;
 }
 
+
+  isAdminUser(){
+    const tipoUser = this.authService.getUsuarioDados().tipo;
+    return tipoUser === "adm"
+  }
 
   onSubmit() {
     if (this.cadastroForm.valid) {

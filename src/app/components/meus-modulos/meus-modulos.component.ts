@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { User } from 'src/interfaces/user';
+import { PaginationState, PaginationService } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-meus-modulos',
@@ -11,21 +12,23 @@ import { User } from 'src/interfaces/user';
 })
 export class MeusModulosComponent {
   modulos: Modulo[] = [];
-  currentPage: number = 1;
-  quantidade_pages = 1;
+  pagination: PaginationState;
   totalModulos: number = 0; 
 
   constructor(
     private authService: AuthService,
-    private apiService: ApiAdmService
-  ) {}
+    private apiService: ApiAdmService,
+    private paginationService: PaginationService
+  ) {
+    this.pagination = this.paginationService.createPaginationState();
+  }
 
   dadosUsuario(): User {
     return this.authService.getUsuarioDados();
   }
 
   ngOnInit(): void {
-    this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
+    this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.pagination.currentPage)
   }
 
   excluirModulo({
@@ -61,8 +64,13 @@ export class MeusModulosComponent {
     this.apiService.listarModulosPeloIdUsuario(id, page).subscribe(
       (response) => {
         this.modulos = response.modulos;
-        this.quantidade_pages = response.infoModulos.totalPaginas;
         this.totalModulos = response.infoModulos.totalRegistros;
+        this.paginationService.updatePaginationState(
+          this.pagination, 
+          response.infoModulos.totalPaginas, 
+          response.infoModulos.totalRegistros
+        );
+        this.pagination.currentPage = page;
         console.log(response);
       },
       (error) => {
@@ -71,17 +79,7 @@ export class MeusModulosComponent {
     );
   }
 
-  nextPage(){
-    if (this.currentPage < this.quantidade_pages){
-      this.currentPage += 1
-      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
-    }
-  }
-
-  previousPage(){
-    if (this.currentPage > 1) {
-      this.currentPage -= 1
-      this.carregarMeusModulosPaginados(this.dadosUsuario().id, this.currentPage)
-    }
+  onPageChange(page: number): void {
+    this.carregarMeusModulosPaginados(this.dadosUsuario().id, page);
   }
 }

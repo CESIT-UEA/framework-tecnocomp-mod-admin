@@ -1,6 +1,6 @@
 <mat-card class="container-card">
   <mat-card-header>
-    <mat-card-title>{{ modulo.nome_modulo }}</mat-card-title>
+    <mat-card-title [title]="modulo.nome_modulo">{{ modulo.nome_modulo | truncate:30}}</mat-card-title>
   </mat-card-header>
   <mat-card-content class="content">
     <div class="status">

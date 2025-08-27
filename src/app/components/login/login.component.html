@@ -66,10 +66,25 @@
           <p>Ou</p>
           <mat-divider></mat-divider>
         </div>
-        <div class="botao-entra-com-google">
+        <!-- <div class="botao-entra-com-google" (click)="loginGoogleButton()">
           <img src="../../../assets/imgs/flat-color-icons_google.svg" alt="icone do google" class="google-icon">
-          <button class="button-two">Entrar com o Google</button>
-        </div>
+          <button class="button-two" data-onsuccess="onSignIn">Entrar com o Google</button>
+        </div> -->
+        <div id="g_id_onload"
+          data-client_id="856213394254-4kr87eq72lj2en4t3sup1nqgjr2mnltl.apps.googleusercontent.com"
+          data-callback="handleCredentialResponse"
+        data-auto_prompt="false"
+        >
+      </div>
+      <div class="g_id_signin"
+        data-type="standard"
+        data-size="xlarge"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-width="400"
+        data-logo_alignment="left">
+    </div>
        </form>
     </div>
   </div>
