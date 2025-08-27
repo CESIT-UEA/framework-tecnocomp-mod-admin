@@ -85,14 +85,14 @@
                 *ngFor="let sm of saibaMais.controls; let i = index"
                 [formGroupName]="i"
               >
-                <mat-form-field appearance="fill">
+                <div class="mat-form-field">
                   <mat-label>Descrição Saiba Mais {{ i + 1 }}</mat-label>
                   <input matInput formControlName="descricao" required />
-                </mat-form-field>
-                <mat-form-field appearance="fill">
+                </div>
+                <div class="mat-form-field">
                   <mat-label>URL Saiba Mais {{ i + 1 }}</mat-label>
                   <input matInput formControlName="url" required />
-                </mat-form-field>
+                </div>
                 <br />
                 <button
                   class="remover"
@@ -133,21 +133,23 @@
                 *ngFor="let ref of referencias.controls; let i = index"
                 [formGroupName]="i"
               >
-                <mat-form-field appearance="fill">
+                <div class="mat-form-field">
                   <mat-label>Caminho da Imagem {{ i + 1 }}</mat-label>
                   <input matInput formControlName="caminhoDaImagem" required />
-                </mat-form-field>
-                <mat-form-field appearance="fill">
+                </div>
+                <div class="mat-form-field">
                   <mat-label>Texto da Referência {{ i + 1 }}</mat-label>
                   <input matInput formControlName="referencia" required />
-                </mat-form-field>
+                </div>
                 <br />
                 <button
-                  mat-button
                   class="remover"
                   *ngIf="i > 0"
                   (click)="removerReferencia(i)"
                 >
+                <div class="icone-remover">
+                  <mat-icon>remove</mat-icon>
+                </div>
                   Remover
                 </button>
                 <mat-divider></mat-divider>
@@ -155,9 +157,9 @@
             </div>
             <button
               class="adicionar"
-              mat-button
               (click)="adicionarReferencia()"
             >
+            <div class="icone-adicionar"><mat-icon>add</mat-icon></div>
               Adicionar Referência
             </button>
             <div class="botoes">
@@ -182,12 +184,12 @@
                 *ngFor="let exercicio of exercicios.controls; let i = index"
                 [formGroupName]="i"
               >
-                <mat-form-field appearance="fill">
+                <div class="mat-form-field">
                   <mat-label>Questão do Exercício</mat-label>
                   <input matInput formControlName="questao" required />
-                </mat-form-field>
+                </div>
 
-                <h3>Alternativas</h3>
+              
                 <mat-divider></mat-divider>
                 <div formArrayName="alternativas">
                   <div
@@ -195,27 +197,17 @@
                     [formGroupName]="j"
                   >
                     <h3 style="padding: 20px 0">Alternativa {{ letras[j] }}</h3>
-                    <mat-form-field appearance="fill">
+                    <div class="mat-form-field">
                       <mat-label>Descrição</mat-label>
                       <input matInput formControlName="descricao" required />
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    </div>
+                    <div class="mat-form-field">
                       <mat-label>Explicação</mat-label>
                       <input matInput formControlName="explicacao" required />
-                    </mat-form-field>
-                    <mat-radio-group
-                      formControlName="correta"
-                      [value]="true"
-                      (change)="setAlternativaCorreta(i, j)"
-                      required
-                    >
-                      <mat-radio-button style="color: white" [value]="true"
-                        >Correta</mat-radio-button
-                      >
-                    </mat-radio-group>
+                    </div>
+                    
                     <br />
                     <button
-                      mat-button
                       class="remover"
                       (click)="limparAlternativa(i, j)"
                     >
