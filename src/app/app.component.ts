@@ -8,6 +8,7 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent {
   title = 'cadastro_lms';
+  
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
