@@ -53,6 +53,17 @@ export class AuthService {
     );
   }
 
+  loginWithGoogle(credential: string) {
+    return this.http.post(`${this.apiUrl}/auth/login-google`, { credential }).pipe(
+      map((response: any) => {
+        // salva tokens no localStorage ou onde você estiver guardando
+        this.setToken(response.accessToken);
+        this.setRefreshToken(response.refreshToken);
+        return response;
+      })
+    );
+  }
+
   setToken(token: string) {
     localStorage.setItem('accessToken', token);
   }
