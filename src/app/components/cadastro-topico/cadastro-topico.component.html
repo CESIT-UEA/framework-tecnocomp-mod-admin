@@ -43,21 +43,22 @@
                 *ngFor="let videoUrl of videoUrls.controls; let i = index"
                 class="videoUrls"
               >
-                <div class="mat-form-field">
+                <div class="mat-form-field field-url-video">
                   <mat-label>URL do Vídeo {{ i + 1 }}</mat-label>
                   <input [formControlName]="i" required />
+                  <!-- Botão remover -->
+                   <button
+                      class="remover"
+                      *ngIf="i > 0"
+                      (click)="removerVideoUrl(i)"
+                    >
+                  <div class="icone-remover">
+                    <mat-icon>remove</mat-icon>
+                  </div>
+                </button>
                 </div>
                 <!-- <br /> -->
-                <button
-                  class="remover"
-                  *ngIf="i > 0"
-                  (click)="removerVideoUrl(i)"
-                >
-                <div class="icone-remover">
-                  <mat-icon>remove</mat-icon>
-                </div>
-                  Remover
-                </button>
+                
               </div>
             </div>
             <button class="adicionar" (click)="adicionarVideoUrl()">
@@ -188,10 +189,9 @@
                   <mat-label>Questão do Exercício</mat-label>
                   <input matInput formControlName="questao" required />
                 </div>
-
               
                 <mat-divider></mat-divider>
-                <div formArrayName="alternativas">
+                <div formArrayName="alternativas" *ngIf="!this.exercicios.get('isQuestaoAberta')?.value">
                   <div
                     *ngFor="let alt of alternativas(i).controls; let j = index"
                     [formGroupName]="j"
