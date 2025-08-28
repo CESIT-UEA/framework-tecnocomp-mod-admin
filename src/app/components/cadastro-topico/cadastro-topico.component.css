@@ -215,6 +215,9 @@ a{
 .errado{
   color: #ff5722;
 }
+
+
+
 /* Responsividade */
 @media (max-width: 1100px) {
   .formulario {
