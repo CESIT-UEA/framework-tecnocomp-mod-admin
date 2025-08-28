@@ -81,34 +81,35 @@
           <form [formGroup]="saibaMaisFormGroup">
             <h3>Saiba Mais</h3>
             <mat-divider></mat-divider>
-            <div formArrayName="saibaMais">
+            <div formArrayName="saibaMais" >
               <div
                 *ngFor="let sm of saibaMais.controls; let i = index"
                 [formGroupName]="i"
               >
+               <mat-divider *ngIf="i === 1" class="mat-divider-top-mat-form-field-saiba-mais"></mat-divider>
                 <div class="mat-form-field">
                   <mat-label>Descrição Saiba Mais {{ i + 1 }}</mat-label>
                   <input matInput formControlName="descricao" required />
                 </div>
-                <div class="mat-form-field">
+                <div class="mat-form-field field-url-saiba-mais">
                   <mat-label>URL Saiba Mais {{ i + 1 }}</mat-label>
                   <input matInput formControlName="url" required />
                 </div>
                 <br />
                 <button
-                  class="remover"
+                  class="remover botao-remover-saiba-mais"
                   *ngIf="i > 0"
                   (click)="removerSaibaMais(i)"
                 >
                 <div class="icone-remover">
                   <mat-icon>remove</mat-icon>
                 </div>
-                  Remover
+                  Remover Saiba Mais
                 </button>
-                <!-- <mat-divider></mat-divider> -->
+                <mat-divider *ngIf="i > 0" class="mat-divider-top-mat-form-field-saiba-mais divider-bottom"></mat-divider>
               </div>
             </div>
-            <button class="adicionar" (click)="adicionarSaibaMais()">
+            <button class="adicionar botao-adicionar-saiba-mais" (click)="adicionarSaibaMais()">
               <div class="icone-adicionar"><mat-icon>add</mat-icon></div>
               Adicionar Saiba Mais
             </button>
