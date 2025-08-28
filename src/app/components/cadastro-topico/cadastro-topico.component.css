@@ -136,16 +136,16 @@ button[mat-button] {
 } 
 
 
-.mat-divider-top-mat-form-field-saiba-mais, 
-.botao-remover-saiba-mais,
-.botao-adicionar-saiba-mais {
+.mat-divider-top-mat-form-field, 
+.botao-remover,
+.botao-adicionar {
   position: relative;
   top: -25px;
   margin-bottom: 0;
 }
 
-.botao-remover-saiba-mais, 
-.botao-adicionar-saiba-mais {
+.botao-remover, 
+.botao-adicionar {
   top: -20px;
 }
 
