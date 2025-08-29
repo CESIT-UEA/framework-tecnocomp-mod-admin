@@ -13,7 +13,8 @@ export class CadastroTopicoComponent {
   videoUrlsFormGroup: FormGroup;
   saibaMaisFormGroup: FormGroup;
   referenciasFormGroup: FormGroup;
-  exerciciosFormGroup: FormGroup;
+  exerciciosFormGroup!: FormGroup;
+  isQuestaoAberta!: boolean;
 
   idModulo!: number;
   letras: string[] = ['A','B','C','D']
@@ -52,22 +53,15 @@ export class CadastroTopicoComponent {
       ])
     });
 
+
     this.exerciciosFormGroup = this.fb.group({
-      exercicios: this.fb.array([
-        this.fb.group({
-          questao: ['', Validators.required],
-          alternativas: this.fb.array(
-            new Array(4).fill(null).map(() =>
-              this.fb.group({
-                descricao: ['', Validators.required],
-                explicacao: ['', Validators.required],
-                correta: [false]
-              })
-            )
-          )
-        })
-      ])
-    });
+    exercicios: this.fb.array([
+      this.fb.group({
+        questao: ['', Validators.required],
+        alternativas: this.fb.array([]) // garante que existe
+      })
+    ])
+});
   }
 
   ngOnInit(): void {
@@ -157,6 +151,7 @@ export class CadastroTopicoComponent {
       })
     );
   }
+  
 
   setAlternativaCorreta(exercicioIndex: number, alternativaIndex: number): void {
     const alternativasArray = this.alternativas(exercicioIndex);
@@ -203,4 +198,45 @@ export class CadastroTopicoComponent {
       }
     );
   }
+
+  criarQuestaoObjetiva(index: number){
+    this.isQuestaoAberta = false;
+    this.removerExercicio(index)
+    if (this.exercicios.length === 0){
+      this.exerciciosFormGroup = this.fb.group({
+      exercicios: this.fb.array([
+        this.fb.group({
+          questao: ['', Validators.required],
+          isQuestaoAberta: [this.isQuestaoAberta],
+          alternativas: this.fb.array(
+            new Array(4).fill(null).map(() =>
+              this.fb.group({
+                descricao: ['', Validators.required],
+                explicacao: ['', Validators.required],
+                correta: [false]
+              })
+            )
+          )
+        })
+      ])
+    });
+    }
+    console.log(this.exercicios.value[0].isQuestaoAberta)
+  }
+
+
+  criarQuestaoDiscursiva(index: number){
+    this.isQuestaoAberta = true;
+    this.exerciciosFormGroup = this.fb.group({
+      exercicios: this.fb.array([
+        this.fb.group({
+          questao: ['', Validators.required],
+          isQuestaoAberta: [this.isQuestaoAberta],
+          respostaEsperada: ['', Validators.required]
+        })
+      ])
+    });
+    console.log(this.exercicios.value[0].isQuestaoAberta)
+  }
+
 }
