@@ -207,6 +207,7 @@ export class CadastroTopicoComponent {
       exercicios: this.fb.array([
         this.fb.group({
           questao: ['', Validators.required],
+          isQuestaoAberta: [this.isQuestaoAberta],
           alternativas: this.fb.array(
             new Array(4).fill(null).map(() =>
               this.fb.group({
@@ -220,6 +221,7 @@ export class CadastroTopicoComponent {
       ])
     });
     }
+    console.log(this.exercicios.value[0].isQuestaoAberta)
   }
 
 
@@ -229,11 +231,11 @@ export class CadastroTopicoComponent {
       exercicios: this.fb.array([
         this.fb.group({
           questao: ['', Validators.required],
-          
+          isQuestaoAberta: [this.isQuestaoAberta]
         })
       ])
     });
+    console.log(this.exercicios.value[0].isQuestaoAberta)
   }
-
 
 }
