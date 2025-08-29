@@ -216,7 +216,55 @@ a{
   color: #ff5722;
 }
 
+.botoes-tipo-questao {
+  display: flex;
+  column-gap: 10px;
+}
 
+.botoes-tipo-questao button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 209px;
+  border: none;
+  color: white;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 10px;
+  column-gap: 10px;
+  border: 2px solid white;
+  cursor: pointer
+}
+
+.botoes-tipo-questao button:hover {
+  background-color: #7C4CC6;
+  border-color: #7C4CC6;
+}
+
+.botao-questao-ativa {
+  background-color: #7C4CC6 !important;
+  border: none !important;
+}
+
+.questao-aberta {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 10px;
+  color: white;
+}
+
+.questao-aberta-resposta-esperada {
+  height: 150px;
+  border: none;
+  color: white;
+}
+
+.questao-aberta-resposta-esperada:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0;
+}
 
 /* Responsividade */
 @media (max-width: 1100px) {

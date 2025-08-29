@@ -191,9 +191,29 @@
                   <mat-label>Questão do Exercício</mat-label>
                   <input matInput formControlName="questao" required />
                 </div>
-              
+                <div class="botoes-tipo-questao">
+                  <button 
+                    class="botao-questao-objetiva" 
+                    [ngClass]="{'botao-questao-ativa': isQuestaoAberta === false}"
+                    (click)="criarQuestaoObjetiva(i)"
+                  >
+                    <img src="../../../assets/icons/icone-questao-objetiva.svg"> Questão objetiva
+                  </button>
+                  <button 
+                    class="botao-questao-discursiva" 
+                    [ngClass]="{'botao-questao-ativa': isQuestaoAberta}"
+                    (click)="criarQuestaoDiscursiva(i)"
+                  >
+                    <img src="../../../assets/icons/icone-questao-discursiva.svg">Questão discursiva
+                  </button>
+                </div>
                 <mat-divider></mat-divider>
-                <div formArrayName="alternativas" *ngIf="!this.exercicios.get('isQuestaoAberta')?.value">
+                <div class="questao-aberta" *ngIf="this.isQuestaoAberta">
+                  <label>Resposta esperada</label>
+                  <textarea class="questao-aberta-resposta-esperada"></textarea>
+                </div>
+
+                <div formArrayName="alternativas" *ngIf="!this.isQuestaoAberta">
                   <div
                     *ngFor="let alt of alternativas(i).controls; let j = index"
                     [formGroupName]="j"
@@ -230,16 +250,26 @@
               </div>
             </div>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>
+              <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
                 Anterior
               </button>
               <button
-                class="revisar"
-                mat-button
+                *ngIf="!this.isQuestaoAberta"
+                class="proximo"
                 matStepperNext
                 [disabled]="!isAlternativaCorretaValida()"
               >
-                Revisar
+              Próximo
+              <img src="../../../assets/icons/proximo.svg">
+              </button>
+              <button
+                *ngIf="this.isQuestaoAberta"
+                class="proximo"
+                matStepperNext
+              >
+              Próximo
+              <img src="../../../assets/icons/proximo.svg">
               </button>
             </div>
           </form>
