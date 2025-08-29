@@ -210,7 +210,7 @@
                 <mat-divider></mat-divider>
                 <div class="questao-aberta" *ngIf="this.isQuestaoAberta">
                   <label>Resposta esperada</label>
-                  <textarea class="questao-aberta-resposta-esperada"></textarea>
+                  <textarea class="questao-aberta-resposta-esperada" formControlName="respostaEsperada"></textarea>
                 </div>
 
                 <div formArrayName="alternativas" *ngIf="!this.isQuestaoAberta">

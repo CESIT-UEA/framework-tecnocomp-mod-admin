@@ -231,7 +231,8 @@ export class CadastroTopicoComponent {
       exercicios: this.fb.array([
         this.fb.group({
           questao: ['', Validators.required],
-          isQuestaoAberta: [this.isQuestaoAberta]
+          isQuestaoAberta: [this.isQuestaoAberta],
+          respostaEsperada: ['', Validators.required]
         })
       ])
     });
