@@ -4,6 +4,7 @@ import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Topico } from 'src/interfaces/topico/Topico';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UploadService } from 'src/app/services/upload.service';
 
 @Component({
   selector: 'app-modulo-unico',
@@ -19,7 +20,8 @@ export class ModuloUnicoComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiAdmService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private uploadService: UploadService
   ) {}
 
   ngOnInit(): void {
@@ -28,10 +30,15 @@ export class ModuloUnicoComponent implements OnInit {
       console.log('Teste');
       this.carregarModulo(+id);
       // this.carregarTopicos(+id);
+      console.log('teste', this.modulo?.ebookUrlGeral)
     }
     if (this.modulo?.id != null) {
       this.idModulo = this.modulo.id;
     }
+  }
+
+  get ebookUrlCaminho(){
+    return this.uploadService.getFileModuloByName(this.modulo?.nome_modulo!)
   }
 
   carregarModulo(id: number): void {

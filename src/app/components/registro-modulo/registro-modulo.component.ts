@@ -1,3 +1,4 @@
+import { UploadService } from './../../services/upload.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,14 @@ export class RegistroModuloComponent {
     video_inicial: new FormControl(''),
   });
 
-  constructor(private apiService: ApiAdmService, private router: Router, private authService: AuthService) {}
+  selectedFile: File | null = null
+
+  constructor(
+    private apiService: ApiAdmService, 
+    private router: Router, 
+    private authService: AuthService,
+    private uploadService: UploadService
+  ) {}
 
   gerarUrlAmigavel(): void {
     const nomeModulo = this.moduloForm.get('nome_modulo')?.value || '';
@@ -40,19 +48,36 @@ export class RegistroModuloComponent {
         ebookUrlGeral: this.moduloForm.get('ebookUrlGeral')?.value,
         video_inicial: this.moduloForm.get('video_inicial')?.value,
         usuario_id: this.authService.getUsuarioDados().id,
+        
       };
 
-      this.apiService.registerModulo(modulo).subscribe(
-        response => {
-          console.log('Módulo cadastrado com sucesso:', response);
+      this.apiService.registerModulo(modulo).subscribe({
+        next: response => {
+          if (this.selectedFile){
+          this.uploadService.uploadFile(this.selectedFile, 'modulos').subscribe(
+            {
+              next: (response) => {
+                console.log(response)
+              }
+            }
+          )
+        }
           this.router.navigate(['/dashboard']);
         },
-        error => {
-          console.error('Erro ao cadastrar módulo:', error);
+        error: err => {
+          console.error('Erro ao cadastrar módulo:', err);
         }
-      );
+    });
     } else {
       console.error('Formulário inválido. Verifique os campos obrigatórios.');
     }
   }
+
+  onSelectedFile(event: any){
+    const file = event.target.files[0];
+    if (file){
+      this.selectedFile = file
+    }
+  }
+
 }
