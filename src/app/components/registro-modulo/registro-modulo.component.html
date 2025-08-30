@@ -16,7 +16,7 @@
       </div>
       <div class="cadastro-modulo-campo">
         <label for="ebookUrlGeral" class="cadastro-modulo-label">Ebook URL Geral<span> *</span></label>
-        <input id="ebookUrlGeral" placeholder="URL do Ebook geral" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
+        <input id="ebookUrlGeral" type="file" (change)="onSelectedFile($event)" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
       </div>
       <div class="cadastro-modulo-campo">
         <label for="video_inicial" class="cadastro-modulo-label">Vídeo Inicial<span> *</span></label>
