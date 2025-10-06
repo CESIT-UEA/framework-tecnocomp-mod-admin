@@ -24,7 +24,7 @@ export class UploadService {
   }
 
   getFileModuloByName(name: string){
-    return this.http.get(`${this.baseURL}/api/modulos/${name}`)
+    return this.http.get(`${this.baseURL}/api/modulos/file/${name}`)
   }
 
 }
