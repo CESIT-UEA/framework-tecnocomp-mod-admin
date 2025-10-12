@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { Modulo } from 'src/interfaces/modulo/Modulo';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-registro-modulo',
@@ -11,6 +13,10 @@ import { ApiAdmService } from 'src/app/services/api-adm.service';
   styleUrls: ['./registro-modulo.component.css']
 })
 export class RegistroModuloComponent {
+  renamedFile!: File;
+  nomePasta!: string;
+  baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
+
   moduloForm = new FormGroup({
     nome_modulo: new FormControl('', Validators.required),
     nome_url: new FormControl('', Validators.required),
@@ -51,23 +57,54 @@ export class RegistroModuloComponent {
         
       };
 
+      // verifica se tem arquivo e faz tratamento do nome
+      if (this.selectedFile){
+            const originalName = this.selectedFile.name;
+            const extension = originalName.substring(originalName.lastIndexOf('.'));
+            const uuid = uuidv4();
+
+            const sanitizedOriginalName = originalName
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')    
+                .replace(/\s+/g, '_')
+                .replace(/[^a-zA-Z0-9_-]/g, ''); 
+
+            const uniqueFileName = `${sanitizedOriginalName}-${uuid}${extension}`
+
+            this.renamedFile = new File([this.selectedFile], uniqueFileName, { type: this.selectedFile.type })
+
+            const nomeModuloAmigavel = this.moduloForm.get('nome_url')?.value || '';
+
+            this.nomePasta = `${nomeModuloAmigavel}-${uuid}`
+
+            this.moduloForm.patchValue({ebookUrlGeral: this.renamedFile.name})
+            
+            modulo.ebookUrlGeral = `${this.baseUrlFile}/${this.nomePasta}/${this.renamedFile.name}`
+      }
+
       this.apiService.registerModulo(modulo).subscribe({
         next: response => {
-          if (this.selectedFile){
-          this.uploadService.uploadFile(this.selectedFile, 'modulos').subscribe(
-            {
-              next: (response) => {
-                console.log(response)
-              }
-            }
-          )
+           // verifica se tem arquivo e faz upload
+        if (this.selectedFile && this.renamedFile && this.nomePasta){
+            this.uploadService.uploadFile(this.renamedFile, this.nomePasta).subscribe({
+            next: () => {
+              console.log('Upload realizado com sucesso!');
+            },
+            error: err => {
+              console.error('Erro no upload:', err);
+              alert('O módulo foi cadastrado, mas o upload do arquivo falhou.');
+          }
+        })
         }
-          this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']);
         },
         error: err => {
           console.error('Erro ao cadastrar módulo:', err);
         }
     });
+
+      
+      
     } else {
       console.error('Formulário inválido. Verifique os campos obrigatórios.');
     }

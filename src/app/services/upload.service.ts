@@ -10,11 +10,12 @@ export class UploadService {
 
   constructor(private http: HttpClient) { console.log(this.baseURL)}
 
-  uploadFile(file: File, route: string){
+  uploadFile(file: File, nomeModulo: string){
     if (!this.isValidFileType(file)) throw new Error('Tipo de arquivo não permitido')
     
     const formData = new FormData();
     formData.append('file', file, file.name)
+    formData.append('nomeModulo', nomeModulo);
     return this.http.post(`${this.baseURL}/api/modulos/upload`, formData)
   }
 
