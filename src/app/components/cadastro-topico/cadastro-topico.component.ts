@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { UploadService } from 'src/app/services/upload.service';
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-cadastro-topico',
@@ -16,13 +19,20 @@ export class CadastroTopicoComponent {
   exerciciosFormGroup!: FormGroup;
   isQuestaoAberta!: boolean;
 
+  selectedFile: File | null = null
+  renamedFile!: File;
+  baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
+  pastaModulo: string | null = null;
+
+
   idModulo!: number;
   letras: string[] = ['A','B','C','D']
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private apiService: ApiAdmService,
-    private router: Router
+    private router: Router,
+    private uploadService: UploadService
   ) {
     // Inicializando os grupos de formulários
     this.dadosBasicosFormGroup = this.fb.group({
@@ -187,16 +197,47 @@ export class CadastroTopicoComponent {
       id_modulo: this.idModulo
     };
 
-    this.apiService.cadastrarTopico(topicoCompleto).subscribe(
-      () => {
-        alert('Tópico cadastrado com sucesso!');
-        this.router.navigate(['/modulos', this.idModulo]);
-      },
-      (error) => {
-        console.error('Erro ao cadastrar tópico:', error);
-        alert('Erro ao cadastrar tópico.');
+    if (this.selectedFile){
+            const originalName = this.selectedFile.name;
+            const extension = originalName.substring(originalName.lastIndexOf('.'));
+            const uuid = uuidv4();
+
+            const sanitizedOriginalName = originalName
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')    
+                .replace(/\s+/g, '_')
+                .replace(/[^a-zA-Z0-9_-]/g, ''); 
+
+            const uniqueFileName = `${sanitizedOriginalName}-${uuid}${extension}`
+
+            this.renamedFile = new File([this.selectedFile], uniqueFileName, { type: this.selectedFile.type })
+
+            this.apiService.obterModuloPorId(this.idModulo).subscribe({
+              next: (modulo) => {
+                this.pastaModulo = modulo.filesDoModulo!;
+                // console.log('pasta do modulo:', this.pastaModulo)
+                // console.log('topicoCompleto', topicoCompleto)
+                topicoCompleto.ebookUrlGeral = `${this.baseUrlFile}/${this.pastaModulo}/${this.renamedFile.name}`
+                // console.log(topicoCompleto)
+                // console.log('url geral', topicoCompleto.ebookUrlGeral)
+                this.apiService.cadastrarTopico(topicoCompleto).subscribe({
+                  next: () => {
+                    this.uploadService.uploadFile(this.renamedFile, this.pastaModulo!)
+                    alert('Tópico cadastrado com sucesso!');
+                    this.router.navigate(['/modulos', this.idModulo]);
+                  },
+                  error: (error) => {
+                    console.error('Erro ao cadastrar tópico:', error);
+                    alert('Erro ao cadastrar tópico.');
+                  }}
+                );
+              },
+              error: (err) => {
+                console.error('Erro ', err)
+              }
+            })
+
       }
-    );
   }
 
   criarQuestaoObjetiva(index: number){
@@ -237,6 +278,13 @@ export class CadastroTopicoComponent {
       ])
     });
     console.log(this.exercicios.value[0].isQuestaoAberta)
+  }
+
+  onSelectedFile(event: any){
+    const file = event.target.files[0];
+    if (file){
+      this.selectedFile = file
+    }
   }
 
 }

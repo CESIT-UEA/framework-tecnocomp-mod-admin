@@ -10,6 +10,7 @@ export interface Modulo {
   ebookUrlGeral: string;
   video_inicial: string;
   uuid?:string;
+  filesDoModulo?: string;
   publicado?: boolean;
   template?: boolean;
   topicos?: Topico[];
