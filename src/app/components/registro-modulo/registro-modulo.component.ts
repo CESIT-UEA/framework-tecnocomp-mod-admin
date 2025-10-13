@@ -76,8 +76,6 @@ export class RegistroModuloComponent {
             const nomeModuloAmigavel = this.moduloForm.get('nome_url')?.value || '';
 
             this.nomePasta = `${nomeModuloAmigavel}-${uuid}`
-
-            this.moduloForm.patchValue({ebookUrlGeral: this.renamedFile.name})
             
             modulo.ebookUrlGeral = `${this.baseUrlFile}/${this.nomePasta}/${this.renamedFile.name}`
       }
