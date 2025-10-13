@@ -21,7 +21,7 @@ export class RegistroModuloComponent {
     nome_modulo: new FormControl('', Validators.required),
     nome_url: new FormControl('', Validators.required),
     ebookUrlGeral: new FormControl(''),
-    video_inicial: new FormControl(''),
+    video_inicial: new FormControl('')
   });
 
   selectedFile: File | null = null
@@ -54,7 +54,7 @@ export class RegistroModuloComponent {
         ebookUrlGeral: this.moduloForm.get('ebookUrlGeral')?.value,
         video_inicial: this.moduloForm.get('video_inicial')?.value,
         usuario_id: this.authService.getUsuarioDados().id,
-        
+        filesDoModulo: this.moduloForm.get('nome_url')?.value
       };
 
       // verifica se tem arquivo e faz tratamento do nome
@@ -76,7 +76,7 @@ export class RegistroModuloComponent {
             const nomeModuloAmigavel = this.moduloForm.get('nome_url')?.value || '';
 
             this.nomePasta = `${nomeModuloAmigavel}-${uuid}`
-            
+            modulo.filesDoModulo = this.nomePasta
             modulo.ebookUrlGeral = `${this.baseUrlFile}/${this.nomePasta}/${this.renamedFile.name}`
       }
 
