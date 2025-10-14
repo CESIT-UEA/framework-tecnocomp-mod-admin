@@ -215,16 +215,15 @@ export class CadastroTopicoComponent {
             this.apiService.obterModuloPorId(this.idModulo).subscribe({
               next: (modulo) => {
                 this.pastaModulo = modulo.filesDoModulo!;
-                // console.log('pasta do modulo:', this.pastaModulo)
-                // console.log('topicoCompleto', topicoCompleto)
                 topicoCompleto.ebookUrlGeral = `${this.baseUrlFile}/${this.pastaModulo}/${this.renamedFile.name}`
-                // console.log(topicoCompleto)
-                // console.log('url geral', topicoCompleto.ebookUrlGeral)
                 this.apiService.cadastrarTopico(topicoCompleto).subscribe({
                   next: () => {
-                    this.uploadService.uploadFile(this.renamedFile, this.pastaModulo!)
-                    alert('Tópico cadastrado com sucesso!');
-                    this.router.navigate(['/modulos', this.idModulo]);
+                    this.uploadService.uploadFile(this.renamedFile, this.pastaModulo!, `${this.uploadService.baseURL}/api/modulos/upload`).subscribe({
+                      next: () => {
+                        alert('Tópico cadastrado com sucesso!');
+                        this.router.navigate(['/modulos', this.idModulo]);
+                      }
+                    })
                   },
                   error: (error) => {
                     console.error('Erro ao cadastrar tópico:', error);
