@@ -16,6 +16,7 @@ export class RegistroModuloComponent {
   renamedFile!: File;
   nomePasta!: string;
   baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
+  urlApiRag: string = 'https://tecnocomp.uea.edu.br:5678/webhook-test/upload-file'
 
   moduloForm = new FormGroup({
     nome_modulo: new FormControl('', Validators.required),
@@ -84,8 +85,19 @@ export class RegistroModuloComponent {
         next: response => {
            // verifica se tem arquivo e faz upload
         if (this.selectedFile && this.renamedFile && this.nomePasta){
-            this.uploadService.uploadFile(this.renamedFile, this.nomePasta).subscribe({
+            this.uploadService.uploadFile(
+              this.renamedFile, 
+              this.nomePasta, 
+              `${this.uploadService.baseURL}/api/modulos/upload`
+        ).subscribe({
             next: () => {
+              // faz upload de arquivo para o fluxo do n8n vetorizar
+              this.uploadFileRAG(this.renamedFile, this.nomePasta, this.urlApiRag).subscribe({
+                next: () => {
+                  console.log(`Upload para RAG realizado com sucesso`)
+                }, error: (err) => {
+                  console.error(`Erro ao realizar upload para RAG`, err)
+              }})
               console.log('Upload realizado com sucesso!');
             },
             error: err => {
@@ -113,6 +125,11 @@ export class RegistroModuloComponent {
     if (file){
       this.selectedFile = file
     }
+  }
+
+
+  uploadFileRAG(file: File, nomeModulo: string, url: string){
+    return this.uploadService.uploadFile(file, nomeModulo, url)
   }
 
 }

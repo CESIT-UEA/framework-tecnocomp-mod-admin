@@ -22,7 +22,7 @@
 
             <div class="mat-form-field">
               <mat-label>Ebook do Tópico</mat-label>
-              <input matInput formControlName="ebookUrlGeral" required />
+              <input type="file" (change)="onSelectedFile($event)" formControlName="ebookUrlGeral" required />
             </div>
 
             <div class="passo1-botao-proximo">
