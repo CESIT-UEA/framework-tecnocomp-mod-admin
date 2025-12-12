@@ -16,7 +16,7 @@ export class RegistroModuloComponent {
   renamedFile!: File;
   nomePasta!: string;
   baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
-  urlApiRag: string = 'https://tecnocomp.uea.edu.br:5678/webhook-test/upload-file'
+  urlApiRag: string = 'https://tecnocomp.uea.edu.br:5678/webhook/upload-file'
 
   moduloForm = new FormGroup({
     nome_modulo: new FormControl('', Validators.required),

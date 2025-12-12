@@ -1,8 +1,15 @@
 :host{
   height: 100%;
 }
+
+.video-section {
+  width: 100%;
+  height: 70%;
+}
+
 section {
   width: 100%;
+  height: 100%; 
   text-align: center;
 }
 i {
@@ -22,12 +29,12 @@ i {
 .video-container {
   margin: 0 auto;
   width: 80%;
-  height: 80%;
+  height: 85%;
 }
 
 .video-container iframe {
-  min-height: 315px;
-  min-width: 560px;
+  width: 90%;
+  height: 100%;
 
   border: 2px solid #5663ed;
   border-radius: 0.625rem;

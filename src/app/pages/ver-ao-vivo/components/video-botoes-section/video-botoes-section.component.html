@@ -2,7 +2,7 @@
   <section class="container-section">
     <div class="container-esquerdo">
       <h1 class="title">
-        <span class="text-unidade">Módulo - {{
+        <span class="text-unidade">{{
           this.verAoVivo.dados_completos.nome_modulo
         }}</span>
       </h1>
@@ -12,23 +12,13 @@
       ></app-video-section>
     </div>
     <div class="container-direito">
-      <div class="progresso">
-        <p>Seu progresso:</p>
-        <div class="progresso-barra">
-          <mat-progress-bar
-            color="warn"
-            mode="determinate"
-            value="0"
-          ></mat-progress-bar>
-          <p>0%</p>
-        </div>
-        <div class="info">
-          <p>0 / {{this.verAoVivo.dados_completos?.Topicos?.length}} tópicos</p>
-          <p style="display: flex; align-items: center; gap: 10px">
-            Duração: <strong>8h</strong> <mat-icon>access_time</mat-icon>
-          </p>
-        </div>
-      </div>
+      <img
+        class="imagem-acima"
+        src="../../../../../assets/imagem-acima-botoes.png"
+        alt=""
+        width="300px"
+        height="220px"
+      />
       <app-botoes-section
         nome_ebook="Ebook de Teste"
         caminho_ebook="assets/E-book Teste.PDF"

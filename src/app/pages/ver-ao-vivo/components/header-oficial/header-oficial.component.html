@@ -1,50 +1,26 @@
 <div class="container">
   <header class="header">
-    <button (click)="this.apiAdmService.voltar()">
-     <mat-icon>keyboard_return</mat-icon>
-    </button>
-    <img src="assets/tecnocomp.png" alt="Tecnocom+ LOGO" routerLink="./" />
-    <nav>
-      <ul>
-        <li>
-          <button mat-button>
-            AVA
-          </button>
-        </li>
-        <li>
-          <button mat-button [matMenuTriggerFor]="menu2">
-            <span class="modulo">Módulo</span>
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          </button>
-          <mat-menu #menu2="matMenu">
-            <button mat-menu-item  routerLink="../">
-              Início do Módulo
-              <mat-icon>home</mat-icon>
-            </button>
-            <button mat-menu-item>Tópico Atual</button>
-            <button mat-menu-item>
-              <mat-icon>home</mat-icon>
-              Referências Bibliográficas
-            </button>
-            <button mat-menu-item routerLink="ficha-tecnica">Ficha Técnica</button>
-          </mat-menu>
-        </li>
-        <li>
-          <button mat-button [matMenuTriggerFor]="menu3">
-            Informações e Suporte
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          </button>
-          <mat-menu #menu3="matMenu">
-            <button mat-menu-item routerLink="sobre">
-              <mat-icon>home</mat-icon>
+    <img src="assets/tecnocomp.png" alt="Tecnocom+ LOGO"(click)="this.apiAdmService.voltar()"/>
+    <div class="links">
+            <span
+              class="btn-ficha"
+              [routerLink]="['/ver-ao-vivo', 7]"
+            >
+              Início
+            </span>
+            <span
+              class="btn-ficha"
+              [routerLink]="['/ver-ao-vivo', 7, 'ficha-tecnica']"
+            >
+              Ficha Técnica
+            </span>
+            <span
+              class="btn-ficha"
+              [routerLink]="['/ver-ao-vivo', 7, 'sobre']"
+            >
               Sobre
-            </button>
-            <button mat-menu-item>Suporte</button>
-          </mat-menu>
-        </li>
-      </ul>
-    </nav>
-
+            </span>
+          </div>
     <div class="end-navbar">
 
       <div
@@ -64,6 +40,7 @@
       <app-perfil-user
         *ngIf="this.verAoVivoService.perfilUser == true"
       ></app-perfil-user>
+      
     </div>
   </header>
 </div>
