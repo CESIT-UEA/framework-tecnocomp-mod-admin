@@ -88,6 +88,7 @@
   font-weight: normal;
   cursor: pointer;
   display: inline-block;
+  font-family: 'Roboto', sans-serif;
   
 }
 .btn-ficha:hover, .btn-home:hover, .btn-sobre:hover {

@@ -8,4 +8,5 @@ import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
 })
 export class VideoBotoesSectionComponent {
   constructor(public verAoVivo: VerAoVivoService) {}
+
 }
