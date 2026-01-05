@@ -92,6 +92,7 @@ import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-topico/header-topico.component';
 
 
 @NgModule({
@@ -166,6 +167,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     TruncatePipe,
     TopicosModuloUnicoComponent,
     PaginationComponent,
+    HeaderTopicoComponent,
 
   ],
   imports: [

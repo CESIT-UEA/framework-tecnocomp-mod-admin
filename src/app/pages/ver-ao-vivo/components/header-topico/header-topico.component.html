@@ -1,0 +1,27 @@
+<div class="container">
+  <header class="header">
+    <img src="assets/tecnocomp.png" alt="Tecnocom+ LOGO" routerLink="../"/>
+    
+    <div class="end-navbar">
+
+      <div
+        *ngIf="this.verAoVivoService.perfilUser == false"
+        class="container-foto-header"
+      >
+        <div class="foto-header">
+          {{ this.getUsuarioDados().username[0] }}
+        </div>
+        <mat-icon
+          style="color: white; cursor: pointer"
+          (click)="this.verAoVivoService.abreMenuUser(); $event.stopPropagation()"
+        >
+          keyboard_arrow_down
+        </mat-icon>
+      </div>
+      <app-perfil-user
+        *ngIf="this.verAoVivoService.perfilUser == true"
+      ></app-perfil-user>
+      
+    </div>
+  </header>
+</div>

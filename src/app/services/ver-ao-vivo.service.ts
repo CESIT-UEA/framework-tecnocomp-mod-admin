@@ -9,6 +9,8 @@ export class VerAoVivoService {
   public dados_completos: any = [];
   notaTotal: number = 0;
   perfilUser = false;
+  controll_topico: number = 0
+
   constructor() {}
 
   abreMenuUser() {
@@ -40,4 +42,5 @@ export class VerAoVivoService {
   removeDadosCompletos(): void {
     localStorage.removeItem(this.storageKey);
   }
+
 }
