@@ -41,6 +41,11 @@ jobs:
         echo "List /:"
         ls -la / || true
 
+    - name: Test SSH connection
+      run: |
+        ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_SERVER "whoami && hostname"
+
+
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
