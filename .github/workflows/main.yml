@@ -24,6 +24,23 @@ jobs:
     - name: Build Project
       run: npm run build
 
+    - name: Debug runner environment
+      run: |
+        echo "USER:"
+        whoami
+
+        echo "PWD:"
+        pwd
+
+        echo "HOME:"
+        echo "$HOME"
+
+        echo "List /home:"
+        ls -la /home || true
+
+        echo "List /:"
+        ls -la / || true
+
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
@@ -36,6 +53,7 @@ jobs:
         DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
         DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        HOME: /home/runner
       run: |
         ssh $DEPLOY_USER@$DEPLOY_SERVER "rm -rf $DEPLOY_PATH/*"
         scp -r dist/cadastro_lms/* $DEPLOY_USER@$DEPLOY_SERVER:$DEPLOY_PATH
