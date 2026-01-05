@@ -24,6 +24,23 @@ jobs:
     - name: Build Project
       run: npm run build
 
+    - name: Debug runner environment
+    - run: |
+        echo "USER:"
+        whoami
+
+        echo "PWD:"
+        pwd
+
+        echo "HOME:"
+        echo "$HOME"
+
+        echo "List /home:"
+        ls -la /home || true
+
+        echo "List /:"
+        ls -la / || true
+
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
