@@ -62,9 +62,10 @@ export class RegistroModuloComponent {
       if (this.selectedFile){
             const originalName = this.selectedFile.name;
             const extension = originalName.substring(originalName.lastIndexOf('.'));
+            const nameWithoutExtension = originalName.substring(0, originalName.lastIndexOf('.'));
             const uuid = uuidv4();
 
-            const sanitizedOriginalName = originalName
+            const sanitizedOriginalName = nameWithoutExtension
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')    
                 .replace(/\s+/g, '_')

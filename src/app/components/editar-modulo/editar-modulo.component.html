@@ -21,7 +21,7 @@
 
       <div class="form-conteudo-editar">
         <label for="ebook_url_Geral">Ebook URL Geral: <span>*</span></label>
-        <input formControlName="ebookUrlGeral" id="ebook_url_Geral" type="text" class="input">
+        <input formControlName="ebookUrlGeral" id="ebook_url_Geral" type="file" (change)="onSelectedFile($event)" class="input">
       </div>
 
        <div class="form-conteudo-editar">
