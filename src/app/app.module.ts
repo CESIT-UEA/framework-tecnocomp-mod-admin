@@ -93,6 +93,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-topico/header-topico.component';
+import { LinksNavegacaoTopicosComponent } from './pages/ver-ao-vivo/components/links-navegacao-topicos/links-navegacao-topicos.component';
+import { SlideUnidadeComponent } from './pages/ver-ao-vivo/components/slide-unidade/slide-unidade.component';
 
 
 @NgModule({
@@ -168,6 +170,8 @@ import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-top
     TopicosModuloUnicoComponent,
     PaginationComponent,
     HeaderTopicoComponent,
+    LinksNavegacaoTopicosComponent,
+    SlideUnidadeComponent,
 
   ],
   imports: [

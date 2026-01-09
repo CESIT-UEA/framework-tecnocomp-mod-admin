@@ -6,7 +6,7 @@
 .container {
   width: 100%;
   border-bottom: 1px solid var(--22, #1c1c1c);
-  position: fixed;
+  /* position: fixed; */
   background: #000;
   box-sizing: border-box;
   /* z-index: 1; */

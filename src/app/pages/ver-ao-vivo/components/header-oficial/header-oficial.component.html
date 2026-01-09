@@ -4,19 +4,19 @@
     <div class="links">
             <span
               class="btn-ficha"
-              [routerLink]="['/ver-ao-vivo', 7]"
+              [routerLink]="['/ver-ao-vivo', this.verAoVivoService.dados_completos.id]"
             >
               Início
             </span>
             <span
               class="btn-ficha"
-              [routerLink]="['/ver-ao-vivo', 7, 'ficha-tecnica']"
+              [routerLink]="['/ver-ao-vivo', this.verAoVivoService.dados_completos.id, 'ficha-tecnica']"
             >
               Ficha Técnica
             </span>
             <span
               class="btn-ficha"
-              [routerLink]="['/ver-ao-vivo', 7, 'sobre']"
+              [routerLink]="['/ver-ao-vivo', this.verAoVivoService.dados_completos.id, 'sobre']"
             >
               Sobre
             </span>
