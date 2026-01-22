@@ -1,4 +1,3 @@
-declare var google: any;
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +11,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 
 export class LoginComponent implements OnInit {
-  
   errorLogin: boolean = false;
   focus = false;
   submitted = false;
@@ -38,33 +36,7 @@ export class LoginComponent implements OnInit {
           this.authService.setToken(res.accessToken); // salva JWT do backend
           const usuarioDados = this.authService.decodeToken(res.accessToken);
           this.authService.setUsuario(usuarioDados);
-
-          const tokenClient = google.accounts.oauth2.initTokenClient({
-          client_id: '856213394254-4kr87eq72lj2en4t3sup1nqgjr2mnltl.apps.googleusercontent.com',
-          scope: 'openid profile email',
-          callback: (resp: any) => {
-            if (!resp.access_token) {
-              console.warn('Access token Google não retornado');
-              this.router.navigate(['/dashboard']);
-              return;
-            }
-
-            const googleAccessToken = resp.access_token;
-
-            this.authService.buscarPerfilGoogle(googleAccessToken)
-            .subscribe({
-              next: (perfil: any) => {
-                console.log('Foto do Google:', perfil.picture);
-                this.router.navigate(['/dashboard']);
-              },
-              error: () => {
-                this.router.navigate(['/dashboard']);
-              }
-            });
-          }
-
-        });
-          tokenClient.requestAccessToken();
+          this.router.navigate(['/dashboard']);
         },
         error: (err) => {
           console.error("Erro login Google:", err);
