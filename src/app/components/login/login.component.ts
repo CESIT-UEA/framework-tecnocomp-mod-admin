@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     (window as any).handleCredentialResponse = (response: any) => {
       const idTokenGoogle = response.credential;
-  
+      console.log("idToken", idTokenGoogle)
       this.authService.loginWithGoogle(idTokenGoogle).subscribe({
         next: (res: any) => {
           this.authService.setToken(res.accessToken); // salva JWT do backend
