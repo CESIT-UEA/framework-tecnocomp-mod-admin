@@ -85,7 +85,6 @@ export class ApiAdmService {
       body: { idAdm, senhaAdm, idExcluir },
     });
   }
-  
 
   listarModulos(page: number) {
     return this.http.get<{modulos: Modulo[], infoModulos: InfoPaginacao}>(`${this.baseUrl}/api/modulos?page=${page}`);
