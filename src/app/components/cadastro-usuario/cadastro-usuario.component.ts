@@ -61,6 +61,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   onSubmit() {
     if (this.cadastroForm.valid) {
+      console.log(this.cadastroForm.value)
       this.apiService.registerUsuario(this.cadastroForm.value).subscribe(
         response => {
           console.log('Usuário cadastrado com sucesso:', response);

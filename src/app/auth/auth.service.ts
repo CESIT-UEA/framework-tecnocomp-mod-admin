@@ -64,6 +64,17 @@ export class AuthService {
     );
   }
 
+  buscarPerfilGoogle(accessToken: string) {
+    return this.http.get(
+      'https://openidconnect.googleapis.com/v1/userinfo',
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      }
+    );
+}
+
   setToken(token: string) {
     localStorage.setItem('accessToken', token);
   }
