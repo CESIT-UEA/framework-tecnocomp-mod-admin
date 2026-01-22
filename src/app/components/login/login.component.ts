@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { jwtDecode} from 'jwt-decode';
 
 
 @Component({
@@ -30,7 +31,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     (window as any).handleCredentialResponse = (response: any) => {
       const idTokenGoogle = response.credential;
-      console.log("idToken", idTokenGoogle)
+
+      const payload = jwtDecode(idTokenGoogle)
+
+      console.log("payload", payload)
       this.authService.loginWithGoogle(idTokenGoogle).subscribe({
         next: (res: any) => {
           this.authService.setToken(res.accessToken); // salva JWT do backend
