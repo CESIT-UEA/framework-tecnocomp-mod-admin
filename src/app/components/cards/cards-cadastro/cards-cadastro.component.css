@@ -9,14 +9,10 @@
   background: #2b2a2e;
   box-shadow: 0px 0px 5.267px 0px rgba(0, 0, 0, 0.15);
   color: white;
+  border-top: 8px solid #7C4CC6;
 }
 
 .card-icon {
-  color: linear-gradient(317deg, #be50ea 18.27%, #4c4ef9 83.87%), #fff;
-  font-size: 50px;
-  width: 72.048px;
-  height: 59.518px;
-  margin: 0 auto;
   padding: 20px 0;
 }
 .btn {

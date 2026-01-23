@@ -4,10 +4,13 @@
   padding-top: 40px;
   color: white;
 }
+
+
 .sub-box{
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  padding-top: 50px;
 
 }
 .sub-box-cards p{
@@ -18,3 +21,12 @@
   display: flex;
   gap: 40px;
 }
+
+p {
+  width: 100%;
+  border-bottom: 2px solid #767676;
+  font-size: 20px;
+  padding-bottom: 50px;
+}
+
+

@@ -2,39 +2,29 @@
   <p>
     Selecione uma opção abaixo para cadastrar um novo usuário, plataforma ou
     módulo.
-  </p>
+  </p>  
   <div class="box-container">
     <div class="sub-box">
       <div class="sub-box-cards">
-        <p>Selecione uma opção</p>
         <div class="cards">
           <app-cards-cadastro
             nomeCard="Usuário"
-            caminhoImagem="person_add"
+            caminhoImagem="../../../assets/icons/icon-user.svg"
             caminhoUrl="../cadastro-usuario"
           ></app-cards-cadastro>
           <app-cards-cadastro
+            nomeCard="Módulo"
+            caminhoImagem="../../../assets/icons/icone-cadastrar-mod.png"
+            caminhoUrl="../registrar-modulo"
+          ></app-cards-cadastro>
+          <app-cards-cadastro
             nomeCard="Plataforma"
-            caminhoImagem="desktop_windows"
+            caminhoImagem="../../../assets/icons/icon-desktop.png"
             caminhoUrl="../cadastro-plataforma"
           ></app-cards-cadastro>
         </div>
       </div>
-      <div class="sub-box-cards">
-        <p>Selecione uma opção</p>
-        <div class="cards">
-          <app-cards-cadastro
-            nomeCard="Módulo"
-            caminhoImagem="person_add"
-            caminhoUrl="../registrar-modulo"
-          ></app-cards-cadastro>
-          <app-cards-cadastro
-            nomeCard="Tópico"
-            caminhoImagem="person_add"
-            caminhoUrl="../cadastro-usuario"
-          ></app-cards-cadastro>
-        </div>
-      </div>
+      
     </div>
   </div>
 </div>
