@@ -12,11 +12,24 @@
   margin-bottom: 1rem;
 }
 .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 73px;
   height: 73px;
   border-radius: 73px;
   border: 2.336px solid var(--Primaria, #9665df);
   margin: 10px 0 10px 0;
+}
+
+.img img{
+  width: 73px;
+  height: 73px;
+  border-radius: 73px;
+}
+
+.img p {
+  font-size: 28px;
 }
 
 .informacoes {

@@ -1,5 +1,10 @@
 <mat-card class="container-card">
-  <div class="img"></div>
+  <div class="img" *ngIf="user">
+      <img *ngIf="user.url_foto; else letra" [src]="user.url_foto">
+      <ng-template #letra>
+        <p>{{ user.username.charAt(0) }}</p>
+      </ng-template>
+    </div>
   <div class="informacoes">
     <mat-card-header>
       <mat-card-title [title]="this.user.username">{{ this.user.username | truncate:30 }}</mat-card-title>

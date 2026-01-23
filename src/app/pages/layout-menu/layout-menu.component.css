@@ -42,12 +42,25 @@
   margin: 0 auto;
   justify-content: space-between;
 }
-.caixa-perfil .imagem {
+.caixa-perfil .imagem ,.caixa-perfil .imagem img {
   width: 40px;
   height: 40px;
   border-radius: 40px;
   border: 1.5px solid var(--Primaria, #9665df);
 }
+
+.caixa-perfil .imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.caixa-perfil .imagem p {
+  font-size: 24px;
+}
+
+
+
 .nav-list{
   display: flex;
   flex-direction: column;

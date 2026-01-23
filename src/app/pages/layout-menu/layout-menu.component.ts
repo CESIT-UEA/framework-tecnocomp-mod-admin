@@ -17,6 +17,7 @@ export class LayoutMenuComponent implements OnInit {
 
   isAdmin: boolean = false;
   isProfessor: boolean = false;
+  user!: User;
 
   constructor(
     private authService: AuthService,
@@ -26,8 +27,7 @@ export class LayoutMenuComponent implements OnInit {
 
   ngOnInit(): void {
     const usuario = this.getUsuarioDados();
-    console.log(usuario);
-
+    this.user = usuario
     this.isAdmin = usuario?.tipo === 'adm';
     this.isProfessor = usuario?.tipo === 'professor';
 
