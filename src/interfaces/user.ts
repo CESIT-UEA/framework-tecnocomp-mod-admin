@@ -3,5 +3,5 @@ export interface User {
   tipo: string,
   username: string,
   email: string,
-  url_foto: string
+  url_foto?: string
 }
