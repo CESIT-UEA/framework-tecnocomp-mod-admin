@@ -34,15 +34,32 @@ export class AuthService {
   }
 
   decodeToken(token: string): User {
-    const payload = JSON.parse(atob(token.split('.')[1]));
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    
+  
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+
+    const payload = JSON.parse(jsonPayload);
+
     return {
       id: payload.id,
-      username: payload.username,
+      username: payload.username, 
       email: payload.email,
       tipo: payload.tipo,
       url_foto: payload.url_foto
     } as User;
+  } catch (error) {
+    console.error("Erro ao decodificar token:", error);
+    return {} as User;
   }
+}
 
   login(email: string, senha: string) {
     return this.http.post(`${this.apiUrl}/auth/login`, { email, senha }).pipe(
