@@ -40,6 +40,7 @@ export class AuthService {
       username: payload.username,
       email: payload.email,
       tipo: payload.tipo,
+      url_foto: payload.url_foto
     } as User;
   }
 

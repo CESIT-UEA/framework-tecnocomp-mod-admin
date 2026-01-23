@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         next: (res: any) => {
           this.authService.setToken(res.accessToken); // salva JWT do backend
           const usuarioDados = this.authService.decodeToken(res.accessToken);
+          console.log()
           this.authService.setUsuario(usuarioDados);
           this.router.navigate(['/dashboard']);
         },
