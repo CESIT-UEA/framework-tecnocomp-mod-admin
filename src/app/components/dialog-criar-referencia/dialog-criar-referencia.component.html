@@ -1,28 +1,32 @@
-<h2 mat-dialog-title>
-  {{ data?.descricao ? 'Editar Referência' : 'Adicionar Referência' }}
-</h2>
+<div>
+  <h1 class="titulo-dialog">
+  {{ data.descricao ? 'Editar Referência' : 'Adicionar Referência' }}
+</h1>
 
-<mat-dialog-content>
-  <mat-form-field appearance="fill" class="w-full">
-    <mat-label>Título</mat-label>
+<mat-dialog-content class="conteudo">
+  <div class="container-inputs">
+    <div class="form-field">
+    <label class="label">Título</label>
     <input
-      matInput
       [(ngModel)]="descricao"
       placeholder="Digite o título da referência"
     />
-  </mat-form-field>
+    </div>
 
-  <mat-form-field appearance="fill" class="w-full">
-    <mat-label>URL (opcional)</mat-label>
+  <div class="form-field">
+    <label class="label">URL (opcional)</label>
     <input
-      matInput
       [(ngModel)]="link"
       placeholder="https://exemplo.com"
     />
-  </mat-form-field>
+  </div>
+  </div>
+  
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+<mat-dialog-actions class="botoes">
+  <button class="cancelar" (click)="cancelar()">Cancelar</button>
+  <button class="salvar" (click)="salvar()">Salvar</button>
 </mat-dialog-actions>
+
+</div>

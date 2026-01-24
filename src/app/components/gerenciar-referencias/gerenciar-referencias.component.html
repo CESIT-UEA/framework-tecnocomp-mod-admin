@@ -1,5 +1,5 @@
 <app-header-voltar texto="Gerenciar Referências"></app-header-voltar>
-<div class="container" style="padding: 16px">
+<div class="container" style="padding: 16px 60px" [ngClass]="{'com-referencia': referencias.length > 0}">
 
   <div>
     <button class="botao-add-ref" (click)="adicionarReferencia()">
@@ -7,33 +7,28 @@
     </button>
   </div>
 
-  <ul *ngIf="referencias.length > 0; else semReferencias">
+  <ul *ngIf="referencias.length > 0; else semReferencias" class="container-referencias">
     <li *ngFor="let referencia of referencias">
         <div class="referencia-texto">
-          <p>
+          <p class="descricao">
             <strong>{{ referencia.descricao }}</strong>
           </p>
-          <p *ngIf="referencia.link">
-            🔗
-            <a href="{{ referencia.link }}" target="_blank">{{
-              referencia.link
-            }}</a>
-          </p>
+          
         </div>
         <div class="acoes">
-          <button
-            mat-icon-button
-            color="primary"
+          <button *ngIf="referencia.link" class="botao-acessar-referencia">
+            <a href="{{ referencia.link }}" target="_blank" class="link-acessar">Acessar</a>
+          </button>
+          <button class="botao-editar"
             (click)="editarReferencia(referencia)"
           >
-            <mat-icon>edit</mat-icon>
+            <img class="editar-ref" src="../../../assets/icons/editar-ref.png" alt="">
           </button>
-          <button
-            mat-icon-button
-            color="warn"
-            (click)="deletarReferencia(referencia.id)"
+          <button 
+          class="botao-excluir"
+          (click)="deletarReferencia(referencia.id)"
           >
-            <mat-icon>delete</mat-icon>
+            <img class="excluir-ref" src="../../../assets/icons/excluir-referencia.png" alt="">
           </button>
         </div>
       </li>

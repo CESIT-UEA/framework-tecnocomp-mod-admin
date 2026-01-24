@@ -36,7 +36,9 @@ export class GerenciarReferenciasComponent {
 
   adicionarReferencia(): void {
     const dialogRef = this.dialog.open(DialogCriarReferenciaComponent, {
-      width: '400px',
+      width: '733px',
+      height: '374px',
+      panelClass: 'dialog-custom',
       data: {},
     });
 
@@ -54,7 +56,9 @@ export class GerenciarReferenciasComponent {
 
   editarReferencia(referencia: ReferenciaModulo): void {
     const dialogRef = this.dialog.open(DialogCriarReferenciaComponent, {
-      width: '400px',
+      width: '733px',
+      height: '374px',
+      panelClass: 'dialog-custom',
       data: { descricao: referencia.descricao, link: referencia.link },
     });
 
@@ -69,7 +73,9 @@ export class GerenciarReferenciasComponent {
 
   deletarReferencia(referenciaId: number): void {
     const dialogRef = this.dialog.open(DialogConfirmarRemocaoComponent, {
-      width: '350px',
+      width: '484px',
+      height: '163px',
+      panelClass: 'dialog-remove-custom',
       data: {
         titulo: 'Remover Referência',
         mensagem: 'Tem certeza que deseja remover esta referência?',
