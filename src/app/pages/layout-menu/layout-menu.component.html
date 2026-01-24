@@ -51,11 +51,11 @@
     </mat-nav-list>
 
     <div class="caixa-perfil">
-      <div class="imagem" *ngIf="user">
-      <img *ngIf="user.url_foto; else letra" [src]="user.url_foto">
+      <div class="imagem" *ngIf="this.getUsuarioDados()">
+      <img *ngIf="this.getUsuarioDados().url_foto; else letra" [src]="this.getUsuarioDados().url_foto">
 
       <ng-template #letra>
-        <p>{{ user.username.charAt(0) }}</p>
+        <p>{{ this.getUsuarioDados().username.charAt(0) }}</p>
       </ng-template>
     </div>
 

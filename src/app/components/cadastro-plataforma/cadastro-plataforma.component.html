@@ -1,5 +1,6 @@
 <app-header-voltar texto="Cadastrar Plataforma"></app-header-voltar>
-<div class="cadastro-plataforma-pagina">
+<div class="container-background">
+  <div class="cadastro-plataforma-pagina">
   <section class="cadastro-plataforma-container">
     <h2 class="cadastro-plataforma-titulo">Cadastro de Plataforma</h2>
     <p class="cadastro-plaforma-aviso">*Indica uma pergunta obrigatória</p>
@@ -23,7 +24,7 @@
           <input class="cadastro-plataforma-input" type="text" formControlName="idCliente" placeholder="Id do cliente"/>
         </div>
       </section>
-      <div class="forms-campo">
+      <!-- <div class="forms-campo">
         <label for="temaTipo"
           >Tema Visual <span class="obrigatorio">*</span></label
         >
@@ -33,10 +34,10 @@
           <option value="tema2">Tema 2</option>
           <option value="customizado">Personalizado</option>
         </select>
-      </div>
+      </div> -->
 
       <!-- Campos de cor visíveis apenas se temaTipo === 'customizado' -->
-      <div
+      <!-- <div
         *ngIf="plataformaForm.get('temaTipo')?.value === 'customizado'"
         class="forms-campo"
       >
@@ -63,7 +64,7 @@
           formControlName="customQuintenaria"
           title="Quintenária"
         />
-      </div>
+      </div> -->
 
       <div class="buttons">
         <button (click)="home()" id="botao-um">Cancelar</button>
@@ -81,4 +82,6 @@
       </div>
     </form>
   </section>
+</div>
+
 </div>

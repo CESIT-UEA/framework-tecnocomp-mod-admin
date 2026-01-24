@@ -1,8 +1,8 @@
-<app-header-voltar texto="Gerenciar Referencias"></app-header-voltar>
+<app-header-voltar texto="Gerenciar Referências"></app-header-voltar>
 <div class="container" style="padding: 16px">
 
-  <div style="margin-bottom: 16px">
-    <button mat-stroked-button color="primary" (click)="adicionarReferencia()">
+  <div>
+    <button class="botao-add-ref" (click)="adicionarReferencia()">
       Adicionar Referência
     </button>
   </div>
@@ -40,6 +40,6 @@
   </ul>
 
   <ng-template #semReferencias>
-    <p>Nenhuma referência cadastrada ainda.</p>
+    <p class="sem-referencia">Nenhuma referência cadastrada ainda.</p>
   </ng-template>
 </div>
