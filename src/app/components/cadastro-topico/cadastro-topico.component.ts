@@ -15,7 +15,7 @@ export class CadastroTopicoComponent {
   dadosBasicosFormGroup: FormGroup;
   videoUrlsFormGroup: FormGroup;
   saibaMaisFormGroup: FormGroup;
-  referenciasFormGroup: FormGroup;
+  // referenciasFormGroup: FormGroup;
   exerciciosFormGroup!: FormGroup;
   isQuestaoAberta!: boolean;
 
@@ -54,42 +54,21 @@ export class CadastroTopicoComponent {
       ])
     });
 
-    this.referenciasFormGroup = this.fb.group({
-      referencias: this.fb.array([
-        this.fb.group({
-          caminhoDaImagem: ['', Validators.required],
-          referencia: ['', Validators.required]
-        })
-      ])
-    });
+    // this.referenciasFormGroup = this.fb.group({
+    //   referencias: this.fb.array([
+    //     this.fb.group({
+    //       caminhoDaImagem: ['', Validators.required],
+    //       referencia: ['', Validators.required]
+    //     })
+    //   ])
+    // });
 
 
     this.exerciciosFormGroup = this.fb.group({
     exercicios: this.fb.array([
       this.fb.group({
         questao: ['', Validators.required],
-        alternativas: this.fb.array([
-          {
-            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
-            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
-            correta: false
-          },
-          {
-            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
-            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
-            correta: false
-          },
-          {
-            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
-            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
-            correta: true
-          },
-          {
-            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
-            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
-            correta: false
-          },
-        ]) // garante que existe
+        alternativas: this.fb.array([]) // garante que existe
       })
     ])
 });
@@ -114,9 +93,9 @@ export class CadastroTopicoComponent {
     return this.saibaMaisFormGroup.get('saibaMais') as FormArray;
   }
 
-  get referencias(): FormArray {
-    return this.referenciasFormGroup.get('referencias') as FormArray;
-  }
+  // get referencias(): FormArray {
+  //   return this.referenciasFormGroup.get('referencias') as FormArray;
+  // }
 
   get exercicios(): FormArray {
     return this.exerciciosFormGroup.get('exercicios') as FormArray;
@@ -151,20 +130,20 @@ export class CadastroTopicoComponent {
     }
   }
 
-  adicionarReferencia(): void {
-    this.referencias.push(
-      this.fb.group({
-        caminhoDaImagem: ['', Validators.required],
-        referencia: ['', Validators.required]
-      })
-    );
-  }
+  // adicionarReferencia(): void {
+  //   this.referencias.push(
+  //     this.fb.group({
+  //       caminhoDaImagem: ['', Validators.required],
+  //       referencia: ['', Validators.required]
+  //     })
+  //   );
+  // }
 
-  removerReferencia(index: number): void {
-    if (this.referencias.length > 1) {
-      this.referencias.removeAt(index);
-    }
-  }
+  // removerReferencia(index: number): void {
+  //   if (this.referencias.length > 1) {
+  //     this.referencias.removeAt(index);
+  //   }
+  // }
 
   adicionarExercicio(): void {
     this.exercicios.push(
@@ -213,11 +192,12 @@ export class CadastroTopicoComponent {
       ...this.dadosBasicosFormGroup.value,
       videoUrls: this.videoUrlsFormGroup.value.videoUrls,
       saibaMais: this.saibaMaisFormGroup.value.saibaMais,
-      referencias: this.referenciasFormGroup.value.referencias,
       exercicios: this.exerciciosFormGroup.value.exercicios,
       id_modulo: this.idModulo
     };
-
+    
+    // referencias: this.referenciasFormGroup.value.referencias,
+    
     if (this.selectedFile){
             const originalName = this.selectedFile.name;
             const extension = originalName.substring(originalName.lastIndexOf('.'));

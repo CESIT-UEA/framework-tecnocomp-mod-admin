@@ -2,7 +2,7 @@
 <div class="container-pagina">
   <div class="formulario">
     <mat-horizontal-stepper linear #stepper>
-      <!-- <mat-step [stepControl]="dadosBasicosFormGroup">
+      <mat-step [stepControl]="dadosBasicosFormGroup">
         <div class="passo1">
           <form [formGroup]="dadosBasicosFormGroup">
             <h3>Dados Básicos</h3>
@@ -30,10 +30,10 @@
             </div>
           </form>
         </div>
-      </mat-step> -->
+      </mat-step>
 
       <!-- Etapa 2: URLs de Vídeos -->
-      <!-- <mat-step [stepControl]="videoUrlsFormGroup">
+      <mat-step [stepControl]="videoUrlsFormGroup">
         <div class="passo2">
           <form [formGroup]="videoUrlsFormGroup">
             <h3>URLs de Vídeos</h3>
@@ -45,9 +45,9 @@
               >
                 <div class="mat-form-field field-url-video">
                   <mat-label>URL do Vídeo {{ i + 1 }}</mat-label>
-                  <input [formControlName]="i" required /> -->
+                  <input [formControlName]="i" required />
                   <!-- Botão remover -->
-                   <!-- <button
+                   <button
                       class="remover"
                       *ngIf="i > 0"
                       (click)="removerVideoUrl(i)"
@@ -56,10 +56,10 @@
                     <mat-icon>remove</mat-icon>
                   </div>
                 </button>
-                </div> -->
+                </div>
                 <!-- <br /> -->
                 
-              <!-- </div>
+              </div>
             </div>
             <button class="adicionar" (click)="adicionarVideoUrl()">
               <div class="icone-adicionar"><mat-icon>add</mat-icon></div>
@@ -73,10 +73,10 @@
             </div>
           </form>
         </div>
-      </mat-step> -->
+      </mat-step>
 
       <!-- Etapa 3: Saiba Mais -->
-      <!-- <mat-step [stepControl]="saibaMaisFormGroup">
+      <mat-step [stepControl]="saibaMaisFormGroup">
         <div class="passo3">
           <form [formGroup]="saibaMaisFormGroup">
             <h3>Saiba Mais</h3>
@@ -122,7 +122,7 @@
             </div>
           </form>
         </div>
-      </mat-step> -->
+      </mat-step>
 
       <!-- Etapa 4: Referências -->
       <!-- <mat-step [stepControl]="referenciasFormGroup">
@@ -177,7 +177,7 @@
       </mat-step> -->
 
       <!-- Etapa 5: Exercícios -->
-      <!-- <mat-step [stepControl]="exerciciosFormGroup">
+      <mat-step [stepControl]="exerciciosFormGroup">
         <div class="passo5">
           <form [formGroup]="exerciciosFormGroup">
             <h3>Exercícios</h3>
@@ -274,10 +274,10 @@
             </div>
           </form>
         </div>
-      </mat-step> -->
+      </mat-step>
     
       <!-- Etapa 6: Revisão -->
-      <!-- <mat-step>
+      <mat-step>
         <div class="passo6">
           <h3 class="revisao-titulo">Revisar Informações</h3>
           <mat-divider></mat-divider>
@@ -290,12 +290,12 @@
             <p>
               <strong class="txt-secao-um">Texto de Apoio:</strong>
             </p>
-            <a class="txt-caixa" [href]="{{ dadosBasicosFormGroup.value.textoApoio }}">Link</a>
+            <a class="txt-caixa" [href]="dadosBasicosFormGroup.value.textoApoio">Link</a>
             <p>
               <strong class="txt-secao-um">Ebook Geral:</strong>
               
             </p>
-            <a class="txt-caixa" href="{{ dadosBasicosFormGroup.value.ebookUrlGeral }}">Link</a>
+            <a class="txt-caixa" [href]="dadosBasicosFormGroup.value.ebookUrlGeral">Link</a>
           </div>
 
           <mat-divider></mat-divider>
@@ -336,7 +336,7 @@
 
           <mat-divider></mat-divider>
 
-          <div class="revisao-secao">
+          <!-- <div class="revisao-secao">
             <p><strong class="txt-secao-um">Referências:</strong></p>
             <ul>
               <li
@@ -352,7 +352,7 @@
             </ul>
           </div>
 
-          <mat-divider></mat-divider>
+          <mat-divider></mat-divider> -->
 
           <div class="revisao-secao">
             <p><strong class="txt-secao-um">Exercício:</strong></p>
@@ -360,9 +360,9 @@
               <li
                 *ngFor="let exercicio of exerciciosFormGroup.value.exercicios"
               >
-              <h3 class="questao"><span style="font-weight: 700;">Questão</span> - {{ exercicio.questao }}</h3>
+              <p class="questao"><span style="font-weight: bold !important;">Questão</span> - {{ exercicio.questao }}</p>
                 <ul>
-                  <li *ngFor="let alternativa of exercicio.alternativas; let i = index">
+                  <li class="caixa-exercicio"  *ngFor="let alternativa of exercicio.alternativas; let i = index">
                     <div class="letra" [ngClass]="{'correto': alternativa.correta == true}">
                       <h3>{{letras[i]}}</h3>
                     </div>     
@@ -377,117 +377,11 @@
           </div>
 
           <div class="botoes">
-            <button class="voltar" mat-button matStepperPrevious>
-              Anterior
-            </button>
-            <button mat-button class="finalizar" (click)="onSubmit()">
-              Finalizar
-            </button>
-          </div>
-        </div>
-      </mat-step> -->
-      <mat-step>
-        <div class="passo6">
-          <h3 class="revisao-titulo">Revisar Informações</h3>
-          <mat-divider></mat-divider>
-
-          <div class="revisao-secao">
-            <p>
-              <strong class="txt-secao-um">Nome do Tópico</strong>
-            </p>
-            <p class="txt-caixa">Introdução ao Pensamento Computacional</p>
-            <p>
-              <strong class="txt-secao-um">Texto de Apoio:</strong>
-            </p>
-            <a class="txt-caixa" href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGOx8GsoPg&#x2F;VaK5SaBSBin__Qm7zc9CuQ&#x2F;view?embed">Link</a>
-            <p>
-              <strong class="txt-secao-um">Ebook Geral:</strong>
-              
-            </p>
-            <a class="txt-caixa" href="https://tecnocomp.uea.edu.br/ebooks/pensamento-computacional/Pensamento%20Computacional%201.pdf">Link</a>
-          </div>
-          <mat-divider></mat-divider>
-          <div class="revisao-secao">
-            <p><strong class="txt-secao-um">URLs de Vídeos:</strong></p>
-            <ul>
-              <li
-                *ngFor="
-                  let url of videoUrlsFormGroup.value.videoUrls;
-                  let i = index
-                "
-              >
-                <p class="txt-caixa">
-                  <a [href]="url"> Video {{ i + 1 }} </a>
-                </p>
-              </li>
-            </ul>
-          </div>
-          <mat-divider></mat-divider>
-          <div class="revisao-secao">
-            <p><strong class="txt-secao-um">Saiba Mais:</strong></p>
-            <ul>
-              <li
-                class="txt-caixa saiba-mais"
-                *ngFor="
-                  let sm of saibaMaisFormGroup.value.saibaMais;
-                  let i = index
-                "
-              >
-                <!-- <p>Saiba Mais {{ i + 1 }}</p> -->
-                <p >Descrição: Pensamento computacional: o que é, sua importância e como inseri-lo na escola</p>
-                <p><a [href]="sm.url"> URL </a></p>
-              </li>
-            </ul>
-          </div>
-
-          <mat-divider></mat-divider>
-
-          <div class="revisao-secao">
-            <p><strong class="txt-secao-um">Referências:</strong></p>
-            <ul>
-              <li
-              class="txt-caixa ref"
-                *ngFor="
-                  let ref of referenciasFormGroup.value.referencias;
-                  let i = index
-                "
-              >
-                <!-- <p>Referência {{ i + 1 }}</p> -->
-                <p>PAIVA, Severino do Ramo. Pensamento Computacional e o Desenvolvimento de Competências para a Resolução de Problemas no Ensino. 1. ed. Rio de Janeiro: CIENCIA MODERNA, 2022.</p>
-                <p><a [href]="ref.caminhoDaImagem"> URL</a></p>
-              </li>
-            </ul>
-          </div>
-
-          <mat-divider></mat-divider>
-
-          <div class="revisao-secao">
-            <p><strong class="txt-secao-um">Exercício:</strong></p>
-            <ul>
-              <li 
-                *ngFor="let exercicio of exerciciosFormGroup.value.exercicios"
-              >
-              <p class="questao"><span style="font-weight: bold !important;">Questão</span> - Pensamento computacional é uma abordagem utilizada para resolver problemas de forma sistemática e eficiente, aplicando conceitos da ciência da computação. Assinale a alternativa que não descreve corretamente uma habilidade ou processo associado ao pensamento computacional.</p>
-                <ul>
-                  <li class="caixa-exercicio" *ngFor="let alternativa of exercicio.alternativas; let i = index">       
-                    <div class="letra" [ngClass]="{'correto': alternativa.correta == true}">
-                      <h3>{{letras[i]}}</h3>
-                    </div>     
-                    <div class="textos-exercicio">
-                      <p>Descrição: {{ alternativa.descricao }}</p>
-                      <p class="explicacao" [ngClass]="{'explicacao-correta': alternativa.correta == true}">Explicação: {{ alternativa.explicacao }}</p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div class="botoes">
-            <button class="voltar" mat-button matStepperPrevious>
-              Anterior
-            </button>
-            <button mat-button class="finalizar" (click)="onSubmit()">
+            <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
+                Anterior
+              </button>
+            <button class="finalizar" (click)="onSubmit()">
               Finalizar
             </button>
           </div>
