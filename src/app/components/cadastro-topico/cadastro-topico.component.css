@@ -123,7 +123,19 @@ button[mat-button] {
   background-color: blue;
 }
 .finalizar{
-  background-color: green;
+  border: none;
+  background-color: #58DB43;
+  color: #FFF;
+  padding: 10px;
+  border-radius: 10px;
+  height: 40px;
+  width: 110px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.finalizar:hover {
+  opacity: 50%;
 }
 
 .remover {
@@ -264,6 +276,87 @@ a{
 .questao-aberta-resposta-esperada:focus {
   outline: 0;
   box-shadow: 0 0 0 0;
+}
+
+.txt-secao-um {
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+}
+
+
+.txt-caixa {
+  min-height: 42px;
+  background-color: #3F3F40;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  margin: 10px 0;
+}
+
+.saiba-mais, .ref {
+  display: block !important;
+  height: initial !important;
+  list-style-type: none;
+  padding: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.questao {
+  text-align: justify;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300 !important;
+  line-height: normal;
+}
+
+
+
+.caixa-exercicio {
+  display: grid;
+  grid-template-columns: 10% 87%;
+  column-gap: 30px;
+  background-color: #3B3B3B;
+  border-radius: 12px;
+}
+
+.textos-exercicio {
+  padding: 15px 0px;
+}
+
+.letra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #FF3E3E;
+  border-radius: 12px 0 0 12px;
+}
+
+.explicacao {
+  padding: 15px;
+  margin: 10px 15px 0 0;
+  width: 90%;
+  border: 2px solid #FF3E3E;
+}
+
+.explicacao-correta {
+  border: 2px solid #58DB43;
+}
+
+.correto {
+  background-color: #58DB43;
 }
 
 /* Responsividade */
