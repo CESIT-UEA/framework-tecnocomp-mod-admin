@@ -5,102 +5,103 @@
     (ngSubmit)="aplicarFiltros()"
     style="margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px"
   >
-    <mat-form-field appearance="fill" style="width: 200px">
-      <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="filtros.nome" name="nome" />
-    </mat-form-field>
+    <div class="container-todos-inputs">
+      <div class="container-input">
+      <input [(ngModel)]="filtros.nome" name="nome" placeholder="nome" />
+    </div>
 
-    <mat-form-field appearance="fill" style="width: 200px">
-      <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="filtros.email" name="email" />
-    </mat-form-field>
+    <div class="container-input">
+      <input [(ngModel)]="filtros.email" name="email" placeholder="E-mail"/>
+    </div>
 
-    <mat-form-field appearance="fill" style="width: 150px">
-      <mat-label>Progresso Mín (%)</mat-label>
+    <div class="container-input">
       <input
-        matInput
         type="number"
         [(ngModel)]="filtros.progressoMin"
         name="progressoMin"
+        placeholder="Progresso Mín (%)"
       />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="width: 150px">
-      <mat-label>Nota Mínima</mat-label>
-      <input
-        matInput
-        type="number"
-        [(ngModel)]="filtros.notaMin"
-        name="notaMin"
-      />
-    </mat-form-field>
-
-    <mat-slide-toggle [(ngModel)]="filtros.ativo" name="ativo">
-      Somente Ativos
+    </div>
+      <div class="container-input">
+        <input
+          type="number"
+          [(ngModel)]="filtros.notaMin"
+          name="notaMin"
+          placeholder="Nota Mínima"
+        />
+      </div>
+    </div>
+    
+    <mat-slide-toggle class="toggle-ativos" [(ngModel)]="filtros.ativo" name="ativo" style="padding-top: 8px;" >
+      <p class="ativos">Somente ativos</p>
     </mat-slide-toggle>
 
     <div style="margin-top: 8px; width: 100%">
       <button
-        mat-flat-button
-        color="primary"
         type="submit"
         style="margin-right: 8px"
+        class="botao-aplicar-filtro"
       >
         Aplicar Filtros
       </button>
-      <button mat-stroked-button type="button" (click)="limparFiltros()">
+      <button class="botao-limpar-filtro" type="button" (click)="limparFiltros()">
         Limpar Filtros
       </button>
-      <h1>Tabela de Alunos</h1>
-      <p>Quantidade: {{this.alunos.length + 1}}</p>
+      <div class="texto">
+        <p class="quantidade-alunos">Quantidade: {{ this.alunos.length }}</p>
+        <div class="meio">
+          <h1 class="titulo-alunos">Alunos</h1>
+        </div>
+      </div>
     </div>
   </form>
+  <div class="tabela-alunos">
 
   <table mat-table [dataSource]="alunos" class="mat-elevation-z8">
     <!-- Nome -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Id</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.id_aluno }}</td>
-    </ng-container>
-
-    <!-- Nome -->
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.Aluno?.nome }}</td>
+      <td mat-cell *matCellDef="let aluno" class="nome">{{ aluno.Aluno?.nome }}</td>
     </ng-container>
 
     <!-- Email -->
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.Aluno?.email }}</td>
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let aluno" class="dados">{{ aluno.Aluno?.email }}</td>
+    </ng-container>
+
+    <!-- Id -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let aluno" class="dados">{{ aluno.id_aluno }}</td>
     </ng-container>
 
     <!-- Nota -->
     <ng-container matColumnDef="nota">
       <th mat-header-cell *matHeaderCellDef>Nota</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.nota }}</td>
+      <td mat-cell *matCellDef="let aluno" class="dados">{{ aluno.nota }}</td>
     </ng-container>
 
     <!-- Progresso -->
     <ng-container matColumnDef="progresso">
       <th mat-header-cell *matHeaderCellDef>Progresso</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.progresso }}%</td>
+      <td mat-cell *matCellDef="let aluno" class="dados">{{ aluno.progresso }}%</td>
     </ng-container>
 
     <!-- Avaliação -->
     <ng-container matColumnDef="avaliacao">
       <th mat-header-cell *matHeaderCellDef>Avaliação</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.avaliacao || "-" }}</td>
+      <td mat-cell *matCellDef="let aluno" class="dados">{{ aluno.avaliacao || "-" }}</td>
     </ng-container>
 
     <!-- Comentário -->
     <ng-container matColumnDef="comentario">
       <th mat-header-cell *matHeaderCellDef>Comentário</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.comentario || "-" }}</td>
+      <td mat-cell *matCellDef="let aluno" class="dados">{{ aluno.comentario || "-" }}</td>
     </ng-container>
 
     <!-- Ações -->
-    <ng-container matColumnDef="acoes">
+    <!-- <ng-container matColumnDef="acoes">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let aluno">
         <button mat-icon-button color="primary" (click)="editarAluno(aluno)">
@@ -110,19 +111,18 @@
           <mat-icon>delete</mat-icon>
         </button>
       </td>
-    </ng-container>
+    </ng-container> -->
 
     <tr
       mat-header-row
       *matHeaderRowDef="[
-        'id',
         'nome',
         'email',
+        'id',
         'nota',
         'progresso',
         'avaliacao',
-        'comentario',
-        'acoes'
+        'comentario'
       ]"
     ></tr>
     <tr
@@ -130,16 +130,16 @@
       *matRowDef="
         let row;
         columns: [
-          'id',
           'nome',
           'email',
+          'id',
           'nota',
           'progresso',
           'avaliacao',
-          'comentario',
-          'acoes'
+          'comentario'
         ]
       "
     ></tr>
   </table>
+  </div>
 </div>

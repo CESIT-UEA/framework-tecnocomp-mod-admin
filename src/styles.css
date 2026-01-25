@@ -107,3 +107,20 @@ select:focus {
   outline: none;
   box-shadow: none;
 }
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled) .mdc-switch__shadow {
+  background-color: #7C4CC6;
+}
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled) .mdc-switch__track::after {
+  background-color: #2B2A2E !important;
+}
+
+.mat-mdc-slide-toggle {
+  --mdc-switch-selected-hover-state-layer-color: #7C4CC6;;
+  --mdc-switch-selected-focus-state-layer-color: #7C4CC6;;
+  --mdc-switch-selected-pressed-state-layer-color: #7C4CC6;;
+}
+
+
+
