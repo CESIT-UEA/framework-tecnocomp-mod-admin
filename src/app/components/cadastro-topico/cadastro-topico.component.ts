@@ -68,7 +68,28 @@ export class CadastroTopicoComponent {
     exercicios: this.fb.array([
       this.fb.group({
         questao: ['', Validators.required],
-        alternativas: this.fb.array([]) // garante que existe
+        alternativas: this.fb.array([
+          {
+            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
+            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
+            correta: false
+          },
+          {
+            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
+            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
+            correta: false
+          },
+          {
+            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
+            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
+            correta: true
+          },
+          {
+            descricao: 'Decomposição de problemas complexos em partes menores e mais manejáveis.',
+            explicacao: 'A decomposição é uma habilidade central no pensamento computacional, pois envolve dividir problemas grandes em partes menores, facilitando a análise e a solução.',
+            correta: false
+          },
+        ]) // garante que existe
       })
     ])
 });
