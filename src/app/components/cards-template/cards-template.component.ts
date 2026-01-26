@@ -29,7 +29,9 @@ export class CardsTemplateComponent {
 
   confirmarClonagem(): void {
     const dialogRef = this.dialog.open(DialogConfirmarRemocaoComponent, {
-      width: '350px',
+      width: '484px',
+      height: '200px',
+      panelClass: 'dialog-custom',
       data: {
         titulo: 'Clonar Módulo',
         mensagem: 'Gostaria de clonar este módulo para seu espaço pessoal??',
