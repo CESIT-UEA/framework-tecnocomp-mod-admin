@@ -124,3 +124,17 @@ select:focus {
 
 
 
+.add-equipe-custom .mat-mdc-dialog-surface, .dialog-remove-custom .mat-mdc-dialog-surface {
+  background-color: #2B2A2E !important;
+    border-radius: 40px !important;
+    border-top: 7px solid #7C4CC6;
+}
+
+.mat-expansion-panel-body {
+  background-color: #2B2A2E;
+}
+
+
+.mat-expansion-indicator::after {
+    color: #FFF !important;
+}

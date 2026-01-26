@@ -1,21 +1,14 @@
 <app-header-voltar texto="Gerenciar Ficha Técnica"></app-header-voltar>
-<div class="container" style="padding: 16px">
+<div class="container" [ngClass]="{'com-equipe': equipes.length > 0}">
 
-  <div *ngIf="!fichaTecnica">
-    <p>Este módulo ainda não possui uma ficha técnica.</p>
-    <button mat-raised-button color="primary" (click)="criarFicha()">
-      Criar Ficha Técnica
-    </button>
-  </div>
-
-  <div *ngIf="fichaTecnica">
+  <div *ngIf="fichaTecnica" class="caixa">
     <div style="margin: 16px 0">
-      <button mat-stroked-button color="primary" (click)="adicionarEquipe()">
+      <button class="botao-adicionar-equipe" (click)="criarFicha()">
         Adicionar Equipe
       </button>
     </div>
 
-    <mat-accordion multi>
+    <mat-accordion multi class="accordion">
       <mat-expansion-panel
         *ngFor="let equipe of equipes"
         (opened)="carregarMembros(equipe.id)"

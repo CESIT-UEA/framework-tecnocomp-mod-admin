@@ -48,6 +48,7 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
     this.fichaService.criarFichaTecnica(this.moduloId).subscribe((res) => {
       this.fichaTecnica = res;
       this.carregarEquipes();
+      this.adicionarEquipe()
     });
   }
 
@@ -67,8 +68,11 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
   }
 
   adicionarEquipe(): void {
+
     const dialogRef = this.dialog.open(DialogCriarEquipeComponent, {
-      width: '400px',
+      width: '600px',
+      height: '270px',
+      panelClass: 'add-equipe-custom'
     });
 
     dialogRef.afterClosed().subscribe((nome) => {
@@ -85,7 +89,8 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
 
   deletarEquipe(equipeId: number): void {
     const dialogRef = this.dialog.open(DialogConfirmarRemocaoComponent, {
-      width: '350px',
+      width: '733px',
+      height: '303px',
       data: {
         titulo: 'Remover Equipe',
         mensagem: 'Tem certeza que deseja remover esta equipe?',
@@ -103,7 +108,8 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
 
   adicionarMembro(equipeId: number): void {
     const dialogRef = this.dialog.open(DialogCriarMembroComponent, {
-      width: '400px',
+      width: '733px',
+      height: '303px',
       data: { equipeId },
     });
 
