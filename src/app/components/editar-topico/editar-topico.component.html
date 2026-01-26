@@ -8,24 +8,27 @@
           <form [formGroup]="dadosBasicosFormGroup">
             <h3>Dados Básicos</h3>
             <mat-divider></mat-divider>
-            <mat-form-field appearance="fill">
+            <div class="mat-form-field">
               <mat-label>Nome do Tópico</mat-label>
-              <input matInput formControlName="nome_topico" required />
-            </mat-form-field>
+              <input formControlName="nome_topico" required />
+            </div>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Texto de Apoio</mat-label>
-              <textarea matInput formControlName="textoApoio"></textarea>
-            </mat-form-field>
+            <div class="mat-form-field">
+              <mat-label>Url do slide</mat-label>
+              <input
+                formControlName="textoApoio"
+                required
+              >
+            </div>
 
-            <mat-form-field appearance="fill">
+            <div class="mat-form-field">
               <mat-label>Ebook Geral</mat-label>
               <input matInput formControlName="ebookUrlGeral" />
-            </mat-form-field>
+            </div>
 
-            <div class="botoes">
-              <button class="proximo" mat-button matStepperNext>Próximo</button>
-              <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
+            <div class="botoes passo1-botao-proximo">
+              <button mat-button class="salvar" (click)="onSubmit()">Salvar Alterações</button>
+              <button class="proximo" matStepperNext>Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
             </div>
           </form>
         </div>
@@ -39,19 +42,33 @@
             <mat-divider></mat-divider>
             <div formArrayName="videoUrls">
               <div *ngFor="let videoUrl of videoUrls.controls; let i = index" class="videoUrls">
-                <mat-form-field appearance="fill">
+                <div class="mat-form-field field-url-video">
                   <mat-label>URL do Vídeo {{ i + 1 }}</mat-label>
-                  <input matInput [formControlName]="i" required />
-                </mat-form-field>
-                <button mat-button class="remover" *ngIf="i > 0" (click)="removerVideoUrl(i)">Remover</button>
-                <mat-divider></mat-divider>
+                  <input [formControlName]="i" required />
+                  <!-- Botão remover -->
+                     <button
+                        class="remover"
+                        *ngIf="i > 0"
+                        (click)="removerVideoUrl(i)"
+                      >
+                    <div class="icone-remover">
+                      <mat-icon>remove</mat-icon>
+                    </div>
+                  </button>
+                </div>
+                <!-- <mat-divider></mat-divider> -->
               </div>
             </div>
-            <button class="adicionar" mat-button (click)="adicionarVideoUrl()">Adicionar URL</button>
-            <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+            <button class="adicionar" (click)="adicionarVideoUrl()">
+              <div class="icone-adicionar"><mat-icon>add</mat-icon></div>
+              Adicionar URL
+            </button>
+            <div class="botoes passo1-botao-proximo">
+              <button class="anterior" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png"> Anterior 
+              </button>
               <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
-              <button class="proximo" mat-button matStepperNext>Próximo</button>
+              <button class="proximo" matStepperNext>Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
             </div>
           </form>
         </div>
@@ -65,30 +82,43 @@
             <mat-divider></mat-divider>
             <div formArrayName="saibaMais">
               <div *ngFor="let sm of saibaMais.controls; let i = index" [formGroupName]="i">
-                <mat-form-field appearance="fill">
+                <mat-divider *ngIf="i === 1" class="mat-divider-top-mat-form-field"></mat-divider>
+                <div class="mat-form-field">
                   <mat-label>Descrição</mat-label>
-                  <input matInput formControlName="descricao" required />
-                </mat-form-field>
-                <mat-form-field appearance="fill">
+                  <input formControlName="descricao" required />
+                </div>
+                <div class="mat-form-field field-url">
                   <mat-label>URL</mat-label>
-                  <input matInput formControlName="url" required />
-                </mat-form-field>
-                <button mat-button class="remover" *ngIf="i > 0" (click)="removerSaibaMais(i)">Remover</button>
-                <mat-divider></mat-divider>
+                  <input formControlName="url" required />
+                </div>
+                <br />
+                <button class="remover botao-remover" *ngIf="i > 0" (click)="removerSaibaMais(i)">
+                  <div class="icone-remover">
+                  <mat-icon>remove</mat-icon>
+                </div>
+                Remover
+              </button>
+              <mat-divider *ngIf="i > 0" class="mat-divider-top-mat-form-field divider-bottom"></mat-divider>
               </div>
             </div>
-            <button class="adicionar" mat-button (click)="adicionarSaibaMais()">Adicionar Saiba Mais</button>
+            <button class="adicionar botao-adicionar" (click)="adicionarSaibaMais()">
+              <div class="icone-adicionar"><mat-icon>add</mat-icon></div>
+              Adicionar Saiba Mais
+            </button>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+              <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
+                Anterior
+              </button>
               <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
-              <button class="proximo" mat-button matStepperNext>Próximo</button>
+              <button class="proximo" matStepperNext>Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
             </div>
           </form>
         </div>
       </mat-step>
 
       <!-- Etapa 4: Referências -->
-      <mat-step [stepControl]="referenciasFormGroup">
+      <!-- <mat-step [stepControl]="referenciasFormGroup">
         <div class="passo4">
           <form [formGroup]="referenciasFormGroup">
             <h3>Referências</h3>
@@ -115,7 +145,7 @@
             </div>
           </form>
         </div>
-      </mat-step>
+      </mat-step> -->
 
       <!-- Etapa 5: Exercícios -->
       <mat-step [stepControl]="exerciciosFormGroup">
@@ -125,41 +155,78 @@
             <mat-divider></mat-divider>
             <div formArrayName="exercicios">
               <div *ngFor="let exercicio of exercicios.controls; let i = index" [formGroupName]="i">
-                <mat-form-field appearance="fill">
+                <div class="mat-form-field">
                   <mat-label>Questão do Exercício</mat-label>
-                  <input matInput formControlName="questao" required />
-                </mat-form-field>
+                  <input formControlName="questao" required />
+                </div>
                 
-                <div class="botaos-type-questao">
-                    <button (click)="setQuestaoAberta(false)">Questão Objetiva</button>
-                    <button (click)="setQuestaoAberta(true)">Questão Discursiva</button>
+                <div class="botoes-tipo-questao">
+                  <button 
+                    class="botao-questao-objetiva" 
+                    [ngClass]="{'botao-questao-ativa': isQuestaoAberta === false}"
+                    (click)="criarQuestaoObjetiva(i)"
+                  >
+                    <img src="../../../assets/icons/icone-questao-objetiva.svg"> Questão objetiva
+                  </button>
+                  <button 
+                    class="botao-questao-discursiva" 
+                    [ngClass]="{'botao-questao-ativa': isQuestaoAberta}"
+                    (click)="criarQuestaoDiscursiva(i)"
+                  >
+                    <img src="../../../assets/icons/icone-questao-discursiva.svg">Questão discursiva
+                  </button>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="questao-aberta" *ngIf="this.isQuestaoAberta">
+                  <label>Resposta esperada</label>
+                  <textarea class="questao-aberta-resposta-esperada" formControlName="resposta_esperada"></textarea>
                 </div>
 
-                <h4>Alternativas</h4>
-                <mat-divider></mat-divider>
-                <div formArrayName="alternativas">
+                <div formArrayName="alternativas" *ngIf="!this.isQuestaoAberta">
                   <div *ngFor="let alt of alternativas(i).controls; let j = index" [formGroupName]="j">
-                    <mat-form-field appearance="fill">
+                    <h3 style="padding: 20px 0">Alternativa {{ letras[j] }}</h3>
+                    <div class="mat-form-field">
                       <mat-label>Descrição</mat-label>
                       <input matInput formControlName="descricao" required />
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    </div>
+                    <div class="mat-form-field">
                       <mat-label>Explicação</mat-label>
                       <input matInput formControlName="explicacao" required />
-                    </mat-form-field>
+                    </div>
                     <mat-radio-group formControlName="correta" [value]="true" (change)="setAlternativaCorreta(i, j)" required>
-                      <mat-radio-button [value]="true">Correta</mat-radio-button>
+                      <mat-radio-button style="color: white" [value]="true">Correta</mat-radio-button>
                     </mat-radio-group>
-                    <button mat-button class="remover" (click)="limparAlternativa(i, j)">Limpar Dados</button>
+                    <br />
+                    <button class="limpar-dados" (click)="limparAlternativa(i, j)">Limpar Dados</button>
                     <mat-divider></mat-divider>
                   </div>
                 </div>
               </div>
             </div>
             <div class="botoes">
-              <button class="voltar" mat-button matStepperPrevious>Anterior</button>
+              <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
+                Anterior
+              </button>
               <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
-              <button class="proximo" mat-button matStepperNext [disabled]="!isAlternativaCorretaValida()">Revisar</button>
+              <button
+                *ngIf="!this.isQuestaoAberta"
+                class="proximo"
+                matStepperNext
+                [disabled]="!isAlternativaCorretaValida()"
+              >
+              Próximo
+              <img src="../../../assets/icons/proximo.svg">
+              </button>
+              <button
+                *ngIf="this.isQuestaoAberta"
+                class="proximo"
+                matStepperNext
+              >
+              Próximo
+              <img src="../../../assets/icons/proximo.svg">
+              </button>
+              
             </div>
           </form>
         </div>
@@ -213,22 +280,6 @@
                 <p>Saiba Mais {{ i + 1 }}</p>
                 <p>Descrição: {{ sm.descricao }}</p>
                 <p><a [href]="sm.url"> URL </a></p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="revisao-secao">
-            <p><strong>Referências:</strong></p>
-            <ul>
-              <li
-                *ngFor="
-                  let ref of referenciasFormGroup.value.referencias;
-                  let i = index
-                "
-              >
-                <p>Referência {{ i + 1 }}</p>
-                <p>Texto: {{ ref.referencia }}</p>
-                <p><a [href]="ref.caminhoDaImagem"> URL</a></p>
               </li>
             </ul>
           </div>

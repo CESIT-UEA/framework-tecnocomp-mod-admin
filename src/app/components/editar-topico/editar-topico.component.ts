@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { ExercicioService } from 'src/app/services/exercicio.service';
+import { Topico } from 'src/interfaces/topico/Topico';
 
 @Component({
   selector: 'app-editar-topico',
@@ -13,11 +14,12 @@ export class EditarTopicoComponent implements OnInit{
   dadosBasicosFormGroup: FormGroup;
   videoUrlsFormGroup: FormGroup;
   saibaMaisFormGroup: FormGroup;
-  referenciasFormGroup: FormGroup;
+  // referenciasFormGroup: FormGroup;
   exerciciosFormGroup: FormGroup;
   idModulo!: number;
   letras: string[] = ['A','B','C','D']
   idTopico!: number;
+  isQuestaoAberta!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -45,14 +47,14 @@ export class EditarTopicoComponent implements OnInit{
       ]),
     });
 
-    this.referenciasFormGroup = this.fb.group({
-      referencias: this.fb.array([
-        this.fb.group({
-          caminhoDaImagem: ['', Validators.required],
-          referencia: ['', Validators.required],
-        }),
-      ]),
-    });
+    // this.referenciasFormGroup = this.fb.group({
+    //   referencias: this.fb.array([
+    //     this.fb.group({
+    //       caminhoDaImagem: ['', Validators.required],
+    //       referencia: ['', Validators.required],
+    //     }),
+    //   ]),
+    // });
 
     this.exerciciosFormGroup = this.fb.group({
       exercicios: this.fb.array([
@@ -64,6 +66,7 @@ export class EditarTopicoComponent implements OnInit{
             this.criarAlternativa(),
             this.criarAlternativa(),
           ]),
+          
         }),
       ]),
     });
@@ -84,9 +87,9 @@ export class EditarTopicoComponent implements OnInit{
     return this.saibaMaisFormGroup.get('saibaMais') as FormArray;
   }
 
-  get referencias(): FormArray {
-    return this.referenciasFormGroup.get('referencias') as FormArray;
-  }
+  // get referencias(): FormArray {
+  //   return this.referenciasFormGroup.get('referencias') as FormArray;
+  // }
 
   get exercicios(): FormArray {
     return this.exerciciosFormGroup.get('exercicios') as FormArray;
@@ -98,7 +101,7 @@ export class EditarTopicoComponent implements OnInit{
 
   carregarDadosDoTopico(id: number): void {
     this.apiService.obterTopicoPorId(id).subscribe(
-      (topico) => {
+      (topico: Topico) => {
         console.log(topico)
         this.dadosBasicosFormGroup.patchValue({
           nome_topico: topico.nome_topico,
@@ -108,8 +111,21 @@ export class EditarTopicoComponent implements OnInit{
 
         this.setVideoUrls(topico.VideoUrls);
         this.setSaibaMais(topico.SaibaMais);
-        this.setReferencias(topico.Referencias);
-        this.setExercicios(topico.Exercicios);
+        // this.setReferencias(topico.Referencias);
+      
+        console.log('aaaa', topico.Exercicios)
+        console.log('testteeee', topico.Exercicios[0].aberta)
+
+        if (!topico.Exercicios[0].aberta) {
+          this.isQuestaoAberta = false
+          this.setExercicios(topico.Exercicios);
+          console.log('caius aqui')
+        } else {
+          console.log('caiu')
+          this.isQuestaoAberta = true
+          this.setExerciciosAberto(topico.Exercicios)
+        }
+        
       },
       (error) => {
         console.error('Erro ao carregar tópico:', error);
@@ -135,23 +151,25 @@ export class EditarTopicoComponent implements OnInit{
     );
   }
 
-  setReferencias(referencias: any[]): void {
-    this.referencias.clear();
-    referencias.forEach((ref) =>
-      this.referencias.push(
-        this.fb.group({
-          caminhoDaImagem: [ref.caminhoDaImagem, Validators.required],
-          referencia: [ref.referencia, Validators.required],
-        })
-      )
-    );
-  }
+  // setReferencias(referencias: any[]): void {
+  //   this.referencias.clear();
+  //   referencias.forEach((ref) =>
+  //     this.referencias.push(
+  //       this.fb.group({
+  //         caminhoDaImagem: [ref.caminhoDaImagem, Validators.required],
+  //         referencia: [ref.referencia, Validators.required],
+  //       })
+  //     )
+  //   );
+  // }
 
   setExercicios(exercicios: any[]): void {
     this.exercicios.clear();
     exercicios.forEach((exercicio) => {
       this.exercicios.push(
         this.fb.group({
+          resposta_esperada: [''],
+          isQuestaoAberta: [this.isQuestaoAberta],
           questao: [exercicio.questao, Validators.required],
           alternativas: this.fb.array(
             (exercicio.Alternativas || []).map((alt: any) =>
@@ -165,6 +183,25 @@ export class EditarTopicoComponent implements OnInit{
         })
       );
     });
+  }
+
+
+  setExerciciosAberto(exercicios: any[]): void {
+    this.exercicios.clear();
+    exercicios.forEach((exercicios) => {
+      console.log('teste',exercicios)
+      this.exercicios.push(
+        this.fb.group({
+          questao: [exercicios.questao, Validators.required],
+          resposta_esperada: [exercicios.resposta_esperada, Validators.required],
+          isQuestaoAberta: [this.isQuestaoAberta]
+        })
+      )
+    })
+  }
+
+  removerExercicio(index: number): void {
+    this.exercicios.removeAt(index);
   }
 
   setAlternativaCorreta(exercicioIndex: number, alternativaIndex: number): void {
@@ -214,20 +251,20 @@ export class EditarTopicoComponent implements OnInit{
     }
   }
 
-  adicionarReferencia(): void {
-    this.referencias.push(
-      this.fb.group({
-        caminhoDaImagem: ['', Validators.required],
-        referencia: ['', Validators.required],
-      })
-    );
-  }
+  // adicionarReferencia(): void {
+  //   this.referencias.push(
+  //     this.fb.group({
+  //       caminhoDaImagem: ['', Validators.required],
+  //       referencia: ['', Validators.required],
+  //     })
+  //   );
+  // }
 
-  removerReferencia(index: number): void {
-    if (this.referencias.length > 1) {
-      this.referencias.removeAt(index);
-    }
-  }
+  // removerReferencia(index: number): void {
+  //   if (this.referencias.length > 1) {
+  //     this.referencias.removeAt(index);
+  //   }
+  // }
 
   limparAlternativa(exercicioIndex: number, alternativaIndex: number): void {
     const alternativa = this.alternativas(exercicioIndex).at(alternativaIndex);
@@ -239,7 +276,6 @@ export class EditarTopicoComponent implements OnInit{
       ...this.dadosBasicosFormGroup.value,
       videoUrls: this.videoUrls.value,
       saibaMais: this.saibaMais.value,
-      referencias: this.referencias.value,
       exercicios: this.exercicios.value,
     };
 
@@ -261,5 +297,47 @@ export class EditarTopicoComponent implements OnInit{
   setQuestaoAberta(valor: boolean){
     this.exercicioService.setQuestaoAberta(this.idTopico, valor).subscribe()
   }
+
+  criarQuestaoObjetiva(index: number){
+    this.isQuestaoAberta = false;
+    this.exercicios.clear()
+    if (this.exercicios.length === 0){
+      this.exerciciosFormGroup = this.fb.group({
+      exercicios: this.fb.array([
+        this.fb.group({
+          questao: ['', Validators.required],
+          resposta_esperada: [''],
+          isQuestaoAberta: [this.isQuestaoAberta],
+          alternativas: this.fb.array(
+            new Array(4).fill(null).map(() =>
+              this.fb.group({
+                descricao: ['', Validators.required],
+                explicacao: ['', Validators.required],
+                correta: [false]
+              })
+            )
+          )
+        })
+      ])
+    });
+    }
+    console.log(this.exercicios.value[0].isQuestaoAberta)
+  }
+
+  criarQuestaoDiscursiva(index: number){
+    this.exercicios.clear()
+    this.isQuestaoAberta = true;
+    this.exerciciosFormGroup = this.fb.group({
+      exercicios: this.fb.array([
+        this.fb.group({
+          questao: ['', Validators.required],
+          isQuestaoAberta: [this.isQuestaoAberta],
+          resposta_esperada: ['', Validators.required]
+        })
+      ])
+    });
+    console.log(this.exercicios.value[0].isQuestaoAberta)
+  }
+
 
 }

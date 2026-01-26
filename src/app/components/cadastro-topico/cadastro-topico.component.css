@@ -1,7 +1,6 @@
 .container-pagina {
-  background-color: #131313;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 16.83%, rgba(0, 0, 0, 0.09) 47.11%, rgba(66, 0, 146, 0.05) 81.73%, rgba(95, 0, 211, 0.05) 95.21%), #131313;
   min-height: 88vh;
-  /* padding: 10px 0;   */
   align-content: center;
 }
 
@@ -283,6 +282,16 @@ a{
   font-style: normal !important;
   font-weight: 700 !important;
   line-height: normal !important;
+}
+
+.limpar-dados {
+  width: 153px;
+  height: 35px;
+  background-color: transparent;
+  border: 2px solid #7C4CC6;
+  border-radius: 10px;
+
+  color: #7C4CC6;
 }
 
 
