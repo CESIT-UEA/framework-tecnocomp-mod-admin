@@ -83,6 +83,9 @@ export class CadastroTopicoComponent {
         this.router.navigate(['/modulos']);
       }
     });
+    if (!this.isQuestaoAberta) {
+
+    }
   }
 
   get videoUrls(): FormArray {
