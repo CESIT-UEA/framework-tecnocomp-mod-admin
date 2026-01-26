@@ -216,7 +216,7 @@ mat-divider {
   width: 30px;
   position: absolute;
   right: 3%;
-  background-color: #38383A;
+  background-color: transparent;
   border: none;
   color: #B68EF3;
 } 
