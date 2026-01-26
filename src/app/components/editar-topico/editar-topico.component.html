@@ -239,21 +239,24 @@
 
           <div class="revisao-secao">
             <p>
-              <strong>Nome do Tópico:</strong>
-              {{ dadosBasicosFormGroup.value.nome_topico }}
+              <strong class="txt-secao-um">Nome do Tópico</strong>
             </p>
+            <p class="txt-caixa">{{ dadosBasicosFormGroup.value.nome_topico }}</p>
             <p>
-              <strong>Texto de Apoio:</strong>
-              {{ dadosBasicosFormGroup.value.textoApoio }}
+              <strong class="txt-secao-um">Texto de Apoio:</strong>
             </p>
+            <a class="txt-caixa" [href]="dadosBasicosFormGroup.value.textoApoio">Link</a>
             <p>
-              <strong>Ebook Geral:</strong>
-              {{ dadosBasicosFormGroup.value.ebookUrlGeral }}
+              <strong class="txt-secao-um">Ebook Geral:</strong>
+              
             </p>
+            <a class="txt-caixa" [href]="dadosBasicosFormGroup.value.ebookUrlGeral">Link</a>
           </div>
 
+          <mat-divider></mat-divider>
+
           <div class="revisao-secao">
-            <p><strong>URLs de Vídeos:</strong></p>
+            <p><strong class="txt-secao-um">URLs de Vídeos:</strong></p>
             <ul>
               <li
                 *ngFor="
@@ -261,17 +264,21 @@
                   let i = index
                 "
               >
-                <p>
-                  <a [href]="url"> Video {{ i + 1 }} </a>
+                <p class="txt-caixa">
+                  <a  [href]="url"> Video {{ i + 1 }} </a>
                 </p>
               </li>
             </ul>
           </div>
 
+          <mat-divider></mat-divider>
+
+
           <div class="revisao-secao">
-            <p><strong>Saiba Mais:</strong></p>
+            <p><strong class="txt-secao-um">Saiba Mais:</strong></p>
             <ul>
               <li
+               class="txt-caixa saiba-mais"
                 *ngFor="
                   let sm of saibaMaisFormGroup.value.saibaMais;
                   let i = index
@@ -284,25 +291,24 @@
             </ul>
           </div>
 
+          <mat-divider></mat-divider>
+
           <div class="revisao-secao">
-            <p><strong>Exercício:</strong></p>
+            <p><strong class="txt-secao-um">Exercício:</strong></p>
             <ul>
               <li
                 *ngFor="let exercicio of exerciciosFormGroup.value.exercicios"
               >
-              <h3>Questão: {{ exercicio.questao }}</h3>
+              <p class="questao"><span style="font-weight: bold !important;">Questão</span> - {{ exercicio.questao }}</p>
                 <ul>
-                  <li *ngFor="let alternativa of exercicio.alternativas; let i = index">
-                    <h3>Alternativa {{letras[i]}}</h3>
-                    <p>Descrição: {{ alternativa.descricao }}</p>
-                    <p>Explicação:
-                      {{ alternativa.explicacao }}</p>
-                    <p
-
-                    >Correta: <span                     [ngClass]="
-                    alternativa.correta
-                      ? 'correto'
-                      : 'errado' ">{{alternativa.correta ? 'Sim' : 'Não'}}</span></p>
+                  <li class="caixa-exercicio" *ngFor="let alternativa of exercicio.alternativas; let i = index">
+                    <div class="letra" [ngClass]="{'correto': alternativa.correta == true}">
+                      <h3>{{letras[i]}}</h3>
+                    </div> 
+                    <div class="textos-exercicio">
+                      <p>Descrição: {{ alternativa.descricao }}</p>
+                      <p class="explicacao" [ngClass]="{'explicacao-correta': alternativa.correta == true}">Explicação: {{ alternativa.explicacao }}</p>
+                    </div>
                   </li>
                 </ul>
               </li>
@@ -310,10 +316,11 @@
           </div>
 
           <div class="botoes">
-            <button class="voltar" mat-button matStepperPrevious>
-              Anterior
-            </button>
-            <button mat-button class="salvar" (click)="onSubmit()">Salvar Edição</button>
+            <button class="voltar" matStepperPrevious>
+                <img src="../../../assets/icons/voltar.png">
+                Anterior
+              </button>
+            <button mat-button class="salvar salvar-edicao" (click)="onSubmit()">Salvar Edição</button>
           </div>
         </div>
       </mat-step>
