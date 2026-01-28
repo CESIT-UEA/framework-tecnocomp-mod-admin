@@ -8,20 +8,20 @@
     <div class="sub-box">
       <div class="sub-box-cards">
         <div class="cards">
-          <app-cards-cadastro
+          <app-cards-cadastro *ngIf="this.isAdmin()"
             nomeCard="Usuário"
             caminhoImagem="../../../assets/icons/icon-user.svg"
-            caminhoUrl="../cadastro-usuario"
+            caminhoUrl="/tecnocomp/cadastros/cadastro-usuario"
           ></app-cards-cadastro>
           <app-cards-cadastro
             nomeCard="Módulo"
             caminhoImagem="../../../assets/icons/icone-cadastrar-mod.png"
-            caminhoUrl="../registrar-modulo"
+            caminhoUrl="/tecnocomp/cadastros/registrar-modulo"
           ></app-cards-cadastro>
           <app-cards-cadastro
             nomeCard="Plataforma"
             caminhoImagem="../../../assets/icons/icon-desktop.png"
-            caminhoUrl="../cadastro-plataforma"
+            caminhoUrl="/tecnocomp/cadastros/cadastro-plataforma"
           ></app-cards-cadastro>
         </div>
       </div>
@@ -29,5 +29,5 @@
     </div>
   </div>
 </div>
-
 </div>
+

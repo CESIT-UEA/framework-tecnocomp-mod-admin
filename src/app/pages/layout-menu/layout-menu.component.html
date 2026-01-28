@@ -8,42 +8,42 @@
       <mat-divider></mat-divider>
     </div>
     <mat-nav-list class="nav-list">
-      <a routerLink="/dashboard" routerLinkActive="active">
+      <a routerLink="/tecnocomp/dashboard" routerLinkActive="active">
         <mat-icon>home</mat-icon>
         Dashboard
       </a>
-      <a routerLink="/cadastros" routerLinkActive="active">
+      <a routerLink="/tecnocomp/cadastros" routerLinkActive="active">
         <mat-icon>add</mat-icon>
         Cadastrar
       </a>
-      <a routerLink="/meu-perfil" routerLinkActive="active">
+      <a routerLink="/tecnocomp/meu-perfil" routerLinkActive="active">
         <mat-icon>add</mat-icon>
         Meu perfil
       </a>
       <!-- Administrador -->
-      <a *ngIf="isAdmin" routerLink="/usuarios" routerLinkActive="active">
+      <a *ngIf="isAdmin" routerLink="/tecnocomp/usuarios" routerLinkActive="active">
         <mat-icon>person</mat-icon>
         Usuarios
       </a>
-      <a *ngIf="isAdmin" routerLink="/modulos" routerLinkActive="active">
+      <a *ngIf="isAdmin" routerLink="/tecnocomp/modulos" routerLinkActive="active">
         <mat-icon>devices</mat-icon>
         Modulos
       </a>
-      <a *ngIf="isAdmin" routerLink="/plataformas" routerLinkActive="active">
+      <a *ngIf="isAdmin" routerLink="/tecnocomp/plataformas" routerLinkActive="active">
         <mat-icon>view_module</mat-icon>
         Plataformas
       </a>
 
       <!-- Professor -->
-      <a *ngIf="isProfessor" routerLink="/templates" routerLinkActive="active">
+      <a *ngIf="isProfessor" routerLink="/tecnocomp/templates" routerLinkActive="active">
         <mat-icon>person</mat-icon>
         Templates
       </a>
-      <a *ngIf="isProfessor" routerLink="/meus-modulos" routerLinkActive="active">
+      <a *ngIf="isProfessor" routerLink="/tecnocomp/meus-modulos" routerLinkActive="active">
         <mat-icon>devices</mat-icon>
         Meus Modulos
       </a>
-      <a *ngIf="isProfessor" routerLink="/minhas-plataformas" routerLinkActive="active">
+      <a *ngIf="isProfessor" routerLink="/tecnocomp/minhas-plataformas" routerLinkActive="active">
         <mat-icon>view_module</mat-icon>
         Minhas Plataformas
       </a>

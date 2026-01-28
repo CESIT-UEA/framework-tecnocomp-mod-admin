@@ -1,9 +1,10 @@
 import { UploadService } from './../../services/upload.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,7 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
   templateUrl: './registro-modulo.component.html',
   styleUrls: ['./registro-modulo.component.css']
 })
-export class RegistroModuloComponent {
+export class RegistroModuloComponent implements OnInit {
   renamedFile!: File;
   nomePasta!: string;
   baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
@@ -31,8 +32,13 @@ export class RegistroModuloComponent {
     private apiService: ApiAdmService, 
     private router: Router, 
     private authService: AuthService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private previousRouter: PreviousRouteService
   ) {}
+
+  ngOnInit(): void {
+  
+  }
 
   gerarUrlAmigavel(): void {
     const nomeModulo = this.moduloForm.get('nome_modulo')?.value || '';
@@ -84,6 +90,7 @@ export class RegistroModuloComponent {
 
       this.apiService.registerModulo(modulo).subscribe({
         next: response => {
+          
            // verifica se tem arquivo e faz upload
         if (this.selectedFile && this.renamedFile && this.nomePasta){
             this.uploadService.uploadFile(
@@ -100,6 +107,7 @@ export class RegistroModuloComponent {
                   console.error(`Erro ao realizar upload para RAG`, err)
               }})
               console.log('Upload realizado com sucesso!');
+              
             },
             error: err => {
               console.error('Erro no upload:', err);
@@ -107,7 +115,7 @@ export class RegistroModuloComponent {
           }
         })
         }
-        this.router.navigate(['/dashboard']);
+        this.navigateAfterRegisterModulo()
         },
         error: err => {
           console.error('Erro ao cadastrar módulo:', err);
@@ -131,6 +139,33 @@ export class RegistroModuloComponent {
 
   uploadFileRAG(file: File, nomeModulo: string, url: string){
     return this.uploadService.uploadFile(file, nomeModulo, url)
+  }
+
+
+  voltar(){
+    const rotaAnterior = this.previousRouter.getPreviousUrl();
+    const rotas = ['/tecnocomp/modulos', '/tecnocomp/meus-modulos', '/tecnocomp/meu-perfil', '/tecnocomp/cadastros']
+    const isAdmin = this.authService.isAdmin()
+
+    if (isAdmin && rotas[0] === rotaAnterior) {
+      this.router.navigate([rotas[0]])
+
+    } else if (rotas[2] === rotaAnterior ) {
+      this.router.navigate([rotas[2]])
+    } else if (!isAdmin && rotas[1] === rotaAnterior){
+      this.router.navigate([rotas[1]])
+    } else if (rotas[3] === rotaAnterior){
+      this.router.navigate([rotas[3]])
+    }
+  }
+
+  navigateAfterRegisterModulo(){
+    const isAdmin = this.authService.isAdmin();
+    if (isAdmin){
+      this.router.navigate(['/tecnocomp/modulos'])
+    } else {
+      this.router.navigate(['/tecnocomp/meus-modulos'])
+    }
   }
 
 }

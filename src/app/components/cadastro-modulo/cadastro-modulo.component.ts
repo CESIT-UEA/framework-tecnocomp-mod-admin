@@ -116,7 +116,7 @@ export class CadastroModuloComponent implements OnInit {
       this.apiService.registerModulo(this.moduloForm.value).subscribe(
         response => {
           console.log('Módulo cadastrado com sucesso:', response);
-          this.router.navigate(['/dashboard']);
+          this.irParaPageModulos()
         },
         error => {
           console.error('Erro ao cadastrar módulo:', error);
@@ -129,7 +129,13 @@ export class CadastroModuloComponent implements OnInit {
     const formArray = formGroup.get(formArrayName) as FormArray;
     return formArray ? formArray.controls : [];
   }
-  home(){
-    this.router.navigate(['/dashboard']);
+  
+  
+  irParaPageModulos(){
+    if (this.AuthService.isAdmin()){
+      this.router.navigate(['/tecnocomp/modulos']);
+    } else {
+      this.router.navigate(['/tecnocomp/meus-modulos'])
+    }
   }
 }

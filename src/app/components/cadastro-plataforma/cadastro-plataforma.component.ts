@@ -47,12 +47,11 @@ export class CadastroPlataformaComponent {
   }
 
   onSubmit(): void {
-    console.log('Clicado');
     if (this.plataformaForm.valid) {
       this.apiService.registerPlataforma(this.plataformaForm.value).subscribe(
         (response) => {
           console.log('Plataforma registrada com sucesso:', response);
-          this.home();
+          this.irParaPagePlataformas();
         },
         (error) => {
           console.error('Erro ao registrar plataforma:', error);
@@ -61,7 +60,11 @@ export class CadastroPlataformaComponent {
     }
   }
 
-  home() {
-    this.router.navigate(['/dashboard']);
+  irParaPagePlataformas() {
+    if (this.authService.isAdmin()){
+      this.router.navigate(['/tecnocomp/plataformas']);
+    } else {
+      this.router.navigate(['/tecnocomp/minhas-plataformas'])
+    }
   }
 }

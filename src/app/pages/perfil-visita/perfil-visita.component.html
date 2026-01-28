@@ -3,22 +3,22 @@
   <section class="informacoes">
     <div class="informacoes-usuario">
       <p class="cargo">
-        {{ dadosUsuario().tipo === 'adm' ? 'Admin': 'Professor' }}
+        {{ dadosUsuario?.tipo === 'adm' ? 'Admin': 'Professor' }}
       </p>
-      <button [routerLink]="['/tecnocomp','editar-perfil']">
+      <button [routerLink]="['/editar-perfil']">
         <img src="../../../assets/icons/Editar.svg" alt="ícone de editar-perfil">
       </button>
     </div>
     <div class="perfil-dados">
-      <p><strong>Email:</strong> <span id="email"> {{ dadosUsuario().email }}</span></p>
-      <p id="texto-cargo">{{ dadosUsuario().tipo === 'adm' ? 'Administrador' : 'Professor' }}</p>
+      <p><strong>Email:</strong> <span id="email"> {{ dadosUsuario?.email }}</span></p>
+      <p id="texto-cargo">{{ dadosUsuario?.tipo === 'adm' ? 'Administrador' : 'Professor' }}</p>
     </div>
   </section>
   <mat-divider></mat-divider>
   <section class="minhas-plataformas">
     <div class="titulo">
-      <h1>Minhas Plataformas: {{ paginationPlataformas.totalItems }}</h1>
-      <button routerLink="/tecnocomp/cadastros/cadastro-plataforma">
+      <h1>Plataformas: {{ paginationPlataformas.totalItems }}</h1>
+      <button routerLink="/cadastro-plataforma">
         <mat-icon>add</mat-icon>
       </button>
     </div>
@@ -43,8 +43,8 @@
   <mat-divider></mat-divider>
   <section class="meus-modulos">
     <div class="titulo">
-      <h1>Meus Módulos: {{ paginationModulos.totalItems }}</h1>
-      <button routerLink="/tecnocomp/cadastros/registrar-modulo">
+      <h1>Módulos: {{ paginationModulos.totalItems }}</h1>
+      <button routerLink="/registrar-modulo">
         <mat-icon class="icon-add">add</mat-icon>
       </button>
     </div>

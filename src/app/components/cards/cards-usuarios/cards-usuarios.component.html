@@ -14,11 +14,11 @@
         <mat-icon class="card-icon" (click)="abrirConfirmacaoExcluir()">delete </mat-icon>
       </div>
       <div class="box-icon">
-        <mat-icon class="card-icon" [routerLink]="['/editar-usuario', user.id]">border_color</mat-icon>
+        <mat-icon class="card-icon" [routerLink]="['/tecnocomp','editar-usuario', user.id]">border_color</mat-icon>
       </div>
       <mat-card-actions>
       <!-- Verificar como vai funcionar esse -->
-        <button class="btn" [routerLink]="['/ver-perfil', user.id]">Ver Perfil</button>
+        <button class="btn" [routerLink]="['/tecnocomp','ver-perfil', user?.id]">Ver Perfil</button>
       </mat-card-actions>
     </mat-card-content>
   </div>

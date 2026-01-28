@@ -93,6 +93,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-topico/header-topico.component';
+import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
 
 
 @NgModule({
@@ -168,6 +169,7 @@ import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-top
     TopicosModuloUnicoComponent,
     PaginationComponent,
     HeaderTopicoComponent,
+    PerfilVisitaComponent,
 
   ],
   imports: [

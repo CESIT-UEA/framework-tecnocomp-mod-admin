@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { PaginationService, PaginationState } from 'src/app/services/pagination.service';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 
 @Component({
@@ -14,9 +15,10 @@ export class ModulosPageComponent implements OnInit {
 
   constructor(
     private apiService: ApiAdmService,
-    private paginationService: PaginationService
+    private paginationService: PaginationService,
   ) {
     this.pagination = this.paginationService.createPaginationState();
+    
   }
 
   ngOnInit(): void {

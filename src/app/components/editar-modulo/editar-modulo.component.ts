@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { v4 as uuidv4 } from 'uuid';
@@ -32,12 +33,14 @@ export class EditarModuloComponent {
     private apiService: ApiAdmService,
     private router: Router,
     private authService: AuthService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private previousRouter: PreviousRouteService
   ) {}
 
   ngOnInit(): void {
     this.moduloId = +this.route.snapshot.paramMap.get('id')!;
     this.carregarModulo();
+    console.log('Rota anterior', this.previousRouter.getPreviousUrl())
   }
 
   carregarModulo(): void {
@@ -108,9 +111,9 @@ export class EditarModuloComponent {
         this.apiService.message('Módulo atualizado com sucesso!');
 
         if (this.authService.isAdmin()) {
-          this.router.navigate(['/modulos']);
+          this.router.navigate(['/tecnocomp/modulos']);
         } else if (this.authService.isProfessor()) {
-          this.router.navigate(['/meus-modulos']);
+          this.router.navigate(['/tecnocomp/meus-modulos']);
         }
       },
       (error) => console.error('Erro ao atualizar módulo:', error)
@@ -136,5 +139,21 @@ export class EditarModuloComponent {
     if (file){
       this.selectedFile = file
     }
+  }
+
+  voltar(){
+    const rotaAnterior = this.previousRouter.getPreviousUrl();
+    const rotas = ['/tecnocomp/modulos', '/tecnocomp/meus-modulos', '/tecnocomp/meu-perfil']
+    const isAdmin = this.authService.isAdmin()
+
+    if (isAdmin && rotas[0] === rotaAnterior) {
+      this.router.navigate([rotas[0]])
+
+    } else if (rotas[2] === rotaAnterior ) {
+      this.router.navigate([rotas[2]])
+    } else if (!isAdmin && rotas[1] === rotaAnterior){
+      this.router.navigate([rotas[1]])
+    } 
+    
   }
 }

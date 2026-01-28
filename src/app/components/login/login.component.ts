@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           const usuarioDados = this.authService.decodeToken(res.accessToken);
           console.log()
           this.authService.setUsuario(usuarioDados);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/tecnocomp/dashboard']);
         },
         error: (err) => {
           console.error("Erro login Google:", err);
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
             this.authService.setUsuario(usuarioDados);
 
             // Navega para o dashboard
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/tecnocomp/dashboard']);
             console.log(this.authService.getUsuarioDados());
           } else {
             this.errorLogin = true;

@@ -1,15 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { ConfirmacaoExclusaoComponent } from '../../confirmacao-exclusao/confirmacao-exclusao.component';
 import { AuthService } from 'src/app/auth/auth.service';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 
 @Component({
   selector: 'app-cards-modulos',
   templateUrl: './cards-modulos.component.html',
   styleUrls: ['./cards-modulos.component.css'],
 })
-export class CardsModulosComponent {
+export class CardsModulosComponent implements OnInit {
   @Input() modulo!: Modulo;
   @Output() excluirModulo = new EventEmitter<{
     idAdm: number;
@@ -17,7 +18,15 @@ export class CardsModulosComponent {
     idExcluir: number;
   }>();
 
-  constructor(private dialog: MatDialog, private authService: AuthService) {}
+  constructor(
+    private dialog: MatDialog, 
+    private authService: AuthService,
+    private previousRouter: PreviousRouteService
+  ) {}
+
+  ngOnInit(): void {
+      
+  }
 
   abrirConfirmacaoExcluir(): void {
     const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent);

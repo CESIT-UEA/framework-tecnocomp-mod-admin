@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { noOnlyWhitespace, senhaForte } from '../validators/validators';
 import { AuthService } from 'src/app/auth/auth.service';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -24,7 +25,12 @@ export class CadastroUsuarioComponent implements OnInit {
     tipo: new FormControl('professor', Validators.required)
   });
 
-  constructor(private apiService: ApiAdmService, private router: Router, private authService: AuthService) {
+  constructor(
+    private apiService: ApiAdmService, 
+    private router: Router, 
+    private authService: AuthService,
+    private previousRouter: PreviousRouteService 
+  ) {
       this.cadastroForm.valueChanges.subscribe(()=>{
           this.errorCadastro = false
 
@@ -65,7 +71,7 @@ export class CadastroUsuarioComponent implements OnInit {
       this.apiService.registerUsuario(this.cadastroForm.value).subscribe(
         response => {
           console.log('Usuário cadastrado com sucesso:', response);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/tecnocomp/usuarios'])
         },
         error => {
           this.errorCadastro = true
@@ -77,7 +83,16 @@ export class CadastroUsuarioComponent implements OnInit {
       this.validators = true
  }
   }
-  home(){
-    this.router.navigate(['/dashboard']);
+  voltar(){
+    const rotaAnterior = this.previousRouter.getPreviousUrl();
+
+    const rotas = ['/tecnocomp/cadastros', '/tecnocomp/usuarios'];
+    if (rotas[0] === rotaAnterior){
+      this.router.navigate([rotas[0]])
+    }
+    
+    if (rotas[1] === rotaAnterior){
+      this.router.navigate([rotas[1]])
+    }
   }
 }

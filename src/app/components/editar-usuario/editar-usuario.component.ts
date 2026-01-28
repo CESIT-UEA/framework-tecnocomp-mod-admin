@@ -48,7 +48,7 @@ export class EditarUsuarioComponent {
           this.authService.logout();
         } else {
           alert('Usuário atualizado com sucesso!');
-          this.router.navigate(['/']);
+          this.router.navigate(['/tecnocomp/usuarios']);
         }
       },
       (error) => {

@@ -4,7 +4,7 @@
     <mat-card-subtitle [title]="plataforma.plataformaUrl" style="color: #A2A2A2;">{{ plataforma.plataformaUrl | truncate:30}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="content">
-    <div class="box-icon" [routerLink]="['/editar-plataforma', plataforma.id]">
+    <div class="box-icon" [routerLink]="['/tecnocomp','editar-plataforma', plataforma.id]">
       <mat-icon class="card-icon" >border_color</mat-icon>
     </div>
     <div class="box-icon">

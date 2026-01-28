@@ -42,15 +42,17 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
+import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
   
 const routes: Routes = [
+ 
   { path: 'login', component: LoginComponent },
   { path: 'cadastrar', component: AutoCadastroComponent},
   { path: 'cadastrar/teste', component: ConfirmacaoAutoCadastroComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'reset-password', component: ResetPasswordComponent, canActivate: [resetPasswordGuard]},
   {
-    path: '',
+    path: 'tecnocomp',
     component: LayoutMenuComponent,
     canActivate: [authGuard],
     children: [
@@ -69,6 +71,12 @@ const routes: Routes = [
         canActivate: [roleGuard],
         component: MeuPerfilPageComponent,
         data: { title: 'Meu Perfil', roles: ['professor', 'adm'] },
+      },
+      {
+        path: 'ver-perfil/:id',
+        canActivate: [roleGuard],
+        component: PerfilVisitaComponent,
+        data: { title: 'Perfil Visita', roles: ['adm'] }
       },
       {
         path: 'meus-modulos',
@@ -109,27 +117,27 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'cadastro-usuario',
+    path: 'tecnocomp/cadastros/cadastro-usuario',
     canActivate: [authGuard],
     component: CadastroUsuarioComponent,
   },
   {
-    path: 'cadastro-plataforma',
+    path: 'tecnocomp/cadastros/cadastro-plataforma',
     canActivate: [authGuard],
     component: CadastroPlataformaComponent,
   },
   {
-    path: 'registrar-modulo',
+    path: 'tecnocomp/cadastros/registrar-modulo',
     canActivate: [authGuard],
     component: RegistroModuloComponent,
   },
   {
-    path: 'editar-plataforma/:id',
+    path: 'tecnocomp/editar-plataforma/:id',
     canActivate: [authGuard],
     component: EditarPlataformaComponent,
   },
   {
-    path: 'editar-perfil',
+    path: 'tecnocomp/editar-perfil',
     canActivate: [authGuard],
     component: EditarPerfilComponent,
   },
@@ -170,7 +178,7 @@ const routes: Routes = [
     component: EditarTopicoComponent,
   },
   {
-    path: 'editar-modulo/:id',
+    path: 'tecnocomp/editar-modulo/:id',
     canActivate: [authGuard],
     component: EditarModuloComponent,
   },
@@ -180,7 +188,7 @@ const routes: Routes = [
     component: CadastroTopicoComponent,
   },
   {
-    path: 'editar-usuario/:id',
+    path: 'tecnocomp/editar-usuario/:id',
     canActivate: [authGuard],
     component: EditarUsuarioComponent,
   },
@@ -202,8 +210,8 @@ const routes: Routes = [
       { path: '**', redirectTo: ':id_modulo' },
     ],
   },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login' },
+   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
