@@ -132,9 +132,11 @@ select:focus {
 
 .mat-expansion-panel-body {
   background-color: #2B2A2E;
+ 
 }
 
 
 .mat-expansion-indicator::after {
     color: #FFF !important;
 }
+
