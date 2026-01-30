@@ -37,6 +37,8 @@
 
 .mat-expansion-panel-header:not([aria-disabled=true]) {
     background-color: #2B2A2E !important;
+    border: 1px solid #7C4CC6 !important;
+    
 }
 
 .mat-expansion-panel-header-title {
