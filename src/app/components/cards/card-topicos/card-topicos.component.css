@@ -1,7 +1,8 @@
 .card-topico {
   display: flex;
-  width: 100%;
-  padding: 15px 20px;
+  width: 374px;
+  height: 399px;
+  padding: 0 21px 19px 19px;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
@@ -10,18 +11,20 @@
   background: #2b2a2e;
   color: white;
 }
+
 .box-icon mat-icon {
   cursor: pointer;
 }
+
 mat-card-header {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 26px;
 }
+
 mat-card-header span {
-  margin-top: 40px;
-  color: var(--16, #c3a1f5);
+  color: var(--abc-color);
   text-align: center;
   font-family: Arial;
   font-size: 18px;
@@ -34,32 +37,38 @@ mat-card-header span {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .box-card-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 16px;
-  column-gap: 29px;
+  column-gap: 20px;
+  padding-bottom: 82px;
 }
+
 .box-card-content p{
   background-color: #3F3F40;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 93%;
   height: 22px;
   margin: 0;
   padding: 8px;
   gap: 20px;
 }
+
 a {
   text-decoration: underline;
   cursor: pointer;
   color: white;
 }
+
 a:hover {
   color: #c3a1f5;
 }
+
 mat-divider {
-  background-color: #7C4CC6;
-  margin: 15px 0;
+  background-color: var(--Primaria-color);
+  margin: 0 0;
   width: 100%;
 }
 .icons {
