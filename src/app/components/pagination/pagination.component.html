@@ -6,10 +6,7 @@
 <!-- Botões de navegação apenas quando há itens e mais de uma página -->
 <div class="container-botoes-navegacao" *ngIf="hasItems && shouldShowPagination">
   <div class="indicadores-pagina">
-    <a (click)="previousPage()" class="botao-voltar" [style.opacity]="canGoToPreviousPage ? '1' : '0'" [style.pointer-events]="canGoToPreviousPage ? 'auto' : 'none'">
-      <img src="../../../assets/icons/voltar.png" alt="voltar">
-    </a>
-    
+  
     <!-- Indicador de mais páginas à esquerda -->
     <div *ngIf="shouldShowLeftIndicator" class="indicador-mais-paginas">
       <span class="pontos">•••</span>
@@ -28,8 +25,5 @@
       <span class="pontos">•••</span>
     </div>
     
-    <a (click)="nextPage()" class="botao-avançar" [style.opacity]="canGoToNextPage ? '1' : '0'" [style.pointer-events]="canGoToNextPage ? 'auto' : 'none'">
-      <img src="../../../assets/icons/proximo.svg" alt="avançar">
-    </a>
   </div>
 </div>

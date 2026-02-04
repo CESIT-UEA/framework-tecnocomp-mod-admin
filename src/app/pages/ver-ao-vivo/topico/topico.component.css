@@ -1,0 +1,27 @@
+ .titulo-topico {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.titulo-topico ul {
+  padding-right: 3.5rem;
+}
+
+.botao_roxo_avancar {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.botao_roxo_avancar img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
