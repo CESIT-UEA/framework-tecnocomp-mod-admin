@@ -14,32 +14,21 @@
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  width: 100%;
+  width: 95.4%;
   height: 3.88rem;
   margin: 0 auto;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4.5rem;
   padding: 0 0.69rem 0 2.81rem;
   border-radius: 35px;
   background-color: var(--5-color);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 640px) {
-
-  }
-
-  @media (max-width: 490px) {
-
-  }
-
-  @media (max-width: 400px) {
-
-  }
 }
 
 .novo-topico h1 {
   font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
   line-height: normal;
   flex-wrap: wrap;
   color: var(--Terciaria, #fff);
@@ -51,41 +40,33 @@ button {
   border: none;
 }
 
+.novo-topico button:hover {
+    filter: brightness(70%);
+  }
+
 .novo-topico button mat-icon {
   color: white;
 }
 
-
-
 .topicos-container {
-  width: 94%;
+  width: 100%;
   padding-bottom: 1.69rem;
   flex-wrap: wrap;
 }
 
-.topicos-grid {
-  display: grid;
-  gap: 2.94rem;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: 3.56rem;
-
-
-  @media (max-width: 640px) {
-
-  }
-
-  @media (max-width: 490px) {
-
-  }
-
-  @media (max-width: 1900px) {
-  gap: 19.2rem;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: 3.56rem;
-  }
+.container img {
+  position: absolute;
+  bottom: 34%;
+  left: 96.5%;
+  cursor: pointer;
 }
 
+.topicos-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2.94rem;
+  padding-top: 3.56rem;
+}
 
 button {
   display: flex;
@@ -114,4 +95,19 @@ button {
 .pagination {
   margin: 0 auto;
   width: 94%;
+}
+  
+@media screen and (min-width: 1900px) {
+  .topicos-grid {
+  gap: 19.94rem;
+  }
+
+  .container img {
+  bottom: 46%;
+  left: 97.5%;
+  }
+
+  .novo-topico {
+  width: 96.8%;
+}
 }

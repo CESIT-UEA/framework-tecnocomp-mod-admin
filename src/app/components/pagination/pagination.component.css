@@ -67,8 +67,8 @@
 }
 
 .indicador-pagina.ativo {
-  background-color: #7C4CC6;
-  box-shadow: 0 0 10px rgba(124, 76, 198, 0.5);
+  background: linear-gradient(180deg, #7C4CC6 0%, #5300F9 100%);
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 .indicador-pagina.ativo:hover {
