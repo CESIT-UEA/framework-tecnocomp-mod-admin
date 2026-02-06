@@ -136,3 +136,13 @@ mat-card-actions {
 .btn:hover {
   filter: brightness(70%);
 }
+
+@media screen and (max-width: 1899px) {
+  .btn {
+  font-size: 1rem;
+  }
+
+  .box-card-content p {
+  font-size: 1rem;
+  } 
+}

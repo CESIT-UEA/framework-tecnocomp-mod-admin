@@ -96,6 +96,26 @@ button {
   margin: 0 auto;
   width: 94%;
 }
+
+.topicos-container {
+  padding-bottom: 2.8rem;
+}
+
+@media screen and (min-width: 1500px) {
+  .topicos-grid {
+  gap: 9rem;
+  }
+
+  .container img {
+  bottom: 43%;
+  left: 97%;
+  }
+
+  .novo-topico {
+  width: 96.8%;
+  }
+}
+
   
 @media screen and (min-width: 1900px) {
   .topicos-grid {
@@ -109,5 +129,9 @@ button {
 
   .novo-topico {
   width: 96.8%;
+}
+
+.novo-topico h1 {
+  font-size: 1.7rem;
 }
 }
