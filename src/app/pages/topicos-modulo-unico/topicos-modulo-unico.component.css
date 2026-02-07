@@ -1,6 +1,6 @@
 .container {
   overflow: hidden;
-  height: 88vh;
+  height: clamp(80vh ,88vh, 90vh);
   padding: 2.38rem 4.56rem 1.88rem 4.38rem;
   box-sizing: border-box;
   border: none;
@@ -14,11 +14,13 @@
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  width: 95.4%;
   height: 3.88rem;
-  margin: 0 auto;
+  margin: 0;
   margin-bottom: 4.5rem;
-  padding: 0 0.69rem 0 2.81rem;
+  padding-top: 0;
+  padding-right: min(0.69rem, 8%);
+  padding-bottom: 0;
+  padding-left: min(2.81rem, 8%);
   border-radius: 35px;
   background-color: var(--5-color);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
@@ -26,7 +28,7 @@
 }
 
 .novo-topico h1 {
-  font-size: 1.5rem;
+  font-size: clamp(20px, 10vw, 25px);
   font-weight: bold;
   font-family: "Inter", sans-serif;
   line-height: normal;
@@ -51,7 +53,6 @@ button {
 .topicos-container {
   width: 100%;
   padding-bottom: 1.69rem;
-  flex-wrap: wrap;
 }
 
 .container img {
@@ -62,10 +63,12 @@ button {
 }
 
 .topicos-grid {
-  display: flex;
-  flex-direction: row;
-  gap: 2.94rem;
-  padding-top: 3.56rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  gap: clamp(2rem ,4rem, 5rem);
+  width: 100%;
+  padding-top: clamp(4rem, 8vw, 8rem);
 }
 
 button {
@@ -99,39 +102,4 @@ button {
 
 .topicos-container {
   padding-bottom: 2.8rem;
-}
-
-@media screen and (min-width: 1500px) {
-  .topicos-grid {
-  gap: 9rem;
-  }
-
-  .container img {
-  bottom: 43%;
-  left: 97%;
-  }
-
-  .novo-topico {
-  width: 96.8%;
-  }
-}
-
-  
-@media screen and (min-width: 1900px) {
-  .topicos-grid {
-  gap: 19.94rem;
-  }
-
-  .container img {
-  bottom: 46%;
-  left: 97.5%;
-  }
-
-  .novo-topico {
-  width: 96.8%;
-}
-
-.novo-topico h1 {
-  font-size: 1.7rem;
-}
 }

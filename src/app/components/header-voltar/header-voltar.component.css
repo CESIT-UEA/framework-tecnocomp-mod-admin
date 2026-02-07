@@ -17,7 +17,7 @@
 .container-voltar p{
 color: #FFF;
 font-family: "Inter", sans-serif;
-font-size: 30px;
+font-size: clamp(20px, 10vw, 30px);
 font-weight: bold;
 line-height: normal;
 }
