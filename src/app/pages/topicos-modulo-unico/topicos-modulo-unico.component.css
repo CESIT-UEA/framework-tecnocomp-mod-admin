@@ -1,11 +1,14 @@
 .container {
   overflow: hidden;
-  height: clamp(80vh ,88vh, 90vh);
-  padding: 2.38rem 4.56rem 1.88rem 4.38rem;
+  height: 88vh;
+  padding: 
+  clamp(1.5rem, 4vw, 3rem)
+  clamp(1.5rem, 5vw, 4.5rem);
   box-sizing: border-box;
   border: none;
   background-color: #131313;
   width: 100%;
+  position: relative;
 }
 
 .novo-topico {
@@ -28,7 +31,7 @@
 }
 
 .novo-topico h1 {
-  font-size: clamp(20px, 10vw, 25px);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
   font-weight: bold;
   font-family: "Inter", sans-serif;
   line-height: normal;
@@ -57,17 +60,18 @@ button {
 
 .container img {
   position: absolute;
-  bottom: 34%;
-  left: 96.5%;
+  right: 1.5%;
+  bottom: 45%;
   cursor: pointer;
 }
 
 .topicos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(2rem ,4rem, 5rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
-  padding-top: clamp(4rem, 8vw, 8rem);
+  gap: 20px;
+  padding-top: clamp(3rem, 4vw, 8rem);
 }
 
 button {
