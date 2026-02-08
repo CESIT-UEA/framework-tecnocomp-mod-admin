@@ -65,7 +65,6 @@ button {
 .topicos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
   gap: clamp(2rem ,4rem, 5rem);
   width: 100%;
   padding-top: clamp(4rem, 8vw, 8rem);
