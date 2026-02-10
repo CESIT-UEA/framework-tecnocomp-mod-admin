@@ -21,43 +21,69 @@
         Meu perfil
       </a>
       <!-- Administrador -->
-      <a *ngIf="isAdmin" routerLink="/tecnocomp/usuarios" routerLinkActive="active">
+      <a
+        *ngIf="isAdmin"
+        routerLink="/tecnocomp/usuarios"
+        routerLinkActive="active"
+      >
         <mat-icon>person</mat-icon>
         Usuarios
       </a>
-      <a *ngIf="isAdmin" routerLink="/tecnocomp/modulos" routerLinkActive="active">
+      <a
+        *ngIf="isAdmin"
+        routerLink="/tecnocomp/modulos"
+        routerLinkActive="active"
+      >
         <mat-icon>devices</mat-icon>
         Modulos
       </a>
-      <a *ngIf="isAdmin" routerLink="/tecnocomp/plataformas" routerLinkActive="active">
+      <a
+        *ngIf="isAdmin"
+        routerLink="/tecnocomp/plataformas"
+        routerLinkActive="active"
+      >
         <mat-icon>view_module</mat-icon>
         Plataformas
       </a>
 
       <!-- Professor -->
-      <a *ngIf="isProfessor" routerLink="/tecnocomp/templates" routerLinkActive="active">
+      <a
+        *ngIf="isProfessor"
+        routerLink="/tecnocomp/templates"
+        routerLinkActive="active"
+      >
         <mat-icon>person</mat-icon>
         Templates
       </a>
-      <a *ngIf="isProfessor" routerLink="/tecnocomp/meus-modulos" routerLinkActive="active">
+      <a
+        *ngIf="isProfessor"
+        routerLink="/tecnocomp/meus-modulos"
+        routerLinkActive="active"
+      >
         <mat-icon>devices</mat-icon>
         Meus Modulos
       </a>
-      <a *ngIf="isProfessor" routerLink="/tecnocomp/minhas-plataformas" routerLinkActive="active">
+      <a
+        *ngIf="isProfessor"
+        routerLink="/tecnocomp/minhas-plataformas"
+        routerLinkActive="active"
+      >
         <mat-icon>view_module</mat-icon>
-        Minhas Plataformas
+        Minhas Plataforma
       </a>
-
     </mat-nav-list>
 
     <div class="caixa-perfil">
       <div class="imagem" *ngIf="this.getUsuarioDados()">
-      <img *ngIf="this.getUsuarioDados().url_foto; else letra" [src]="this.getUsuarioDados().url_foto">
+        <img
+          *ngIf="this.getUsuarioDados().url_foto; else letra"
+          [src]="this.getUsuarioDados().url_foto"
+        />
 
-      <ng-template #letra>
-        <p>{{ this.getUsuarioDados().username.charAt(0) }}</p>
-      </ng-template>
-    </div>
+        <ng-template #letra>
+          <p>{{ this.getUsuarioDados().username.charAt(0) }}</p>
+        </ng-template>
+      </div>
 
       <div class="texto">
         <p>{{ getUsuarioDados().username }}</p>
@@ -75,20 +101,12 @@
 
   <mat-drawer-content class="main-content">
     <header class="header">
-      <mat-icon
-      style="cursor: pointer;"
-      (click)="toggleDrawer()"
-    >
-      {{ isDrawerOpen ? 'arrow_back' : 'arrow_forward' }}
-    </mat-icon>
-    <h1>{{ currentPageTitle }}</h1>
-      <mat-form-field>
+      <img src="../../../assets/icons/Voltar_plataformas.svg" />
+      <h1>Plataforma</h1>
+      <mat-form-field class="teste_00">
         <mat-label>Pesquisar</mat-label>
         <input matInput placeholder="Ex: Usuários, Plataformas..." />
       </mat-form-field>
-      <button mat-icon-button>
-        <mat-icon>search</mat-icon>
-      </button>
     </header>
 
     <div class="container-conteudo">
@@ -96,4 +114,3 @@
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
-

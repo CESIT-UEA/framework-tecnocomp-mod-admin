@@ -22,18 +22,20 @@
   align-items: center;
   align-self: stretch;
   border-radius: 30px;
-  /* border-left: 8px solid var(--Primaria, #9665df); */
   background: #2b2a2e;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 }
+
 .titulo h1 {
-  color: var(--Terciaria, #fff);
-  font-size: 24px;
+  color: var(--0-color);
+  font-size: 20px;
   font-style: normal;
+  font-weight: bold;
   font-weight: 700;
   line-height: normal;
 }
-.informacoes .titulo  button {
+
+.informacoes .titulo button {
   cursor: pointer;
   background: transparent;
   outline: none;
@@ -49,6 +51,7 @@
   color: white;
   font-size: 16px;
 }
+
 .container-cards-modulos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -73,23 +76,26 @@
   justify-self: end;
 }
 
-.meus-modulos p, .minhas-plataformas p {
+.meus-modulos p,
+.minhas-plataformas p {
   margin-top: 30px;
   color: #fff;
-  font-family: Arial;
+  font-family: 'Inter';
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
 mat-divider {
   background-color: white;
   margin: 30px 0;
 }
 
-.meus-modulos .titulo button,.minhas-plataformas .titulo button{
+.meus-modulos .titulo button,
+.minhas-plataformas .titulo button {
   cursor: pointer;
-  background: var(--12, #9256ed);
+  background: linear-gradient(180deg, #7C4CC6 0%, #5300F9 100%);
   outline: none;
   border: none;
   padding: 2px;
@@ -100,10 +106,12 @@ mat-divider {
   border-radius: 50%;
 }
 
-.meus-modulos .titulo button mat-icon ,.minhas-plataformas .titulo button mat-icon{
+.meus-modulos .titulo button mat-icon,
+.minhas-plataformas .titulo button mat-icon {
   color: white;
 }
-.card{
+
+.card {
   margin-bottom: 20px;
 }
 

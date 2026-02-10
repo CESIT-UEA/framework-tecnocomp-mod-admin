@@ -18,6 +18,7 @@
   border-top: 8px solid #7C4CC6;
 
 }
+
 .mat-stepper-horizontal {
   background-color: transparent;
 }
@@ -34,10 +35,12 @@ mat-divider {
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
 h3 {
   color: white;
   text-align: center;
 }
+
 /* Campos de formulário */
 .campo-formulario {
   display: flex;
@@ -99,16 +102,23 @@ button[mat-button] {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .botoes {
   display: flex;
   width: 100%;
   justify-content: space-between;
   padding-top: 30px;
 }
+
 .remover {
-  background-color: #ff5722; /* Laranja destaque */
+  background-color: #ff5722;
+  /* Laranja destaque */
 }
-.voltar, .proximo, .remover, .adicionar {
+
+.voltar,
+.proximo,
+.remover,
+.adicionar {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -118,10 +128,11 @@ button[mat-button] {
   column-gap: 10px;
 }
 
-.revisar{
+.revisar {
   background-color: blue;
 }
-.finalizar{
+
+.finalizar {
   border: none;
   background-color: #58DB43;
   color: #FFF;
@@ -144,10 +155,10 @@ button[mat-button] {
 
 .adicionar {
   display: flex;
-} 
+}
 
 
-.mat-divider-top-mat-form-field, 
+.mat-divider-top-mat-form-field,
 .botao-remover,
 .botao-adicionar {
   position: relative;
@@ -155,7 +166,7 @@ button[mat-button] {
   margin-bottom: 0;
 }
 
-.botao-remover, 
+.botao-remover,
 .botao-adicionar {
   top: -20px;
 }
@@ -164,17 +175,18 @@ button[mat-button] {
   margin-bottom: 10px;
 }
 
-.icone-adicionar, .icone-remover{
-   border-radius: 50%;
-   background-color: #7C4CC6;
-   height: 25px;
-   width: 25px;
+.icone-adicionar,
+.icone-remover {
+  border-radius: 50%;
+  background-color: #7C4CC6;
+  height: 25px;
+  width: 25px;
 }
 
 
 .icone-remover {
   background-color: #ff5722 !important;
-} 
+}
 
 .box-input {
   display: flex;
@@ -188,16 +200,19 @@ button[mat-button] {
   text-align: center;
   margin-bottom: 20px;
 }
+
 /* Seções de revisão */
 .revisao-secao {
   margin-bottom: 25px;
   padding: 10px 15px;
-  background-color: #2c2c2c; /* Fundo levemente mais claro que a página */
+  background-color: #2c2c2c;
+  /* Fundo levemente mais claro que a página */
   border-radius: 8px;
 }
 
 .revisao-secao strong {
-  color: #fff; /* Destaque para os títulos das informações */
+  color: #fff;
+  /* Destaque para os títulos das informações */
   font-size: 1.3rem;
 }
 
@@ -216,14 +231,17 @@ button[mat-button] {
   font-size: 1rem;
   margin: 15px 0;
 }
-a{
+
+a {
   color: white;
 
 }
-.correto{
+
+.correto {
   color: green;
 }
-.errado{
+
+.errado {
   color: #ff5722;
 }
 
@@ -305,7 +323,8 @@ a{
   margin: 10px 0;
 }
 
-.saiba-mais, .ref {
+.saiba-mais,
+.ref {
   display: block !important;
   height: initial !important;
   list-style-type: none;
@@ -384,6 +403,7 @@ ul {
 @media (max-width: 600px) {
   .formulario {
     width: 100%;
-    margin: 0 10px; /* Adiciona margens laterais */
+    margin: 0 10px;
+    /* Adiciona margens laterais */
   }
 }
