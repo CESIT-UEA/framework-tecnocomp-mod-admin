@@ -108,8 +108,9 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
 
   adicionarMembro(equipeId: number): void {
     const dialogRef = this.dialog.open(DialogCriarMembroComponent, {
-      width: '733px',
-      height: '303px',
+      width: '640px',
+      height: '370px',
+      panelClass: 'dialog-criar-membro',
       data: { equipeId },
     });
 
@@ -123,7 +124,9 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
   }
 editarMembro(membro: Membro): void {
   const dialogRef = this.dialog.open(DialogCriarMembroComponent, {
-    width: '400px',
+    width: '640px',
+      height: '370px',
+      panelClass: 'dialog-criar-membro',
     data: { membro }
   });
 
@@ -138,7 +141,9 @@ editarMembro(membro: Membro): void {
 
   removerMembro(membro: Membro): void {
     const dialogRef = this.dialog.open(DialogConfirmarRemocaoComponent, {
-      width: '350px',
+      width: '484px',
+      height: '200px',
+      panelClass: 'dialog-remove-custom',
       data: {
         titulo: 'Remover Membro',
         mensagem: `Deseja remover o membro "${membro.nome}"?`,

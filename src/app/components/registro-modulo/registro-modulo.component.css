@@ -121,3 +121,77 @@ button[disabled] {
   background-color: #ccc;
   cursor: not-allowed;
 } */
+
+#file-upload-button {
+  background-color: transparent;
+}
+
+/* .upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+  background-color: #3F3F40;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+
+  transition: background 0.2s;
+}
+
+.upload-btn:hover {
+  background-color: #4338ca;
+} */
+
+/* Esconde o input */
+input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.upload-btn {
+  background-color: #e7e7e7;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+.file-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background-color: #2a2a2e;
+  padding: 10px 14px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.file-btn {
+  background-color: #7c3aed; /* roxo */
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.file-btn:hover {
+  background-color: #6d28d9;
+}
+
+.file-name {
+  color: #cfcfcf;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
