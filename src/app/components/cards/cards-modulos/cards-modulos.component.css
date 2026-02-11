@@ -54,9 +54,7 @@
 .box-content .box-icon mat-icon {
   font-size: 20px;
 }
-.container-card:hover{
-  border: 5px solid #9665df;
-}
+
 .status {
   margin-bottom: 10px;
   font-weight: bold;
