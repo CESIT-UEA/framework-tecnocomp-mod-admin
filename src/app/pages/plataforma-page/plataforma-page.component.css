@@ -1,5 +1,5 @@
 .container-background {
-  min-height: 88vh;
+  min-height: 94.6vh;
   background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 16.83%, rgba(0, 0, 0, 0.09) 47.11%, rgba(66, 0, 146, 0.05) 81.73%, rgba(95, 0, 211, 0.05) 95.21%), #131313;
 }
 
@@ -12,22 +12,13 @@
 
 .container-cards-plataformas{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
   margin-bottom: 30px;
-  /* padding-bottom: 50px; */
 }
 
-.card:nth-child(1) {
-  justify-self: start;
-}
-
-.card:nth-child(2) {
+.card {
   justify-self: center;
-}
-
-.card:nth-child(3) {
-  justify-self: end;
 }
 
 .botoes-navegacao-plataformas {
