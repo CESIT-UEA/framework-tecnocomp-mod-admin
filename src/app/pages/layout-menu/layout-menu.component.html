@@ -103,10 +103,9 @@
     <header class="header">
       <img src="../../../assets/icons/Voltar_plataformas.svg" />
       <h1>Plataforma</h1>
-      <mat-form-field class="teste_00">
-        <mat-label>Pesquisar</mat-label>
-        <input matInput placeholder="Ex: Usuários, Plataformas..." />
-      </mat-form-field>
+      <form action="/pesquisa" method="get">
+        <input type="search" placeholder="Pesquisar..." required />
+      </form>
     </header>
 
     <div class="container-conteudo">
