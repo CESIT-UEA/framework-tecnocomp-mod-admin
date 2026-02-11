@@ -1,98 +1,95 @@
 <app-header-voltar texto="Editar Plataforma"></app-header-voltar>
-<div class="container-editar-plataforma">
-  <h2>Editar Plataforma</h2>
-  <form [formGroup]="plataformaForm" (ngSubmit)="salvarAlteracoes()">
-    <div class="form-group">
-      <label for="plataformaNome">Nome da Plataforma:</label>
-      <input
-        id="plataformaNome"
-        type="text"
-        formControlName="plataformaNome"
-        placeholder="Digite o nome da plataforma"
-      />
-      <div
-        *ngIf="
-          plataformaForm.get('plataformaNome')?.invalid &&
-          plataformaForm.get('plataformaNome')?.touched
-        "
-      >
-        <small class="error"
-          >Nome é obrigatório e deve ter pelo menos 3 caracteres.</small
-        >
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="plataformaUrl">URL da Plataforma:</label>
-      <input
-        id="plataformaUrl"
-        type="url"
-        formControlName="plataformaUrl"
-        placeholder="https://"
-      />
-      <div
-        *ngIf="
-          plataformaForm.get('plataformaUrl')?.invalid &&
-          plataformaForm.get('plataformaUrl')?.touched
-        "
-      >
-        <small class="error">URL é obrigatória e deve ser válida.</small>
-      </div>
-    </div>
+<main class="page-editar-plataforma">
+  <section class="card-editar-plataforma">
+    <header class="card-header">
+      <h2 class="card-title">Editar Plataforma</h2>
+      <div class="card-divider"></div>
+      <p class="card-texto">
+        <span>*</span> Indica campos obrigatórios
+      </p>
+    </header>
 
-    <div class="form-group">
-      <label for="idCliente">ID do Cliente:</label>
-      <input
-        id="idCliente"
-        type="text"
-        formControlName="idCliente"
-        placeholder="Digite o ID do cliente"
-      />
-      <div
-        *ngIf="
-          plataformaForm.get('idCliente')?.invalid &&
-          plataformaForm.get('idCliente')?.touched
-        "
-      >
-        <small class="error">ID do cliente é obrigatório.</small>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="temaTipo">Tema Visual:</label>
-      <select id="temaTipo" formControlName="temaTipo">
-        <option value="padrao">Padrão</option>
-        <option value="tema1">Tema 1</option>
-        <option value="tema2">Tema 2</option>
-        <option value="customizado">Personalizado</option>
-      </select>
-    </div>
-
-    <div
-      *ngIf="plataformaForm.get('temaTipo')?.value === 'customizado'"
-      class="form-group"
+    <form
+      [formGroup]="plataformaForm"
+      (ngSubmit)="salvarAlteracoes()"
+      class="card-form"
     >
-      <label>Cores Personalizadas:</label>
-      <input type="color" formControlName="customPrimaria" title="Primária" />
-      <input
-        type="color"
-        formControlName="customSecundaria"
-        title="Secundária"
-      />
-      <input type="color" formControlName="customTerciaria" title="Terciária" />
-      <input
-        type="color"
-        formControlName="customQuartenaria"
-        title="Quartenária"
-      />
-      <input
-        type="color"
-        formControlName="customQuintenaria"
-        title="Quintenária"
-      />
-    </div>
+      <!-- Nome da Ferramenta -->
+      <div class="form-group">
+        <label for="plataformaNome">
+          Nome da Ferramenta <span>*</span>
+        </label>
+        <input
+          id="plataformaNome"
+          type="text"
+          formControlName="plataformaNome"
+          placeholder="Digite o nome da plataforma"
+        />
+        <div
+          *ngIf="
+            plataformaForm.get('plataformaNome')?.invalid &&
+            plataformaForm.get('plataformaNome')?.touched
+          "
+        >
+          <small class="error">
+            Nome é obrigatório e deve ter pelo menos 3 caracteres.
+          </small>
+        </div>
+      </div>
 
-    <button type="submit" [disabled]="plataformaForm.invalid">
-      Salvar Alterações
-    </button>
-  </form>
-</div>
+      <!-- URL + ID do Cliente lado a lado -->
+            <div class="form-row">
+        <div class="form-group">
+          <label for="plataformaUrl">URL da Plataforma <span>*</span></label>
+          <input
+            id="plataformaUrl"
+            type="url"
+            formControlName="plataformaUrl"
+            placeholder="https://"
+          />
+          <div
+            *ngIf="
+              plataformaForm.get('plataformaUrl')?.invalid &&
+              plataformaForm.get('plataformaUrl')?.touched
+            "
+          >
+            <small class="error">URL é obrigatória e deve ser válida.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="idCliente">ID do Cliente <span>*</span></label>
+          <input
+            id="idCliente"
+            type="text"
+            formControlName="idCliente"
+            placeholder="Digite o ID do cliente"
+          />
+          <div
+            *ngIf="
+              plataformaForm.get('idCliente')?.invalid &&
+              plataformaForm.get('idCliente')?.touched
+            "
+          >
+            <small class="error">ID do cliente é obrigatório.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancelar">
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-salvar"
+          [disabled]="plataformaForm.invalid"
+        >
+          Salvar alterações
+        </button>
+      </div>
+    </form>
+  </section>
+</main>
