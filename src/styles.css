@@ -135,8 +135,10 @@ select:focus {
   border-bottom: 1px solid #7C4CC6;
   border-left: 1px solid #7C4CC6;
   border-right: 1px solid #7C4CC6;
-  padding-top: 16px !important;
+  
+  padding: 0 !important;
 }
+
 
 
 .mat-expansion-indicator::after {

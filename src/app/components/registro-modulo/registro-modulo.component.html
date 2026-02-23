@@ -19,10 +19,8 @@
         <label for="ebookUrlGeral" class="cadastro-modulo-label upload-btn file-bnt">
           Ebook URL Geral<span> *</span>
         </label>
-        <input id="ebookUrlGeral" hidden type="file" (change)="onSelectedFile($event)" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
-        <span class="file-name">
-          {{ 'Nenhum arquivo selecionado' }}
-      </span>
+        <input id="ebookUrlGeral" type="file" (change)="onSelectedFile($event)" class="cadastro-modulo-input" formControlName="ebookUrlGeral" />
+        
       </div>
       <div class="cadastro-modulo-campo">
         <label for="video_inicial" class="cadastro-modulo-label">Vídeo Inicial<span> *</span></label>

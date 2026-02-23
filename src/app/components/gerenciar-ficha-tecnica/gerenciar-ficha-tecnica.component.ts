@@ -89,8 +89,9 @@ export class GerenciarFichaTecnicaComponent implements OnInit {
 
   deletarEquipe(equipeId: number): void {
     const dialogRef = this.dialog.open(DialogConfirmarRemocaoComponent, {
-      width: '733px',
-      height: '303px',
+      width: '484px',
+      height: '185px',
+      panelClass: 'dialog-remove-custom',
       data: {
         titulo: 'Remover Equipe',
         mensagem: 'Tem certeza que deseja remover esta equipe?',
@@ -142,7 +143,7 @@ editarMembro(membro: Membro): void {
   removerMembro(membro: Membro): void {
     const dialogRef = this.dialog.open(DialogConfirmarRemocaoComponent, {
       width: '484px',
-      height: '200px',
+      height: '185px',
       panelClass: 'dialog-remove-custom',
       data: {
         titulo: 'Remover Membro',
