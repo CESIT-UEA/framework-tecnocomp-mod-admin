@@ -36,7 +36,7 @@
 .cancelar {
     border: 3px solid #7C4CC6;
     background-color: transparent;
-    color: #7C4CC6;
+    color: #7C4CC6 !important;
 }
 
 

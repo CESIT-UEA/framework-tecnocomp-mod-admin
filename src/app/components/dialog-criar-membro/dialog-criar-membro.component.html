@@ -1,25 +1,27 @@
-<h2 mat-dialog-title>{{ isEditando ? 'Editar Membro' : 'Novo Membro' }}</h2>
-
+<h2 class="titulo">{{ isEditando ? 'Editar Membro' : 'Novo Membro' }}</h2>
+<mat-divider></mat-divider>
 <mat-dialog-content>
-  <mat-form-field style="width: 100%;">
-    <mat-label>Nome</mat-label>
-    <input matInput [(ngModel)]="nome" />
-  </mat-form-field>
+  <div class="caixa first">
+    <mat-label class="nome-membro">Nome</mat-label>
+    <input class="input" [(ngModel)]="nome" placeholder="Digite o nome do membro"/>
+  </div>
 
-  <mat-form-field style="width: 100%;">
-    <mat-label>Cargo</mat-label>
-    <input matInput [(ngModel)]="cargo" />
-  </mat-form-field>
+  <div class="caixa">
+    <mat-label class="cargo-membro">Cargo</mat-label>
+    <input class="input" [(ngModel)]="cargo" placeholder="Digite o cargo do membro" />
+  </div>
 
-  <mat-form-field style="width: 100%;">
+  <!-- <mat-form-field style="width: 100%;">
     <mat-label>URL da Foto (opcional)</mat-label>
     <input matInput [(ngModel)]="foto_url" />
-  </mat-form-field>
+  </mat-form-field> -->
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-raised-button color="primary" (click)="confirmar()" [disabled]="!nome.trim() || !cargo.trim()">
-    {{ isEditando ? 'Salvar' : 'Adicionar' }}
-  </button>
+<mat-dialog-actions>
+  <div class="botoes">
+    <button class="cancelar" (click)="cancelar()">Cancelar</button>
+    <button class="criar" (click)="confirmar()" [disabled]="!nome.trim() || !cargo.trim()">
+      {{ isEditando ? 'Salvar' : 'Adicionar' }}
+    </button>
+  </div>
 </mat-dialog-actions>
