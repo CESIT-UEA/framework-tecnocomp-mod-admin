@@ -2,13 +2,14 @@
   <div class="img" *ngIf="user">
       <img *ngIf="user.url_foto; else letra" [src]="user.url_foto">
       <ng-template #letra>
-        <p>{{ user.username.charAt(0) }}</p>
+        <img src="../../../assets/icons/perfil-sem-foto.png" alt="">
       </ng-template>
-    </div>
-  <div class="informacoes">
-    <mat-card-header>
+      <mat-card-header>
       <mat-card-title [title]="this.user.username">{{ this.user.username | truncate:30 }}</mat-card-title>
     </mat-card-header>
+    </div>
+  <div class="informacoes">
+    
     <mat-card-content class="content">
       <div class="box-icon">
         <mat-icon class="card-icon" (click)="abrirConfirmacaoExcluir()">delete </mat-icon>

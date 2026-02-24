@@ -5,5 +5,5 @@ export const environment = {
 
 export const environmentFrontEnd = {
   production: false,
-  baseUrl: 'https://tecnocomp.uea.edu.br:8001'
+  baseUrl: 'http://localhost:3001'
 }

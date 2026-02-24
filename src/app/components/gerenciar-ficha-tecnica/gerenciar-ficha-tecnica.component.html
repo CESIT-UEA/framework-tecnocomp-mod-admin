@@ -1,8 +1,9 @@
 <app-header-voltar texto="Gerenciar Ficha Técnica"></app-header-voltar>
 <div class="container" [ngClass]="{'com-equipe': equipes.length > 0}">
 
-  <div *ngIf="fichaTecnica" class="caixa">
-    <div style="margin: 16px 0">
+  <div class="caixa">
+    <div class="caixa-mensagem" style="margin: 16px 0">
+      <p class="nenhuma-equipe" *ngIf="equipes.length === 0">Nenhuma equipe adicionada ainda.</p>
       <button class="botao-adicionar-equipe" (click)="criarFicha()">
         Adicionar Equipe
       </button>
@@ -17,53 +18,52 @@
           <mat-panel-title>{{ equipe.nome }}</mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div style="margin-bottom: 8px">
-          <button
-            mat-stroked-button
-            color="primary"
-            (click)="adicionarMembro(equipe.id)"
-          >
-            Adicionar Membro
-          </button>
-        </div>
-
-        <div *ngIf="membrosPorEquipe[equipe.id]?.length; else semMembros">
-          <ul>
-            <li *ngFor="let membro of membrosPorEquipe[equipe.id]">
-              <img
-                *ngIf="membro.foto_url"
-                matListAvatar
-                [src]="membro.foto_url"
-                alt="Foto do membro"
-              />
-              <p class="text-muted">{{ membro.nome }} - {{ membro.cargo }}</p>
-              <button
-                mat-icon-button
-                color="primary"
+        <div *ngIf="membrosPorEquipe[equipe.id]?.length;">
+          <ul >
+            <li *ngFor="let membro of membrosPorEquipe[equipe.id]" class="lista-membros" style="list-style-type: none; width: 100%">
+              <div class="caixa-perfil">
+                <img
+                  src="../../../assets/icons/perfil-sem-foto.png"
+                  alt="Foto do membro"
+                />
+                <p class="text-muted">{{ membro.nome }} - {{ membro.cargo }}</p>
+              </div>
+              <div class="acoes-membros">
+                <button
                 (click)="editarMembro(membro)"
               >
-                <mat-icon>edit</mat-icon>
+                <img class="editar-ref" src="../../../assets/icons/editar-ref.png" alt="">
               </button>
               <button
-                mat-icon-button
-                color="warn"
+                class="remover-membro"
                 (click)="removerMembro(membro)"
               >
-                <mat-icon>delete</mat-icon>
+                <img class="excluir-ref" src="../../../assets/icons/image.png" alt="">
               </button>
+              </div>
+              
             </li>
           </ul>
         </div>
-
-        <ng-template #semMembros>
-          <p style="color: #999">Nenhum membro cadastrado.</p>
-        </ng-template>
-
-        <div style="text-align: right; margin-top: 8px">
-          <button mat-button color="warn" (click)="deletarEquipe(equipe.id)">
-            Remover Equipe
-          </button>
+        <div class="caixa-botoes">
+          <div>
+            <button class="remover-equipe" (click)="deletarEquipe(equipe.id)">
+              Remover Equipe
+            </button>
+          </div>
+          
+          <div>
+            <button
+              class="adicionar-membro"
+              color="primary"
+              (click)="adicionarMembro(equipe.id)"
+            >
+              Adicionar Membro
+            </button>
+          </div>
         </div>
+          
+        
       </mat-expansion-panel>
     </mat-accordion>
   </div>

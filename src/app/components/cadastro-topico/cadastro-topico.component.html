@@ -182,7 +182,7 @@
           <form [formGroup]="exerciciosFormGroup">
             <h3>Exercícios</h3>
             <mat-divider></mat-divider>
-            <div formArrayName="exercicios">
+            <div formArrayName="exercicios" *ngIf="exercicios.length > 0">
               <div
                 *ngFor="let exercicio of exercicios.controls; let i = index"
                 [formGroupName]="i"

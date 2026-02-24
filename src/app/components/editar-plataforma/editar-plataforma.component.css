@@ -1,51 +1,181 @@
-.container-editar-plataforma {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* ===== Layout geral ===== */
+
+.page-editar-plataforma {
+  height: 88vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(112deg,
+  rgba(18, 0, 96, 0.10) 16.83%,
+  rgba(0, 0, 0, 0.09) 47.11%,
+  rgba(66, 0, 146, 0.05) 81.73%,
+  rgba(95, 0, 211, 0.05) 95.21%), #131313;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+/* Card principal */
+
+.card-editar-plataforma {
+  width: 100%;
+  max-width: 680px;
+  background-color: #2B2A2E;
+  border-radius: 40px;
+  border-top: 7px solid #7C4CC6;
+  padding: 32px 55px 28px;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
 }
+
+
+/* ===== Cabeçalho ===== */
+
+.card-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.card-title {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* linha abaixo do título */
+.card-divider {
+  margin: 16px auto 16px;
+  width: 100%;
+  height: 2px;
+  background-color: #7C4CC6;
+}
+
+/* texto "Indica campos obrigatórios" */
+.card-texto {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #D33232;
+  text-align: left;
+}
+
+.card-texto span {
+  font-weight: 400;
+}
+
+/* ===== Formulário ===== */
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  font-family: Inter;
 }
 
-label {
+.form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 9px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
-input {
-  width: 100%;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-group label span {
+  color: #D33232;
 }
 
-button {
-  display: block;
+/* inputs */
+
+.form-group input {
+  box-sizing: border-box;
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #f4f4f5;
+  background-color: #424147;
+  border-radius: 10px;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
-button:disabled {
-  background-color: #ccc;
+
+.form-group input:focus {
+  box-shadow: 0 0 0 1px #9b5cff;
 }
+
+/* mensagens de erro */
 
 .error {
-  color: red;
+  display: block;
+  margin-top: 4px;
   font-size: 12px;
+  color: #ff6b6b;
+}
+
+/* ===== Linha com URL + ID ===== */
+
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+
+/* responsivo: empilhar no mobile
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row .form-group,
+  .form-row .form-group-id {
+    flex: 1;
+  }
+
+  .card-editar-plataforma {
+    padding: 24px 20px 20px;
+  }
+} */
+
+/* ===== Botões ===== */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* estilo base dos botões */
+
+.btn {
+  box-sizing: border-box;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+}
+
+/* Cancelar */
+.btn-cancelar {
+  background-color: transparent;
+  color: #7C4CC6;
+  border: 3px solid #7C4CC6;
+}
+
+.btn-cancelar:hover {
+  opacity: 50%;
+}
+
+/* Salvar alterações (gradiente) */
+.btn-salvar {
+ background: linear-gradient(90deg,
+ rgba(124, 76, 198, 0.50) 0%,
+ rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+color: #ffffff;
+}
+
+.btn-salvar:hover {
+  opacity: 50%;
 }
