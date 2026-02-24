@@ -10,7 +10,7 @@
   text-align: center;
   margin: 0 auto;
   font-size: 16px;
-  height: 240px;
+  height: 201px;
 }
 
 .content {
@@ -60,6 +60,7 @@ mat-card-title {
   font-family: "inter";
   font-weight: bold;
   font-weight: 700;
+  padding: 10px 0 0 20px !important;
 }
 
 mat-card-subtitle {
@@ -68,4 +69,9 @@ mat-card-subtitle {
   font-weight: 400;
   text-align: start;
   color: var(--2-color);
+  padding: 10px 0 0 20px !important;
+}
+
+.icons_plataformas {
+  padding-left: 20px;
 }
