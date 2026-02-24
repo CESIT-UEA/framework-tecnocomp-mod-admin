@@ -19,6 +19,7 @@
 
 .card {
   justify-self: center;
+  width: 100%;
 }
 
 .botoes-navegacao-plataformas {
