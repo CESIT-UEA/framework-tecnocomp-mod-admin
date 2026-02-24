@@ -1,7 +1,7 @@
 <mat-drawer-container class="drawer-container" autosize>
   <mat-drawer #drawer mode="side" opened="true" class="sidenav">
     <div class="logo">
-      <img src="../../../assets/logo.png" alt="logo" />
+      <img src="assets/icons/Tecnocomp.svg" alt="logo" />
     </div>
     <div class="titulo">
       <p>Links</p>
@@ -9,7 +9,7 @@
     </div>
     <mat-nav-list class="nav-list">
       <a routerLink="/tecnocomp/dashboard" routerLinkActive="active">
-        <mat-icon>home</mat-icon>
+        <mat-icon svgIcon="estrela"></mat-icon>
         Dashboard
       </a>
       <a routerLink="/tecnocomp/cadastros" routerLinkActive="active">
@@ -17,7 +17,7 @@
         Cadastrar
       </a>
       <a routerLink="/tecnocomp/meu-perfil" routerLinkActive="active">
-        <mat-icon>add</mat-icon>
+        <mat-icon svgIcon="perfil"></mat-icon>
         Meu perfil
       </a>
       <!-- Administrador -->
@@ -34,7 +34,7 @@
         routerLink="/tecnocomp/modulos"
         routerLinkActive="active"
       >
-        <mat-icon>devices</mat-icon>
+        <mat-icon svgIcon="modulos"></mat-icon>
         Modulos
       </a>
       <a
@@ -42,7 +42,7 @@
         routerLink="/tecnocomp/plataformas"
         routerLinkActive="active"
       >
-        <mat-icon>view_module</mat-icon>
+        <mat-icon svgIcon="plataformas"></mat-icon>
         Plataformas
       </a>
 
@@ -53,23 +53,23 @@
         routerLinkActive="active"
       >
         <mat-icon>person</mat-icon>
-        Templates
+        Usuários
       </a>
       <a
         *ngIf="isProfessor"
         routerLink="/tecnocomp/meus-modulos"
         routerLinkActive="active"
       >
-        <mat-icon>devices</mat-icon>
-        Meus Modulos
+        <mat-icon svgIcon="modulos"></mat-icon>
+        Módulos
       </a>
       <a
         *ngIf="isProfessor"
         routerLink="/tecnocomp/minhas-plataformas"
         routerLinkActive="active"
       >
-        <mat-icon>view_module</mat-icon>
-        Minhas Plataforma
+        <mat-icon svgIcon="plataformas"></mat-icon>
+        Plataformas
       </a>
     </mat-nav-list>
 
@@ -102,7 +102,7 @@
   <mat-drawer-content class="main-content">
     <header class="header">
       <img src="../../../assets/icons/Voltar_plataformas.svg" />
-      <h1>{{ currentPageTitle }}</h1>
+      <h1>Plataforma</h1>
       <form action="/pesquisa" method="get">
         <input type="search" placeholder="Pesquisar..." required />
       </form>
