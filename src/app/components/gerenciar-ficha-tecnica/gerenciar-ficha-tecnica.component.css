@@ -11,10 +11,12 @@
     align-items: initial;
     justify-content: initial;
     padding-left: 10px;
+
     .caixa {
         text-align: left;
     }
 }
+
 .caixa {
     width: 95% !important;
     margin: 0 auto;
@@ -47,7 +49,7 @@
 }
 
 .mat-accordion>.mat-expansion-panel-spacing:last-child {
-  background-color: #2B2A2E !important;
+    background-color: #2B2A2E !important;
 }
 
 

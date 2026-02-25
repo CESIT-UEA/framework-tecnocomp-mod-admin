@@ -23,7 +23,7 @@
       </button>
     </div>
     <div class="container-cards-modulos">
-      <div class="card" *ngFor="let plataforma of plataformas">
+      <div *ngFor="let plataforma of plataformas">
         <app-cards-plataformas
         [plataforma]="plataforma"
         (excluirPlataforma)="excluirPlataforma($event)"
@@ -33,6 +33,7 @@
 
     <!-- Componente de paginação para plataformas -->
     <app-pagination 
+    class="pagination"
       [pagination]="paginationPlataformas"
       noItemsMessage="Nenhuma plataforma encontrada"
       itemsLabel="plataformas"
@@ -59,6 +60,7 @@
 
     <!-- Componente de paginação para módulos -->
     <app-pagination 
+    
       [pagination]="paginationModulos"
       noItemsMessage="Nenhum módulo encontrado"
       itemsLabel="módulos"

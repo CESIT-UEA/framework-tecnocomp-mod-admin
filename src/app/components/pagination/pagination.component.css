@@ -1,46 +1,63 @@
-.container-botoes-navegacao {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 30px; */
-  height: 30px;
-  padding: 10px 0 20px 0;
-}
-
 .no-items-message {
+  margin: 1.25rem 0;
+  padding: 2.5rem 1.25rem;
   text-align: center;
-  padding: 40px 20px;
-  margin: 20px 0;
 }
 
 .no-items-message p {
-  color: #A2A2A2;
-  font-size: 16px;
-  font-style: italic;
   margin: 0;
+  font-size: 1rem;
+  font-style: italic;
+  color: #A2A2A2;
+}
+
+.container-botoes-navegacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 1.88rem;
+  padding: 0.63rem 0 1.25rem 0;
 }
 
 .indicadores-pagina {
   display: flex;
-  gap: 15px;
   align-items: center;
+  gap: 1.75rem;
 }
 
-.indicador-pagina {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  background-color: #3F3F40;
-  transition: all 0.3s ease;
+.indicador-mais-paginas {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #3F3F40;
+}
+
+.indicador-mais-paginas .pontos {
+  color: #7C4CC6;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.indicador-pagina {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  font-weight: 600;
+  color: white;
+  font-size: 1rem;
+  background-color: #3F3F40;
+  cursor: pointer;
+  transition: all 0.3s ease;
   user-select: none;
 }
 
@@ -50,64 +67,10 @@
 }
 
 .indicador-pagina.ativo {
-  background-color: #7C4CC6;
-  box-shadow: 0 0 10px rgba(124, 76, 198, 0.5);
+  background: linear-gradient(180deg, #7C4CC6 0%, #5300F9 100%);
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 .indicador-pagina.ativo:hover {
   background-color: #9665DF;
-}
-
-.indicador-mais-paginas {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #3F3F40;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  cursor: default;
-}
-
-.indicador-mais-paginas .pontos {
-  color: #7C4CC6;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1;
-  letter-spacing: 2px;
-}
-
-.botao-voltar {
-  position: absolute;
-  left: 2px;
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.3s ease;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.botao-voltar:hover {
-  transform: scale(1.1);
-}
-
-.botao-avançar {
-  position: absolute;
-  right: 2px;
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.3s ease;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.botao-avançar:hover {
-  transform: scale(1.1);
 }

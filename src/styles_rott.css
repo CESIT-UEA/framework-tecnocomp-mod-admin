@@ -1,0 +1,19 @@
+:root {
+    --Primaria-color: #7C4CC6;
+    --Secundaria-color: #0E0E0E;
+    --Terciaria-color: #131313;
+    --Quartenaria-color: #1B1B1B;
+
+    /* Tons */
+
+    --5-color: #2B2A2E;
+    --4-color: #3F3F40;
+    --3-color: #525252;
+    --2-color: #767676;
+    --1-color: #A2A2A2;
+    --0-color: #FFFFFF;
+    ---1-color: #442770;
+
+    /* Outras cores */
+    --abc-color: #BE93FF;
+}

@@ -1,7 +1,7 @@
 <mat-drawer-container class="drawer-container" autosize>
   <mat-drawer #drawer mode="side" opened="true" class="sidenav">
     <div class="logo">
-      <img src="../../../assets/logo.png" alt="logo" />
+      <img src="assets/icons/Tecnocomp.svg" alt="logo" />
     </div>
     <div class="titulo">
       <p>Links</p>
@@ -9,7 +9,7 @@
     </div>
     <mat-nav-list class="nav-list">
       <a routerLink="/tecnocomp/dashboard" routerLinkActive="active">
-        <mat-icon>home</mat-icon>
+        <mat-icon svgIcon="estrela"></mat-icon>
         Dashboard
       </a>
       <a routerLink="/tecnocomp/cadastros" routerLinkActive="active">
@@ -17,47 +17,73 @@
         Cadastrar
       </a>
       <a routerLink="/tecnocomp/meu-perfil" routerLinkActive="active">
-        <mat-icon>add</mat-icon>
+        <mat-icon svgIcon="perfil"></mat-icon>
         Meu perfil
       </a>
       <!-- Administrador -->
-      <a *ngIf="isAdmin" routerLink="/tecnocomp/usuarios" routerLinkActive="active">
+      <a
+        *ngIf="isAdmin"
+        routerLink="/tecnocomp/usuarios"
+        routerLinkActive="active"
+      >
         <mat-icon>person</mat-icon>
         Usuarios
       </a>
-      <a *ngIf="isAdmin" routerLink="/tecnocomp/modulos" routerLinkActive="active">
-        <mat-icon>devices</mat-icon>
+      <a
+        *ngIf="isAdmin"
+        routerLink="/tecnocomp/modulos"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="modulos"></mat-icon>
         Modulos
       </a>
-      <a *ngIf="isAdmin" routerLink="/tecnocomp/plataformas" routerLinkActive="active">
-        <mat-icon>view_module</mat-icon>
+      <a
+        *ngIf="isAdmin"
+        routerLink="/tecnocomp/plataformas"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="plataformas"></mat-icon>
         Plataformas
       </a>
 
       <!-- Professor -->
-      <a *ngIf="isProfessor" routerLink="/tecnocomp/templates" routerLinkActive="active">
+      <a
+        *ngIf="isProfessor"
+        routerLink="/tecnocomp/templates"
+        routerLinkActive="active"
+      >
         <mat-icon>person</mat-icon>
-        Templates
+        Usuários
       </a>
-      <a *ngIf="isProfessor" routerLink="/tecnocomp/meus-modulos" routerLinkActive="active">
-        <mat-icon>devices</mat-icon>
-        Meus Modulos
+      <a
+        *ngIf="isProfessor"
+        routerLink="/tecnocomp/meus-modulos"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="modulos"></mat-icon>
+        Módulos
       </a>
-      <a *ngIf="isProfessor" routerLink="/tecnocomp/minhas-plataformas" routerLinkActive="active">
-        <mat-icon>view_module</mat-icon>
-        Minhas Plataformas
+      <a
+        *ngIf="isProfessor"
+        routerLink="/tecnocomp/minhas-plataformas"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="plataformas"></mat-icon>
+        Plataformas
       </a>
-
     </mat-nav-list>
 
     <div class="caixa-perfil">
       <div class="imagem" *ngIf="this.getUsuarioDados()">
-      <img *ngIf="this.getUsuarioDados().url_foto; else letra" [src]="this.getUsuarioDados().url_foto">
+        <img
+          *ngIf="this.getUsuarioDados().url_foto; else letra"
+          [src]="this.getUsuarioDados().url_foto"
+        />
 
-      <ng-template #letra>
-        <p>{{ this.getUsuarioDados().username.charAt(0) }}</p>
-      </ng-template>
-    </div>
+        <ng-template #letra>
+          <p>{{ this.getUsuarioDados().username.charAt(0) }}</p>
+        </ng-template>
+      </div>
 
       <div class="texto">
         <p>{{ getUsuarioDados().username }}</p>
@@ -75,20 +101,11 @@
 
   <mat-drawer-content class="main-content">
     <header class="header">
-      <mat-icon
-      style="cursor: pointer;"
-      (click)="toggleDrawer()"
-    >
-      {{ isDrawerOpen ? 'arrow_back' : 'arrow_forward' }}
-    </mat-icon>
-    <h1>{{ currentPageTitle }}</h1>
-      <mat-form-field>
-        <mat-label>Pesquisar</mat-label>
-        <input matInput placeholder="Ex: Usuários, Plataformas..." />
-      </mat-form-field>
-      <button mat-icon-button>
-        <mat-icon>search</mat-icon>
-      </button>
+      <img src="../../../assets/icons/Voltar_plataformas.svg" />
+      <h1>{{ currentPageTitle }}</h1>
+      <form action="/pesquisa" method="get">
+        <input type="search" placeholder="Pesquisar..." required />
+      </form>
     </header>
 
     <div class="container-conteudo">
@@ -96,4 +113,3 @@
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
-

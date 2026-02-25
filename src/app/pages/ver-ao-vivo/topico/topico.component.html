@@ -2,7 +2,10 @@
 <div class="titulo-topico">
   <ul>
     <!-- Nome do tópico da unidade -->
-    <li>{{ this.verAoVivoService.controll_topico + 1 }}. Introdução a Algoritmos</li>
+    <li>{{ this.verAoVivoService.controll_topico + 1 }}. {{ topicoAtual?.nome_topico }}</li>
   </ul>
+  <button class="botao_roxo_avancar" type="button" (click)="avancarTopico()">
+    <img src="../../../../assets/icons/botao_roxo_avancar.svg" alt="Avançar para o próximo tópico">
+  </button>
   <hr />
 </div>

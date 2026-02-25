@@ -4,20 +4,20 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 20px;
+  gap: 33px;
   color: white;
-  padding: 20px;
+  padding: 25px 74px;
   height: 12vh;
 }
 
-.container-voltar mat-icon{
+.container-voltar img{
   cursor: pointer;
 }
+
 .container-voltar p{
-  color: #FFF;
-font-family: Arial;
-font-size: 30px;
-font-style: normal;
-font-weight: 700;
+color: #FFF;
+font-family: "Inter", sans-serif;
+font-size: clamp(20px, 10vw, 30px);
+font-weight: bold;
 line-height: normal;
 }

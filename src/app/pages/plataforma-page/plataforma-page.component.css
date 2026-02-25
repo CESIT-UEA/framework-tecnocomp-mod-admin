@@ -6,28 +6,20 @@
 .container-plataformas {
   width: 90%;
   margin: 0 auto;
-  padding-top: 40px;
+  padding-top: 20px;
   color: white;
 }
 
 .container-cards-plataformas{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
   margin-bottom: 30px;
-  /* padding-bottom: 50px; */
 }
 
-.card:nth-child(1) {
-  justify-self: start;
-}
-
-.card:nth-child(2) {
+.card {
   justify-self: center;
-}
-
-.card:nth-child(3) {
-  justify-self: end;
+  width: 100%;
 }
 
 .botoes-navegacao-plataformas {

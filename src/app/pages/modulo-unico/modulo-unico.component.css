@@ -1,9 +1,9 @@
 .detalhes-modulo-container {
+  display: flex;
+  align-items: center;
   width: 100%;
   background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 16.83%, rgba(0, 0, 0, 0.09) 47.11%, rgba(66, 0, 146, 0.05) 81.73%, rgba(95, 0, 211, 0.05) 95.21%), #131313;
   height: 88vh;
-  display: flex;
-  align-items: center;
 }
 .box-container {
   width: 90%;
@@ -12,17 +12,17 @@
 }
 .modulo h2 {
   color: #fff;
-  padding-bottom: 20px;
   border-bottom: 2px solid #7C4CC6;
   width: 100%;
   text-align: center;
+  padding-bottom: 1.25rem;
 }
 .box-modulo {
   display: flex;
   flex-direction: column;
-  padding: 20px 40px 40px 40px;
   align-items: center;
   justify-content: center;
+  padding: 1.25rem 2.5rem 2.5rem 2.5rem;
   border-top: 8px solid #7C4CC6;
   border-radius: 40px;
   background: #2C2C2E;
@@ -30,31 +30,31 @@
 }
 .box-modulo p {
   width: 96%;
-  height: 35px;
   /* font-family: Arial; */
-  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   background-color: #3F3F40;
   border-radius: 10px;
   column-gap: 5px;
+  height: 2.19rem;
+  font-size: 1rem;
 }
 
 .img {
-  width: 160px;
-  height: 160px;
   border-radius: 10px;
   background-color: #9256ed;
+  width: 10rem;
+  height: 10rem;
 }
 .informacoes {
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  gap: 30px;
+  gap: 1.88rem;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 3rem;
-  padding-top: 30px;
+  padding-top: 1.88rem;
 }
 
 .publicacoes-e-templates {
@@ -66,15 +66,14 @@
 
 
 .btn-publicar {
-  padding: 5px 10px;
-  cursor: pointer;
-  height: fit-content;
+  width: 50%;
+  height: 2.19rem;
+  padding: 0.31rem 0.63rem;
   outline: none;
   border: none;
-  color: white;
-  width: 50%;
   border-radius: 10px;
-  height: 35px;
+  cursor: pointer;
+  color: white;
 }
 .status-publicado {
   color: #4CBC31;
@@ -102,7 +101,7 @@
 .paragrafo {
   display: flex;
   align-items: center;
-  padding: 5px 10px;
+  padding: 0.31rem 0.63rem;
 }
 
 .coluna-gerenciar {
@@ -115,23 +114,23 @@
 .coluna-gerenciar button {
   background-color: #7C4CC6;
   width: 50%;
-  padding: 5px 10px;
-  height: 35px;
   border: none;
   border-radius: 10px;
   color: #FFFFFF;
   cursor: pointer;
+  height: 2.19rem;
+  padding: 0.31rem 0.63rem;
 }
 
 .titulo {
   display: flex;
-  height: 55px;
-  padding: 0 25px;
-  margin-top: 40px;
-  margin-bottom: 40px;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  height: 3.44rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  padding: 0 1.56rem;
   border-radius: 8px;
   border-left: 8px solid var(--Primaria, #9665df);
   background: #2b2a2e;
@@ -139,10 +138,10 @@
 }
 .titulo h1 {
   color: var(--Terciaria, #fff);
-  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  font-size: 1.5rem;
 }
 .titulo button {
   cursor: pointer;
@@ -150,7 +149,7 @@
   background: var(--12, #9256ed);
   outline: none;
   border: none;
-  padding: 2px;
+  padding: 0.13rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,26 +160,27 @@
   color: white;
 }
 .titulo p {
-  margin-top: 30px;
   color: #fff;
   font-family: Arial;
-  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-top: 1.88rem;
+  font-size: 1.25rem;
 }
 
 
 
 .topicos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 3.13rem;
 }
 
 .topicos-container {
-  padding-bottom: 40px;
+  padding-bottom: 2.5rem;
 }
+
 a {
   text-decoration: underline;
   cursor: pointer;
@@ -198,11 +198,11 @@ a:hover {
   position: relative;
   width: 100%;
   text-decoration: none;
-  top: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: end;
   column-gap: 8px;
+  top: 1.25rem;
 }
 
 

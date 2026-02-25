@@ -82,19 +82,19 @@ const routes: Routes = [
         path: 'meus-modulos',
         canActivate: [roleGuard],
         component: MeusModulosComponent,
-        data: { title: 'Meus Módulos', roles: ['professor'] },
+        data: { title: 'Módulos', roles: ['professor'] },
       },
       {
         path: 'minhas-plataformas',
         canActivate: [roleGuard],
         component: MinhasPlataformasComponent,
-        data: { title: 'Minhas Plataformas', roles: ['professor'] },
+        data: { title: 'Plataforma', roles: ['professor'] },
       },
       {
         path: 'templates',
         canActivate: [roleGuard],
         component: TemplatesComponent,
-        data: { title: 'Biblioteca de Templates', roles: ['professor'] },
+        data: { title: 'Usuários', roles: ['professor'] },
       },
       {
         path: 'usuarios',

@@ -1,51 +1,35 @@
 .container-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 260px;
+  width: auto;
   border: none;
   border-radius: 15px;
   background: #2b2a2e;
   box-shadow: 0px 0px 5.267px 0px rgba(0, 0, 0, 0.15);
   color: white;
   text-align: center;
-  text-transform: capitalize;
   margin: 0 auto;
-  /* margin-bottom: 75px; */
   font-size: 16px;
-  height: 240px;
-  border-top: 8px solid #7C4CC6;
+  height: 201px;
 }
 
-.container-card:hover{
-  border: 5px solid #9665df;
-}
-
-
-.btn {
-  width: 180px;
-  height: 31.571px;
-  padding: 0 20px;
-  border-radius: 5.571px;
-  background: var(--2, #793cd4);
-  outline: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
 .content {
   display: flex;
-  text-align: center;
-  justify-content: space-evenly;
-  width: 100%;
-  margin: 10px 0 0px 0;
-  gap: 30px;
+  flex-direction: column;
+  width: 92%;
+  gap: 15px;
+  padding-top: 15px;
 }
+
 .content mat-icon {
   font-size: 20px;
-  cursor: pointer;
 }
+
+.icons_plataformas {
+  display: flex;
+  flex-direction: row;
+}
+
 .box-icon {
   border-radius: 3.94px;
   border: 1.477px solid #535353;
@@ -58,8 +42,36 @@
   padding: 4px 8px;
   cursor: pointer;
 }
-mat-card-header{
-  height: 100%;
+
+.box-icon:nth-child(1) {
+  margin-right: 16px;
+}
+
+mat-card-header {
+  height: 45%;
+  border: none;
+  border-radius: 15px 15px 0 0;
   display: flex;
-  align-items: center;
+  background: linear-gradient(260deg, #7C4CC6 0%, #5300F9 190%);
+}
+
+mat-card-title {
+  font-size: 1.25rem;
+  font-family: "inter";
+  font-weight: bold;
+  font-weight: 700;
+  padding: 10px 0 0 20px !important;
+}
+
+mat-card-subtitle {
+  font-size: 1rem;
+  font-family: "inter";
+  font-weight: 400;
+  text-align: start;
+  color: var(--2-color);
+  padding: 10px 0 0 20px !important;
+}
+
+.icons_plataformas {
+  padding-left: 20px;
 }
