@@ -20,7 +20,7 @@
   padding-top: 20px;
   height: 88vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr 1fr;
 }
 
 .container-cards-modulos{
@@ -163,3 +163,6 @@
   transform: scale(1.1);
 }
 
+.pagination {
+  padding-top: 1.63rem;
+}

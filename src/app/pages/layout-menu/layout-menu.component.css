@@ -1,6 +1,6 @@
 .drawer-container {
   height: 100vh;
-  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 16.83%, rgba(0, 0, 0, 0.09) 47.11%, rgba(66, 0, 146, 0.05) 81.73%, rgba(95, 0, 211, 0.05) 95.21%), #131313;
+  background: #2B2A2E;
 }
 
 .sidenav {
@@ -11,8 +11,13 @@
 
 .logo {
   text-align: center;
-  padding: 1.25rem 0;
+  padding: 0.5rem 0;
   font-size: 18px;
+}
+
+.logo img {
+  width: 180px;
+  height: 69px;
 }
 
 .header {

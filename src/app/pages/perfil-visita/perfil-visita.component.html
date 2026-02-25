@@ -22,8 +22,8 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>
-    <div class="container-cards-modulos">
-      <div class="card" *ngFor="let plataforma of plataformas">
+    <div class="container-cards-plataformas">
+      <div  *ngFor="let plataforma of plataformas">
         <app-cards-plataformas
         [plataforma]="plataforma"
         (excluirPlataforma)="excluirPlataforma($event)"
@@ -33,6 +33,7 @@
 
     <!-- Componente de paginação para plataformas -->
     <app-pagination 
+    class="pagination"
       [pagination]="paginationPlataformas"
       noItemsMessage="Nenhuma plataforma encontrada"
       itemsLabel="plataformas"
