@@ -1,3 +1,4 @@
+import { InfoPaginacao } from './../../../interfaces/modulo/InfoPaginacao';
 import { Component, OnInit } from '@angular/core';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { PaginationService, PaginationState } from 'src/app/services/pagination.service';
@@ -12,6 +13,9 @@ import { Modulo } from 'src/interfaces/modulo/Modulo';
 export class ModulosPageComponent implements OnInit {
   modulos: Modulo[] = [];
   pagination: PaginationState;
+  isOpenDrawer: boolean = true;
+  quantidadeItens!: number;
+  infoModulos: InfoPaginacao = {totalPaginas: 1, totalRegistros: 1}
 
   constructor(
     private apiService: ApiAdmService,
@@ -22,12 +26,29 @@ export class ModulosPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.carregarModulosPaginados(this.pagination.currentPage);
+  
+    this.apiService.valor$.subscribe(valor => {
+      this.isOpenDrawer = valor
+      console.log(this.isOpenDrawer)
+      this.quantidadeItens = this.isOpenDrawer ? 3 : 4;
+
+      if (this.pagination.currentPage > this.infoModulos.totalPaginas){
+        console.log(this.infoModulos.totalPaginas)
+        this.carregarModulosPaginados(this.infoModulos.totalPaginas, this.quantidadeItens)
+      } else {
+        this.carregarModulosPaginados(this.pagination.currentPage, this.quantidadeItens);
+      }
+      console.log(this.pagination)
+
+  });
+
+
+     
   }
 
   // Handler para mudanças de página
-  onPageChange(page: number): void {
-    this.carregarModulosPaginados(page);
+  onPageChange(page: number, quantidadeItens: number): void {
+    this.carregarModulosPaginados(page, quantidadeItens);
   }
 
   excluirModulo({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
@@ -51,15 +72,26 @@ export class ModulosPageComponent implements OnInit {
     );
   }
 
-  carregarModulosPaginados(page: number) {
-    this.apiService.listarModulos(page).subscribe(
+  carregarModulosPaginados(page: number, quantidadeItens: number) {
+    this.apiService.listarModulos(page, quantidadeItens).subscribe(
       (response) => {
+        console.log(response)
+        const totalPaginas = response.infoModulos.totalPaginas;
+        if (page > totalPaginas && totalPaginas > 0) {
+        this.pagination.currentPage = totalPaginas;
+        this.carregarModulosPaginados(totalPaginas, quantidadeItens);
+        return;
+      }
+
         this.modulos = response.modulos;
+        this.infoModulos = response.infoModulos
         this.paginationService.updatePaginationState(
           this.pagination,
           response.infoModulos.totalPaginas,
           response.infoModulos.totalRegistros
         );
+        
+
       },
       (error) => {
         console.error('Erro ao carregar módulos:', error);

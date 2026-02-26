@@ -11,7 +11,7 @@ import {
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { environment, environmentFrontEnd } from 'src/environments/environment';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 import { Plataforma } from 'src/interfaces/Plataforma';
@@ -26,6 +26,12 @@ import { InfoPaginacao } from 'src/interfaces/modulo/InfoPaginacao'
 })
 export class ApiAdmService {
   private baseUrl = environment.baseUrl;
+  private valorSource = new BehaviorSubject<boolean>(true);
+  valor$ = this.valorSource.asObservable();
+
+  setValor(valor: boolean) {
+    this.valorSource.next(valor);
+  }
 
   constructor(
     private http: HttpClient,
@@ -86,8 +92,8 @@ export class ApiAdmService {
     });
   }
 
-  listarModulos(page: number) {
-    return this.http.get<{modulos: Modulo[], infoModulos: InfoPaginacao}>(`${this.baseUrl}/api/modulos?page=${page}`);
+  listarModulos(page: number, quantidadeItens: number) {
+    return this.http.get<{modulos: Modulo[], infoModulos: InfoPaginacao}>(`${this.baseUrl}/api/modulos?page=${page}&quantidadeItens=${quantidadeItens}`);
   }
   listarTemplates() {
     return this.http.get<Modulo[]>(`${this.baseUrl}/api/templates`);

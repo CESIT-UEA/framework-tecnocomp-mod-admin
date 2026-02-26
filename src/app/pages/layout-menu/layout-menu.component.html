@@ -101,9 +101,9 @@
 
   <mat-drawer-content class="main-content">
     <header class="header">
-      <img src="../../../assets/icons/Voltar_plataformas.svg" />
+      <img [src]="this.currentIcone" (click)="toggleDrawer()" style="cursor: pointer;"/>
       <h1>{{ currentPageTitle }}</h1>
-      <form action="/pesquisa" method="get">
+      <form action="/pesquisa" method="get" class="input-pesquisa">
         <input type="search" placeholder="Pesquisar..." required />
       </form>
     </header>

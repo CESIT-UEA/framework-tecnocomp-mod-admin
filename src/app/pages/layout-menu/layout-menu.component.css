@@ -1,3 +1,4 @@
+
 .drawer-container {
   height: 100vh;
   background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
@@ -22,7 +23,6 @@
 
 .header {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   padding-left: 1.75rem;
   align-items: center;
@@ -37,7 +37,7 @@
 
 .header h1 {
   font-size: 1.5rem;
-  font-family: 'Inter';
+  font-family: var(fontCustom);
   font-weight: bold;
   font-weight: 700;
   padding-right: 8.8125rem;
@@ -59,7 +59,7 @@
 input::placeholder {
   color: var(--0-color);
   opacity: 70%;
-  font-family: 'Inter';
+  font-family: '';
   font-weight: 400;
   font-size: 1rem;
 }
@@ -130,4 +130,7 @@ input::placeholder {
   height: auto;
   margin: 0 auto;
   background: var(--Background, #131313);
+}
+.input-pesquisa {
+  margin-left: 50px;
 }

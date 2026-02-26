@@ -6,10 +6,10 @@
     [quantidade]="pagination.totalItems"
     nomeCard="módulos"
   ></app-titulo-secao>
-  <div class="container-cards">
+  <div class="container-cards" *ngIf="modulos.length > 0">
     
-    <div class="container-cards-modulos">
-      <div class="card" *ngFor="let modulo of modulos">
+    <div class="container-cards-modulos" [ngClass]="{'cards-modulos': !this.isOpenDrawer}">
+      <div class="card" *ngFor="let modulo of modulos" >
         <app-cards-modulos [modulo]="modulo" (excluirModulo)="excluirModulo($event)"></app-cards-modulos>
       </div>
     </div>
@@ -21,7 +21,7 @@
     [pagination]="pagination"
     noItemsMessage="Nenhum módulo encontrado"
     itemsLabel="módulos"
-    (pageChange)="onPageChange($event)">
+    (pageChange)="onPageChange($event, this.quantidadeItens)">
   </app-pagination>
 </div>
 

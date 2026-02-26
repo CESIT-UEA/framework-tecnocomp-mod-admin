@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { User } from 'src/interfaces/user';
 
 @Component({
@@ -14,6 +15,7 @@ export class LayoutMenuComponent implements OnInit {
     @ViewChild('drawer') drawer!: MatDrawer;
   isDrawerOpen: boolean = true;
   currentPageTitle: string = '';
+  currentIcone: string = "../../../assets/icons/Voltar_plataformas.svg"
 
   isAdmin: boolean = false;
   isProfessor: boolean = false;
@@ -22,7 +24,8 @@ export class LayoutMenuComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private apiAdmService: ApiAdmService
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +57,16 @@ export class LayoutMenuComponent implements OnInit {
   toggleDrawer() {
     this.drawer.toggle();
     this.isDrawerOpen = this.drawer.opened;
+    this.selecionaIconeDrawer()
+    this.apiAdmService.setValor(this.isDrawerOpen)
+  }
+
+  selecionaIconeDrawer(){
+    if (this.isDrawerOpen){
+      this.currentIcone = "../../../assets/icons/Voltar_plataformas.svg"
+    } else {
+      this.currentIcone = "../../../assets/icons/icon-abrir-menu.svg"
+    }
   }
 
   private getCurrentRouteTitle(): string {
