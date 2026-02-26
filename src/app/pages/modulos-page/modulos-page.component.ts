@@ -30,7 +30,7 @@ export class ModulosPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.apiService.setValor(this.isOpenDrawer)
     this.apiService.valor$
     .subscribe(valor => {
       this.isOpenDrawer = valor
@@ -38,7 +38,6 @@ export class ModulosPageComponent implements OnInit {
       this.quantidadeItens = this.isOpenDrawer ? 3 : 4;
 
       if (this.pagination.currentPage > this.infoModulos.totalPaginas){
-        console.log(this.infoModulos.totalPaginas)
         this.carregarModulosPaginados(this.infoModulos.totalPaginas, this.quantidadeItens)
       } else {
         this.carregarModulosPaginados(this.pagination.currentPage, this.quantidadeItens);
