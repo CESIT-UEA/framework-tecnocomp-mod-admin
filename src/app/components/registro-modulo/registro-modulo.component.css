@@ -7,7 +7,8 @@
 }
 
 .cadastro-modulo-container {
-  background-color: #2E2E2F;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.25));
   width: 50%;
   border-radius: 40px;
   padding: 0 2.5rem;
@@ -86,11 +87,26 @@
 #botao-um {
   background-color: transparent;
   border: 3px solid #7C4CC6;
+  color: #7C4CC6 !important;
 }
 
-#botao-dois {
-  background-color: #7C4CC6;
+#botao-um:hover {
+  background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+  color: #fff !important;
 }
+
+
+#botao-dois {
+  border-radius: 10px;
+background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+}
+
+#botao-dois:hover {
+  opacity: 50%;
+}
+
+
+
 
 /*
 .cadastro-modulo-container form div {

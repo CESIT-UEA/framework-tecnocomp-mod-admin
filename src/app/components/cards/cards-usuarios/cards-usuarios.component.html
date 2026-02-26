@@ -12,10 +12,10 @@
     
     <mat-card-content class="content">
       <div class="box-icon">
-        <mat-icon class="card-icon" (click)="abrirConfirmacaoExcluir()">delete </mat-icon>
+        <img src="../../../../assets/icons/icone-lixeira-nova.svg" class="card-icon" (click)="abrirConfirmacaoExcluir()">
       </div>
       <div class="box-icon">
-        <mat-icon class="card-icon" [routerLink]="['/tecnocomp','editar-usuario', user.id]">border_color</mat-icon>
+        <img src="../../../../assets/icons/icone-editar-novo.svg" class="card-icon" [routerLink]="['/tecnocomp','editar-usuario', user.id]">
       </div>
       <mat-card-actions>
       <!-- Verificar como vai funcionar esse -->
