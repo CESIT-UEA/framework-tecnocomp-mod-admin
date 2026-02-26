@@ -1,5 +1,5 @@
 <mat-drawer-container class="drawer-container" autosize>
-  <mat-drawer #drawer mode="side" opened="true" class="sidenav">
+  <mat-drawer #drawer mode="side" [opened]="isDrawerOpen" class="sidenav">
     <div class="logo">
       <img src="assets/icons/Tecnocomp.svg" alt="logo" />
     </div>
@@ -53,7 +53,7 @@
         routerLinkActive="active"
       >
         <mat-icon>person</mat-icon>
-        Usuários
+        Templates
       </a>
       <a
         *ngIf="isProfessor"
@@ -101,7 +101,7 @@
 
   <mat-drawer-content class="main-content">
     <header class="header">
-      <img [src]="this.currentIcone" (click)="toggleDrawer()" style="cursor: pointer;"/>
+      <img (click)="toggleDrawer()" [src]="this.currentIcone" style="cursor: pointer;"/>
       <h1>{{ currentPageTitle }}</h1>
       <form action="/pesquisa" method="get" class="input-pesquisa">
         <input type="search" placeholder="Pesquisar..." required />

@@ -5,6 +5,9 @@ import { PaginationService, PaginationState } from 'src/app/services/pagination.
 import { PreviousRouteService } from 'src/app/services/previous-route.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
 
+import { Router, NavigationEnd, Event as RouterEvent } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-modulos-page',
   templateUrl: './modulos-page.component.html',
@@ -20,14 +23,16 @@ export class ModulosPageComponent implements OnInit {
   constructor(
     private apiService: ApiAdmService,
     private paginationService: PaginationService,
+    private router: Router
   ) {
     this.pagination = this.paginationService.createPaginationState();
     
   }
 
   ngOnInit(): void {
-  
-    this.apiService.valor$.subscribe(valor => {
+    
+    this.apiService.valor$
+    .subscribe(valor => {
       this.isOpenDrawer = valor
       console.log(this.isOpenDrawer)
       this.quantidadeItens = this.isOpenDrawer ? 3 : 4;
@@ -38,7 +43,7 @@ export class ModulosPageComponent implements OnInit {
       } else {
         this.carregarModulosPaginados(this.pagination.currentPage, this.quantidadeItens);
       }
-      console.log(this.pagination)
+    
 
   });
 

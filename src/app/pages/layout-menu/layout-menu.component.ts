@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -11,11 +11,11 @@ import { User } from 'src/interfaces/user';
   templateUrl: './layout-menu.component.html',
   styleUrls: ['./layout-menu.component.css'],
 })
-export class LayoutMenuComponent implements OnInit {
+export class LayoutMenuComponent implements OnInit{
     @ViewChild('drawer') drawer!: MatDrawer;
   isDrawerOpen: boolean = true;
   currentPageTitle: string = '';
-  currentIcone: string = "../../../assets/icons/Voltar_plataformas.svg"
+  currentIcone: string = "../../../assets/icons/icon-abrir-menu.svg"
 
   isAdmin: boolean = false;
   isProfessor: boolean = false;
@@ -25,14 +25,19 @@ export class LayoutMenuComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private apiAdmService: ApiAdmService
+    private apiAdmService: ApiAdmService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
+ 
+
   ngOnInit(): void {
+    console.log(this.isDrawerOpen)
     const usuario = this.getUsuarioDados();
     this.user = usuario
     this.isAdmin = usuario?.tipo === 'adm';
     this.isProfessor = usuario?.tipo === 'professor';
+    
 
     this.setPageTitle();
     this.router.events
@@ -42,6 +47,8 @@ export class LayoutMenuComponent implements OnInit {
       )
       .subscribe((title: string) => {
         this.currentPageTitle = title || 'Sem título';
+        
+    ;
       });
   }
 
@@ -56,16 +63,22 @@ export class LayoutMenuComponent implements OnInit {
 
   toggleDrawer() {
     this.drawer.toggle();
-    this.isDrawerOpen = this.drawer.opened;
-    this.selecionaIconeDrawer()
-    this.apiAdmService.setValor(this.isDrawerOpen)
-  }
+    this.isDrawerOpen = !this.isDrawerOpen;
+    this.selecionaIconeDrawer();
+
+    this.apiAdmService.setValor(this.isDrawerOpen);
+    setTimeout(() => {
+      this.cdRef.detectChanges();
+    }, 20)
+}
+
 
   selecionaIconeDrawer(){
     if (this.isDrawerOpen){
-      this.currentIcone = "../../../assets/icons/Voltar_plataformas.svg"
-    } else {
       this.currentIcone = "../../../assets/icons/icon-abrir-menu.svg"
+      
+    } else {
+      this.currentIcone = "../../../assets/icons/Voltar_plataformas.svg"
     }
   }
 

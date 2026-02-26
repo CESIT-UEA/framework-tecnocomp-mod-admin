@@ -14,6 +14,16 @@
   color: white;
 }
 
+.informacoes {
+  box-sizing: border-box;
+  display: flex;
+  column-gap: 30px;
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2B2A2E;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
+  
+}
 
 .informacoes .informacoes-usuario  button {
   cursor: pointer;
@@ -29,10 +39,28 @@
 
 .perfil-dados {
   line-height: 28px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 13px;
 }
 
 #email {
   color: #A2A2A2;
+  
+}
+
+.txt-email, #email {
+  font-size: 20px;
+}
+
+.cargo {
+  font-size: 32px;
+  padding-bottom: 13px;
+}
+
+.informacoes-bloco-dois {
+  display: flex;
+  flex-direction: column;
 }
 
 #texto-cargo {
@@ -40,9 +68,12 @@
   align-content: center;
   color: #7C4CC6;
   display: inline-block;
-  padding: 0 10px;
-  border: 3px solid #7C4CC6;
-  border-radius: 20px;
+  /* padding: 0 10px; */
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid  #7C4CC6;
+  width: 142px;
+  height: 32px;
   /* margin-top: 6px; */
 }
 

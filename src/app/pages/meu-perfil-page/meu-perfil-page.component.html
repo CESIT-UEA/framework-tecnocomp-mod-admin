@@ -1,7 +1,9 @@
 <div class="container-background">
   <div class="container-perfil">
   <section class="informacoes">
-    <div class="informacoes-usuario">
+    <img src="../../../assets/icons/perfil-sem-foto-grande.svg" alt="" style="width: 147px; height: 147px;">
+    <div class="informacoes-bloco-dois">
+      <div class="informacoes-usuario">
       <p class="cargo">
         {{ dadosUsuario().tipo === 'adm' ? 'Admin': 'Professor' }}
       </p>
@@ -10,9 +12,11 @@
       </button>
     </div>
     <div class="perfil-dados">
-      <p><strong>Email:</strong> <span id="email"> {{ dadosUsuario().email }}</span></p>
+      <p><strong class="txt-email">Email:</strong> <span id="email"> {{ dadosUsuario().email }}</span></p>
       <p id="texto-cargo">{{ dadosUsuario().tipo === 'adm' ? 'Administrador' : 'Professor' }}</p>
     </div>
+    </div>
+    
   </section>
   <mat-divider></mat-divider>
   <section class="minhas-plataformas">
