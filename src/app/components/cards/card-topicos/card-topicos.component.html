@@ -1,15 +1,15 @@
 <mat-card class="card-topico">
-  <mat-card-header>
-    <h4>Tópico {{ indice + 1 }}: <span [title]="topico.nome_topico">{{ topico.nome_topico }}</span></h4>
+  <mat-card-header >
+    <h4 style="height: 42px;align-content: center;">Tópico {{ indice + 1 }}: <span [title]="topico.nome_topico" style="height: 42px; align-content: center; text-align: justify;">{{ topico.nome_topico }}</span></h4>
   </mat-card-header>
   <mat-card-content>
     <div class="box-card-content">
-      <p>ID: {{ topico.VideoUrls.length }}</p>
+      <p>ID: {{ topico.id }}</p>
+      <p>Videos ({{ topico.VideoUrls.length }})</p>
       <p><a target="_blank" [href]="topico.textoApoio">Slide</a></p>
-      <p>Slide {{ topico.SaibaMais.length}}</p>
-      <p>Referências({{ topico.Referencias.length}})</p>
-      <p>E-book do Tópico {{ topico.Exercicios.length}}</p>
+      <p>Saiba Mais ({{ topico.SaibaMais.length}})</p>
       <p> <a target="_blank" [href]="topico.ebookUrlGeral">E-book do Tópico</a></p>
+      <p>Atividades ({{ topico.Exercicios.length}})</p>
     </div>
 
   </mat-card-content>

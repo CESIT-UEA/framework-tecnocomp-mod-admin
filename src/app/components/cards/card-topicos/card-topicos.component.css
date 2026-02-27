@@ -3,12 +3,13 @@
   flex-direction: column;
   justify-content: center;
   width: clamp(22.38rem,23.38rem,25.38rem);
-  height: clamp(23.94rem,26.94rem,27.38rem);
+  height: 360px;
   padding: clamp(1.19rem, 1.25rem + 0.2vw, 1.41rem);
   flex-shrink: 0;
   border-radius: 10px;
-  background: #2b2a2e;  
   color: white;
+  border-radius: 15px;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
 }
 
 mat-card-header {
@@ -43,25 +44,27 @@ mat-card-header span {
 .box-card-content {
   display: grid;
   justify-content: center;
+  flex-wrap: wrap;
   grid-template-columns: 1fr 1fr;
   column-gap: 1.25rem;
   row-gap: 1rem;
-  padding-bottom: 5.2rem;
+  padding-bottom: 2.2rem;
 }
 
 .box-card-content p {
   width: 9.38rem;
-  height: 1.38rem;
+  /* height: 1.38rem; */
   font-family: "Inter", sans-serif;
   font-weight: bold;
   margin: 0;
   padding: 0.63rem 0 0.63rem 0.56rem;
   border-radius: 10px;
-  background-color: #3f3f40;
+  border-radius: 10px;
+background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #424147;;
 }
 
 a {
-  text-decoration: none;
+  /* text-decoration: none; */
   cursor: normal;
   color: white;
 }
@@ -123,8 +126,9 @@ mat-card-actions {
   height: 2.41rem;
   padding: 0 1.25rem;
   border-radius: 5.571px;
-  background: linear-gradient(90deg, #7C4CC6 0%, #5300F9 100%);
-  font-family: "Inter", sans-serif;
+  border-radius: 7px;
+  background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+  font-family: var(fontCustom);
   font-weight: bold;
   
   outline: none;
