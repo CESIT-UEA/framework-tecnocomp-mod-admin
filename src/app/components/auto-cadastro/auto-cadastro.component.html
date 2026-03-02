@@ -1,4 +1,109 @@
 <div class="cadastro-container">
+  <!-- LADO ESQUERDO (CARD) -->
+  <div class="cadastro-esquerda">
+    <div class="card-cadastro">
+      <h2>Cadastre-se</h2>
+      <p class="texto-cadastro">
+        Insira seus dados abaixo para criar sua conta.
+      </p>
+
+      <form id="form" class="forms" [formGroup]="cadastroForm">
+        <!-- CAMPOS -->
+        <div class="campos">
+          <!-- Nome -->
+          <div class="cadastro-conteudo">
+            <label for="idnome">Nome</label>
+            <input
+              type="text"
+              id="idnome"
+              placeholder="Digite seu nome completo"
+              formControlName="nome"
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="cadastro-conteudo">
+            <label for="idemail">E-mail</label>
+            <input
+              type="text"
+              id="idemail"
+              placeholder="Digite seu E-mail"
+              formControlName="email"
+            />
+          </div>
+
+          <!-- Grupo Senha -->
+          <div class="senha-grupo">
+            <!-- Senha -->
+            <div class="cadastro-conteudo">
+              <label for="idsenha">Senha</label>
+              <input
+                [type]="hide ? 'password' : 'text'"
+                id="idsenha"
+                formControlName="senha"
+                class="input-senha"
+                placeholder="Digite sua senha"
+              />
+            </div>
+
+            <!-- Confirmar Senha -->
+            <div class="cadastro-conteudo">
+              <label for="iconfirmar">Confirmar senha</label>
+              <input
+                type="password"
+                id="iconfirmar"
+                placeholder="Confirme sua senha"
+                formControlName="confirmarSenha"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- MENSAGENS DE ERRO -->
+        <div class="campo-formulario" *ngIf="this.dadosInvalido()">
+          <p class="campo-formulario invalid" *ngIf="this.emailInvalido()">
+            Email inválido!
+          </p>
+
+          <p class="campo-formulario invalid" *ngIf="this.senhaInvalida()">
+            Sua senha precisa ter: (no mínimo 8 caracteres) (letras, símbolos e
+            números)
+          </p>
+
+          <p class="campo-formulario invalid" *ngIf="this.campoNotPreenchido()">
+            Preencha todos os campos!
+          </p>
+        </div>
+
+        <p class="campo-formulario invalid" *ngIf="this.camposSenhaInvalida()">
+          Os campos de senha precisam ser iguais!
+        </p>
+
+        <!-- BOTÕES -->
+        <div class="botoes-acao">
+          <button type="button" class="button-two" routerLink="/login">
+            Já possuo uma conta
+          </button>
+
+          <button type="button" class="botao-cadastrar" (click)="onSubmit()">
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LADO DIREITO (ILUSTRAÇÃO) -->
+  <div class="cadastro-direita">
+    <img
+      src="../../../assets/imgs/Capa de Login (Nova_logo).svg"
+      alt="Capa de cadastro"
+      class="img-cadastro"
+    />
+  </div>
+</div>
+
+<!-- <div class="cadastro-container">
   <div class="cadastro-esquerda">
     <div class="card-cadastro">
       <h2>Cadastre-se</h2>
@@ -38,11 +143,11 @@
         <div class="cadastro-conteudo">
           <button class="botao-cadastrar" (click)="onSubmit()">Cadastrar</button>
         </div>
-        
+
         <div class="campo-formulario" *ngIf="this.dadosInvalido()">
             <p class="campo-formulario invalid" *ngIf="this.emailInvalido()">Email inválido!</p>
             <p class="campo-formulario invalid" *ngIf="this.senhaInvalida()">
-              Sua senha precisa ter: (no mínimo 8 caracteres) (letras, símbolos e números)              
+              Sua senha precisa ter: (no mínimo 8 caracteres) (letras, símbolos e números)
             </p>
             <p class="campo-formulario invalid" *ngIf="this.campoNotPreenchido()">Preencha todos os campos!</p>
         </div>
@@ -60,4 +165,4 @@
   <div class="cadastro-direita">
     <img src="../../../assets/imgs/Capa de login (1).svg" alt="Capa de login" class="img-cadastro">
   </div>
-</div>
+</div> -->
