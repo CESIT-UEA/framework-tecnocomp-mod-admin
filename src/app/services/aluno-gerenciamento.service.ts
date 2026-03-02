@@ -1,3 +1,4 @@
+import { InfoPaginacao } from './../../interfaces/modulo/InfoPaginacao';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -17,6 +18,7 @@ export class AlunoGerenciamentoService {
    */
   getAlunosPorModulo(
     moduloId: number,
+    page: number,
     filtros?: {
       nome?: string;
       email?: string;
@@ -24,7 +26,8 @@ export class AlunoGerenciamentoService {
       progressoMin?: number;
       notaMin?: number;
     }
-  ): Observable<AlunoModulo[]> {
+    
+  ): Observable<{alunos: AlunoModulo[], infoAlunos: InfoPaginacao}> {
     let params = new HttpParams();
 
     if (filtros) {
@@ -38,8 +41,8 @@ export class AlunoGerenciamentoService {
         params = params.set('notaMin', filtros.notaMin.toString());
     }
 
-    return this.http.get<AlunoModulo[]>(
-      `${this.apiUrl}modulos/${moduloId}/alunos-progresso`,
+    return this.http.get<{alunos: AlunoModulo[], infoAlunos: InfoPaginacao}>(
+      `${this.apiUrl}modulos/${moduloId}/alunos-progresso?page=${page}`,
       { params }
     );
   }

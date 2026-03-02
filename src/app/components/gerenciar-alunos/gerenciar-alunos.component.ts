@@ -5,6 +5,7 @@ import { AlunoGerenciamentoService } from 'src/app/services/aluno-gerenciamento.
 import { AlunoModulo } from 'src/interfaces/modulo/aluno-modulo.interface';
 import { DialogConfirmarRemocaoComponent } from '../dialog-confirmar-remocao/dialog-confirmar-remocao.component';
 import { DialogEditarAlunoComponent } from '../dialog-editar-aluno/dialog-editar-aluno.component';
+import { PaginationService, PaginationState } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-gerenciar-alunos',
@@ -14,6 +15,12 @@ import { DialogEditarAlunoComponent } from '../dialog-editar-aluno/dialog-editar
 export class GerenciarAlunosComponent {
   moduloId!: number;
   alunos: AlunoModulo[] = [];
+  totalAlunos = 0;
+  paginacao = {
+  totalPaginas: 0,
+  totalRegistros: 0
+};
+  pagination: PaginationState;
 
   filtros: {
     nome?: string;
@@ -26,19 +33,39 @@ export class GerenciarAlunosComponent {
   constructor(
     private route: ActivatedRoute,
     private alunoService: AlunoGerenciamentoService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private paginationService: PaginationService
+  ) {
+    this.pagination = this.paginationService.createPaginationState();
+  }
 
   ngOnInit(): void {
     this.moduloId = +this.route.snapshot.paramMap.get('id')!;
-    this.carregarAlunos();
+    this.carregarAlunos(this.pagination.currentPage);
+    
   }
 
-  carregarAlunos(): void {
+
+  // Handler para mudanças de página
+  onPageChange(page: number): void {
+    this.carregarAlunos(page);
+  }
+
+  carregarAlunos(page: number): void {
     this.alunoService
-      .getAlunosPorModulo(this.moduloId, this.filtros)
+      .getAlunosPorModulo(this.moduloId, page, this.filtros)
       .subscribe({
-        next: (res) => (this.alunos = res),
+        next: (res) => {
+          this.alunos = res.alunos
+          console.log(this.alunos) 
+          this.totalAlunos = res.infoAlunos.totalRegistros;
+        this.paginationService.updatePaginationState(
+          this.pagination, 
+          res.infoAlunos.totalPaginas, 
+          res.infoAlunos.totalRegistros
+        );
+        this.pagination.currentPage = page;
+        },
         error: (err) => console.error('Erro ao carregar alunos:', err),
       });
   }
@@ -55,7 +82,7 @@ export class GerenciarAlunosComponent {
     dialogRef.afterClosed().subscribe((confirmado) => {
       if (confirmado) {
         this.alunoService.deletarAluno(aluno.id_aluno).subscribe(() => {
-          this.carregarAlunos();
+          this.carregarAlunos(this.pagination.currentPage);
         });
       }
     });
@@ -74,18 +101,18 @@ export class GerenciarAlunosComponent {
           this.alunoService
             .atualizarAluno(aluno.id, dadosAtualizados)
             .subscribe(() => {
-              this.carregarAlunos();
+              this.carregarAlunos(this.pagination.currentPage);
             });
         }
       });
   }
 
   aplicarFiltros(): void {
-    this.carregarAlunos();
+    this.carregarAlunos(this.pagination.currentPage);
   }
 
   limparFiltros(): void {
     this.filtros = {};
-    this.carregarAlunos();
+    this.carregarAlunos(this.pagination.currentPage);
   }
 }
