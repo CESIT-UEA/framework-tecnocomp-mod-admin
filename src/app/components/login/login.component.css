@@ -41,9 +41,9 @@
 /* CARD */
 
 .card-login {
-  width: 100%;
-  max-width: 536px;
-  padding: 40px 48px 32px;
+  width: 55%;
+  /* max-width: 536px; */
+  padding: 32px 48px 32px 48px;
   border-radius: 40px;
   background:
     linear-gradient(
@@ -79,7 +79,7 @@
 /* FORM */
 
 .forms {
-  margin-top: 32px;
+  margin-top: 18px;
 }
 
 .campos {
@@ -102,7 +102,8 @@
 .form-conteudo input {
   box-sizing: border-box;
   width: 100%;
-  padding: 8px 14px;
+  height: 35px;
+  padding: 0px 14px;
   font-size: 14px;
   font-weight: 400;
   color: #f4f4f5;
@@ -123,9 +124,10 @@
 /* LINK ESQUECI MINHA SENHA */
 
 .senha-esquecida {
-  margin-top: 6px;
+  margin-top: 1px;
+  margin-bottom: 14px;
   font-size: 14px;
-  color: #a879f2;
+  color: #A879F2;
   text-decoration: none;
 }
 
@@ -146,20 +148,42 @@
 .botoes-acao {
   display: flex;
   gap: 30px;
-  padding: 39px 0 0;
+  /* padding: 39px 0 0; */
   box-sizing: border-box;
 }
 
+ .wrapper, .wrapper-entrar {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 7px;
+    margin-top: 12px;
+    /* border: 3px solid #7c4cc6; */
+ }
+
+.wrapper:hover {
+  background: linear-gradient(
+      90deg,
+      rgba(124, 76, 198, 0.5) 0%,
+      rgba(83, 0, 249, 0.5) 100%
+    ),
+    #7c4cc6;
+}
+
+
 button {
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 40px;
   padding: 8px 8px;
   border-radius: 7px;
   margin-top: 12px;
   cursor: pointer;
   border: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -173,19 +197,26 @@ button {
     ),
     #7c4cc6;
   color: #ffffff;
+  border: none;
+  /* border: 3px solid transparent; */
+  position: relative;
+  top: -12px;
 }
 
 .button-entrar:hover {
   background: transparent;
   color: #7c4cc6;
-  border: 4px solid #7c4cc6;
+  border: 3px solid #7c4cc6;
 }
 
 /* botão (Não possuo uma conta) */
 .button-two {
   background: transparent;
-  border: 4px solid #7c4cc6;
+  border: 3px solid #7c4cc6;
   color: #7c4cc6;
+  position: relative;
+  top: -12px;
+  
 }
 
 .button-two:hover {
@@ -197,6 +228,7 @@ button {
     ),
     #7c4cc6;
   color: #ffffff;
+  border: none;
 }
 
 /* DIVISOR "OU" */
@@ -206,7 +238,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin: 26px 0 18px;
+  margin: 18px 0 18px;
 }
 
 .linha-traco {

@@ -63,13 +63,17 @@
 
           <!-- BOTÕES PRINCIPAIS -->
           <div class="botoes-acao">
-            <button type="button" class="button-two" routerLink="/cadastrar">
+            <div class="wrapper">
+              <button type="button" class="button-two" routerLink="/cadastrar">
               Não possuo uma conta
-            </button>
+              </button>
 
-            <button type="submit" class="button-entrar" (click)="onSubmit()">
+            </div>
+            <div class="wrapper-entrar">
+              <button type="submit" class="button-entrar" (click)="onSubmit()">
               Entrar
             </button>
+            </div>
           </div>
 
           <!-- DIVISOR "OU" -->
