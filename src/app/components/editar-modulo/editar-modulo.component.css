@@ -1,7 +1,6 @@
-
 .container {
   height: 88vh;
-  background-color: #1E1E1E;;
+  background-color: #1E1E1E;
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -18,12 +17,12 @@
 
 }
 
-p{
+p {
   color: #C64C4C;
   padding: 20px 0;
 }
 
-span{
+span {
   color: #C64C4C;
 }
 
@@ -36,12 +35,12 @@ span{
   font-family: Inter;
 }
 
-.titulo-formulario p{
+.titulo-formulario p {
   font-size: 16px;
   color: #BF0A0A;
 }
 
-.form-conteudo-editar{
+.form-conteudo-editar {
   display: flex;
   flex-direction: column;
   padding: 5px 0;
@@ -49,17 +48,17 @@ span{
 }
 
 
-.form-conteudo{
+.form-conteudo {
   display: flex;
   gap: 35px
 }
 
-.form-conteudo-editar label{
+.form-conteudo-editar label {
   padding: 10px 0;
 }
 
 
-.form-conteudo-editar input{
+.form-conteudo-editar input {
   height: 35px;
   border: none;
   border-radius: 10px;
@@ -81,22 +80,87 @@ span{
   padding: 30px 0;
 }
 
-.btn-cancelar, .btn-salvar {
+.btn-cancelar,
+.btn-salvar {
   padding: 7px;
   width: 25%;
   border-radius: 10px;
   border: none;
   font-size: 16px;
   font-weight: 600;
-  background-color: #7C4CC6;
-  color: #FFFFFF;
   cursor: pointer;
+  color: #FFFFFF;
 }
 
 .btn-cancelar {
   background-color: transparent;
   border: 3px solid #7C4CC6;
+  color: #7C4CC6 !important;
 }
+
+.btn-cancelar:hover {
+  background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+  color: #fff !important;
+}
+
+.btn-salvar {
+  background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+}
+
+.btn-salvar:hover {
+  opacity: 50%;
+}
+
+
+/* Estilização do Campo de Upload (Ebook Editar) */
+.file-input-wrapper #ebook_url_Geral::file-selector-button {
+  background-color: transparent;
+  color: rgba(124, 76, 198, 1);
+  border: 2.5px solid rgba(124, 76, 198, 1);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 4px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.file-input-wrapper #ebook_url_Geral::file-selector-button:hover {
+  background-color: rgba(124, 76, 198, 1);
+  color: #fff;
+}
+
+/* Oculta o texto nativo e usa o wrapper */
+#ebook_url_Geral {
+  margin-left: 15px;
+  color: transparent !important;
+  width: 160px;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Container Wrapper com fundo cinza */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #3F3F40;
+  border-radius: 10px;
+  height: 48px;
+  /* Ajustado para bater com o padrão dos outros inputs da tela */
+  gap: 10px;
+}
+
+.file-status-text {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 175px);
+}
+
 
 
 
