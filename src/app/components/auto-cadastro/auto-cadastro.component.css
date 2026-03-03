@@ -1,157 +1,230 @@
+/* CONTAINER GERAL */
+
 .cadastro-container {
   height: 100vh;
-  color: white;
-  font-family:  Inter;
-  background: linear-gradient(167deg, rgba(61, 34, 102, 0.70) 3.02%, rgba(34, 25, 72, 0.42) 24.84%, rgba(16, 19, 53, 0.24) 54.42%, rgba(11, 20, 69, 0.37) 77.21%, rgba(34, 45, 102, 0.70) 100%), #000;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+  background:
+    linear-gradient(
+      116deg,
+      rgba(18, 0, 96, 0.1) 35.95%,
+      rgba(0, 0, 0, 0.09) 59.28%,
+      rgba(66, 0, 146, 0.05) 85.94%,
+      rgba(95, 0, 211, 0.05) 96.33%
+    ),
+    #131313;
   display: flex;
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
 }
 
+/* LADO ESQUERDO (CARD) */
+
 .cadastro-esquerda {
-  margin: 0 auto;
+  flex: 1;
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
 }
+
+/* LADO DIREITO (ILUSTRAÇÃO) */
 
 .cadastro-direita {
   height: 100%;
 }
 
 .img-cadastro {
-  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-h2{
-  font-family: Arial;
-  font-size: 22px;
-  font-weight: 400;
-}
-
-p {
-  font-family: Arial;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.texto-cadastro{
-  font-family: Arial;
-  font-size: 16px;
-  font-weight: 400;
-  color: #C3A1F5;
-  padding: 15px 0;
-}
+/* CARD CADASTRO */
 
 .card-cadastro {
-  width: 60%;
-  padding: 40px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.10);
-  
+  width: 100%;
+  max-width: 655px;
+  padding: 40px 55px 36px;
+  border-radius: 40px;
+  border-top: 10px solid #7c4cc6;
+  background:
+    linear-gradient(
+      112deg,
+      rgba(18, 0, 96, 0.1) 0%,
+      rgba(0, 0, 0, 0.09) 32.21%,
+      rgba(19, 0, 41, 0.09) 55.29%,
+      rgba(95, 0, 211, 0.05) 95.21%,
+      rgba(66, 0, 146, 0.05) 100%
+    ),
+    #2b2a2e;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
 }
 
-.cadastro-conteudo {
-  display: flex;
-  flex-direction: column;
+/* TÍTULO E TEXTO */
+
+.card-cadastro h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.cadastro-conteudo label {
-  color: white;
-  font-family: Arial;
-  font-size: 14px;
+.texto-cadastro {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
   font-weight: 400;
-  margin: 6px 0;
+  color: #a879f2;
+}
+
+/* FORM */
+
+.forms {
+  margin-top: 32px;
 }
 
 .campos {
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 16px;
 }
 
+.cadastro-conteudo {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 0 7px;
+}
 
+.cadastro-conteudo label {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* INPUTS */
 
 .cadastro-conteudo input {
-  background-color: #38383A;
-  border: 1px solid #38383A;
-  border-radius: 6px;
-  color: white;
-  padding: 0 15px;
-  height: 40px;
-  font-family: Arial;
+  background:
+    linear-gradient(
+      112deg,
+      rgba(18, 0, 96, 0.1) 0%,
+      rgba(0, 0, 0, 0.09) 32.21%,
+      rgba(19, 0, 41, 0.09) 55.29%,
+      rgba(95, 0, 211, 0.05) 95.21%,
+      rgba(66, 0, 146, 0.05) 100%
+    ),
+    #424147;
+  border-radius: 10px;
+  border: none;
+  color: #f5f5f5;
+  padding: 9px 14px;
   font-size: 14px;
-  font-weight: 400;
 }
 
-.botao-cadastrar {
-  background-color: #793CD4;
-  color: white;
-  border-radius: 8px;
-  border: none;
-  height: 40px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: Arial;
-  font-weight: 700;
-  margin: 30px 0 20px 0;
+.cadastro-conteudo input::placeholder {
+  color: #a2a2a2;
 }
 
-.senha-grupo{
+/* GRUPO DE SENHA (2 COLUNAS) */
+
+.senha-grupo {
   display: grid;
-  grid-template-columns: 48% 48%;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
 }
 
-.campo-senha-envolve{
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-/* .icon {
-  border: none;
-  background-color: transparent;
-  color: #B68EF3;
-  cursor: pointer;
-  position: absolute;
-  padding: 18px;
-} */
-
-.criar-conta {
-  display: flex;
-  gap: 10px;
-  padding: 10px 0;
-}
-
-a {
-  text-decoration: none;
-  font-family: Arial;
-  font-size: 16px;
-  font-weight: 700;
-  color: #C3A1F5;
-}
-
-.campo-senha-envolve{
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.icon{
-  width: 30px;
-  height: 22px;
-  position: absolute;
-  right: 20%;
-  background-color: transparent;
-  border: none;
-  color: #B68EF3;
-} 
+/* MENSAGENS DE ERRO */
 
 .invalid {
-  color: #FA7878;
-  position: relative;
-  bottom: 15px;
-  font-size: 14px;
+  color: #f84c4c;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* BOTÕES  */
+.botoes-acao {
+  display: flex;
+  gap: 25px;
+  margin-top: 50px;
+  width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+button {
+  display: flex; /* garante alinhamento pelo flex */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+/* botão cadastrar */
+.botao-cadastrar {
+  background-color: #7c4cc6;
+  color: #ffffff;
+}
+
+.botao-cadastrar:hover {
+  background: transparent;
+  border: 4px solid #7c4cc6;
+  color: #7c4cc6;
+  font-weight: 700;
+}
+
+/* botão outline (Não possuo uma conta) */
+.button-two {
+  background: transparent;
+  border: 4px solid #7c4cc6;
+  color: #7c4cc6;
+  font-weight: 700;
+}
+
+.button-two:hover {
+  background-color: #7c4cc6;
+  color: #ffffff;
+}
+
+
+
+/* RESPONSIVIDADE PARA CADASTRO */
+@media (max-width: 1200px) {
+
+  .cadastro-direita {
+    display: none;
+  }
+
+
+  .cadastro-container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cadastro-esquerda {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+
+  .card-cadastro {
+    max-width: 650px;
+    padding: 32px 26px 28px;
+  }
+
+
+  .senha-grupo {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
 }

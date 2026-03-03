@@ -1,222 +1,251 @@
 .login-container {
+  box-sizing: border-box;
   height: 100vh;
-  color: white;
-  font-family:  Inter;
-  background: linear-gradient(167deg, rgba(61, 34, 102, 0.70) 3.02%, rgba(34, 25, 72, 0.42) 24.84%, rgba(16, 19, 53, 0.24) 54.42%, rgba(11, 20, 69, 0.37) 77.21%, rgba(34, 45, 102, 0.70) 100%), #000;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  background:
+    linear-gradient(
+      116deg,
+      rgba(18, 0, 96, 0.1) 35.95%,
+      rgba(0, 0, 0, 0.09) 59.28%,
+      rgba(66, 0, 146, 0.05) 85.94%,
+      rgba(95, 0, 211, 0.05) 96.33%
+    ),
+    #131313;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   overflow: hidden;
 }
 
-h2{
-  font-family: inter;
+/* LADO ESQUERDO */
+
+.login-esquerda {
+  height: 100%;
+}
+
+.imagem-login {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* LADO DIREITO */
+
+.login-direita {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* CARD */
+
+.card-login {
+  width: 100%;
+  max-width: 536px;
+  padding: 40px 48px 32px;
+  border-radius: 40px;
+  background:
+    linear-gradient(
+      112deg,
+      rgba(18, 0, 96, 0.1) 0%,
+      rgba(0, 0, 0, 0.09) 32.21%,
+      rgba(19, 0, 41, 0.09) 55.29%,
+      rgba(95, 0, 211, 0.05) 95.21%,
+      rgba(66, 0, 146, 0.05) 100%
+    ),
+    #2b2a2e;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  border-top: 10px solid #7c4cc6;
+}
+
+/* TÍTULO E TEXTO */
+
+.titulo-login {
+  margin: 0;
+  text-align: center;
   font-size: 22px;
   font-weight: 700;
 }
 
-p {
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 400;
-}
-
 .texto-login {
-  font-family: Inter;
-  font-size: 16px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
   font-weight: 400;
-  color: #C3A1F5;
-  padding-top: 20px;
+  color: #a879f2;
 }
 
-.card-login {
-  display: flex;
-  width: 78%;
-  padding: 35px;
-  flex-direction: column;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.10);
-}
+/* FORM */
 
-.login-direita{
-  margin: 0 auto;
-}
-
-.login-esquerda, .imagem-login {
-  height: 100%;
-}
-
-
-
-.form-conteudo {
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px; 
-  /* margin: 25px 0; */
-  border-radius: 8px;
-}
-
-.form-conteudo label{
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 400;
-  color: white;
-
+.forms {
+  margin-top: 32px;
 }
 
 .campos {
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
-  padding: 20px 0 10px 0; 
+  gap: 25px;
 }
 
-.campos input:focus {
-    outline: none;
-}
-
-.form-conteudo input{
-  width: 93%;
-  height: 20px;
-  border-radius: 8px;
-  padding: 11px 15px 11px 15px;
-  border: none;
-  background: rgba(255, 255, 255, 0.10);
-  color: #9A9A9A;
-}
-
-
-.check-senha{
+.form-conteudo {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Inter;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-conteudo label {
   font-size: 16px;
+  font-weight: 700;
+}
+
+.form-conteudo input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 14px;
   font-weight: 400;
-  /* margin: 25px 0; */
+  color: #f4f4f5;
+  background:
+    linear-gradient(
+      112deg,
+      rgba(18, 0, 96, 0.1) 0%,
+      rgba(0, 0, 0, 0.09) 32.21%,
+      rgba(19, 0, 41, 0.09) 55.29%,
+      rgba(95, 0, 211, 0.05) 95.21%,
+      rgba(66, 0, 146, 0.05) 100%
+    ),
+    #424147;
+  border-radius: 10px;
+  border: none;
 }
 
+/* LINK ESQUECI MINHA SENHA */
 
-
-a {
+.senha-esquecida {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #a879f2;
   text-decoration: none;
-  color: #C3A1F5;
 }
 
-.checkbox-container{
- margin-right: 0%;
+.senha-esquecida:hover {
+  text-decoration: underline;
 }
 
-.botao-entrar {
-  padding: 10px 0 18px 0;
+/* ERROS */
+
+.invalid {
+  color: #f84c4c;
+  margin-top: 8px;
+  font-size: 13px;
 }
 
- button {
+/* BOTÕES PRINCIPAIS */
+
+.botoes-acao {
   display: flex;
+  gap: 30px;
+  padding: 39px 0 0;
+  box-sizing: border-box;
+}
+
+button {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 40px;
-  border-radius: 8px;
-  /* margin: 25px 0; */
+  padding: 8px 8px;
+  border-radius: 7px;
+  margin-top: 12px;
   cursor: pointer;
   border: none;
   font-size: 16px;
   font-weight: 700;
 }
 
-.button-one{
-    border: none;
-    background-color: #9256ED;
-    color: #FFFFFF;
-    cursor: pointer;
-    box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.05);
+/* botão roxo (Entrar) */
+.button-entrar {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124, 76, 198, 0.5) 0%,
+      rgba(83, 0, 249, 0.5) 100%
+    ),
+    #7c4cc6;
+  color: #ffffff;
 }
 
-.button-one:hover{
-    background-color: #7A3ED8;
-    transform: scale(1.01);
-
+.button-entrar:hover {
+  background: transparent;
+  color: #7c4cc6;
+  border: 4px solid #7c4cc6;
 }
 
-.criar-conta {
-  display: flex;
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 400;
-  gap: 5px;
-  /* margin-top: 20px; */
+/* botão (Não possuo uma conta) */
+.button-two {
+  background: transparent;
+  border: 4px solid #7c4cc6;
+  color: #7c4cc6;
 }
+
+.button-two:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124, 76, 198, 0.5) 0%,
+      rgba(83, 0, 249, 0.5) 100%
+    ),
+    #7c4cc6;
+  color: #ffffff;
+}
+
+/* DIVISOR "OU" */
 
 .linha {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  /* margin: 25px 0; */
-  padding: 20px 0;
+  gap: 12px;
+  margin: 26px 0 18px;
 }
 
-mat-divider {
-  background-color: #fff;
-  width: 198px;
- }
-
-
- .button-two{
-  font-family: Arial;
-  font-size: 16px;
-  font-weight: 700;
-  border: 1px solid #9A9A9A;
-  color: #fff;
-  background-color: transparent;
- }
-
- .button-two:hover{
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.01);
+.linha-traco {
+  border: 1px solid #7c4cc6;
+  width: 100%;
 }
 
- .google-icon{
-  position: absolute;
-  padding: 8px;
-  margin: 0 80px;
-  cursor: pointer;
- }
+.linha-texto {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #a879f2;
+}
 
- .form-senha{
+/* GOOGLE */
+
+.google-container {
   display: flex;
-  flex-direction: column;
-  position: relative;
-  row-gap: 5px;
+  justify-content: center;
 }
 
+/* RESPONSIVO - esconder imagem e centralizar card */
+@media (max-width: 1200px) {
+  .login-esquerda {
+    display: none;
+  }
 
+  .login-container {
+    justify-content: center;
+    align-items: center;
+  }
 
-.mat-mdc-checkbox{
-      right: 4%!important;
+  .login-direita {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .card-login {
+    max-width: 530px;
+    padding: 32px 36px 28px;
+  }
 }
-.mdc-checkbox .mdc-checkbox__native-control:focus:checked~.mdc-checkbox__ripple{
-  display: none !important;
-  background-color: #ffff !important;
-}
-
-.invalid {
-  color: #FA7878;
-  position: relative;
-  bottom: 15px;
-}
-
-.input-icon{
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.icon{
-  width: 30px;
-  position: absolute;
-  right: 3%;
-  background-color: transparent;
-  border: none;
-  color: #B68EF3;
-} 
