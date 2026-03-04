@@ -84,13 +84,7 @@ input::placeholder {
   justify-content: space-between;
 }
 
-.caixa-perfil .imagem,
-.caixa-perfil .imagem img {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 2.5rem;
-  border: 1.5px solid var(--Primaria, #9665df);
-}
+
 
 .caixa-perfil .imagem {
   display: flex;
@@ -117,6 +111,11 @@ input::placeholder {
   align-items: center;
   padding: .625rem;
   gap: .9375rem;
+}
+
+.texto {
+  border-left: 5px solid #7C4CC6;
+  padding-left: 15px;
 }
 
 .active {
