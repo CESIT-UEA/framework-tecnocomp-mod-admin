@@ -1,4 +1,3 @@
-
 .drawer-container {
   height: 100vh;
   background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
@@ -46,7 +45,7 @@
 .header form input {
   background-color: transparent;
   width: clamp(29rem, 31.75rem + 2vh, 31.8rem);
-  height: clamp(.5rem,2.18rem + 2vh, 2.2rem);
+  height: clamp(.5rem, 2.18rem + 2vh, 2.2rem);
   border: 2px solid var(--0-color);
   border-radius: 30px;
   background-image: url(../../../assets/icons/lupa_plataformas.svg);
@@ -79,7 +78,6 @@ input::placeholder {
   width: 90%;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
   margin: 0 auto;
   justify-content: space-between;
 }
@@ -131,6 +129,7 @@ input::placeholder {
   margin: 0 auto;
   background: var(--Background, #131313);
 }
+
 .input-pesquisa {
   margin-left: 50px;
 }

@@ -2,32 +2,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @font-face {
-    font-family: fontCustom;
-    src: url('./assets/fonteProjetoLinks.ttf');
+  font-family: fontCustom;
+  src: url('./assets/fonteProjetoLinks.ttf');
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: fontCustom;
+  margin: 0;
+  padding: 0;
+  font-family: fontCustom;
 }
 
 body {
-    background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 16.83%, rgba(0, 0, 0, 0.09) 47.11%, rgba(66, 0, 146, 0.05) 81.73%, rgba(95, 0, 211, 0.05) 95.21%), #131313 !important;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 16.83%, rgba(0, 0, 0, 0.09) 47.11%, rgba(66, 0, 146, 0.05) 81.73%, rgba(95, 0, 211, 0.05) 95.21%), #131313 !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.logo{
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-dialog-container {
+  background: transparent !important;
+}
+
+.dialog-remove-custom .mat-mdc-dialog-surface {
+  background-color: #2B2A2E !important;
+  border-radius: 40px !important;
+  border-top: 3px solid #7C4CC6 !important;
+  overflow: hidden !important;
+}
+
+.mat-mdc-dialog-content {
+  background: transparent !important;
+  padding: 10 !important;
+}
+
+.logo {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.mdc-label{
+
+.mdc-label {
   color: white;
 }
-.mat-mdc-radio-button.mat-accent{
+
+.mat-mdc-radio-button.mat-accent {
   --mdc-radio-selected-icon-color: #864FD9;
   --mdc-radio-selected-focus-icon-color: #864FD9;
   --mdc-radio-selected-hover-icon-color: #864FD9;
@@ -35,7 +61,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --mat-radio-checked-ripple-color: #864FD9;
 }
 
-.mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+.mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
   background-color: transparent !important;
   border-color: #ffff !important;
 }
@@ -44,43 +70,44 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-color: #ffff !important;
 }
 
-
-.logo img{
+.logo img {
   width: 159.091px;
   height: 50px;
   margin-bottom: 15px;
 }
-.logo h3{
+
+.logo h3 {
   width: fit-content;
 }
-.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle{
+
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
   border-color: #767676 !important;
 }
 
 .mat-accent {
-    --mat-option-selected-state-label-text-color: transparent !important;
-    --mdc-checkbox-selected-focus-state-layer-color: transparent !important;
-    --mdc-checkbox-selected-focus-state-layer-color: transparent !important;
-    --mdc-checkbox-selected-hover-state-layer-color: transparent !important;
-    --mdc-checkbox-selected-pressed-state-layer-color: transparent !important;
-    --mdc-checkbox-selected-focus-icon-color: transparent !important;
-    --mdc-checkbox-selected-hover-icon-color: transparent !important;
-    --mdc-checkbox-selected-icon-color: transparent !important ;
-    --mdc-checkbox-selected-pressed-icon-color: transparent !important;
+  --mat-option-selected-state-label-text-color: transparent !important;
+  --mdc-checkbox-selected-focus-state-layer-color: transparent !important;
+  --mdc-checkbox-selected-hover-state-layer-color: transparent !important;
+  --mdc-checkbox-selected-pressed-state-layer-color: transparent !important;
+  --mdc-checkbox-selected-focus-icon-color: transparent !important;
+  --mdc-checkbox-selected-hover-icon-color: transparent !important;
+  --mdc-checkbox-selected-icon-color: transparent !important;
+  --mdc-checkbox-selected-pressed-icon-color: transparent !important;
 }
 
 .mat-step-icon {
   background-color: #442770 !important;
 }
 
-html{
-   --mat-stepper-line-color: #442770 !important;
-   --mat-stepper-header-selected-state-icon-background-color: #7C4CC6 !important;
+html {
+  --mat-stepper-line-color: #442770 !important;
+  --mat-stepper-header-selected-state-icon-background-color: #7C4CC6 !important;
 }
 
 .mat-step-icon-state-number {
   background-color: #442770 !important;
 }
+
 .mat-step-icon-selected {
   background-color: #7C4CC6 !important;
 }
@@ -91,21 +118,9 @@ html{
   border-top-width: 2.5px !important;
 }
 
-
-.dialog-custom .mat-mdc-dialog-surface, .dialog-remove-custom .mat-mdc-dialog-surface {
-    background-color: #2B2A2E !important;
-    border-radius: 40px !important;
-    border-top: 7px solid #7C4CC6;
-}
-
-.dialog-remove-custom .mat-mdc-dialog-surface {
-  border-top: 3px solid #7C4CC6 !important;
-}
-
 .mat-mdc-card-header {
   padding: 0 !important;
 }
-
 
 input:focus,
 textarea:focus,
@@ -123,17 +138,9 @@ select:focus {
 }
 
 .mat-mdc-slide-toggle {
-  --mdc-switch-selected-hover-state-layer-color: #7C4CC6;;
-  --mdc-switch-selected-focus-state-layer-color: #7C4CC6;;
-  --mdc-switch-selected-pressed-state-layer-color: #7C4CC6;;
-}
-
-
-
-.add-equipe-custom .mat-mdc-dialog-surface, .dialog-remove-custom .mat-mdc-dialog-surface, .dialog-criar-membro .mat-mdc-dialog-surface{
-  background-color: #2B2A2E !important;
-  border-radius: 40px !important;
-  border-top: 7px solid #7C4CC6;
+  --mdc-switch-selected-hover-state-layer-color: #7C4CC6;
+  --mdc-switch-selected-focus-state-layer-color: #7C4CC6;
+  --mdc-switch-selected-pressed-state-layer-color: #7C4CC6;
 }
 
 .mat-expansion-panel-body {
@@ -141,25 +148,55 @@ select:focus {
   border-bottom: 1px solid #7C4CC6;
   border-left: 1px solid #7C4CC6;
   border-right: 1px solid #7C4CC6;
-  
   padding: 0 !important;
 }
 
-
-
 .mat-expansion-indicator::after {
-    color: #FFF !important;
-    margin-left: 9px;
-    margin-top: 5px;
+  color: #FFF !important;
+  margin-left: 9px;
+  margin-top: 5px;
 }
 
 .mat-expansion-indicator {
-    width: 26.627px;
-    height: 26.627px;
-    border-radius: 50%;
-    background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+  width: 26.627px;
+  height: 26.627px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
 }
 
 .mat-mdc-card-content:last-child {
   padding: 0 !important;
+}
+
+.mat-mdc-menu-content {
+  background-color: var(--5-color);
+  padding: 0 !important;
+  width: 220px;
+}
+
+.mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+  color: var(--0-color);
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 20px !important;
+}
+
+
+.mat-mdc-menu-content .mat-mdc-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  background-color: #2B2A2E;
+}
+
+.mat-mdc-menu-content .mat-mdc-menu-item:hover {
+  background: linear-gradient(60deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 78.52%), linear-gradient(180deg, #7C4CC6 0%, #3C2560 100%) !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  margin-left: 25px;
+  top: 547px !important;
 }

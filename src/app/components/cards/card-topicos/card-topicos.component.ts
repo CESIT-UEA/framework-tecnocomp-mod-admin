@@ -10,21 +10,26 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./card-topicos.component.css']
 })
 export class CardTopicosComponent implements OnInit {
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
+
   @Input() topico!: Topico;
   @Input() idModulo!: number;
-  @Input() indice!:number
+  @Input() indice!: number;
 
   @Output() excluirTopico = new EventEmitter<{
     idAdm: number;
     senhaAdm: string;
     idExcluir: number;
   }>();
+
   constructor(private dialog: MatDialog, private authService: AuthService) {}
 
   abrirConfirmacaoExcluir(): void {
-    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent);
+    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent, {
+      panelClass: 'dialog-remove-custom'
+    });
+
     dialogRef.afterClosed().subscribe((senhaAdm) => {
       if (senhaAdm) {
         if (this.topico.id != null) {
@@ -37,5 +42,4 @@ export class CardTopicosComponent implements OnInit {
       }
     });
   }
-
 }

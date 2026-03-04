@@ -1,0 +1,51 @@
+.h2_exclui {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    background: var(--5-color);
+    color: var(--0-color);
+    font-weight: bold;
+}
+
+.p_senha {
+    color: var(--0-color);
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    padding-bottom: 10px;
+}
+
+form {
+    background: var(--5-color);
+    width: 484px;
+}
+
+form mat-dialog-content mat-form-field {
+    width: 100%;
+}
+
+form mat-dialog-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form mat-dialog-actions .bt1 {
+    color: var(--Primaria-color);
+    font-weight: bold;
+    background: 
+        linear-gradient(var(--5-color), var(--5-color)) padding-box,
+        linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%) border-box;
+    border: 3px solid transparent;
+    margin-right: 30px;
+    border-radius: 10px;
+}
+
+form mat-dialog-actions .bt2 {
+    color: var(--0-color);
+    border-radius: 10px;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+    border: none;
+}
