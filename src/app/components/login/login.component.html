@@ -12,12 +12,14 @@
     <!-- LADO DIREITO (CARD) -->
     <div class="login-direita">
       <div class="card-login">
-        <h2 class="titulo-login">Login</h2>
-        <p class="texto-login">
-          Insira seus dados abaixo para acessar sua conta.
-        </p>
-
+        
         <form id="form" class="forms" [formGroup]="loginForm">
+          <div class="div-header">
+          <h2 class="titulo-login">Login</h2>
+          <p class="texto-login">
+            Insira seus dados abaixo para acessar sua conta.
+          </p>
+        </div>
           <!-- CAMPOS -->
           <div class="campos">
             <div class="form-conteudo">
@@ -60,8 +62,8 @@
           <p class="campo-formulario invalid" *ngIf="errorLogin">
             Email ou senha incorretos!
           </p>
-
-          <!-- BOTÕES PRINCIPAIS -->
+          <div class="div-bottom">
+            <!-- BOTÕES PRINCIPAIS -->
           <div class="botoes-acao">
             <div class="wrapper">
               <button type="button" class="button-two" routerLink="/cadastrar">
@@ -75,14 +77,12 @@
             </button>
             </div>
           </div>
-
           <!-- DIVISOR "OU" -->
           <div class="linha">
             <span class="linha-traco"></span>
             <span class="linha-texto">ou</span>
             <span class="linha-traco"></span>
           </div>
-
           <!-- GOOGLE LOGIN (mantido) -->
           <div
             id="g_id_onload"
@@ -104,6 +104,13 @@
               data-logo_alignment="left"
             ></div>
           </div>
+        </div>
+        
+          
+
+          
+
+          
         </form>
       </div>
     </div>

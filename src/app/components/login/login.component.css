@@ -43,6 +43,12 @@
 .card-login {
   width: 55%;
   height: 65%;
+  max-width: 530px;      /* tamanho fixo máximo */
+  /* min-height: 520px; */
+  height: auto;   
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   /* max-width: 536px; */
   padding: 32px 48px 32px 48px;
   border-radius: 40px;
@@ -80,13 +86,20 @@
 /* FORM */
 
 .forms {
-  margin-top: 18px;
+  /* margin-top: 8px; */
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 
 .campos {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 25px;
+  padding-top: 10px;
 }
 
 .form-conteudo {
@@ -253,6 +266,15 @@ button {
   letter-spacing: 0.15em;
   color: #a879f2;
 }
+
+.div-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: 33%; */
+}
+
+
 
 /* GOOGLE */
 
