@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { UploadService } from './../../services/upload.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -33,7 +34,8 @@ export class RegistroModuloComponent implements OnInit {
     private router: Router, 
     private authService: AuthService,
     private uploadService: UploadService,
-    private previousRouter: PreviousRouteService
+    private previousRouter: PreviousRouteService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +54,11 @@ export class RegistroModuloComponent implements OnInit {
 
     this.moduloForm.patchValue({ nome_url: urlAmigavel });
   }
+
+  voltarPagina() {
+    this.location.back();
+  }
+
 
   onSubmit(): void {
     if (this.moduloForm.valid) {

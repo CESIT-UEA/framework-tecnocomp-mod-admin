@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,9 +18,14 @@ export class EditarPlataformaComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiAdmService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
+
+  voltarPagina() {
+    this.location.back();
+  }
   ngOnInit(): void {
     // Obter o ID da plataforma a partir da rota
     this.plataformaId = Number(this.route.snapshot.paramMap.get('id'));

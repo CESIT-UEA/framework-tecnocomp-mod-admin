@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -34,8 +35,13 @@ export class EditarModuloComponent {
     private router: Router,
     private authService: AuthService,
     private uploadService: UploadService,
-    private previousRouter: PreviousRouteService
+    private previousRouter: PreviousRouteService,
+    private location: Location
   ) {}
+
+  voltarPagina() {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     this.moduloId = +this.route.snapshot.paramMap.get('id')!;
@@ -141,19 +147,19 @@ export class EditarModuloComponent {
     }
   }
 
-  voltar(){
-    const rotaAnterior = this.previousRouter.getPreviousUrl();
-    const rotas = ['/tecnocomp/modulos', '/tecnocomp/meus-modulos', '/tecnocomp/meu-perfil']
-    const isAdmin = this.authService.isAdmin()
+  // voltar(){
+  //   const rotaAnterior = this.previousRouter.getPreviousUrl();
+  //   const rotas = ['/tecnocomp/modulos', '/tecnocomp/meus-modulos', '/tecnocomp/meu-perfil']
+  //   const isAdmin = this.authService.isAdmin()
 
-    if (isAdmin && rotas[0] === rotaAnterior) {
-      this.router.navigate([rotas[0]])
+  //   if (isAdmin && rotas[0] === rotaAnterior) {
+  //     this.router.navigate([rotas[0]])
 
-    } else if (rotas[2] === rotaAnterior ) {
-      this.router.navigate([rotas[2]])
-    } else if (!isAdmin && rotas[1] === rotaAnterior){
-      this.router.navigate([rotas[1]])
-    } 
+  //   } else if (rotas[2] === rotaAnterior ) {
+  //     this.router.navigate([rotas[2]])
+  //   } else if (!isAdmin && rotas[1] === rotaAnterior){
+  //     this.router.navigate([rotas[1]])
+  //   } 
     
-  }
+  // }
 }

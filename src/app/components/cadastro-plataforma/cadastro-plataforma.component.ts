@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,8 +27,13 @@ export class CadastroPlataformaComponent {
   constructor(
     private apiService: ApiAdmService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
+
+  voltarPagina() {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     const usuarioId = this.authService.getUsuarioId();
@@ -51,7 +57,7 @@ export class CadastroPlataformaComponent {
       this.apiService.registerPlataforma(this.plataformaForm.value).subscribe(
         (response) => {
           console.log('Plataforma registrada com sucesso:', response);
-          this.irParaPagePlataformas();
+        
         },
         (error) => {
           console.error('Erro ao registrar plataforma:', error);
@@ -60,11 +66,6 @@ export class CadastroPlataformaComponent {
     }
   }
 
-  irParaPagePlataformas() {
-    if (this.authService.isAdmin()){
-      this.router.navigate(['/tecnocomp/plataformas']);
-    } else {
-      this.router.navigate(['/tecnocomp/minhas-plataformas'])
-    }
-  }
+  
+  
 }

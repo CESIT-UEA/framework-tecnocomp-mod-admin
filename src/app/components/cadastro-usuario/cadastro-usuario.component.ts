@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { noOnlyWhitespace, senhaForte } from '../validators/validators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { PreviousRouteService } from 'src/app/services/previous-route.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -29,7 +30,8 @@ export class CadastroUsuarioComponent implements OnInit {
     private apiService: ApiAdmService, 
     private router: Router, 
     private authService: AuthService,
-    private previousRouter: PreviousRouteService 
+    private previousRouter: PreviousRouteService,
+    private location: Location
   ) {
       this.cadastroForm.valueChanges.subscribe(()=>{
           this.errorCadastro = false
@@ -41,6 +43,10 @@ export class CadastroUsuarioComponent implements OnInit {
             this.buttonDisabled = true
           }
       })
+  }
+
+  voltarPagina() {
+    this.location.back();
   }
 
   ngOnInit(): void {
