@@ -10,21 +10,25 @@
       <div class="form-conteudo">
         <div class="form-conteudo-editar">
           <label for="nome_modulo">Nome do Módulo: <span>*</span></label>
-          <input formControlName="nome_modulo"  id="nome_modulo" type="text" class="input">
+          <input formControlName="nome_modulo" id="nome_modulo" type="text" class="input">
         </div>
 
         <div class="form-conteudo-editar">
           <label for="url_modulo">URL do Módulo: <span>*</span></label>
-          <input formControlName="nome_url"  id="url_modulo" type="text" class="input">
+          <input formControlName="nome_url" id="url_modulo" type="text" class="input">
         </div>
       </div>
 
       <div class="form-conteudo-editar">
         <label for="ebook_url_Geral">Ebook URL Geral: <span>*</span></label>
-        <input formControlName="ebookUrlGeral" id="ebook_url_Geral" type="file" (change)="onSelectedFile($event)" class="input">
+        <div class="file-input-wrapper">
+          <input formControlName="ebookUrlGeral" id="ebook_url_Geral" type="file" (change)="onSelectedFile($event)"
+            class="input">
+          <span class="file-status-text">{{ selectedFile ? selectedFile.name : 'Nenhum arquivo selecionado' }}</span>
+        </div>
       </div>
 
-       <div class="form-conteudo-editar">
+      <div class="form-conteudo-editar">
         <label for="video_inicial">Vídeo Inicial: <span>*</span></label>
         <input formControlName="video_inicial" id="video_inicial" type="text" class="input">
       </div>

@@ -15,9 +15,10 @@
   border-top: 8px solid #7C4CC6;
 }
 
-.cadastro-modulo-titulo, .cadastro-modulo-label {
-    color: #FFFFFF;
-    padding: 10px 0;
+.cadastro-modulo-titulo,
+.cadastro-modulo-label {
+  color: #FFFFFF;
+  padding: 10px 0;
 }
 
 .cadastro-modulo-titulo {
@@ -30,11 +31,13 @@
   padding-top: 20px;
 }
 
-.cadastro-modulo-label span, .cadastro-modulo-aviso {
+.cadastro-modulo-label span,
+.cadastro-modulo-aviso {
   color: #C64C4C;
 }
 
-.cadastro-modulo-campos-inline, .cadastro-modulo-campo {
+.cadastro-modulo-campos-inline,
+.cadastro-modulo-campo {
   display: flex;
   width: 100%;
   padding: 5px 0px;
@@ -60,12 +63,13 @@
   border-radius: 10px;
   background-color: #3F3F40;
   color: #FFFFFF;
+  align-content: center;
   padding-left: 10px;
 }
 
-.cadastro-modulo-input:focus{
-   box-shadow: 0 0 0 0;
-   outline: 0;
+.cadastro-modulo-input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
 }
 
 .cadastro-modulo-buttons {
@@ -98,7 +102,7 @@
 
 #botao-dois {
   border-radius: 10px;
-background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
+  background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
 }
 
 #botao-dois:hover {
@@ -164,4 +168,54 @@ button[disabled] {
 /* Esconde o input */
 
 
+/* Estilização do Input do Ebook */
+.file-field #ebookUrlGeral::file-selector-button {
+  background-color: transparent;
+  color: rgba(124, 76, 198, 1);
+  border: 2.5px solid rgba(124, 76, 198, 1);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 4px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
+.file-field #ebookUrlGeral::file-selector-button:hover {
+  background-color: rgba(124, 76, 198, 1);
+  color: #fff;
+}
+
+/* Oculta o texto nativo e remove o fundo individual para usar o do wrapper */
+#ebookUrlGeral {
+  margin-left: 15px;
+  color: transparent !important;
+  width: 160px;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Container que mantém o fundo cinza atrás do botão e do texto */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #3F3F40;
+  border-radius: 10px;
+  height: 35px;
+  gap: 10px;
+}
+
+.file-field .cadastro-modulo-label {
+  width: 100%;
+}
+
+.file-status-text {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 175px);
+}
