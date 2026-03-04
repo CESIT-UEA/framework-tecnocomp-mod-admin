@@ -1,5 +1,8 @@
 
 .drawer-container {
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   height: 100vh;
   background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
 }
@@ -37,9 +40,6 @@
 
 .header h1 {
   font-size: 1.5rem;
-  font-family: var(fontCustom);
-  font-weight: bold;
-  font-weight: 700;
   padding-right: 8.8125rem;
 }
 
@@ -132,4 +132,18 @@ input::placeholder {
 }
 .input-pesquisa {
   margin-left: 50px;
+}
+
+a {
+  font-size: 16px;
+}
+
+
+
+input, input::placeholder {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-size: 14px;
 }

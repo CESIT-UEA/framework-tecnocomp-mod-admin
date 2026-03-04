@@ -58,7 +58,6 @@ mat-card-header {
 
 mat-card-title {
   font-size: 1.25rem;
-  font-family: var(fontCustom);
   font-weight: bold;
   font-weight: 700;
   padding: 10px 0 0 20px !important;
@@ -66,7 +65,6 @@ mat-card-title {
 
 mat-card-subtitle {
   font-size: 1rem;
-  font-family: var(fontCustom);
   font-weight: 400;
   text-align: start;
   color: var(--2-color);
@@ -76,3 +74,4 @@ mat-card-subtitle {
 .icons_plataformas {
   padding-left: 20px;
 }
+

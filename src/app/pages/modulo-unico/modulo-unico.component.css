@@ -209,6 +209,12 @@ a:hover {
 }
 
 
+button, a {
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 14px;
+}
 
 
 @media (max-width: 1100px) {
