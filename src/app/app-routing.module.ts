@@ -43,6 +43,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
 import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
+import { ClonarFichaTecnicaComponent } from './components/clonar-ficha-tecnica/clonar-ficha-tecnica.component';
   
 const routes: Routes = [
  
@@ -146,6 +147,11 @@ const routes: Routes = [
     path: 'modulos/:id',
     canActivate: [authGuard],
     component: ModuloUnicoComponent,
+  },
+  {
+    path: 'modulo/clonar-ficha-tecnica/:id',
+    canActivate: [authGuard],
+    component: ClonarFichaTecnicaComponent
   },
   {
     path: 'modulo/topicos',

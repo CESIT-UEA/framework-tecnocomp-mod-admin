@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment'
@@ -57,4 +57,11 @@ private baseUrl = environment.baseUrl + '/api/'; // Ajuste conforme seu ambiente
   deletarMembro(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/membro/${id}`);
   }
+
+
+  clonarFichaTecnica(modulo_atual_id: number, modulo_id: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/ficha-tecnica/${modulo_id}/clonar/${modulo_atual_id}`,
+    {} 
+  );
+}
 }

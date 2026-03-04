@@ -94,6 +94,9 @@ import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topico
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-topico/header-topico.component';
 import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
+import { ClonarFichaTecnicaComponent } from './components/clonar-ficha-tecnica/clonar-ficha-tecnica.component';
+import { CardsClonarFichaComponent } from './components/cards/cards-clonar-ficha/cards-clonar-ficha.component';
+import { ConfirmarClonagemFichaComponent } from './confirmar-clonagem-ficha/confirmar-clonagem-ficha.component';
 
 
 @NgModule({
@@ -170,6 +173,9 @@ import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.compo
     PaginationComponent,
     HeaderTopicoComponent,
     PerfilVisitaComponent,
+    ClonarFichaTecnicaComponent,
+    CardsClonarFichaComponent,
+    ConfirmarClonagemFichaComponent,
 
   ],
   imports: [

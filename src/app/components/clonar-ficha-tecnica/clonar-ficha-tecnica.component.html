@@ -1,0 +1,18 @@
+
+<app-header-voltar texto="Selecionar Módulo"></app-header-voltar>
+<main class="container">
+    <p class="descricao">Escolha para qual Módulo deseja clonar a Ficha Técnica</p>
+    <div class="lista-modulos">
+        <div class="modulos" *ngFor="let modulo of modulos">
+            <app-cards-clonar-ficha [modulo]="modulo"></app-cards-clonar-ficha>
+        </div>
+    </div>
+    <!-- Componente de paginação reutilizável -->
+    <app-pagination 
+    class="pagination"
+        [pagination]="pagination"
+        noItemsMessage="Nenhum módulo encontrado"
+        itemsLabel="módulos"
+        (pageChange)="onPageChange($event, 4)">
+    </app-pagination>
+</main>

@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="card">
+        <p class="titulo">{{ modulo.nome_modulo | truncate:30}}</p>
+        <div class="check-publicado">
+            <img [src]="modulo.publicado ? '../../../../assets/icons/check-publicado.svg' : '../../../../assets/icons/check-nao-publicado.svg'" alt="">
+            <p  
+            [ngClass]="
+            modulo.publicado ? 'status-publicado' : 'status-nao-publicado'
+            "
+        >
+            {{ modulo.publicado ? "Publicado" : "Não publicado" }}
+        </p>
+        </div>
+        <button class="botao" (click)="abrirConfirmacao()">Selecionar</button>
+    </div>
+</div>

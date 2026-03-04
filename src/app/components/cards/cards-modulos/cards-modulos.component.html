@@ -6,7 +6,7 @@
   <mat-card-content class="content">
     <div class="status" style="display: flex; justify-content: center; column-gap: 10px;">
       <img [src]="modulo.publicado ? '../../../../assets/icons/check-publicado.svg' : '../../../../assets/icons/check-nao-publicado.svg'" alt="">
-      <p
+      <p  
         [ngClass]="
           modulo.publicado ? 'status-publicado' : 'status-nao-publicado'
         "

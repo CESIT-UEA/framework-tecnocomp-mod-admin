@@ -163,3 +163,10 @@ select:focus {
 .mat-mdc-card-content:last-child {
   padding: 0 !important;
 }
+
+.cardClonagemFicha .mat-mdc-dialog-surface {
+    border-radius: 40px !important;  
+    background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E !important;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    border-top: 5px solid #7C4CC6 !important;
+}

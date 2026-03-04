@@ -1,0 +1,9 @@
+<h2 class="titulo">{{ data?.titulo }}</h2>
+<mat-dialog-content>
+  <p class="mensagem">Tem certeza que deseja clonar a Ficha Técnica para o módulo “<span>{{ data?.mensagem | truncate:20 }}</span>”</p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="botoes">
+  <button class="cancelar" (click)="cancelar()">Cancelar</button>
+  <button class="salvar" (click)="confirmar()">Confirmar</button>
+</mat-dialog-actions>

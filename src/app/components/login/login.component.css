@@ -25,6 +25,7 @@
 
 .imagem-login {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -42,6 +43,7 @@
 
 .card-login {
   width: 55%;
+  height: 65%;
   /* max-width: 536px; */
   padding: 32px 48px 32px 48px;
   border-radius: 40px;
