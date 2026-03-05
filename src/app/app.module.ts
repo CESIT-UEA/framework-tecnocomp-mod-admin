@@ -97,6 +97,7 @@ import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.compo
 import { ClonarFichaTecnicaComponent } from './components/clonar-ficha-tecnica/clonar-ficha-tecnica.component';
 import { CardsClonarFichaComponent } from './components/cards/cards-clonar-ficha/cards-clonar-ficha.component';
 import { ConfirmarClonagemFichaComponent } from './confirmar-clonagem-ficha/confirmar-clonagem-ficha.component';
+import { ContinuarCadastrandoTopicoComponent } from './components/continuar-cadastrando-topico/continuar-cadastrando-topico.component';
 
 
 @NgModule({
@@ -176,6 +177,7 @@ import { ConfirmarClonagemFichaComponent } from './confirmar-clonagem-ficha/conf
     ClonarFichaTecnicaComponent,
     CardsClonarFichaComponent,
     ConfirmarClonagemFichaComponent,
+    ContinuarCadastrandoTopicoComponent,
 
   ],
   imports: [

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { v4 as uuidv4 } from 'uuid';
+import { ContinuarCadastrandoTopicoComponent } from '../continuar-cadastrando-topico/continuar-cadastrando-topico.component';
 
 
 @Component({
@@ -30,7 +32,8 @@ export class CadastroTopicoComponent {
     private route: ActivatedRoute,
     private apiService: ApiAdmService,
     private router: Router,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private dialog: MatDialog,
   ) {
     // Inicializando os grupos de formulários
     this.dadosBasicosFormGroup = this.fb.group({
@@ -64,19 +67,19 @@ export class CadastroTopicoComponent {
 
 
     this.dadosBasicosFormGroup.valueChanges.subscribe(form => {
-      localStorage.setItem('dadosBasicosFormGroup', JSON.stringify(form))
+      localStorage.setItem(`dadosBasicosFormGroup_${this.idModulo}`, JSON.stringify(form))
     })
 
     this.videoUrlsFormGroup.valueChanges.subscribe(form => {
-      localStorage.setItem('videoUrls', JSON.stringify(form))
+      localStorage.setItem(`videoUrls_${this.idModulo}`, JSON.stringify(form))
     })
 
     this.saibaMaisFormGroup.valueChanges.subscribe(form => {
-      localStorage.setItem('saibaMais', JSON.stringify(form))
+      localStorage.setItem(`saibaMais_${this.idModulo}`, JSON.stringify(form))
     })
 
     this.exerciciosFormGroup.valueChanges.subscribe(form => {
-    localStorage.setItem('exerciciosFormGroup', JSON.stringify(form));
+    localStorage.setItem(`exerciciosFormGroup_${this.idModulo}`, JSON.stringify(form));
   });
   }
 
@@ -86,23 +89,22 @@ export class CadastroTopicoComponent {
       
       if (!this.idModulo) {
         alert('ID do módulo não encontrado! Redirecionando...');
-        this.router.navigate(['/modulos']);
+        this.router.navigate(['/modulos']); // verificar se existe essa rota
       }
     });
-    const STORAGE_KEY = `topico_rascunho_modulo_${this.idModulo}`;
-    
 
-
-    this.getDadosBasicosFormStorage()
-    this.getVideoUrlsStorage();
-    this.getSaibaMaisStorage();
-    this.getExercicioStorage()
+    this.getDadosBasicosFormStorage(this.idModulo)
+    this.getVideoUrlsStorage(this.idModulo);
+    this.getSaibaMaisStorage(this.idModulo);
+    this.getExercicioStorage(this.idModulo)
+    this.abrirPopUp()
   }
 
   
 
-  getDadosBasicosFormStorage(){
-    const dadosBasicosFormGroup = localStorage.getItem('dadosBasicosFormGroup');
+  getDadosBasicosFormStorage(idModulo: number){
+    const storageKey = `dadosBasicosFormGroup_${idModulo}`
+    const dadosBasicosFormGroup = localStorage.getItem(storageKey);
 
     if (dadosBasicosFormGroup) {
       this.dadosBasicosFormGroup.patchValue(JSON.parse(dadosBasicosFormGroup));
@@ -113,8 +115,9 @@ export class CadastroTopicoComponent {
     return this.videoUrlsFormGroup.get('videoUrls') as FormArray;
   }
 
-  getVideoUrlsStorage(){
-    const videoUrls = localStorage.getItem('videoUrls');
+  getVideoUrlsStorage(idModulo: number){
+    const storageKey = `videoUrls_${idModulo}`
+    const videoUrls = localStorage.getItem(storageKey);
 
     if (videoUrls) {
       const dados = JSON.parse(videoUrls);
@@ -131,8 +134,9 @@ export class CadastroTopicoComponent {
     return this.saibaMaisFormGroup.get('saibaMais') as FormArray;
   }
 
-  getSaibaMaisStorage() {
-     const saibaMais = localStorage.getItem('saibaMais');
+  getSaibaMaisStorage(idModulo: number) {
+    const storageKey = `saibaMais_${idModulo}`
+     const saibaMais = localStorage.getItem(storageKey);
     if (saibaMais){
       const dados = JSON.parse(saibaMais);
       
@@ -148,8 +152,9 @@ export class CadastroTopicoComponent {
     return this.exerciciosFormGroup.get('exercicios') as FormArray;
   }
 
-  getExercicioStorage(){
-    const exerciciosFormGroup = localStorage.getItem('exerciciosFormGroup');
+  getExercicioStorage(idModulo: number){
+    const storageKey = `exerciciosFormGroup_${idModulo}`
+    const exerciciosFormGroup = localStorage.getItem(storageKey);
     if (!exerciciosFormGroup) return;
 
     const dados = JSON.parse(exerciciosFormGroup!);
@@ -401,6 +406,46 @@ export class CadastroTopicoComponent {
     if (file){
       this.selectedFile = file
     }
+
   }
+
+  abrirPopUp() {
+    const dadosBasicos = localStorage.getItem(`dadosBasicosFormGroup_${this.idModulo}`);
+    const videoUrls = localStorage.getItem(`videoUrls_${this.idModulo}`);
+    const saibaMais = localStorage.getItem(`saibaMais_${this.idModulo}`);
+    const exercicios = localStorage.getItem(`exerciciosFormGroup_${this.idModulo}`);
+
+    const temDadosBasicos = dadosBasicos && Object.values(JSON.parse(dadosBasicos)).some(valor => valor !== null && valor !== "");
+    const temVideos = videoUrls && JSON.parse(videoUrls).videoUrls?.length > 0;
+    const temSaibaMais = saibaMais && JSON.parse(saibaMais).saibaMais?.length > 0;
+    const temExercicios = exercicios && JSON.parse(exercicios).exercicios?.length > 0;
+
+    if (temDadosBasicos || temVideos || temSaibaMais || temExercicios) {
+
+      const dialogRef = this.dialog.open(ContinuarCadastrandoTopicoComponent, {
+        width: '440px',
+        height: '170px',
+        panelClass: 'cardClonagemFicha',
+        data: {
+          titulo: "Cadastro de Tópico",
+          mensagem: `Deseja continuar o cadastro de tópico?`,
+        }
+      });
+
+      dialogRef.afterClosed().subscribe((valor) => {
+        if (!valor) {
+          localStorage.removeItem(`dadosBasicosFormGroup_${this.idModulo}`);
+          localStorage.removeItem(`videoUrls_${this.idModulo}`);
+          localStorage.removeItem(`saibaMais_${this.idModulo}`);
+          localStorage.removeItem(`exerciciosFormGroup_${this.idModulo}`);
+          this.dadosBasicosFormGroup.reset();
+          this.videoUrls.clear()
+          this.saibaMais.clear()
+          this.exercicios.clear();
+        }
+      });
+
+    }}
+
 
 }

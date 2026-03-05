@@ -15,7 +15,7 @@ export class ConfirmarClonagemFichaComponent {
     private dialogRef: MatDialogRef<ConfirmarClonagemFichaComponent>
   ){}
 
-  confirmar(){
+   confirmar(){
     this.dialogRef.close(true)
   }
 
