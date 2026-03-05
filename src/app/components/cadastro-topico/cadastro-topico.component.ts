@@ -94,12 +94,9 @@ export class CadastroTopicoComponent {
         this.router.navigate(['/modulos']); // verificar se existe essa rota
       }
     });
-
-    this.getDadosBasicosFormStorage(this.idModulo)
-    this.getVideoUrlsStorage(this.idModulo);
-    this.getSaibaMaisStorage(this.idModulo);
-    this.getExercicioStorage(this.idModulo)
     this.abrirPopUp()
+    
+    
   }
 
   
@@ -445,35 +442,31 @@ export class CadastroTopicoComponent {
           localStorage.removeItem(`saibaMais_${this.idModulo}`);
           localStorage.removeItem(`exerciciosFormGroup_${this.idModulo}`);
           this.dadosBasicosFormGroup.reset();
+         
+
           this.videoUrls.clear()
+          this.videoUrls.push(this.fb.control('', Validators.required));
+          
           this.saibaMais.clear()
+          this.saibaMais.push(
+          this.fb.group({
+          descricao: ['', Validators.required],
+            url: ['', Validators.required]
+          })
+);
           this.exercicios.clear();
 
-          this.dadosBasicosFormGroup = this.fb.group({
-            nome_topico: ['', Validators.required],
-            textoApoio: [''],
           
-          });
+      
 
-          this.videoUrlsFormGroup = this.fb.group({
-            videoUrls: this.fb.array([this.fb.control('', Validators.required)])
-          });
-
-          this.saibaMaisFormGroup = this.fb.group({
-            saibaMais: this.fb.array([
-              this.fb.group({
-                descricao: ['', Validators.required],
-                url: ['', Validators.required]
-              })
-            ])
-          });
-
-
-  
-
-
+        } else {
+          this.getDadosBasicosFormStorage(this.idModulo);
+          this.getVideoUrlsStorage(this.idModulo);
+          this.getSaibaMaisStorage(this.idModulo);
+          this.getExercicioStorage(this.idModulo);
         }
-      });
+      }
+    );
 
     }}
 
