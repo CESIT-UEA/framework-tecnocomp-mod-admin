@@ -219,7 +219,8 @@ export class ApiAdmService {
 
   message(msg: string) {
     return this.snackBar.open(msg, 'Fechar', {
-      duration: 3000,
+      duration: 4000,
+      panelClass: ['snackbar-custom']
     });
   }
 

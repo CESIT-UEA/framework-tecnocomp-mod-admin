@@ -76,7 +76,7 @@ export class CadastroUsuarioComponent implements OnInit {
       console.log(this.cadastroForm.value)
       this.apiService.registerUsuario(this.cadastroForm.value).subscribe(
         response => {
-          console.log('Usuário cadastrado com sucesso:', response);
+          this.apiService.message("Usuário cadastrado com sucesso!")
           this.router.navigate(['/tecnocomp/usuarios'])
         },
         error => {

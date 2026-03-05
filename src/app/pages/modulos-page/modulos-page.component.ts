@@ -58,8 +58,13 @@ export class ModulosPageComponent implements OnInit {
   excluirModulo({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
     this.apiService.excluirModulo(idExcluir, idAdm, senhaAdm).subscribe(
       () => {
-        alert('Modulo excluído com sucesso!');
+        this.apiService.message("Módulo excluído com sucesso!")
         this.modulos = this.modulos.filter((modulo) => modulo.id !== idExcluir);
+         if (this.pagination.currentPage > this.infoModulos.totalPaginas){
+          this.carregarModulosPaginados(this.infoModulos.totalPaginas, this.quantidadeItens)
+        } else {
+          this.carregarModulosPaginados(this.pagination.currentPage, this.quantidadeItens);
+        }
       },
       (error) => {
         console.log(error);

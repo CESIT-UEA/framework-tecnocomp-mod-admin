@@ -56,8 +56,8 @@ export class CadastroPlataformaComponent {
     if (this.plataformaForm.valid) {
       this.apiService.registerPlataforma(this.plataformaForm.value).subscribe(
         (response) => {
-          console.log('Plataforma registrada com sucesso:', response);
-        
+          this.apiService.message("Plataforma cadastrada com sucesso!")
+          this.voltarPagina()
         },
         (error) => {
           console.error('Erro ao registrar plataforma:', error);

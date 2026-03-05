@@ -12,6 +12,8 @@ import { User } from 'src/interfaces/user';
 export class UsuariosPageComponent implements OnInit {
   usuarios: User[] = [];
   pagination: PaginationState;
+  totalPaginas!: number;
+  totalRegistro!: number;
 
   constructor(
     private userService: ApiAdmService,
@@ -32,8 +34,11 @@ export class UsuariosPageComponent implements OnInit {
   excluirUsuario({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
     this.userService.excluirUsuario(idAdm, senhaAdm, idExcluir).subscribe(
       () => {
-        alert('Usuário excluído com sucesso!');
+        this.userService.message('Usuário excluído com sucesso!')
+        
         this.usuarios = this.usuarios.filter((user) => user.id !== idExcluir);
+        this.pagination = this.paginationService.createPaginationState();
+        this.carregarUsuariosPaginados(this.pagination.currentPage)
       },
       (error) => {
         console.log(error);
@@ -54,6 +59,8 @@ export class UsuariosPageComponent implements OnInit {
     this.userService.listarUsers(page).subscribe(
       (response) => {
         this.usuarios = response.users;
+        this.totalPaginas = response.infoUsers.totalPaginas
+        this.totalRegistro = response.infoUsers.totalRegistros
         this.paginationService.updatePaginationState(
           this.pagination,
           response.infoUsers.totalPaginas,

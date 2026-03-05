@@ -105,6 +105,9 @@ html{
   padding: 0 !important;
 }
 
+.snackbar-custom button.mat-mdc-snack-bar-action {
+  color: #7C4CC6 !important;
+}
 
 input:focus,
 textarea:focus,

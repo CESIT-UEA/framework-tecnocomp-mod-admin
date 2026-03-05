@@ -31,8 +31,10 @@ export class PlataformaPageComponent implements OnInit {
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
     this.apiService.excluirPlataforma(idAdm, senhaAdm, idExcluir).subscribe(
       () => {
-        alert('Plataforma excluída com sucesso!');
+        this.apiService.message("Plataforma excluída com sucesso!")
         this.plataformas = this.plataformas.filter((plataforma) => plataforma.id !== idExcluir);
+        this.pagination = this.paginationService.createPaginationState();
+        this.carregarPlataformasPaginadas(this.pagination.currentPage)
       },
       (error) => {
         console.error('Erro ao excluir plataforma:', error);

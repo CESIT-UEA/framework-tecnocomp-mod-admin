@@ -122,6 +122,7 @@ export class RegistroModuloComponent implements OnInit {
           }
         })
         }
+        this.apiService.message("Módulo cadastrado com sucesso!")
         this.navigateAfterRegisterModulo()
         },
         error: err => {
