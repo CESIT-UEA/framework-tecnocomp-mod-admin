@@ -210,6 +210,15 @@ select:focus {
 }
 
 .mat-mdc-text-field-wrapper {
-  border: none;
-  background: var(--input-color);
+  background: var(--input-color) !important;
+  border-radius: 10px !important;
+  height: 40px !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__content {
+  padding: 0 46px !important;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 7px !important;
 }
