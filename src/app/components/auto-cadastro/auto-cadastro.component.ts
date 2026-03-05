@@ -14,6 +14,7 @@ export class AutoCadastroComponent {
     //errorLogin: boolean = false;
     focus = false;
     hide = true;
+    confirm = true;
     submitted = false;
 
     cadastroForm = new FormGroup({

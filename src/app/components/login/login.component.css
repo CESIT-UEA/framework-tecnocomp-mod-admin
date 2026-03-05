@@ -45,7 +45,7 @@
   height: 65%;
   max-width: 530px;      /* tamanho fixo máximo */
   /* min-height: 520px; */
-  height: auto;   
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -135,6 +135,38 @@
   border: none;
 }
 
+/* BOTÃO DO OLHO */
+
+.input-senha {
+  position: relative;
+  width: 100%;
+}
+
+.input-senha .icon {
+  position: absolute;
+  left: 94%;
+  top: 15%;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.input-senha .icon mat-icon {
+ color: #888888;
+}
+
+.input-senha .icon.ativo mat-icon {
+  color: #A879F2;
+}
+
 /* LINK ESQUECI MINHA SENHA */
 
 .senha-esquecida {
@@ -144,6 +176,7 @@
   color: #A879F2;
   text-decoration: none;
 }
+
 
 .senha-esquecida:hover {
   text-decoration: underline;
@@ -230,7 +263,7 @@ button {
   color: #7c4cc6;
   position: relative;
   top: -12px;
-  
+
 }
 
 .button-two:hover {
@@ -302,5 +335,9 @@ button {
   .card-login {
     max-width: 530px;
     padding: 32px 36px 28px;
+  }
+
+  .input-senha .icon {
+    left: 92%;
   }
 }
