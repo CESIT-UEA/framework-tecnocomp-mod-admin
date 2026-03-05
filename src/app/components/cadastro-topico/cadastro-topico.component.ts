@@ -20,6 +20,8 @@ export class CadastroTopicoComponent {
   exerciciosFormGroup!: FormGroup;
   isQuestaoAberta!: boolean;
 
+  arquivoSelecionado: File | null = null;
+
   selectedFile: File | null = null
   renamedFile!: File;
   baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
@@ -39,7 +41,7 @@ export class CadastroTopicoComponent {
     this.dadosBasicosFormGroup = this.fb.group({
       nome_topico: ['', Validators.required],
       textoApoio: [''],
-      ebookUrlGeral: ['']
+     
     });
 
     this.videoUrlsFormGroup = this.fb.group({
@@ -280,6 +282,10 @@ export class CadastroTopicoComponent {
       id_modulo: this.idModulo
     };
     
+    if (!this.selectedFile) {
+    alert("Selecione um ebook antes de cadastrar o tópico.");
+    return;
+  }
     // referencias: this.referenciasFormGroup.value.referencias,
     
     if (this.selectedFile){
@@ -442,6 +448,30 @@ export class CadastroTopicoComponent {
           this.videoUrls.clear()
           this.saibaMais.clear()
           this.exercicios.clear();
+
+          this.dadosBasicosFormGroup = this.fb.group({
+            nome_topico: ['', Validators.required],
+            textoApoio: [''],
+          
+          });
+
+          this.videoUrlsFormGroup = this.fb.group({
+            videoUrls: this.fb.array([this.fb.control('', Validators.required)])
+          });
+
+          this.saibaMaisFormGroup = this.fb.group({
+            saibaMais: this.fb.array([
+              this.fb.group({
+                descricao: ['', Validators.required],
+                url: ['', Validators.required]
+              })
+            ])
+          });
+
+
+  
+
+
         }
       });
 

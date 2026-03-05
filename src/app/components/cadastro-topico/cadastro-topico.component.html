@@ -19,15 +19,18 @@
                 required
               >
             </div>
-
-            <div class="mat-form-field">
-              <mat-label>Ebook do Tópico</mat-label>
-              <input type="file" (change)="onSelectedFile($event)" formControlName="ebookUrlGeral" required />
-              
+            <div class="cadastro-modulo-campo file-field">
+            <label for="ebookUrlGeral" class="cadastro-modulo-label upload-btn file-bnt">
+              Ebook Geral<span> *</span>
+            </label>
+            <div class="file-input-wrapper">
+              <!-- <mat-label>Ebook do Tópico</mat-label> -->
+              <input type="file" id="ebookUrlGeral"  (change)="onSelectedFile($event)" class="cadastro-modulo-input"  required />
+              <span class="file-status-text">{{ selectedFile ? selectedFile.name : 'Nenhum arquivo selecionado' }}</span>
             </div>
-
+            </div>
             <div class="passo1-botao-proximo">
-              <button class="proximo" matStepperNext>Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
+              <button class="proximo" matStepperNext [disabled]="dadosBasicosFormGroup.invalid || !selectedFile">Próximo <img src="../../../assets/icons/proximo.svg" alt="icone de próximo"></button>
             </div>
           </form>
         </div>

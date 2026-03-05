@@ -8,14 +8,15 @@
   width: 60%;
   max-width: 1100px;
   padding: 10px 20px;
-  border-radius: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   margin: 10px auto;
   gap: 20px;
   background-color: #2C2C2E;
-  border-top: 8px solid #7C4CC6;
+  border-radius: 40px;
+  border-top: 6px solid #7C4CC6;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
 
 }
 
@@ -205,7 +206,7 @@ button[mat-button] {
 .revisao-secao {
   margin-bottom: 25px;
   padding: 10px 15px;
-  background-color: #2c2c2c;
+  background-color: transparent;
   /* Fundo levemente mais claro que a página */
   border-radius: 8px;
 }
@@ -387,6 +388,91 @@ ul {
   background-color: #58DB43;
 }
 
+/* Estilização do Input do Ebook */
+.file-field #ebookUrlGeral::file-selector-button {
+  background-color: transparent;
+  color: rgba(124, 76, 198, 1);
+  border: 2.5px solid rgba(124, 76, 198, 1);
+  /* font-family: Inter, sans-serif; */
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 4px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  height: 38px;
+  
+}
+
+.file-field #ebookUrlGeral::file-selector-button:hover {
+  background-color: rgba(124, 76, 198, 1);
+  color: #fff;
+}
+
+/* Oculta o texto nativo e remove o fundo individual para usar o do wrapper */
+#ebookUrlGeral {
+  margin-left: 15px;
+  color: transparent !important;
+  width: 160px;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Container que mantém o fundo cinza atrás do botão e do texto */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #3F3F40;
+  border-radius: 10px;
+  
+  gap: 10px;
+}
+
+.file-input-wrapper input {
+  height: 42px;
+}
+
+.cadastro-modulo-campo {
+  display: flex;
+  width: 100%;
+  padding: 5px 0px;
+}
+
+.cadastro-modulo-campos-inline .cadastro-modulo-campo {
+  width: 48%;
+}
+
+.cadastro-modulo-campo {
+  flex-direction: column;
+}
+
+/* .file-field {
+  height: 42px;
+} */
+
+.file-field .cadastro-modulo-label {
+  width: 100%;
+  color: #fff;
+}
+
+.file-bnt {
+  padding-bottom: 10px;
+}
+
+.file-status-text {
+  color: #fff;
+  /* font-family: Inter, sans-serif; */
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 175px);
+}
+
+
+#file-upload-button {
+  background-color: transparent;
+}
 /* Responsividade */
 @media (max-width: 1100px) {
   .formulario {

@@ -8,14 +8,15 @@
   width: 60%;
   max-width: 1100px;
   padding: 10px 20px;
-  border-radius: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   margin: 10px auto;
   gap: 20px;
   background-color: #2C2C2E;
-  border-top: 8px solid #7C4CC6;
+  border-radius: 40px;
+  border-top: 6px solid #7C4CC6;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
 
 }
 .mat-stepper-horizontal {
@@ -54,6 +55,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
 }
 
 .mat-form-field {
@@ -227,7 +229,7 @@ button {
 .revisao-secao {
   margin-bottom: 25px;
   padding: 10px 15px;
-  background-color: #2c2c2c; /* Fundo levemente mais claro que a página */
+  background: transparent;
   border-radius: 8px;
 }
 
