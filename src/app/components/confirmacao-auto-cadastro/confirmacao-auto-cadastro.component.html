@@ -1,17 +1,31 @@
+<div class="confirmacao-container">
+    <div class="confirmacao-card">
+        <div class="confirmacao-header">
+            <h2 class="confirmacao-titulo">Insira o código</h2>
+            <p class="confirmacao-subtitulo">
+                Não recebeu o código no seu E-mail?
+                <span class="confirmacao-link">Reenviar código.</span>
+            </p>
+        </div>
 
-<form id ="form" class="forms" [formGroup]="formConfirmarCadastro">
-    <div class="senha-conteudo">
-        <label for="nova-senha">Email</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" formControlName="email">
+        <form id="form" class="confirmacao-form" [formGroup]="formConfirmarCadastro">
+            <div class="campo-form">
+                <label for="email" class="campo-label">E-mail</label>
+                <input type="password" id="email" name="email" class="campo-input" placeholder="Digite seu nome E-mail"
+                    formControlName="email" />
+            </div>
+
+            <div class="campo-form">
+                <label for="codigo" class="campo-label">Código de acesso</label>
+                <input type="password" id="codigo" name="codigo" class="campo-input" placeholder="Digite seu código"
+                    formControlName="codigo" />
+            </div>
+
+            <div class="acoes-form">
+                <button type="button" class="btn-enviar" (click)="submit()">
+                    Enviar
+                </button>
+            </div>
+        </form>
     </div>
-    <div class="senha-conteudo">
-        <label for="confirmar-senha">Código</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" formControlName="codigo">
-    </div>
-    <div class="senha-conteudo">
-        <div class="buttons">
-        <button class="botao-redefinir" (click)="submit()">Confirmar</button>
-        <button class="botao-cancelar" routerLink="/login">Cancelar</button>
-    </div> 
-    </div>
-</form>
+</div>
