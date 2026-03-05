@@ -443,7 +443,7 @@ export class CadastroTopicoComponent {
           localStorage.removeItem(`exerciciosFormGroup_${this.idModulo}`);
           this.dadosBasicosFormGroup.reset();
          
-
+          // teste
           this.videoUrls.clear()
           this.videoUrls.push(this.fb.control('', Validators.required));
           
