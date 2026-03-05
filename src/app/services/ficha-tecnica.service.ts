@@ -60,7 +60,7 @@ private baseUrl = environment.baseUrl + '/api/'; // Ajuste conforme seu ambiente
 
 
   clonarFichaTecnica(modulo_atual_id: number, modulo_id: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/ficha-tecnica/${modulo_id}/clonar/${modulo_atual_id}`,
+    return this.http.post(`${this.baseUrl}/ficha-tecnica/${modulo_atual_id}/clonar/${modulo_id}`,
     {} 
   );
 }
