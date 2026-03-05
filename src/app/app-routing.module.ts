@@ -43,12 +43,13 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ConfirmacaoAutoCadastroComponent } from './components/confirmacao-auto-cadastro/confirmacao-auto-cadastro.component';
 import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topicos-modulo-unico.component';
 import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
-  
+import { CadastrarCodigoComponent } from './pages/cadastrar-codigo/cadastrar-codigo.component';
 const routes: Routes = [
  
   { path: 'login', component: LoginComponent },
   { path: 'cadastrar', component: AutoCadastroComponent},
   { path: 'cadastrar/teste', component: ConfirmacaoAutoCadastroComponent},
+  { path: 'cadastrar/codigo', component: CadastrarCodigoComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'reset-password', component: ResetPasswordComponent, canActivate: [resetPasswordGuard]},
   {

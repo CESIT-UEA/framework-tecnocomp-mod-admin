@@ -94,8 +94,7 @@ import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topico
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { HeaderTopicoComponent } from './pages/ver-ao-vivo/components/header-topico/header-topico.component';
 import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
-
-
+import { CadastrarCodigoComponent } from './pages/cadastrar-codigo/cadastrar-codigo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -170,7 +169,7 @@ import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.compo
     PaginationComponent,
     HeaderTopicoComponent,
     PerfilVisitaComponent,
-
+    CadastrarCodigoComponent,
   ],
   imports: [
     MatSlideToggleModule,

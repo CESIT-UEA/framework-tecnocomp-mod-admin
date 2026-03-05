@@ -19,3 +19,4 @@ describe('ConfirmacaoAutoCadastroComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+Z
