@@ -1,0 +1,36 @@
+.container {
+    min-height: 90vh;
+    background-color: black;
+    padding: 2rem 0;
+}
+
+.container-questao {
+    background-color: #272729;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+h2 {
+    text-align: justify;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: .0125em;
+    margin: 0 0 16px;
+}
+
+.resposta-esperada {
+    text-align: justify;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.label {
+    padding: 10px 2px;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
 
 @Component({
@@ -6,6 +6,9 @@ import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
   templateUrl: './ficha-tecnica.component.html',
   styleUrls: ['./ficha-tecnica.component.css']
 })
-export class FichaTecnicaComponent {
+export class FichaTecnicaComponent implements OnInit{
     constructor(public verAoVivo: VerAoVivoService) {}
+    ngOnInit(): void {
+        this.verAoVivo.getDadosCompletos()
+    }
 }

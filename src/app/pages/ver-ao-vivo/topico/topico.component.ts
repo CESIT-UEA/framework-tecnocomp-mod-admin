@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
 
 @Component({
@@ -6,12 +6,24 @@ import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
   templateUrl: './topico.component.html',
   styleUrls: ['./topico.component.css']
 })
-export class TopicoComponent implements OnInit {
+export class TopicoComponent implements OnInit, AfterViewInit {
+  idTopico!: number;
   constructor(public verAoVivoService: VerAoVivoService){}
 
   ngOnInit(): void {
     this.verAoVivoService.getDadosCompletos();
+    localStorage.setItem('idModulo', this.verAoVivoService.dados_completos.id)
+    this.idTopico = this.verAoVivoService.getIdTopico()
+    this.verAoVivoService.controll_topico = this.idTopico
+    this.verAoVivoService.salvarIdTopico();
   }
+
+
+
+  ngAfterViewInit(): void {
+    this.verAoVivoService.recreatePlayer();
+  }
+
 
   get topicos(): any[] {
     return this.verAoVivoService.dados_completos?.Topicos ?? [];

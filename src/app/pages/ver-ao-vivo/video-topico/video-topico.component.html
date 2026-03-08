@@ -1,0 +1,48 @@
+<div class="video-container" *ngIf="!isLoading; else loading">
+  <!-- Iframe para o player -->
+  <div id="player"></div>
+</div>
+
+<!-- Navegação entre os vídeos -->
+<div class="navigation-button">
+  <div class="box-navigate-left">
+    <!-- <p class="navigate-p" style="color: white">
+      {{ getVerificaVideosAssistidos() }}/{{ videos.length }} Assistidos
+    </p> -->
+  </div>
+  <div class="box-navigate-right">
+    <mat-icon
+      class="mat-18 voltar"
+      (click)="this.ltiService.voltar()"
+      [ngClass]="{ disabled: this.ltiService.currentVideoIndex == 0 }">
+      arrow_back
+    </mat-icon>
+    <ul>
+      <li
+        *ngFor="let video of videos; index as i"
+        [ngClass]="{
+          active: this.ltiService.currentVideoIndex == i
+        }"
+        (click)="selectVideo(i)">
+        {{ i + 1 }}
+      </li>
+    </ul>
+    <mat-icon
+      class="mat-18 proximo"
+      (click)="this.ltiService.proximo()"
+      [ngClass]="{
+        disabled: this.ltiService.currentVideoIndex + 1 == videos.length
+      }">
+      arrow_forward
+    </mat-icon>
+  </div>
+</div>
+
+<!-- Tela de carregamento -->
+<ng-template #loading>
+  <div class="video-container">
+    <div class="loading center-2">
+      <div class="spinner"></div>
+    </div>
+  </div>
+</ng-template>

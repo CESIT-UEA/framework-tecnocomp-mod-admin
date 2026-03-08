@@ -1,25 +1,27 @@
 <div class="container">
   <header class="header">
-    <img src="assets/tecnocomp.png" alt="Tecnocom+ LOGO" routerLink="/tecnocomp/modulos"/>
+    <img src="assets/tecnocomp.png" alt="Tecnocom+ LOGO" [routerLink]="voltar()"/>
     <div class="links">
-            <span
+            <a
               class="btn-ficha"
-              [routerLink]="['/ver-ao-vivo', 7]"
+              [routerLink]="['/ver-ao-vivo', verAoVivoService.dados_completos.id]" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }"
             >
               Início
-            </span>
-            <span
+            </a>
+            <a
               class="btn-ficha"
-              [routerLink]="['/ver-ao-vivo', 7, 'ficha-tecnica']"
+              [routerLink]="['/ver-ao-vivo', verAoVivoService.dados_completos.id, 'ficha-tecnica']"
+               routerLinkActive="ativo"
             >
               Ficha Técnica
-            </span>
-            <span
+            </a>
+            <a
               class="btn-ficha"
-              [routerLink]="['/ver-ao-vivo', 7, 'sobre']"
+              [routerLink]="['/ver-ao-vivo', verAoVivoService.dados_completos.id, 'sobre']"
+               routerLinkActive="ativo"
             >
               Sobre
-            </span>
+            </a>
           </div>
     <div class="end-navbar">
 

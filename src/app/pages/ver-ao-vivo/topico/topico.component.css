@@ -1,27 +1,188 @@
- .titulo-topico {
+
+
+.titulo-topico {
+  background-color: #131313;
   display: flex;
   position: relative;
   align-items: center;
+  padding-top: calc(9vh - 1px);
+  z-index: 1;
 }
+
 
 .titulo-topico ul {
   padding-right: 3.5rem;
+  list-style-type: disc;
+  width: 100%;
+  
 }
 
-.botao_roxo_avancar {
+.titulo-topico ul li {
+  list-style-position: inside;
+  text-align: center;
+}
+
+.titulo-topico ul li::marker {
+  color: #9665df;
+}
+
+
+.titulo-topico hr {
+    width: 87%;
+    height: 2px;
+    margin: 10px auto 10px;
+    border-radius: 10px;
+    background-color: #3c2859;
+    border: none;
+}
+
+.titulo-topico-atual {
+  color: #fff;
+  font-size: 25px;
+  padding: 30px 0 0;
+
+}
+
+.container-video {
+  height: 100%;
+  width: 85%;
+}
+.div-slide {
+  width: 67.5%;
+  height: 100%;
   display: flex;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  align-items: center;
   justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transform: translateY(-50%);
 }
 
-.botao_roxo_avancar img {
-  width: 2.5rem;
-  height: 2.5rem;
+main {
+  background-color: #131313;
+  height: 70vh;
+  display: flex;
+  border-bottom: 2px solid #222222;
+}
+
+.recursos-complementares {
+  height: 84%;
+  width: 19%;
+  border-radius: 15px;
+  background-color: rgba(28, 28, 28, .7);
+  padding: 30px;
+  max-width: 300px;
+}
+
+.title {
+    color: #fff;
+    text-align: center;
+    text-shadow: -5px 5px 5px rgba(0, 0, 0, .25);
+    font-family: var(fontCustom);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #9665df;
+}
+
+.section-texto
+ {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    justify-content: center;
+}
+
+
+
+.recursos-complementares ,.botoes-cima, .botoes-baixo ,.saibaMais, .textoApoio, .referencias {
+  display: flex;
+}
+
+.recursos-complementares {
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.botoes-cima {
+  justify-content: space-around;
+}
+
+.botoes-baixo {
+  justify-content: center;
+}
+
+.saibaMais, .textoApoio, .referencias {
+  flex-direction: column;
+  width: 6rem;
+  height: 70px;
+  padding: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: #2a2a2a;
+  box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  color: white;
+  border: none;
+  position: relative;
+}
+
+.buttons-final {
+  display: flex;
+  flex-direction: column;
+}
+
+.atividade-botao {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12.559px;
+  border: none;
+  border-radius: 7.177px;
+
+  color: #fff;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15.25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 22px;
+  width: 95%;
+  height: 40px;
+  cursor: pointer;
+  background: var(--2, #793cd4);
+}
+
+.ebook-botao {
+  display: inline-flex;
+  padding: 9.868px 35.883px;
+  justify-content: center;
+  align-items: center;
+  gap: 12.559px;
+  background-color: transparent;
+  border-radius: 7.177px;
+  border: 1.794px solid var(--Terciaria, #fff);
+  cursor: pointer;
+  height: 40px;
+  width: 95%;
+}
+
+button.ebook-botao a {
+  color: #fff;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15.25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  width: 100%;
 }

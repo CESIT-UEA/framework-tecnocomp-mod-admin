@@ -1,0 +1,44 @@
+:host{
+  height: 100%;
+  background-color: black;
+  display: block;
+}
+.header-atividade {
+  display: grid;
+  height: 10vh;
+  grid-template-columns: 95% 5%;
+  width: 100%;
+  justify-content: center;
+  background-color: #161616;
+  align-items: center;
+}
+
+.header-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.header-links p {
+  font-size: 30px;
+  color: #B3B3B3;
+}
+.teste{
+  height: 90vh;
+}
+
+
+
+
+@media (max-width: 800px) {
+  .header-atividade{
+    grid-template-columns: 90% 10%;
+  }
+}
+
+@media(max-width: 389px){
+  .header-atividade{
+    grid-template-columns: 85% 15%;
+  }
+}

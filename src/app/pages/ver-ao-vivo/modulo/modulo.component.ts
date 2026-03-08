@@ -25,11 +25,16 @@ export class ModuloComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.verAoVivo.removeDadosCompletos();
     const id = this.route.snapshot.paramMap.get('id_modulo');
     if (id) {
-      console.log('Teste');
       this.carregarModulo(+id);
-      // this.carregarTopicos(+id);
+      let idModuloStorage = JSON.parse(localStorage.getItem('idModulo') || '');
+      if (Number(idModuloStorage) !== Number(id)){
+        localStorage.removeItem('idModulo')
+        this.verAoVivo.removerIdTopico()
+      }
+        
     }
     if (this.modulo?.id != null) {
       this.idModulo = this.modulo.id;
@@ -37,6 +42,7 @@ export class ModuloComponent implements OnInit {
   }
 
   carregarModulo(id: number): void {
+    
     this.apiService.obterModuloPorId(id).subscribe(
       (response) => {
         this.modulo = response;

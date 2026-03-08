@@ -1,0 +1,31 @@
+<div
+    class="container-main-conteudo-links-voltar"
+>
+    <div
+        class="link-voltar"
+        (click)="voltar()"
+        [ngClass]="{'voltarCss': this.ltiService.controll_topico == 0}"
+    >
+     <img
+        
+        src="../../../../assets/icons//voltarUnidadeCorreto.svg"
+        alt="Icone para voltar unidade"
+        width="30px"
+        height="30px"
+    />
+        Tópico Anterior
+    </div>
+    <div
+        class="link-proximo"
+        (click)="proximo()"
+        *ngIf="verificaProximo()"
+    >
+        Próximo Tópico
+     <img
+        src="../../../../../assets/icons/avancarUnidade.svg"
+        alt="Icone para avançar unidade"
+        width="30px"
+        height="30px"
+     />
+    </div>        
+</div>

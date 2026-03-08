@@ -1,0 +1,95 @@
+.container-atividade {
+    min-height: 90vh;
+    background-color: black;
+    color: #fff;
+    
+}
+
+
+
+.container-objetiva {
+    height: 100%;
+}
+
+.questao {
+  text-align: justify;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300 !important;
+  line-height: normal;
+
+  padding: 20px 0 16px;
+}
+
+.container-objetiva {
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+.caixa-exercicio {
+  display: grid;
+  grid-template-columns: 10% 87%;
+  column-gap: 30px;
+  background-color: #4f4f4f;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  min-height: 74px;
+  
+}
+
+.nao-selecionada {
+    background-color: #9665df !important;
+}
+
+.textos-exercicio {
+  padding: 30px 0px;
+}
+
+.texto-baixo {
+    display: flex;
+    position: relative;
+}
+
+button {
+    cursor: pointer;
+}
+
+.letra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: red;
+  border-radius: 12px 0 0 12px;
+}
+
+.explicacao {
+  padding: 15px;
+  margin: 10px 15px 0 0;
+  width: 90%;
+  border: 2px solid red;
+  background-color: #333;
+}
+
+.icone-olho {
+  position: absolute;
+  right: 10px;
+  top: -20px;
+}
+
+.icone-olho:hover {
+  cursor: pointer;
+}
+
+.explicacao-correta {
+  border: 2px solid #58DB43 !important;
+}
+
+.correto {
+  background-color: #58DB43 !important;
+}

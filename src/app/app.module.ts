@@ -98,6 +98,10 @@ import { ClonarFichaTecnicaComponent } from './components/clonar-ficha-tecnica/c
 import { CardsClonarFichaComponent } from './components/cards/cards-clonar-ficha/cards-clonar-ficha.component';
 import { ConfirmarClonagemFichaComponent } from './confirmar-clonagem-ficha/confirmar-clonagem-ficha.component';
 import { ContinuarCadastrandoTopicoComponent } from './components/continuar-cadastrando-topico/continuar-cadastrando-topico.component';
+import { VideoTopicoComponent } from './pages/ver-ao-vivo/video-topico/video-topico.component';
+import { HeaderRecursosComplementaresComponent } from './pages/ver-ao-vivo/components/header-recursos-complementares/header-recursos-complementares.component';
+import { LinksNavegacaoComponent } from './pages/ver-ao-vivo/components/links-navegacao/links-navegacao.component';
+import { QuestaoAbertaComponent } from './pages/ver-ao-vivo/components/questao-aberta/questao-aberta.component';
 
 
 @NgModule({
@@ -178,6 +182,10 @@ import { ContinuarCadastrandoTopicoComponent } from './components/continuar-cada
     CardsClonarFichaComponent,
     ConfirmarClonagemFichaComponent,
     ContinuarCadastrandoTopicoComponent,
+    VideoTopicoComponent,
+    HeaderRecursosComplementaresComponent,
+    LinksNavegacaoComponent,
+    QuestaoAbertaComponent,
 
   ],
   imports: [

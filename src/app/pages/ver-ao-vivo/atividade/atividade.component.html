@@ -1,1 +1,47 @@
-<p>atividade works!</p>
+<app-header-recursos-complementares icone="../../../../assets/icons/atividade.svg" texto="Atividade"></app-header-recursos-complementares>
+<main class="container-atividade">
+    <div class="questao-aberta" *ngIf="this.exercicio.aberta">
+      <app-questao-aberta [exercicio]="this.exercicio"></app-questao-aberta>
+    </div>
+    <div class="questao-objetiva" *ngIf="!this.exercicio.aberta">
+        <div class="container-objetiva">
+            <h3 class="questao"> {{ exercicio.questao }}</h3>
+              <ul>
+                <li class="caixa-exercicio"  *ngFor="let alternativa of exercicio.Alternativas; let i = index">
+      
+                   <div class="letra" 
+                   [ngStyle]="{
+                    'background-color': (alternativa.correta && this.selecionado[i]) ? '#58DB43' : 
+                    (!alternativa.correta && !this.selecionado[i]) || (alternativa.correta && !this.selecionado[i]) ? '#A174E2' : 'red'
+                    }"
+                   >
+                    <h3 *ngIf="!this.selecionado[i]">{{letras[i]}}</h3>
+                    <img
+                    *ngIf="this.selecionado[i] && alternativa.correta" 
+                    src="../../../../assets/icons/correto-atividade.png" 
+                    alt="ícone de atividade correta">
+                    <img 
+                    style="width: 60px; height: 60px;"
+                    *ngIf="this.selecionado[i] && alternativa.correta == false"
+                    src="../../../../assets/icons/erradoAtividade.png" 
+                    alt="Ícone de atividade incorreta">
+                  </div>     
+                  <div class="textos-exercicio">
+                    <p> {{ alternativa.descricao }}</p>
+                    <div class="texto-baixo">
+                        <p class="explicacao" 
+                            [ngClass]="{'explicacao-correta': alternativa.correta == true}"
+                            *ngIf="this.selecionado[i]"
+                        > {{ alternativa.explicacao }}
+                        </p>
+                        <mat-icon class="icone-olho" (click)="selecionar(i)" [ngStyle]="{
+                          'color': this.selecionado[i] ? '#A174E2' : 'white'
+                        }">remove_red_eye</mat-icon>
+                        
+                    </div>
+                  </div>
+
+                </li>
+              </ul>
+    </div>
+<!-- </main> -->
