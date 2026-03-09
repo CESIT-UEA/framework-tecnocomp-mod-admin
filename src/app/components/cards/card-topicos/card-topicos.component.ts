@@ -3,6 +3,8 @@ import { Topico } from 'src/interfaces/topico/Topico';
 import { ConfirmacaoExclusaoComponent } from '../../confirmacao-exclusao/confirmacao-exclusao.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/auth/auth.service';
+import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-topicos',
@@ -10,21 +12,26 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./card-topicos.component.css']
 })
 export class CardTopicosComponent implements OnInit {
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
+
   @Input() topico!: Topico;
   @Input() idModulo!: number;
-  @Input() indice!:number
+  @Input() indice!: number;
 
   @Output() excluirTopico = new EventEmitter<{
     idAdm: number;
     senhaAdm: string;
     idExcluir: number;
   }>();
-  constructor(private dialog: MatDialog, private authService: AuthService) {}
+
+  constructor(private dialog: MatDialog, private authService: AuthService, private verAoVivo: VerAoVivoService, private router: Router) {}
 
   abrirConfirmacaoExcluir(): void {
-    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent);
+    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent, {
+      panelClass: 'dialog-remove-custom'
+    });
+
     dialogRef.afterClosed().subscribe((senhaAdm) => {
       if (senhaAdm) {
         if (this.topico.id != null) {
@@ -38,4 +45,9 @@ export class CardTopicosComponent implements OnInit {
     });
   }
 
+  sincronizarTopico(idTopico: number){
+    this.verAoVivo.controll_topico = idTopico;
+    console.log("passei aqui", this.verAoVivo.controll_topico)
+    this.router.navigate([`/ver-ao-vivo/${this.idModulo}/topicos`])
+  }
 }

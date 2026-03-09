@@ -48,3 +48,7 @@
 .salvar:hover, .cancelar:hover {
     opacity: 50%;
 }
+ 
+button:focus {
+  outline: none;   
+}

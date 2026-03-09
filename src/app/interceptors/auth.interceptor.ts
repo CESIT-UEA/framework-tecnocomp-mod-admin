@@ -28,6 +28,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
+        if (error.error?.error === "Senha incorreta") {
+            return throwError(() => error);
+        }
+
         if (error.status === 401 || error.status === 403) {
           console.log("ola mundo")
           return this.authService.refreshAccessToken().pipe(

@@ -104,6 +104,8 @@ import { LinksNavegacaoComponent } from './pages/ver-ao-vivo/components/links-na
 import { QuestaoAbertaComponent } from './pages/ver-ao-vivo/components/questao-aberta/questao-aberta.component';
 
 
+import { CadastrarCodigoComponent } from './pages/cadastrar-codigo/cadastrar-codigo.component';
+import { ConfirmacaoExclusaoProfessorComponent } from './components/confirmacao-exclusao-professor/confirmacao-exclusao-professor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -187,6 +189,8 @@ import { QuestaoAbertaComponent } from './pages/ver-ao-vivo/components/questao-a
     LinksNavegacaoComponent,
     QuestaoAbertaComponent,
 
+    CadastrarCodigoComponent,
+      ConfirmacaoExclusaoProfessorComponent,
   ],
   imports: [
     MatSlideToggleModule,

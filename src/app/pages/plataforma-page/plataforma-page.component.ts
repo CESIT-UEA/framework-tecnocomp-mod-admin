@@ -39,13 +39,17 @@ export class PlataformaPageComponent implements OnInit {
       (error) => {
         console.error('Erro ao excluir plataforma:', error);
         if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
+          this.apiService.message('Senha incorreta.')
         } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
+          this.apiService.message('Você não tem permissão para realizar essa ação.')
         } else if (error.status === 404) {
-          alert('Plataforma não encontrada.');
+          this.apiService.message('Plataforma não encontrada.')
+        }
+          else if (error.status === 409) {
+            this.apiService.message('Não é possível excluir a plataforma porque existem alunos vinculados.');
+
         } else {
-          alert('Erro ao excluir plataforma.');
+          this.apiService.message('Erro ao excluir plataforma.')
         }
       }
     );
@@ -54,7 +58,7 @@ export class PlataformaPageComponent implements OnInit {
   carregarPlataformasPaginadas(page: number) {
     this.apiService.listarPlataformas(page).subscribe(
       (response) => {
-        console.log(response);
+        console.log(response.plataformas);
         this.plataformas = response.plataformas;
         this.paginationService.updatePaginationState(
           this.pagination,

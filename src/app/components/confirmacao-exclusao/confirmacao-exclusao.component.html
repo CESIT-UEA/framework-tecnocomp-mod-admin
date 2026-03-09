@@ -1,19 +1,36 @@
-<h2 mat-dialog-title>Confirmação de Exclusão</h2>
 <form>
-  <mat-dialog-content>
-    <p>Tem certeza de que deseja excluir este usuário?</p>
 
-    <mat-form-field appearance="fill" class="senha-adm">
-      <mat-label>Senha de Administrador</mat-label>
-      <input matInput [(ngModel)]="senhaAdm" [ngModelOptions]="{standalone: true}" type="password" autocomplete="new-password" />
-    </mat-form-field>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-raised-button color="primary" (click)="onCancelar()">
+  <h2 mat-dialog-title class="h2_exclui">
+    Excluir {{ data.titulo }}
+  </h2>
+
+  <div>
+    <div class="senha-adm" >
+      <p class="p_senha">Senha</p>
+      <input placeholder="Digite sua senha" [formControl]="senhaAdm"  type="password" autocomplete="new-password" />
+      <div class="caixa-validacao">
+        <span class="mensagem-validacao"
+        *ngIf="senhaAdm.invalid && senhaAdm.touched">
+        Preencha o campo
+    </span>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <mat-dialog-actions>
+
+    <button type="button" class="bt1"  (click)="onCancelar()">
       Cancelar
     </button>
-    <button mat-raised-button color="warn" (click)="onConfirmar()">
-      Excluir
+
+    <button type="button" class="bt2" (click)="onConfirmar()">
+      Confirmar
     </button>
+
+    
   </mat-dialog-actions>
+
 </form>
+

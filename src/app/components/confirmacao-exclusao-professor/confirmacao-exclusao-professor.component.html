@@ -1,0 +1,26 @@
+<form>
+
+  <h2 mat-dialog-title class="h2_exclui">
+    Excluir {{ data.titulo }}
+  </h2>
+
+  <div class="caixa-p">
+    <p [title]="data.componente">Tem certeza que deseja excluir {{ data.titulo }} "{{ data.componente | truncate:20 }}" </p>
+
+  </div>
+
+  <mat-dialog-actions>
+
+    <button type="button" class="bt1"  (click)="onCancelar()">
+      Cancelar
+    </button>
+
+    <button type="button" class="bt2" (click)="onConfirmar()">
+      Confirmar
+    </button>
+
+    
+  </mat-dialog-actions>
+
+</form>
+

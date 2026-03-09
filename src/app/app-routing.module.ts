@@ -45,11 +45,13 @@ import { TopicosModuloUnicoComponent } from './pages/topicos-modulo-unico/topico
 import { PerfilVisitaComponent } from './pages/perfil-visita/perfil-visita.component';
 import { ClonarFichaTecnicaComponent } from './components/clonar-ficha-tecnica/clonar-ficha-tecnica.component';
   
+import { CadastrarCodigoComponent } from './pages/cadastrar-codigo/cadastrar-codigo.component';
 const routes: Routes = [
  
   { path: 'login', component: LoginComponent },
   { path: 'cadastrar', component: AutoCadastroComponent},
   { path: 'cadastrar/teste', component: ConfirmacaoAutoCadastroComponent},
+  { path: 'cadastrar/codigo', component: CadastrarCodigoComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'reset-password', component: ResetPasswordComponent, canActivate: [resetPasswordGuard]},
   {

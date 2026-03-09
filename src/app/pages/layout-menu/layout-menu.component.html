@@ -21,53 +21,29 @@
         Meu perfil
       </a>
       <!-- Administrador -->
-      <a
-        *ngIf="isAdmin"
-        routerLink="/tecnocomp/usuarios"
-        routerLinkActive="active"
-      >
+      <a *ngIf="isAdmin" routerLink="/tecnocomp/usuarios" routerLinkActive="active">
         <mat-icon>person</mat-icon>
         Usuarios
       </a>
-      <a
-        *ngIf="isAdmin"
-        routerLink="/tecnocomp/modulos"
-        routerLinkActive="active"
-      >
+      <a *ngIf="isAdmin" routerLink="/tecnocomp/modulos" routerLinkActive="active">
         <mat-icon svgIcon="modulos"></mat-icon>
         Modulos
       </a>
-      <a
-        *ngIf="isAdmin"
-        routerLink="/tecnocomp/plataformas"
-        routerLinkActive="active"
-      >
+      <a *ngIf="isAdmin" routerLink="/tecnocomp/plataformas" routerLinkActive="active">
         <mat-icon svgIcon="plataformas"></mat-icon>
         Plataformas
       </a>
 
       <!-- Professor -->
-      <a
-        *ngIf="isProfessor"
-        routerLink="/tecnocomp/templates"
-        routerLinkActive="active"
-      >
+      <a *ngIf="isProfessor" routerLink="/tecnocomp/templates" routerLinkActive="active">
         <mat-icon>person</mat-icon>
         Templates
       </a>
-      <a
-        *ngIf="isProfessor"
-        routerLink="/tecnocomp/meus-modulos"
-        routerLinkActive="active"
-      >
+      <a *ngIf="isProfessor" routerLink="/tecnocomp/meus-modulos" routerLinkActive="active">
         <mat-icon svgIcon="modulos"></mat-icon>
         Módulos
       </a>
-      <a
-        *ngIf="isProfessor"
-        routerLink="/tecnocomp/minhas-plataformas"
-        routerLinkActive="active"
-      >
+      <a *ngIf="isProfessor" routerLink="/tecnocomp/minhas-plataformas" routerLinkActive="active">
         <mat-icon svgIcon="plataformas"></mat-icon>
         Plataformas
       </a>
@@ -80,18 +56,20 @@
         <p style="color: #a3a3a3"[title]="getUsuarioDados().email">{{ getUsuarioDados().email | truncate:15}}</p>
       </div>
       <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
-      <mat-menu #menu="matMenu">
+
+      <mat-menu #menu="matMenu" panelClass="menu-perfil">
         <button mat-menu-item (click)="logout()">
-          <mat-icon>close</mat-icon>
-          <span>Logout</span>
+          <mat-icon svgIcon="close"></mat-icon>
+          <span class="logout-text">Logout</span>
         </button>
       </mat-menu>
     </div>
+
   </mat-drawer>
 
   <mat-drawer-content class="main-content">
     <header class="header">
-      <img (click)="toggleDrawer()" [src]="this.currentIcone" style="cursor: pointer;"/>
+      <img (click)="toggleDrawer()" [src]="this.currentIcone" style="cursor: pointer;" />
       <h1>{{ currentPageTitle }}</h1>
       <form action="/pesquisa" method="get" class="input-pesquisa">
         <input type="search" placeholder="Pesquisar..." required />

@@ -98,7 +98,7 @@ export class ApiAdmService {
   listarTemplates() {
     return this.http.get<Modulo[]>(`${this.baseUrl}/api/templates`);
   }
-  excluirModulo(id: number, idAdm: number, senhaAdm: string) {
+  excluirModulo(id: number, idAdm: number, senhaAdm: string): Observable<any> {
     const params = new HttpParams()
       .set('idAdm', idAdm.toString())
       .set('senhaAdm', senhaAdm);

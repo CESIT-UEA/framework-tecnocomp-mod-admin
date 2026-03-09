@@ -42,19 +42,21 @@ export class MeusModulosComponent {
   }) {
     this.apiService.excluirModulo(idExcluir, idAdm, senhaAdm).subscribe(
       () => {
-        alert('Modulo excluído com sucesso!');
+        this.apiService.message('Modulo excluído com sucesso!')
         this.modulos = this.modulos.filter((modulo) => modulo.id !== idExcluir);
+        this.totalModulos -= 1
+        this.carregarMeusModulosPaginados(this.dadosUsuario().id, 1)
       },
       (error) => {
         console.log(error);
         if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
+          this.apiService.message('Senha de administrador incorreta.')
         } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
+          this.apiService.message('Você não tem permissão para realizar essa ação.')
         } else if (error.status === 404) {
-          alert('Modulo não encontrado.');
+          this.apiService.message('Modulo não encontrado.')
         } else {
-          alert('Erro ao excluir modulo.');
+          this.apiService.message('Erro ao excluir modulo.')
         }
       }
     );
@@ -71,7 +73,6 @@ export class MeusModulosComponent {
           response.infoModulos.totalRegistros
         );
         this.pagination.currentPage = page;
-        console.log(response);
       },
       (error) => {
         console.error('Erro ao carregar módulos:', error);

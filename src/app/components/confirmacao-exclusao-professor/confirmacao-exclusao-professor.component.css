@@ -51,6 +51,7 @@ form mat-dialog-actions {
     align-items: center;
     justify-content: center;
     column-gap: 10px;
+    margin-top: 12px;
 }
 
 form mat-dialog-actions .bt1 {
@@ -87,4 +88,15 @@ form mat-dialog-actions .bt2 {
 input.ng-invalid.ng-touched {
   border: 1px solid #ff4d4f;
   outline: none;
+}
+
+.caixa-p {
+    text-align: center;
+    color: #fff;
+    width: 90%;
+    margin: 0 auto;
+}
+
+ button:focus {
+  outline: none;   
 }

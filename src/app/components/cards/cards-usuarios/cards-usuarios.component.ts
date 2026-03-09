@@ -16,7 +16,15 @@ export class CardsUsuariosComponent {
   constructor(private dialog: MatDialog, private authService: AuthService) {}
 
   abrirConfirmacaoExcluir() {
-    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent);
+    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent, {
+          width: '484px',
+          height: '219.952px',
+          panelClass: 'cardExclusao',
+          data: {
+            titulo: "Usuário",
+          }
+  });
+        
     dialogRef.afterClosed().subscribe((senhaAdm) => {
 
       if (senhaAdm) {

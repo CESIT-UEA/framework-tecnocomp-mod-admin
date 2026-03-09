@@ -34,19 +34,22 @@ export class MinhasPlataformasComponent {
   excluirPlataforma({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
     this.apiService.excluirPlataforma(idAdm, senhaAdm, idExcluir).subscribe(
       () => {
-        alert('Plataforma excluída com sucesso!');
+        this.apiService.message('Plataforma excluída com sucesso!');
         this.plataformas = this.plataformas.filter((plataforma) => plataforma.id !== idExcluir);
+        this.pagination = this.paginationService.createPaginationState();
+        this.carregarMinhasPlataformasPaginadas(this.dadosUsuario().id, this.pagination.currentPage)
       },
       (error) => {
         console.error('Erro ao excluir plataforma:', error);
         if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
+          this.apiService.message('Senha de administrador incorreta.')
+          
         } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
+          this.apiService.message('Você não tem permissão para realizar essa ação.');
         } else if (error.status === 404) {
-          alert('Plataforma não encontrada.');
+          this.apiService.message('Plataforma não encontrada.');
         } else {
-          alert('Erro ao excluir plataforma.');
+          this.apiService.message('Erro ao excluir plataforma.');
         }
       }
     );

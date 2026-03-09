@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -8,12 +9,20 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./confirmacao-exclusao.component.css']
 })
 export class ConfirmacaoExclusaoComponent {
-  senhaAdm: string = '';
+  senhaAdm = new FormControl('', Validators.required);
 
-  constructor(public dialogRef: MatDialogRef<ConfirmacaoExclusaoComponent>) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { titulo: string },
+    public dialogRef: MatDialogRef<ConfirmacaoExclusaoComponent>
+  ) {}
 
   onConfirmar(): void {
-    this.dialogRef.close(this.senhaAdm);
+    if (this.senhaAdm.invalid) {
+      this.senhaAdm.markAsTouched();
+      return;
+  }
+
+  this.dialogRef.close(this.senhaAdm.value);
   }
 
   onCancelar(): void {

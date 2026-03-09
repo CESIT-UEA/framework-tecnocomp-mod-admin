@@ -56,8 +56,8 @@ export class ModulosPageComponent implements OnInit {
   }
 
   excluirModulo({ idAdm, senhaAdm, idExcluir }: { idAdm: number; senhaAdm: string; idExcluir: number }) {
-    this.apiService.excluirModulo(idExcluir, idAdm, senhaAdm).subscribe(
-      () => {
+    this.apiService.excluirModulo(idExcluir, idAdm, senhaAdm).subscribe({
+      next: () => {
         this.apiService.message("Módulo excluído com sucesso!")
         this.modulos = this.modulos.filter((modulo) => modulo.id !== idExcluir);
          if (this.pagination.currentPage > this.infoModulos.totalPaginas){
@@ -66,19 +66,12 @@ export class ModulosPageComponent implements OnInit {
           this.carregarModulosPaginados(this.pagination.currentPage, this.quantidadeItens);
         }
       },
-      (error) => {
-        console.log(error);
-        if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
-        } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
-        } else if (error.status === 404) {
-          alert('Modulo não encontrado.');
-        } else {
-          alert('Erro ao excluir modulo.');
-        }
+      error: (error) => {
+        
+        const msg = error.error?.error || 'Erro ao excluir módulo.';
+        this.apiService.message(msg);
       }
-    );
+    })
   }
 
   carregarModulosPaginados(page: number, quantidadeItens: number) {
