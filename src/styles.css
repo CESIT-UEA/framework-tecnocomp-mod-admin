@@ -185,9 +185,10 @@ select:focus {
 /* daqui para baixo é mudança do Ruan */
 
 .mat-mdc-menu-content {
-  background-color: var(--5-color);
+  border-radius: 10px !important;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
   padding: 0 !important;
-  width: 220px;
+  width: 200px;
 }
 
 .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
@@ -195,6 +196,7 @@ select:focus {
   font-family: "Inter", sans-serif;
   font-weight: bold;
   font-size: 20px !important;
+  border-radius: 10px;
 }
 
 
@@ -204,17 +206,28 @@ select:focus {
   justify-content: center;
   border: none;
   border-radius: 10px;
-  background-color: #2B2A2E;
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
 }
 
 .mat-mdc-menu-content .mat-mdc-menu-item:hover {
-  background: linear-gradient(60deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 78.52%), linear-gradient(180deg, #7C4CC6 0%, #3C2560 100%) !important;
+  border-radius: 7px;
+background: linear-gradient(90deg, rgba(124, 76, 198, 0.50) 0%, rgba(83, 0, 249, 0.50) 100%), #7C4CC6;
   transition: background-color 0.3s ease !important;
 }
 
 .cdk-overlay-connected-position-bounding-box {
   margin-left: 25px;
   top: 547px !important;
+}
+
+.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8 {
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;
+}
+
+.mat-mdc-menu-item-text {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
 
 /* .mat-mdc-dialog-container .mdc-dialog__surface {

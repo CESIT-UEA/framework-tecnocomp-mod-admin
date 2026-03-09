@@ -58,8 +58,8 @@
       <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
 
       <mat-menu #menu="matMenu" panelClass="menu-perfil">
-        <button mat-menu-item (click)="logout()">
-          <mat-icon svgIcon="close"></mat-icon>
+        <button mat-menu-item (click)="logout()" class="menu-logout">
+          <img src="../../../assets/icons/logout.svg" alt="ícone de logout">
           <span class="logout-text">Logout</span>
         </button>
       </mat-menu>
