@@ -418,10 +418,14 @@ export class CadastroTopicoComponent {
     const saibaMais = localStorage.getItem(`saibaMais_${this.idModulo}`);
     const exercicios = localStorage.getItem(`exerciciosFormGroup_${this.idModulo}`);
 
-    const temDadosBasicos = dadosBasicos && Object.values(JSON.parse(dadosBasicos)).some(valor => valor !== null && valor !== "");
-    const temVideos = videoUrls && JSON.parse(videoUrls).videoUrls?.length > 0;
-    const temSaibaMais = saibaMais && JSON.parse(saibaMais).saibaMais?.length > 0;
-    const temExercicios = exercicios && JSON.parse(exercicios).exercicios?.length > 0;
+    const temDadosBasicos = dadosBasicos && Object.values(JSON.parse(dadosBasicos)).some((v: any) => v && v.trim?.() !== "");
+
+    const temVideos = videoUrls && JSON.parse(videoUrls).videoUrls?.some((url: string) => url && url.trim() !== "");
+
+    const temSaibaMais = saibaMais && JSON.parse(saibaMais).saibaMais?.some((item: any) => item.descricao?.trim() || item.url?.trim()
+    );
+
+    const temExercicios = exercicios && JSON.parse(exercicios).exercicios?.some((ex: any) => ex.questao?.trim());
 
     if (temDadosBasicos || temVideos || temSaibaMais || temExercicios) {
 
