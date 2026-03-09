@@ -55,7 +55,8 @@ h3 {
   flex-direction: column;
   color: white;
   row-gap: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
 }
 
 .mat-form-field input {
@@ -92,8 +93,9 @@ textarea {
 
 /* Botões */
 .passo1-botao-proximo {
+  position: relative;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 10px;
 }
 
@@ -244,6 +246,32 @@ a {
 
 .errado {
   color: #ff5722;
+}
+
+
+.mensagem-validacao {
+  font-size: 11px;
+  color: #ff4d4f;
+  margin-top: -6px; /* puxa a mensagem para cima */
+  line-height: 1;
+  min-height: 12px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff4d4f;
+  outline: none;
+}
+
+.mensagem-geral {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff4d4f;
+
+}
+
+input.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
 }
 
 .botoes-tipo-questao {

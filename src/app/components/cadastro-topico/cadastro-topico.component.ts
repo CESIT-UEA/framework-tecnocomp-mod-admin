@@ -6,6 +6,10 @@ import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { v4 as uuidv4 } from 'uuid';
 import { ContinuarCadastrandoTopicoComponent } from '../continuar-cadastrando-topico/continuar-cadastrando-topico.component';
+import { AuthService } from 'src/app/auth/auth.service';
+import { MatStepper } from '@angular/material/stepper';
+import { ViewChild } from '@angular/core';
+
 
 
 @Component({
@@ -19,6 +23,12 @@ export class CadastroTopicoComponent {
   saibaMaisFormGroup: FormGroup;
   exerciciosFormGroup!: FormGroup;
   isQuestaoAberta!: boolean;
+  @ViewChild(MatStepper) stepper!: MatStepper;
+
+  tentouAvancar = false;
+  tentouAvancarVideos = false;
+  tentouAvancarSaibaMais = false;
+  tentouAvancarExercicio = false;
 
   arquivoSelecionado: File | null = null;
 
@@ -36,6 +46,7 @@ export class CadastroTopicoComponent {
     private router: Router,
     private uploadService: UploadService,
     private dialog: MatDialog,
+    private authService: AuthService
   ) {
     // Inicializando os grupos de formulários
     this.dadosBasicosFormGroup = this.fb.group({
@@ -90,8 +101,8 @@ export class CadastroTopicoComponent {
       this.idModulo = +params['id_modulo'];
       
       if (!this.idModulo) {
-        alert('ID do módulo não encontrado! Redirecionando...');
-        this.router.navigate(['/modulos']); // verificar se existe essa rota
+        this.apiService.message('ID do módulo não encontrado!')
+        this.router.navigate([this.voltar()])
       }
     });
     this.abrirPopUp()
@@ -99,6 +110,69 @@ export class CadastroTopicoComponent {
     
   }
 
+  verificarFormulario() {
+    this.tentouAvancar = true;
+
+    if (this.dadosBasicosFormGroup.invalid || !this.selectedFile) {
+      return;
+    }
+    this.tentouAvancar = false
+    this.stepper.next()
+  }
+
+    verificarVideos() {
+    this.tentouAvancarVideos = true;
+
+    this.videoUrls.controls.forEach(control => {
+      control.markAsTouched();
+    });
+
+    if (this.videoUrlsFormGroup.invalid) {
+      return;
+    }
+
+    this.stepper.next();
+  }
+
+  verificarSaibaMais() {
+
+    this.tentouAvancarSaibaMais = true;
+
+    this.saibaMais.controls.forEach(group => {
+      group.get('descricao')?.markAsTouched();
+      group.get('url')?.markAsTouched();
+    });
+
+    if (this.saibaMaisFormGroup.invalid) {
+      return;
+    }
+
+    this.stepper.next();
+}
+
+  verificarExercicios(stepper: any) {
+
+    this.tentouAvancarExercicio = true;
+
+    if (this.exerciciosFormGroup.invalid) {
+      return;
+    }
+
+    if (!this.isQuestaoAberta && !this.isAlternativaCorretaValida()) {
+      return;
+    }
+
+    this.stepper.next();
+}
+
+  voltar(){
+      const isAdmin = this.authService.isAdmin()
+      if (isAdmin){
+        return "/tecnocomp/modulos"
+      } else {
+        return "/tecnocomp/meus-modulos"
+      }
+    }
   
 
   getDadosBasicosFormStorage(idModulo: number){
@@ -167,7 +241,7 @@ export class CadastroTopicoComponent {
       this.exercicios.setControl(0, this.fb.group({
         questao: [''],
         isQuestaoAberta: [true],
-        respostaEsperada: ['']
+        respostaEsperada: ['', Validators.required]
       }));
     } else {
       this.exercicios.setControl(0, this.fb.group({
@@ -176,8 +250,8 @@ export class CadastroTopicoComponent {
         alternativas: this.fb.array(
           exercicio.alternativas.map(() =>
             this.fb.group({
-              descricao: [''],
-              explicacao: [''],
+              descricao: ['', Validators.required],
+              explicacao: ['', Validators.required],
               correta: [false]
             })
           )
@@ -308,14 +382,18 @@ export class CadastroTopicoComponent {
                   next: () => {
                     this.uploadService.uploadFile(this.renamedFile, this.pastaModulo!, `${this.uploadService.baseURL}/api/modulos/upload`).subscribe({
                       next: () => {
-                        alert('Tópico cadastrado com sucesso!');
+                        this.apiService.message('Tópico cadastrado com sucesso!')
+                         localStorage.removeItem(`dadosBasicosFormGroup_${this.idModulo}`);
+                          localStorage.removeItem(`videoUrls_${this.idModulo}`);
+                          localStorage.removeItem(`saibaMais_${this.idModulo}`);
+                          localStorage.removeItem(`exerciciosFormGroup_${this.idModulo}`);
                         this.router.navigate(['/modulos', this.idModulo]);
                       }
                     })
                   },
                   error: (error) => {
                     console.error('Erro ao cadastrar tópico:', error);
-                    alert('Erro ao cadastrar tópico.');
+                    this.apiService.message('Erro ao cadastrar tópico.')
                   }}
                 );
               },
@@ -460,8 +538,13 @@ export class CadastroTopicoComponent {
 );
           this.exercicios.clear();
 
-          
-      
+          this.exercicios.push(
+          this.fb.group({
+            questao: ['', Validators.required],
+            alternativas: this.fb.array([])
+          })
+        );
+
 
         } else {
           this.getDadosBasicosFormStorage(this.idModulo);

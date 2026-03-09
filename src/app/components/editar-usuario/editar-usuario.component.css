@@ -9,7 +9,7 @@
 }
 
 .form-editar-usuario {
-  background-color: #2E2E2F;
+background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #2B2A2E;;
   width: 55%;
   border-radius: 40px;
   padding: 0 2.5rem;
@@ -95,13 +95,21 @@
   color: white;
   border-radius: 10px;
   cursor: pointer;
+  
+}
+
+button:hover {
+    opacity: 50%;
 }
 
 #botao-um {
     background-color: #7C4CC6;
+    
 }
 
 #botao-dois {
     background-color: transparent;
     border: 3px solid #7C4CC6;
+    color: #7C4CC6;
+    
 }

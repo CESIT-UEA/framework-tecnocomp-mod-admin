@@ -102,7 +102,6 @@ export class EditarTopicoComponent implements OnInit{
   carregarDadosDoTopico(id: number): void {
     this.apiService.obterTopicoPorId(id).subscribe(
       (topico: Topico) => {
-        console.log(topico)
         this.dadosBasicosFormGroup.patchValue({
           nome_topico: topico.nome_topico,
           textoApoio: topico.textoApoio,
@@ -113,15 +112,12 @@ export class EditarTopicoComponent implements OnInit{
         this.setSaibaMais(topico.SaibaMais);
         // this.setReferencias(topico.Referencias);
       
-        console.log('aaaa', topico.Exercicios)
-        console.log('testteeee', topico.Exercicios[0].aberta)
 
         if (!topico.Exercicios[0].aberta) {
           this.isQuestaoAberta = false
           this.setExercicios(topico.Exercicios);
-          console.log('caius aqui')
+          
         } else {
-          console.log('caiu')
           this.isQuestaoAberta = true
           this.setExerciciosAberto(topico.Exercicios)
         }
@@ -129,7 +125,7 @@ export class EditarTopicoComponent implements OnInit{
       },
       (error) => {
         console.error('Erro ao carregar tópico:', error);
-        alert('Erro ao carregar os dados do tópico.');
+        this.apiService.message('Erro ao carregar os dados do tópico.')
       }
     );
   }
@@ -281,14 +277,13 @@ export class EditarTopicoComponent implements OnInit{
 
     this.apiService.editarTopico(this.idTopico, topicoEditado).subscribe(
       (response) => {
-        alert('Tópico atualizado com sucesso!');
-        console.log(response)
+        this.apiService.message('Tópico atualizado com sucesso!')
         const idModulo = response.id_modulo;
         this.router.navigate(['/modulos', idModulo]);
       },
       (error) => {
         console.error('Erro ao atualizar tópico:', error);
-        alert('Erro ao atualizar tópico.');
+        this.apiService.message('Erro ao atualizar tópico.')
       }
     );
   }
@@ -321,7 +316,7 @@ export class EditarTopicoComponent implements OnInit{
       ])
     });
     }
-    console.log(this.exercicios.value[0].isQuestaoAberta)
+  
   }
 
   criarQuestaoDiscursiva(index: number){
@@ -336,7 +331,6 @@ export class EditarTopicoComponent implements OnInit{
         })
       ])
     });
-    console.log(this.exercicios.value[0].isQuestaoAberta)
   }
 
 

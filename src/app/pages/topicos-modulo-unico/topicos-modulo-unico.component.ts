@@ -39,7 +39,6 @@ export class TopicosModuloUnicoComponent implements OnInit {
   carregarTopicos(moduloId: number, page: number): void {
     this.apiService.obterTopicoCompleto(moduloId, page).subscribe(
       (response) => {
-        console.log(response);
         this.topicos = response.topico.map((topico) => ({
           ...topico,
           videoUrls: [],
@@ -90,19 +89,21 @@ export class TopicosModuloUnicoComponent implements OnInit {
     
     this.apiService.excluirTopico(idExcluir, idAdm, senhaAdm).subscribe(
       () => {
-        alert('Tópico excluído com sucesso!');
+        this.apiService.message('Tópico excluído com sucesso!')
         this.topicos = this.topicos.filter((topico) => topico.id !== idExcluir);
+        this.pagination = this.paginationService.createPaginationState();
+        this.carregarTopicos(this.idModulo, this.pagination.currentPage)
       },
       (error) => {
         console.log(error);
         if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
+          this.apiService.message('Senha de administrador incorreta.')
         } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
+          this.apiService.message('Você não tem permissão para realizar essa ação.')
         } else if (error.status === 404) {
-          alert('Tópico não encontrado.');
+          this.apiService.message('Tópico não encontrado.')
         } else {
-          alert('Erro ao excluir tópico.');
+          this.apiService.message('Erro ao excluir tópico.')
         }
       }
     );

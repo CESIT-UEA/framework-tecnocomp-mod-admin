@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatCardModule } from "@angular/material/card";
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ConfirmarClonagemFichaComponent } from 'src/app/confirmar-clonagem-ficha/confirmar-clonagem-ficha.component';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { FichaTecnicaService } from 'src/app/services/ficha-tecnica.service';
@@ -21,7 +22,9 @@ export class CardsClonarFichaComponent implements OnInit {
       private dialog: MatDialog,
       private route: ActivatedRoute,
       private fichaService: FichaTecnicaService,
-      private admService: ApiAdmService
+      private admService: ApiAdmService,
+      private authService: AuthService,
+      private router: Router
     )
   {
 
@@ -54,18 +57,28 @@ export class CardsClonarFichaComponent implements OnInit {
           )
           .subscribe({
             next: (resultado) => {
-              console.log(resultado)
               this.admService.message('Ficha Técnica clonada com sucesso!')
+              this.router.navigate([this.voltar()])
             },
             error: (err) => {
               console.error(`Erro ao clonar ficha técnica`, err)
               this.admService.message('Erro ao clonar ficha técnica!')
               
             }
+        
           })
         }
 
         
       })
   }
+
+  voltar(){
+      const isAdmin = this.authService.isAdmin()
+      if (isAdmin){
+        return "/tecnocomp/modulos"
+      } else {
+        return "/tecnocomp/meus-modulos"
+      }
+    }
 }

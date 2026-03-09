@@ -43,13 +43,13 @@ export class UsuariosPageComponent implements OnInit {
       (error) => {
         console.log(error);
         if (error.status === 401) {
-          alert('Senha de administrador incorreta.');
+          this.userService.message('Senha de administrador incorreta.')
         } else if (error.status === 403) {
-          alert('Você não tem permissão para realizar essa ação.');
+          this.userService.message('Você não tem permissão para realizar essa ação.')
         } else if (error.status === 404) {
-          alert('Usuário não encontrado.');
+          this.userService.message('Usuário não encontrado.')
         } else {
-          alert('Erro ao excluir usuário.');
+          this.userService.message('Erro ao excluir usuário.')
         }
       }
     );

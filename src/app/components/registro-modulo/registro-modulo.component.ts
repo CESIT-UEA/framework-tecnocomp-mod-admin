@@ -118,7 +118,7 @@ export class RegistroModuloComponent implements OnInit {
             },
             error: err => {
               console.error('Erro no upload:', err);
-              alert('O módulo foi cadastrado, mas o upload do arquivo falhou.');
+             
           }
         })
         }

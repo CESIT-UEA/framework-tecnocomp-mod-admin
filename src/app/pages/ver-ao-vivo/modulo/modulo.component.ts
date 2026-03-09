@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
 import { Modulo } from 'src/interfaces/modulo/Modulo';
@@ -21,7 +22,8 @@ export class ModuloComponent implements OnInit {
     private apiService: ApiAdmService,
     private verAoVivo: VerAoVivoService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -46,17 +48,26 @@ export class ModuloComponent implements OnInit {
     this.apiService.obterModuloPorId(id).subscribe(
       (response) => {
         this.modulo = response;
-        console.log(response);
         this.verAoVivo.removeDadosCompletos();
         this.verAoVivo.setDadosCompletos(response);
       },
       (error) => {
         console.error('Erro ao carregar módulo:', error);
-        this.router.navigate(['/modulos']);
+        this.apiService.message('Erro ao carregar módulo:')
+        this.router.navigate([this.voltar()])
       }
     );
   }
 
+
+  voltar(){
+      const isAdmin = this.authService.isAdmin()
+      if (isAdmin){
+        return "/tecnocomp/modulos"
+      } else {
+        return "/tecnocomp/meus-modulos"
+      }
+    }
   // carregarTopicos(moduloId: number): void {
   //   this.apiService.obterTopicoCompleto(moduloId).subscribe(
   //     (response) => {
