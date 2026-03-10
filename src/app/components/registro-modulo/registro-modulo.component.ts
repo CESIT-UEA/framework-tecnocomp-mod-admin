@@ -19,12 +19,13 @@ export class RegistroModuloComponent implements OnInit {
   nomePasta!: string;
   baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
   urlApiRag: string = 'https://tecnocomp.uea.edu.br:5678/webhook/upload-file'
+  tentouSubmeter = false
 
   moduloForm = new FormGroup({
     nome_modulo: new FormControl('', Validators.required),
     nome_url: new FormControl('', Validators.required),
     ebookUrlGeral: new FormControl(''),
-    video_inicial: new FormControl('')
+    video_inicial: new FormControl('', Validators.required)
   });
 
   selectedFile: File | null = null
@@ -61,7 +62,14 @@ export class RegistroModuloComponent implements OnInit {
 
 
   onSubmit(): void {
-    if (this.moduloForm.valid) {
+    if (this.moduloForm.invalid || !this.selectedFile){
+      this.moduloForm.markAllAsTouched()
+      this.tentouSubmeter = true
+      this.apiService.message('Por favor, preencha todos os campos corretamente.')
+      return
+    }
+
+    if (this.moduloForm.valid && this.selectedFile) {
       const modulo = {
         nome_modulo: this.moduloForm.get('nome_modulo')?.value,
         nome_url: this.moduloForm.get('nome_url')?.value,
