@@ -55,10 +55,10 @@
         <p [title]="getUsuarioDados().username">{{ getUsuarioDados().username | truncate:15}}</p>
         <p style="color: #a3a3a3"[title]="getUsuarioDados().email">{{ getUsuarioDados().email | truncate:15}}</p>
       </div>
-      <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+      <mat-icon [matMenuTriggerFor]="menu" style="cursor: pointer;" xPosition="before" yPosition="below">more_vert</mat-icon>
 
       <mat-menu #menu="matMenu" panelClass="menu-perfil">
-        <button mat-menu-item (click)="logout()" class="menu-logout">
+        <button mat-menu-item (click)="logout()" class="menu-logout" >
           <img src="../../../assets/icons/logout.svg" alt="ícone de logout">
           <span class="logout-text">Logout</span>
         </button>
