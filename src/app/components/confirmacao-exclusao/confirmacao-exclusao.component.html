@@ -1,36 +1,40 @@
 <form>
-
-  <h2 mat-dialog-title class="h2_exclui">
-    Excluir {{ data.titulo }}
-  </h2>
+  <h2 mat-dialog-title class="h2_exclui">Excluir {{ data.titulo }}</h2>
 
   <div>
-    <div class="senha-adm" >
+    <div class="senha-adm">
       <p class="p_senha">Senha</p>
-      <input placeholder="Digite sua senha" [formControl]="senhaAdm"  type="password" autocomplete="new-password" />
-      <div class="caixa-validacao">
-        <span class="mensagem-validacao"
-        *ngIf="senhaAdm.invalid && senhaAdm.touched">
-        Preencha o campo
-    </span>
-      </div>
-      
-    </div>
+      <input
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Digite sua senha"
+        [formControl]="senhaAdm"
+        autocomplete="new-password"
+      />
+      <button
+        type="button"
+        class="icon"
+        (click)="hide = !hide"
+        [class.ativo]="!hide"
+      >
+        <mat-icon>
+          {{ hide ? "visibility_off" : "visibility" }}
+        </mat-icon>
+      </button>
 
+      <div class="caixa-validacao">
+        <span
+          class="mensagem-validacao"
+          *ngIf="senhaAdm.invalid && senhaAdm.touched"
+        >
+          Preencha o campo
+        </span>
+      </div>
+    </div>
   </div>
 
   <mat-dialog-actions>
+    <button type="button" class="bt1" (click)="onCancelar()">Cancelar</button>
 
-    <button type="button" class="bt1"  (click)="onCancelar()">
-      Cancelar
-    </button>
-
-    <button type="button" class="bt2" (click)="onConfirmar()">
-      Confirmar
-    </button>
-
-    
+    <button type="button" class="bt2" (click)="onConfirmar()">Confirmar</button>
   </mat-dialog-actions>
-
 </form>
-

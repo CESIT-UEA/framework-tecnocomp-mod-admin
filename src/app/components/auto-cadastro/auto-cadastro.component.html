@@ -63,7 +63,7 @@
               <label for="iconfirmar">Confirmar senha</label>
               <div class="input-senha">
                  <input
-                type="password"
+                [type]="confirm ? 'password' : 'text'"
                 id="iconfirmar"
                 placeholder="Confirme sua senha"
                 formControlName="confirmarSenha"
@@ -78,7 +78,7 @@
                     {{ confirm ? "visibility_off" : "visibility" }}
                   </mat-icon>
                 </button>
-              </div>  
+              </div>
             </div>
           </div>
         </div>

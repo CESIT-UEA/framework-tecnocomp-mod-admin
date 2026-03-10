@@ -21,14 +21,14 @@ export class AutoCadastroComponent {
       nome: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
-      confirmarSenha: new FormControl('', Validators.required)  
+      confirmarSenha: new FormControl('', Validators.required)
     });
 
     controle = this.cadastroForm.controls;
-  
+
     constructor(private apiService: ApiAdmService, private router: Router) {}
-  
-  
+
+
     get nome(){
       return this.cadastroForm.get('nome')!;
     }
@@ -36,7 +36,7 @@ export class AutoCadastroComponent {
     get email(){
         return this.cadastroForm.get('email')!;
     }
-  
+
     get senha(){
         return this.cadastroForm.get('senha')!;
     }
@@ -51,7 +51,7 @@ export class AutoCadastroComponent {
     }
 
     campoNotPreenchido(){
-      const campoPreenchido = this.controle.nome.errors?.['required'] || this.controle.email.errors?.['required'] || 
+      const campoPreenchido = this.controle.nome.errors?.['required'] || this.controle.email.errors?.['required'] ||
           this.controle.senha.errors?.['required'] || this.controle.confirmarSenha.errors?.['required']
       return campoPreenchido
     }
@@ -67,7 +67,7 @@ export class AutoCadastroComponent {
     }
 
     camposSenhaInvalida(){
-        if (this.senha.value !== this.confirmarSenha.value && !this.campoNotPreenchido() && 
+        if (this.senha.value !== this.confirmarSenha.value && !this.campoNotPreenchido() &&
           !this.controle.email.errors?.['email'] && !this.senhaInvalida()
         ){
            return true
@@ -75,14 +75,14 @@ export class AutoCadastroComponent {
         return false
     }
 
-    onSubmit(){ 
+    onSubmit(){
         this.submitted = true;
         if (this.cadastroForm.invalid) {
           return;
         }
         if (!this.camposSenhaInvalida() && this.cadastroForm.valid){
           const dados = {nome: this.nome.value, email: this.email.value, senha: this.senha.value}
-          
+
           this.apiService.autoRegister(dados).subscribe({
             next: (dados) => {
                 if (dados.sucess){

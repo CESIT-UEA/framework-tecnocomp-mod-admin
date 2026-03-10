@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./confirmacao-exclusao.component.css']
 })
 export class ConfirmacaoExclusaoComponent {
+  hide = true;
   senhaAdm = new FormControl('', Validators.required);
 
   constructor(

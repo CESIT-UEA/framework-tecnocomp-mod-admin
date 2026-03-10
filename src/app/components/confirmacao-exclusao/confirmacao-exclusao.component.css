@@ -34,6 +34,35 @@ input {
     padding-left: 10px;
 }
 
+.senha-adm {
+  position: relative;
+}
+
+.senha-adm input {
+  width: 100%;
+}
+
+.senha-adm .icon {
+  position: absolute;
+  right: 1px;
+  top: 45%;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.senha-adm .icon mat-icon {
+  color: #888888;
+}
+
+.senha-adm .icon.ativo mat-icon {
+  color: #A879F2;
+}
+
 button {
     width: 120px;
     height: 35px;
