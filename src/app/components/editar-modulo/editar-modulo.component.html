@@ -1,6 +1,6 @@
 <app-header-voltar texto="Editar Módulo"></app-header-voltar>
 <main class="container">
-  <form class="forms" [formGroup]="moduloForm" (ngSubmit)="onSubmit()">
+  <form class="forms" [formGroup]="moduloForm">
     <div class="form-campos">
       <div class="titulo-formulario">
         <h1>Editar Módulo</h1>
@@ -10,12 +10,20 @@
       <div class="form-conteudo">
         <div class="form-conteudo-editar">
           <label for="nome_modulo">Nome do Módulo: <span>*</span></label>
-          <input formControlName="nome_modulo" id="nome_modulo" type="text" class="input">
+          <input formControlName="nome_modulo" id="nome_modulo" type="text" class="input" (input)="gerarUrlAmigavel()">
+          <div
+            *ngIf="
+              moduloForm.get('nome_modulo')?.invalid &&
+              moduloForm.get('nome_modulo')?.touched
+            "
+          >
+            <small class="mensagem-validacao">Nome do módulo é obrigatório</small>
+          </div>
         </div>
 
         <div class="form-conteudo-editar">
           <label for="url_modulo">URL do Módulo: <span>*</span></label>
-          <input formControlName="nome_url" id="url_modulo" type="text" class="input">
+          <input formControlName="nome_url" id="url_modulo" type="text" class="input" readonly>
         </div>
       </div>
 
@@ -24,18 +32,27 @@
         <div class="file-input-wrapper">
           <input formControlName="ebookUrlGeral" id="ebook_url_Geral" type="file" (change)="onSelectedFile($event)"
             class="input">
-          <span class="file-status-text">{{ selectedFile ? selectedFile.name : 'Nenhum arquivo selecionado' }}</span>
+          <span class="file-status-text">{{ selectedFile?.name || nomeArquivo || 'Nenhum arquivo selecionado' }}</span>
+        
         </div>
       </div>
 
       <div class="form-conteudo-editar">
         <label for="video_inicial">Vídeo Inicial: <span>*</span></label>
         <input formControlName="video_inicial" id="video_inicial" type="text" class="input">
+        <div
+            *ngIf="
+              moduloForm.get('video_inicial')?.invalid &&
+              moduloForm.get('video_inicial')?.touched
+            "
+          >
+            <small class="mensagem-validacao">URL do vídeo inicial é obrigatório</small>
+          </div>
       </div>
 
       <div class="botoes">
         <button class="btn-cancelar" (click)="voltarPagina()">Cancelar</button>
-        <button class="btn-salvar" type="submit" [disabled]="moduloForm.invalid">Salvar Alterações</button>
+        <button class="btn-salvar" type="submit" (click)="onSubmit()">Salvar Alterações</button>
       </div>
     </div>
 

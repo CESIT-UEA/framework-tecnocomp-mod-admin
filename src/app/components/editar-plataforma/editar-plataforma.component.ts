@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ApiAdmService } from 'src/app/services/api-adm.service';
 import { Plataforma } from 'src/interfaces/Plataforma';
 
@@ -19,7 +20,8 @@ export class EditarPlataformaComponent implements OnInit {
     private apiService: ApiAdmService,
     private fb: FormBuilder,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private authService: AuthService
   ) {}
 
 
@@ -49,20 +51,20 @@ export class EditarPlataformaComponent implements OnInit {
     // Carregar os dados da plataforma
     this.apiService.obterPlataformaPorId(this.plataformaId).subscribe(
       (plataforma: Plataforma) => {
-        console.log(plataforma);
+        
         this.plataformaForm.patchValue(plataforma);
       },
       (error) => {
         console.error('Erro ao carregar a plataforma:', error);
-        alert('Erro ao carregar os dados da plataforma.');
-        this.router.navigate(['/plataformas']);
+        this.apiService.message('Erro ao carregar os dados da plataforma.')
+        this.navegarPlataforma()
       }
     );
   }
 
   salvarAlteracoes(): void {
     if (this.plataformaForm.invalid) {
-      alert('Por favor, preencha todos os campos corretamente.');
+      this.apiService.message('Por favor, preencha todos os campos corretamente.')
       return;
     }
 
@@ -72,13 +74,31 @@ export class EditarPlataformaComponent implements OnInit {
       .editarPlataforma(this.plataformaId, plataformaAtualizada)
       .subscribe(
         () => {
-          alert('Plataforma atualizada com sucesso!');
-          this.router.navigate(['/plataformas']);
+          this.apiService.message('Plataforma atualizada com sucesso!');
+          this.navegarPlataforma()
         },
         (error) => {
           console.error('Erro ao atualizar a plataforma:', error);
-          alert('Erro ao atualizar a plataforma.');
+          this.apiService.message('Erro ao atualizar a plataforma.');
         }
       );
+  }
+
+  navegarPlataforma(){
+    const isAdmin = this.authService.isAdmin();
+    if (isAdmin){
+      this.router.navigate(['/tecnocomp/plataformas'])
+    } else {
+      this.router.navigate(['/tecnocomp/minhas-plataformas'])
+    }
+
+  }
+
+  verificarValidacao(){
+    if (this.plataformaForm.invalid){
+      this.plataformaForm.markAllAsTouched()
+      this.apiService.message('Por favor, preencha todos os campos corretamente.')
+      return
+    }
   }
 }

@@ -37,7 +37,7 @@ span {
 
 .titulo-formulario p {
   font-size: 16px;
-  color: #BF0A0A;
+  color: #ff4d4f;
 }
 
 .form-conteudo-editar {
@@ -111,6 +111,19 @@ span {
   opacity: 50%;
 }
 
+
+.mensagem-validacao {
+  font-size: 11px;
+  color: #ff4d4f;
+  margin-top: -6px; /* puxa a mensagem para cima */
+  line-height: 1;
+  min-height: 12px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff4d4f;
+  outline: none;
+}
 
 /* Estilização do Campo de Upload (Ebook Editar) */
 .file-input-wrapper #ebook_url_Geral::file-selector-button {

@@ -19,7 +19,7 @@ export class EditarModuloComponent {
     nome_modulo: new FormControl('', Validators.required),
     nome_url: new FormControl('', Validators.required),
     ebookUrlGeral: new FormControl(''),
-    video_inicial: new FormControl(''),
+    video_inicial: new FormControl('', Validators.required),
   });
   moduloId!: number;
 
@@ -28,6 +28,7 @@ export class EditarModuloComponent {
   moduloAtual!: Modulo;
   baseUrlFile: string = `https://tecnocomp.uea.edu.br/ebooks`;
   urlApiRag: string = 'https://tecnocomp.uea.edu.br:5678/webhook/upload-file'
+  nomeArquivo: string | undefined = ''
 
   constructor(
     private route: ActivatedRoute,
@@ -47,6 +48,8 @@ export class EditarModuloComponent {
     this.moduloId = +this.route.snapshot.paramMap.get('id')!;
     this.carregarModulo();
     console.log('Rota anterior', this.previousRouter.getPreviousUrl())
+
+    
   }
 
   carregarModulo(): void {
@@ -58,15 +61,23 @@ export class EditarModuloComponent {
         this.moduloForm.patchValue({
           nome_modulo: modulo.nome_modulo,
           nome_url: modulo.nome_url,
-          ebookUrlGeral: modulo.ebookUrlGeral,
+          
           video_inicial: modulo.video_inicial,
         });
+        if (modulo.ebookUrlGeral) {
+          this.nomeArquivo = modulo.ebookUrlGeral.split('/').pop();
+      }
       },
       (error) => console.error('Erro ao carregar módulo:', error)
     );
   }
 
   onSubmit(): void {
+    if (this.moduloForm.invalid){
+      this.moduloForm.markAllAsTouched()
+      this.apiService.message('Por favor, preencha todos os campos corretamente.')
+      return
+    }
     if (!this.moduloForm.valid) return
 
     const dadosModulo: any = {

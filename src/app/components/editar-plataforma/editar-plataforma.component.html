@@ -32,7 +32,7 @@
             plataformaForm.get('plataformaNome')?.touched
           "
         >
-          <small class="error">
+          <small class="mensagem-validacao">
             Nome é obrigatório e deve ter pelo menos 3 caracteres.
           </small>
         </div>
@@ -54,7 +54,7 @@
               plataformaForm.get('plataformaUrl')?.touched
             "
           >
-            <small class="error">URL é obrigatória e deve ser válida.</small>
+            <small class="mensagem-validacao">URL é obrigatória e deve ser válida.</small>
           </div>
         </div>
 
@@ -72,7 +72,7 @@
               plataformaForm.get('idCliente')?.touched
             "
           >
-            <small class="error">ID do cliente é obrigatório.</small>
+            <small class="mensagem-validacao">ID do cliente é obrigatório.</small>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
         <button
           type="submit"
           class="btn btn-salvar"
-          [disabled]="plataformaForm.invalid"
+          (click)="verificarValidacao()"
         >
           Salvar alterações
         </button>
