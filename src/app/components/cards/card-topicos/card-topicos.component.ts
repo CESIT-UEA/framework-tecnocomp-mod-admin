@@ -29,7 +29,14 @@ export class CardTopicosComponent implements OnInit {
 
   abrirConfirmacaoExcluir(): void {
     const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent, {
-      panelClass: 'dialog-remove-custom'
+      width: '484px',
+      height: '219.952px',
+      panelClass: 'dialog-remove-custom',
+      data: {
+        titulo: "tópico",
+        componente: this.topico.nome_topico
+
+      }
     });
 
     dialogRef.afterClosed().subscribe((senhaAdm) => {
