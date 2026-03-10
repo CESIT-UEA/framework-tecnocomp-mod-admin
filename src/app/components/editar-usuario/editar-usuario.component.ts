@@ -17,7 +17,8 @@ export class EditarUsuarioComponent {
     private route: ActivatedRoute,
     private userService: ApiAdmService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private apiService: ApiAdmService
   ) {}
 
   ngOnInit(): void {
@@ -44,19 +45,19 @@ export class EditarUsuarioComponent {
     }).subscribe(
       () => {
         if (this.getUsuarioDados().id == this.user.id) {
-          alert('Usuário atualizado com sucesso! Logue Novamente no Sistema');
+          this.apiService.message('Usuário atualizado com sucesso! Logue Novamente no Sistema');
           this.authService.logout();
         } else {
-          alert('Usuário atualizado com sucesso!');
+          this.apiService.message('Usuário atualizado com sucesso!');
           this.router.navigate(['/tecnocomp/usuarios']);
         }
       },
       (error) => {
         console.error('Erro ao atualizar usuário:', error);
         if (error.status === 401) {
-          alert('Senha atual incorreta.');
+          this.apiService.message('Senha atual incorreta.');
         } else {
-          alert('Erro ao atualizar o usuário.');
+          this.apiService.message('Erro ao atualizar o usuário.');
         }
       }
     );

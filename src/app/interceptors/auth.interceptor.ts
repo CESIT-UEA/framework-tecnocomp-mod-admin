@@ -31,9 +31,17 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.error?.error === "Senha incorreta") {
             return throwError(() => error);
         }
+        
+        if (req.url.includes('api/users') && req.method === 'PUT' && error.status === 401) {
+            return throwError(() => error);
+       }
+
+       if (req.url.includes('/self') && req.method === 'PATCH' && error.status === 401){
+            return throwError(() => error)
+       }
 
         if (error.status === 401 || error.status === 403) {
-          console.log("ola mundo")
+          
           return this.authService.refreshAccessToken().pipe(
             switchMap(() => {
               const newToken = this.authService.getToken();

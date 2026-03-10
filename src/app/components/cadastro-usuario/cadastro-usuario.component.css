@@ -41,9 +41,36 @@
   border-bottom: 2px solid #7C4CC6;
 }
 
+.mensagem-validacao {
+  font-size: 11px;
+  color: #ff4d4f;
+  margin-top: -6px; /* puxa a mensagem para cima */
+  line-height: 1;
+  min-height: 12px;
+}
+
+.senha-validacao {
+  margin-top: -15px !important;
+}
+
+.caixa {
+  margin-top: -32px;
+  min-height: 12px;
+  margin-bottom: 10px;
+}
+
+.icon mat-icon:hover {
+  cursor: pointer;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff4d4f;
+  outline: none;
+}
+
 
 .cadastro-usuario-label span, .cadastro-usuario-aviso {
-  color: #C64C4C;
+  color: #ff4d4f;
 }
 
 .campos {

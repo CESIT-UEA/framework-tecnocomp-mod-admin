@@ -16,10 +16,10 @@ export class CadastroUsuarioComponent implements OnInit {
   validators: boolean = false;
   errorCadastro: boolean = false;
   buttonDisabled = true;
-  hide = false;
+  hide = true;
 
   cadastroForm = new FormGroup({
-    nome: new FormControl('', [Validators.required, Validators.minLength(10), noOnlyWhitespace()]),
+    nome: new FormControl('', [Validators.required, Validators.minLength(4), noOnlyWhitespace()]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(13), noOnlyWhitespace()]),
     senha: new FormControl('', [Validators.required, Validators.minLength(8), senhaForte(), noOnlyWhitespace()]),
     confirmarSenha: new FormControl('',[Validators.required,Validators.minLength(8), senhaForte(),noOnlyWhitespace()]),
@@ -72,6 +72,12 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.cadastroForm.invalid){
+      this.cadastroForm.markAllAsTouched()
+      this.apiService.message('Por favor, preencha todos os campos corretamente.')
+      return
+    }
+
     if (this.cadastroForm.valid) {
       console.log(this.cadastroForm.value)
       this.apiService.registerUsuario(this.cadastroForm.value).subscribe(
