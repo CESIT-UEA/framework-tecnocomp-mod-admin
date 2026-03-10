@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   hide = true;
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required]),
     senha: new FormControl('', Validators.required)
   });
 
@@ -65,6 +65,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+    if (this.loginForm.invalid){
+      this.loginForm.markAllAsTouched()
+      return
+    }
+
     if (this.loginForm.valid) {
       this.errorLogin = false;
 
@@ -92,6 +97,7 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           this.errorLogin = true;
+          this.loginForm.markAllAsTouched()
           console.error('Erro ao fazer login:', error);
         }
       );

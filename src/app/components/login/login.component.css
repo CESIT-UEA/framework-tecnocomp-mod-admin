@@ -118,10 +118,16 @@
   width: 100%;
   height: 35px;
   padding: 0px 14px;
+
   font-size: 14px;
   font-weight: 400;
   color: #f4f4f5;
+
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+
   background:
+    linear-gradient(#424147, #424147) padding-box,
     linear-gradient(
       112deg,
       rgba(18, 0, 96, 0.1) 0%,
@@ -129,10 +135,7 @@
       rgba(19, 0, 41, 0.09) 55.29%,
       rgba(95, 0, 211, 0.05) 95.21%,
       rgba(66, 0, 146, 0.05) 100%
-    ),
-    #424147;
-  border-radius: 10px;
-  border: none;
+    ) border-box;
 }
 
 /* BOTÃO DO OLHO */
@@ -308,6 +311,21 @@ button {
 }
 
 
+
+.form-conteudo input.ng-valid {
+  background: linear-gradient(112deg, rgba(18, 0, 96, 0.10) 0%, rgba(0, 0, 0, 0.09) 32.21%, rgba(19, 0, 41, 0.09) 55.29%, rgba(95, 0, 211, 0.05) 95.21%, rgba(66, 0, 146, 0.05) 100%), #424147;
+  border: 1px solid #7C4CC6;
+}
+
+.error-login {
+  border: 1px solid #ff4d4f !important;
+  outline: none;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff4d4f;
+  outline: none;
+}
 
 /* GOOGLE */
 

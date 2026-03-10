@@ -25,6 +25,7 @@
             <div class="form-conteudo">
               <label for="idemail">E-mail</label>
               <input
+              [ngClass]="{'error-login': errorLogin}"
                 type="email"
                 id="idemail"
                 formControlName="email"
@@ -36,6 +37,7 @@
               <label for="idsenha">Senha</label>
               <div class="input-senha">
                 <input
+                [ngClass]="{'error-login': errorLogin}"
                   [type]="hide ? 'password' : 'text'"
                   id="idsenha"
                   formControlName="senha"
