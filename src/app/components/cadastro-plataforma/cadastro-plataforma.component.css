@@ -31,7 +31,7 @@
 }
 
 .cadastro-plataforma-label span, .cadastro-plaforma-aviso, .validators {
-  color: #C64C4C;
+  color: #ff4d4f;
 }
 
 .forms-campo {
@@ -54,6 +54,19 @@
   color: #FFFFFF;
   padding-left: 10px;
   margin: 8px 0;
+}
+
+.mensagem-validacao {
+  font-size: 11px;
+  color: #ff4d4f;
+  margin-top: -6px; /* puxa a mensagem para cima */
+  line-height: 1;
+  min-height: 12px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff4d4f;
+  outline: none;
 }
 
 .buttons {

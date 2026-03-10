@@ -12,8 +12,8 @@ import { ApiAdmService } from 'src/app/services/api-adm.service';
 })
 export class CadastroPlataformaComponent {
   plataformaForm = new FormGroup({
-    plataformaUrl: new FormControl('', Validators.required),
-    plataformaNome: new FormControl('', Validators.required),
+    plataformaUrl: new FormControl('', [Validators.required, Validators.pattern(/https?:\/\/.+/)]),
+    plataformaNome: new FormControl('', [Validators.required, Validators.minLength(3)]),
     idCliente: new FormControl('', Validators.required),
     usuario_id: new FormControl(''),
     temaTipo: new FormControl('padrao', Validators.required),
@@ -53,6 +53,12 @@ export class CadastroPlataformaComponent {
   }
 
   onSubmit(): void {
+    if (this.plataformaForm.invalid){
+      this.plataformaForm.markAllAsTouched()
+      this.apiService.message('Por favor, preencha todos os campos corretamente.')
+      return
+    }
+
     if (this.plataformaForm.valid) {
       this.apiService.registerPlataforma(this.plataformaForm.value).subscribe(
         (response) => {
