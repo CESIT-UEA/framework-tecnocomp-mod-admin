@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/auth/auth.service';
 import { VerAoVivoService } from 'src/app/services/ver-ao-vivo.service';
 import { Router } from '@angular/router';
+import { ConfirmacaoExclusaoProfessorComponent } from '../../confirmacao-exclusao-professor/confirmacao-exclusao-professor.component';
 
 @Component({
   selector: 'app-card-topicos',
@@ -28,33 +29,56 @@ export class CardTopicosComponent implements OnInit {
   constructor(private dialog: MatDialog, private authService: AuthService, private verAoVivo: VerAoVivoService, private router: Router) {}
 
   abrirConfirmacaoExcluir(): void {
-    const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent, {
-      width: '484px',
-      height: '219.952px',
-      panelClass: 'dialog-remove-custom',
-      data: {
-        titulo: "tópico",
-        componente: this.topico.nome_topico
-
-      }
-    });
-
-    dialogRef.afterClosed().subscribe((senhaAdm) => {
-      if (senhaAdm) {
-        if (this.topico.id != null) {
-          this.excluirTopico.emit({
-            idAdm: this.authService.getUsuarioDados().id,
-            senhaAdm: senhaAdm,
-            idExcluir: this.topico.id,
-          });
+    if (this.authService.isAdmin()){
+        const dialogRef = this.dialog.open(ConfirmacaoExclusaoComponent, {
+        width: '484px',
+        height: '219.952px',
+        panelClass: 'dialog-remove-custom',
+        data: {
+          titulo: "tópico",
         }
-      }
-    });
+      });
+
+      dialogRef.afterClosed().subscribe((senhaAdm) => {
+        if (senhaAdm) {
+          if (this.topico.id != null) {
+            this.excluirTopico.emit({
+              idAdm: this.authService.getUsuarioDados().id,
+              senhaAdm: senhaAdm,
+              idExcluir: this.topico.id,
+            });
+          }
+        }
+      });
+    } else {
+      const dialogRef = this.dialog.open(ConfirmacaoExclusaoProfessorComponent, {
+        width: '484px',
+        height: '190.952px',
+        panelClass: 'dialog-remove-custom',
+        data: {
+          titulo: "o tópico", 
+          componente: this.topico.nome_topico
+
+        }
+      });
+
+      dialogRef.afterClosed().subscribe((senhaAdm) => {
+        if (senhaAdm) {
+          if (this.topico.id != null) {
+            this.excluirTopico.emit({
+              idAdm: this.authService.getUsuarioDados().id,
+              senhaAdm: '',
+              idExcluir: this.topico.id,
+            });
+          }
+        }
+      })
+    }
+    
   }
 
   sincronizarTopico(idTopico: number){
     this.verAoVivo.controll_topico = idTopico;
-    console.log("passei aqui", this.verAoVivo.controll_topico)
     this.router.navigate([`/ver-ao-vivo/${this.idModulo}/topicos`])
   }
 }
