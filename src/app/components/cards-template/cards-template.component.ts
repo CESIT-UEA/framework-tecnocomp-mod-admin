@@ -43,7 +43,7 @@ export class CardsTemplateComponent {
         if (this.modulo?.id != null) {
           this.admService.clonarTemplate(this.modulo.id).subscribe(() => {
           this.admService.message(`Módulo ${this.modulo.nome_modulo} clonado com sucesso`)
-          this.router.navigate(['/meus-modulos'])
+          this.router.navigate(['/tecnocomp/meus-modulos'])
         });
         }
       }
