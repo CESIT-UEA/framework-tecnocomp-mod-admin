@@ -27,7 +27,7 @@ export class ModuloUnicoComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      console.log('Teste');
+      
       this.carregarModulo(+id);
       // this.carregarTopicos(+id);
       console.log('teste', this.modulo?.ebookUrlGeral)
@@ -102,11 +102,12 @@ export class ModuloUnicoComponent implements OnInit {
           .subscribe(
             (moduloAtualizado) => {
               this.modulo = moduloAtualizado; // Atualiza o estado do módulo
-              alert(
-                `O módulo foi ${
-                  novoStatus ? 'publicado' : 'despublicado'
-                } com sucesso!`
-              );
+              if (novoStatus){
+                this.apiService.message("O módulo está publicado")
+              } else {
+                this.apiService.message("O módulo não está publicado")
+              }
+        
             },
             (error) => {
               console.error('Erro ao alterar status de publicação:', error);
@@ -126,11 +127,12 @@ export class ModuloUnicoComponent implements OnInit {
           .subscribe(
             (moduloAtualizado) => {
               this.modulo = moduloAtualizado;
-              alert(
-                `O módulo foi ${
-                  novoStatus ? 'template' : 'não template'
-                } com sucesso!`
-              );
+              if (novoStatus) {
+                this.apiService.message(`O módulo está como template para ser clonado`)
+              } else {
+                this.apiService.message(`O módulo não está como template para ser clonado`)
+              }
+              
             },
             (error) => {
               console.error(

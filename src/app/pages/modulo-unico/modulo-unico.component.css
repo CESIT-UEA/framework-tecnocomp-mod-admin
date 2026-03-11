@@ -216,6 +216,14 @@ button, a {
   font-size: 14px;
 }
 
+.mensagem-carregando {
+  margin: 0 auto;
+  color: #fff;
+}
+
+.btn-publicar {
+  text-align: center;
+}
 
 @media (max-width: 1100px) {
   .topicos-grid {
