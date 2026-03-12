@@ -59,8 +59,8 @@
 }
 
 #container-links-text-frase{
-  text-align: left;
-  width: 70%;
+  text-align: justify;
+  width: 60%;
   padding: 10px;
   color: #FBFBFB;
 }

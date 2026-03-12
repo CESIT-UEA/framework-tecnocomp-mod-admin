@@ -20,11 +20,10 @@
   margin: 0 auto;
 }
 .header img {
-  display: flex;
-  width: 210px;
   max-height: 80px;
+  height: 79;
+  width: 180px;
   padding: 5px 0;
-  align-items: center;
   margin-left: 1rem;
   cursor: pointer;
 }
@@ -50,6 +49,8 @@
   display: flex;
   align-items: center;
   gap: 40px;
+  width: 180px;
+  justify-content: end;
 }
 .container-foto-header {
   display: flex;
@@ -58,6 +59,8 @@
   gap: 5px;
   border-radius: 20px;
   background: #131313;
+  margin-right: 20px;
+  
 }
 .foto-header {
   display: flex;
@@ -116,6 +119,8 @@ a {
   /* padding-bottom: 3px */
   width: fit-content;
 }
+
+
 
 /* Responsivo */
 /* Começa a quebrar com 900px de width, implementar o menu hamburguer */

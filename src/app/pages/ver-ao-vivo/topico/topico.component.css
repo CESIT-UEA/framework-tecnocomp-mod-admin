@@ -1,5 +1,11 @@
 
 
+.container-topico {
+  background-color: #131313;
+  height: 100vh;
+}
+
+
 .titulo-topico {
   background-color: #131313;
   display: flex;
@@ -100,6 +106,7 @@ main {
 
 .recursos-complementares {
   flex-direction: column;
+  justify-content: space-around;
   row-gap: 30px;
 }
 
@@ -185,4 +192,16 @@ button.ebook-botao a {
   line-height: normal;
   text-decoration: none;
   width: 100%;
+}
+
+.sem-topico {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  height: 80vh;
+  align-content: center;
+  color: #fbfbfb;
+  font-size: 21px;
+  /* margin-top: 10vh; */
+  padding-top: 10vh;
 }

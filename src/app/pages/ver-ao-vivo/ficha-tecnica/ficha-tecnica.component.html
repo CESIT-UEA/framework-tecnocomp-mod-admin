@@ -9,83 +9,18 @@
         <p>{{ this.verAoVivo.dados_completos.nome_modulo }}</p>
       </div>
       <hr />
-<!--       <div class="bloco">
-        <h2>Versão do Módulo:</h2>
-        <p>1.0.0</p>
-      </div>
-      <hr /> -->
-      <div *ngFor="let equipe of this.verAoVivo.dados_completos.FichaTecnica.Equipes">
+      <div *ngFor="let equipe of this.verAoVivo.dados_completos?.FichaTecnica?.Equipes">
           <div class="equipe">
               <h2>{{ equipe.nome }}:</h2>
-              <div class="bloco" *ngFor="let membro of equipe.Membros">
-                <h2>{{ membro.cargo }}:</h2>
-                <p>{{ membro.nome }}</p>
+              <div class="bloco" *ngFor="let membro of equipe?.Membros">
+                <h2>{{ membro?.cargo }}:</h2>
+                <p>{{ membro?.nome }}</p>
               </div>
               <hr />
       </div>
           </div>
       </div>
-      <!-- <div class="bloco">
-        <h2>Coordenação Geral:</h2>
-        <p>Prof. Dr. João da Mata Libório Filho</p>
-      </div>
-      <hr />
-    </div> -->
-    <!-- <div class="equipe">
-      <h2>Equipe de Produção Educacional:</h2>
-
-      <div class="bloco">
-        <h2>Instrutor(a)</h2>
-        <p>Yasmim Bianca Moraes Barreto</p>
-      </div>
-
-      <div class="bloco">
-        <h2>Designer Instrucional</h2>
-        <p>Jorge Mikael Coutinho</p>
-      </div>
-
-      <div class="bloco">
-        <h2>Designer Gráfico</h2>
-        <p>Adriene Chaves dos Santos</p>
-      </div>
-
-      <div class="bloco">
-        <h2>VideoMaker</h2>
-        <p>Jorge Mikael Coutinho</p>
-      </div>
-      <div class="bloco">
-        <h2>Social Media</h2>
-        <p>Adriene Chaves dos Santos</p>
-      </div>
-      <hr />
-    </div>
-    <div class="equipe">
-      <h2>Equipe de Desenvolvimento:</h2>
-
-      <div class="bloco">
-        <h2>Designer UX/UI:</h2>
-        <p>Livia Ferreira Monteiro</p>
-      </div>
-
-      <div class="bloco">
-        <h2>Desenvolvedor Frontend:</h2>
-        <p>Andriw Santos de Souza</p>
-      </div>
-      <div class="bloco">
-        <h2>Desenvolvedor Full Stack:</h2>
-        <p>Henrique dos Santos Galvim</p>
-      </div>
-      <div class="bloco">
-        <h2>Desenvolvedor Frontend:</h2>
-        <p>Kauê Wallace Coelho Olimpio</p>
-      </div>
-
-      <div class="bloco">
-        <h2>Analista de Teste:</h2>
-        <p>Harleison Jhonathan Maia de Souza</p>
-      </div>
-      <hr />
-    </div> -->
+    
     <div class="laboratorios">
       <div class="bloco">
         <h2>Laboratorios envolvidos:</h2>
@@ -94,11 +29,6 @@
         <hr />
       </div>
 
-<!--       <div class="bloco">
-        <h2>Lançamento:</h2>
-        <p>Itacoatiara, dezembro de 2024</p>
-        <hr />
-      </div> -->
       <div class="bloco">
         <h2>Financiamento:</h2>
         <h2>

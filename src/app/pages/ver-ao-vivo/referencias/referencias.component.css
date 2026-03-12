@@ -55,32 +55,39 @@
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
+  min-height: 90vh;
+
 }
 
 .container-links-text-p {
+  margin: 0 auto;
+  text-align: justify;
   color: #fbfbfb;
   font-size: 21px;
-  text-align: center;
-  padding: 30px;
+  padding: 30px 0;
+  width: 80%;
 }
 .container-links-text-lista {
   display: grid;
-  /*   background-image: url('../../../../../assets/img/referencias/linha-fundo.png'); */
   background-repeat: no-repeat;
   background-position: center;
   grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
   row-gap: 33px;
+  width: 100%;
   padding-bottom: 30px;
+  
+  /* margin: 0 auto; */
 }
 
 .container-links-text-lista li {
-  width: 80%;
   list-style: none;
   margin: 0 auto;
   background-color: #242228;
   border-radius: 10px;
+  width: 80%;
+  border: 1px solid #9665DF;
 }
 
 .container-links-text-lista li img {
@@ -99,12 +106,23 @@
   color: #cccccc;
 }
 .referencias-div {
-min-height: 160px;
+  min-height: 100px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
+.sem-referencia {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  height: 85vh;
+  align-content: center;
+  color: #fbfbfb;
+  font-size: 21px;
+}
+
 
 @media (max-width: 800px) {
   .container-links {

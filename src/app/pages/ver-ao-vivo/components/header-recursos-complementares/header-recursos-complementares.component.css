@@ -12,11 +12,16 @@
 .header-recursos-complementares {
   display: grid;
   height: 10vh;
-  grid-template-columns: 95% 5%;
+  grid-template-columns: 100%;
   width: 100%;
   justify-content: center;
   background-color: #161616;
   align-items: center;
+}
+
+.icone-close {
+  position: absolute;
+  right: 15px;
 }
 
 .header-links {
@@ -27,7 +32,8 @@
 }
 
 .header-links p {
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
   color: #B3B3B3;
 }
 
@@ -96,6 +102,11 @@
   justify-content: center;
 }
 
+.icone-close {
+  height: 30px;
+  width: 30px;
+  align-content: center;
+}
 
 .icone-close:hover {
   cursor: pointer;

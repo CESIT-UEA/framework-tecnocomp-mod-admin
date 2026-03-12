@@ -12,6 +12,8 @@
     ),
     #000; */
     background: url('../../../../assets/fundo-alternativo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* .main-container {
   background: url("../../../assets/fundo-alternativo.png"),
